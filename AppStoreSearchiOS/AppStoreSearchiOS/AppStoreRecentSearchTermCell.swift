@@ -10,6 +10,11 @@ import SnapKit
 
 final class AppStoreRecentSearchTermCell: UITableViewCell {
     
+    var term: String {
+        get { termLabel.text ?? "" }
+        set { termLabel.text = newValue }
+    }
+    
     private lazy var container: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
