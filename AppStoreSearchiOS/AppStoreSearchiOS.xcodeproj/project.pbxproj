@@ -31,6 +31,8 @@
 		B2A3B6B42AB57F7F007B1B75 /* APPSTORE_SEARCH_WITH_MATCHED_RECENT_TERMS_light.png in Resources */ = {isa = PBXBuildFile; fileRef = B2A3B6B32AB57F7F007B1B75 /* APPSTORE_SEARCH_WITH_MATCHED_RECENT_TERMS_light.png */; };
 		B2A3B6B72AB5815E007B1B75 /* AppStoreRecentSearchTermViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3B6B62AB5815E007B1B75 /* AppStoreRecentSearchTermViewModel.swift */; };
 		B2A3B6B92AB58340007B1B75 /* AppStoreSearchRatingMaskingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3B6B82AB58340007B1B75 /* AppStoreSearchRatingMaskingView.swift */; };
+		B2A3B6BB2AB58766007B1B75 /* AppStoreSearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3B6BA2AB58766007B1B75 /* AppStoreSearchResultCell.swift */; };
+		B2A3B6BD2AB588F0007B1B75 /* AppStoreSearchResultRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3B6BC2AB588F0007B1B75 /* AppStoreSearchResultRatingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,8 @@
 		B2A3B6B32AB57F7F007B1B75 /* APPSTORE_SEARCH_WITH_MATCHED_RECENT_TERMS_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = APPSTORE_SEARCH_WITH_MATCHED_RECENT_TERMS_light.png; sourceTree = "<group>"; };
 		B2A3B6B62AB5815E007B1B75 /* AppStoreRecentSearchTermViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreRecentSearchTermViewModel.swift; sourceTree = "<group>"; };
 		B2A3B6B82AB58340007B1B75 /* AppStoreSearchRatingMaskingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreSearchRatingMaskingView.swift; sourceTree = "<group>"; };
+		B2A3B6BA2AB58766007B1B75 /* AppStoreSearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreSearchResultCell.swift; sourceTree = "<group>"; };
+		B2A3B6BC2AB588F0007B1B75 /* AppStoreSearchResultRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreSearchResultRatingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +136,8 @@
 				B2A3B6AB2AB56FB9007B1B75 /* AppStoreRecentSearchTermCellController.swift */,
 				B2A3B6AD2AB579FF007B1B75 /* AppStoreSearchViewController.swift */,
 				B2A3B6B82AB58340007B1B75 /* AppStoreSearchRatingMaskingView.swift */,
+				B2A3B6BA2AB58766007B1B75 /* AppStoreSearchResultCell.swift */,
+				B2A3B6BC2AB588F0007B1B75 /* AppStoreSearchResultRatingView.swift */,
 			);
 			path = AppStoreSearchiOS;
 			sourceTree = "<group>";
@@ -314,11 +320,13 @@
 				B2A3B6802AB55B47007B1B75 /* AppStoreSearchView.swift in Sources */,
 				B2A3B6A82AB56D7C007B1B75 /* AppStoreRecentSearchTitleCellController.swift in Sources */,
 				B2A3B69D2AB56AB8007B1B75 /* RefreshController.swift in Sources */,
+				B2A3B6BD2AB588F0007B1B75 /* AppStoreSearchResultRatingView.swift in Sources */,
 				B2A3B6872AB564C0007B1B75 /* AppStoreSearchContainerViewController.swift in Sources */,
 				B2A3B6B22AB57F1F007B1B75 /* AppStoreSearchViewModel.swift in Sources */,
 				B2A3B6852AB56013007B1B75 /* ScreenSafeArea.swift in Sources */,
 				B2A3B6AA2AB56E06007B1B75 /* AppStoreRecentSearchTermCell.swift in Sources */,
 				B2A3B6B92AB58340007B1B75 /* AppStoreSearchRatingMaskingView.swift in Sources */,
+				B2A3B6BB2AB58766007B1B75 /* AppStoreSearchResultCell.swift in Sources */,
 				B2A3B69E2AB56AB8007B1B75 /* ListVIewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
