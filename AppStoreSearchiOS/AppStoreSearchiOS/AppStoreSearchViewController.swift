@@ -7,16 +7,6 @@
 
 import Foundation
 
-public struct AppStoreSearchViewModel {
-    public let title: String
-    public let placeholder: String
-    
-    public init(title: String, placeholder: String) {
-        self.title = title
-        self.placeholder = placeholder
-    }
-}
-
 public final class AppStoreSearchViewController {
     private let viewModel: AppStoreSearchViewModel
     
