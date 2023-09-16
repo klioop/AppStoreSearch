@@ -21,6 +21,7 @@
 		B2A3B69F2AB56AB8007B1B75 /* CollectionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3B69C2AB56AB8007B1B75 /* CollectionListViewController.swift */; };
 		B2A3B6A22AB56AD3007B1B75 /* CellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3B6A02AB56AD3007B1B75 /* CellController.swift */; };
 		B2A3B6A32AB56AD3007B1B75 /* TableCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3B6A12AB56AD3007B1B75 /* TableCellController.swift */; };
+		B2A3B6A62AB56C97007B1B75 /* AppStoreRecentSearchTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3B6A52AB56C97007B1B75 /* AppStoreRecentSearchTitleCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		B2A3B69C2AB56AB8007B1B75 /* CollectionListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionListViewController.swift; sourceTree = "<group>"; };
 		B2A3B6A02AB56AD3007B1B75 /* CellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellController.swift; sourceTree = "<group>"; };
 		B2A3B6A12AB56AD3007B1B75 /* TableCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableCellController.swift; sourceTree = "<group>"; };
+		B2A3B6A52AB56C97007B1B75 /* AppStoreRecentSearchTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreRecentSearchTitleCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				B2A3B6A42AB56BD2007B1B75 /* Shared */,
 				B2A3B67F2AB55B47007B1B75 /* AppStoreSearchView.swift */,
 				B2A3B6862AB564C0007B1B75 /* AppStoreSearchContainerViewController.swift */,
+				B2A3B6A52AB56C97007B1B75 /* AppStoreRecentSearchTitleCell.swift */,
 			);
 			path = AppStoreSearchiOS;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 				B2A3B6A32AB56AD3007B1B75 /* TableCellController.swift in Sources */,
 				B2A3B6A22AB56AD3007B1B75 /* CellController.swift in Sources */,
 				B2A3B69F2AB56AB8007B1B75 /* CollectionListViewController.swift in Sources */,
+				B2A3B6A62AB56C97007B1B75 /* AppStoreRecentSearchTitleCell.swift in Sources */,
 				B2A3B6802AB55B47007B1B75 /* AppStoreSearchView.swift in Sources */,
 				B2A3B69D2AB56AB8007B1B75 /* RefreshController.swift in Sources */,
 				B2A3B6872AB564C0007B1B75 /* AppStoreSearchContainerViewController.swift in Sources */,
