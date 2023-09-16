@@ -11,12 +11,12 @@ import AppStoreSearchiOS
 final class AppStoreSearchUISnapshotTests: XCTestCase {
     
     func test_appStoreSearchUI() {
-        let searchView = AppStoreSearchView()
-        searchView.title = "a title"
-        searchView.placeholder = "a placeholder"
+        let searchViewController = AppStoreSearchViewController(
+            viewModel: AppStoreSearchViewModel(title: "a title", placeholder: "a placeholder")
+        )
         let list = ListViewController()
         let container = AppStoreSearchContainerViewController(
-            searchView: searchView,
+            searchView: searchViewController.view(),
             listViewController: list
         )
         

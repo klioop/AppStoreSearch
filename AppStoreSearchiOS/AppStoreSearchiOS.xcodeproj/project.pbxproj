@@ -25,6 +25,7 @@
 		B2A3B6A82AB56D7C007B1B75 /* AppStoreRecentSearchTitleCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3B6A72AB56D7C007B1B75 /* AppStoreRecentSearchTitleCellController.swift */; };
 		B2A3B6AA2AB56E06007B1B75 /* AppStoreRecentSearchTermCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3B6A92AB56E06007B1B75 /* AppStoreRecentSearchTermCell.swift */; };
 		B2A3B6AC2AB56FB9007B1B75 /* AppStoreRecentSearchTermCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3B6AB2AB56FB9007B1B75 /* AppStoreRecentSearchTermCellController.swift */; };
+		B2A3B6AE2AB579FF007B1B75 /* AppStoreSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3B6AD2AB579FF007B1B75 /* AppStoreSearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		B2A3B6A72AB56D7C007B1B75 /* AppStoreRecentSearchTitleCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreRecentSearchTitleCellController.swift; sourceTree = "<group>"; };
 		B2A3B6A92AB56E06007B1B75 /* AppStoreRecentSearchTermCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreRecentSearchTermCell.swift; sourceTree = "<group>"; };
 		B2A3B6AB2AB56FB9007B1B75 /* AppStoreRecentSearchTermCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreRecentSearchTermCellController.swift; sourceTree = "<group>"; };
+		B2A3B6AD2AB579FF007B1B75 /* AppStoreSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreSearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 				B2A3B6A72AB56D7C007B1B75 /* AppStoreRecentSearchTitleCellController.swift */,
 				B2A3B6A92AB56E06007B1B75 /* AppStoreRecentSearchTermCell.swift */,
 				B2A3B6AB2AB56FB9007B1B75 /* AppStoreRecentSearchTermCellController.swift */,
+				B2A3B6AD2AB579FF007B1B75 /* AppStoreSearchViewController.swift */,
 			);
 			path = AppStoreSearchiOS;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2A3B6AE2AB579FF007B1B75 /* AppStoreSearchViewController.swift in Sources */,
 				B2A3B6A32AB56AD3007B1B75 /* TableCellController.swift in Sources */,
 				B2A3B6A22AB56AD3007B1B75 /* CellController.swift in Sources */,
 				B2A3B69F2AB56AB8007B1B75 /* CollectionListViewController.swift in Sources */,
