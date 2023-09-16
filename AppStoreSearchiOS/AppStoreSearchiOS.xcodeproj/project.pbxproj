@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		B2A3B66F2AB55898007B1B75 /* AppStoreSearchiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2A3B6662AB55898007B1B75 /* AppStoreSearchiOS.framework */; };
 		B2A3B6742AB55898007B1B75 /* AppStoreSearchiOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3B6732AB55898007B1B75 /* AppStoreSearchiOSTests.swift */; };
+		B2A3B6802AB55B47007B1B75 /* AppStoreSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3B67F2AB55B47007B1B75 /* AppStoreSearchView.swift */; };
+		B2A3B6832AB55B7B007B1B75 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B2A3B6822AB55B7B007B1B75 /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,6 +27,7 @@
 		B2A3B6662AB55898007B1B75 /* AppStoreSearchiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppStoreSearchiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2A3B66E2AB55898007B1B75 /* AppStoreSearchiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppStoreSearchiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2A3B6732AB55898007B1B75 /* AppStoreSearchiOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreSearchiOSTests.swift; sourceTree = "<group>"; };
+		B2A3B67F2AB55B47007B1B75 /* AppStoreSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreSearchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2A3B6832AB55B7B007B1B75 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -49,7 +53,7 @@
 		B2A3B65C2AB55898007B1B75 = {
 			isa = PBXGroup;
 			children = (
-				B2A3B6682AB55898007B1B75 /* AppStoreSearchiOS */,
+				B2A3B67E2AB55B3C007B1B75 /* AppStoreSearchiOS */,
 				B2A3B6722AB55898007B1B75 /* AppStoreSearchiOSTests */,
 				B2A3B6672AB55898007B1B75 /* Products */,
 			);
@@ -64,19 +68,20 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B2A3B6682AB55898007B1B75 /* AppStoreSearchiOS */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = AppStoreSearchiOS;
-			sourceTree = "<group>";
-		};
 		B2A3B6722AB55898007B1B75 /* AppStoreSearchiOSTests */ = {
 			isa = PBXGroup;
 			children = (
 				B2A3B6732AB55898007B1B75 /* AppStoreSearchiOSTests.swift */,
 			);
 			path = AppStoreSearchiOSTests;
+			sourceTree = "<group>";
+		};
+		B2A3B67E2AB55B3C007B1B75 /* AppStoreSearchiOS */ = {
+			isa = PBXGroup;
+			children = (
+				B2A3B67F2AB55B47007B1B75 /* AppStoreSearchView.swift */,
+			);
+			path = AppStoreSearchiOS;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -106,6 +111,9 @@
 			dependencies = (
 			);
 			name = AppStoreSearchiOS;
+			packageProductDependencies = (
+				B2A3B6822AB55B7B007B1B75 /* SnapKit */,
+			);
 			productName = AppStoreSearchiOS;
 			productReference = B2A3B6662AB55898007B1B75 /* AppStoreSearchiOS.framework */;
 			productType = "com.apple.product-type.framework";
@@ -140,6 +148,7 @@
 				TargetAttributes = {
 					B2A3B6652AB55898007B1B75 = {
 						CreatedOnToolsVersion = 14.3;
+						LastSwiftMigration = 1430;
 					};
 					B2A3B66D2AB55898007B1B75 = {
 						CreatedOnToolsVersion = 14.3;
@@ -155,6 +164,9 @@
 				Base,
 			);
 			mainGroup = B2A3B65C2AB55898007B1B75;
+			packageReferences = (
+				B2A3B6812AB55B7B007B1B75 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = B2A3B6672AB55898007B1B75 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -187,6 +199,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2A3B6802AB55B47007B1B75 /* AppStoreSearchView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,6 +345,7 @@
 		B2A3B6792AB55898007B1B75 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -355,6 +369,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -363,6 +378,7 @@
 		B2A3B67A2AB55898007B1B75 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -394,6 +410,7 @@
 		B2A3B67C2AB55898007B1B75 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7DY6Z945T9;
@@ -410,6 +427,7 @@
 		B2A3B67D2AB55898007B1B75 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7DY6Z945T9;
@@ -454,6 +472,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B2A3B6812AB55B7B007B1B75 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B2A3B6822AB55B7B007B1B75 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B2A3B6812AB55B7B007B1B75 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B2A3B65D2AB55898007B1B75 /* Project object */;
 }
