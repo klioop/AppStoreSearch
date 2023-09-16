@@ -7,16 +7,6 @@
 
 import UIKit
 
-public struct AppStoreRecentSearchTermViewModel {
-    public let isMatchedRecent: Bool
-    public let term: String
-    
-    public init(isMatchedRecent: Bool = false, term: String) {
-        self.isMatchedRecent = isMatchedRecent
-        self.term = term
-    }
-}
-
 public final class AppStoreRecentSearchTermCellController: NSObject, UITableViewDataSource, UITableViewDelegate {
     
     private let viewModel: AppStoreRecentSearchTermViewModel
