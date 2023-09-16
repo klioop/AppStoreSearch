@@ -10,6 +10,8 @@ import SnapKit
 
 final class AppStoreRecentSearchTermCell: UITableViewCell {
     
+    var isRecentMatched: Bool = false
+    
     var term: String {
         get { termLabel.text ?? "" }
         set { termLabel.text = newValue }
@@ -28,15 +30,19 @@ final class AppStoreRecentSearchTermCell: UITableViewCell {
     private lazy var indicatingImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "magnifyingglass")
+        imageView.tintColor = color
         return imageView
     }()
     
     private lazy var termLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 14)
-        label.textColor = .link
+        label.font = .systemFont(ofSize: fontSize)
+        label.textColor = color
         return label
     }()
+    
+    private var fontSize: CGFloat { isRecentMatched ? 11 : 14 }
+    private var color: UIColor { isRecentMatched ? .label : .link }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

@@ -48,9 +48,15 @@ final class AppStoreSearchUISnapshotTests: XCTestCase {
     
     private func recentTerms() -> [TableCellController] {
         let titleCellController = AppStoreRecentSearchTitleCellController(viewModel: "a title")
-        let termCellController0 = AppStoreRecentSearchTermCellController(viewModel: "a term0")
-        let termCellController1 = AppStoreRecentSearchTermCellController(viewModel: "a term1")
-        let termCellController2 = AppStoreRecentSearchTermCellController(viewModel: "a term2")
+        let termCellController0 = AppStoreRecentSearchTermCellController(
+            viewModel: AppStoreRecentSearchTermViewModel(term: "a term0")
+        )
+        let termCellController1 = AppStoreRecentSearchTermCellController(
+            viewModel: AppStoreRecentSearchTermViewModel(term: "a term1")
+        )
+        let termCellController2 = AppStoreRecentSearchTermCellController(
+            viewModel: AppStoreRecentSearchTermViewModel(term: "a term2")
+        )
         return [titleCellController, termCellController0, termCellController1, termCellController2].map(TableCellController.init)
     }
 }
