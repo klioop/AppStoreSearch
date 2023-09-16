@@ -23,7 +23,7 @@ public final class AppStoreSearchContainerViewController: UIViewController {
         view.backgroundColor = .systemBackground
         view.addSubview(searchView)
         searchView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(ScreenSafeArea.top)
+            $0.top.equalToSuperview().offset(ScreenSafeArea.top + 20)
             $0.horizontalEdges.equalToSuperview()
         }
     }
