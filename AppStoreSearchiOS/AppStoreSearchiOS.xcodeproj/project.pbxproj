@@ -30,6 +30,7 @@
 		B2A3B6B22AB57F1F007B1B75 /* AppStoreSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3B6B12AB57F1F007B1B75 /* AppStoreSearchViewModel.swift */; };
 		B2A3B6B42AB57F7F007B1B75 /* APPSTORE_SEARCH_WITH_MATCHED_RECENT_TERMS_light.png in Resources */ = {isa = PBXBuildFile; fileRef = B2A3B6B32AB57F7F007B1B75 /* APPSTORE_SEARCH_WITH_MATCHED_RECENT_TERMS_light.png */; };
 		B2A3B6B72AB5815E007B1B75 /* AppStoreRecentSearchTermViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3B6B62AB5815E007B1B75 /* AppStoreRecentSearchTermViewModel.swift */; };
+		B2A3B6B92AB58340007B1B75 /* AppStoreSearchRatingMaskingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3B6B82AB58340007B1B75 /* AppStoreSearchRatingMaskingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		B2A3B6B12AB57F1F007B1B75 /* AppStoreSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreSearchViewModel.swift; sourceTree = "<group>"; };
 		B2A3B6B32AB57F7F007B1B75 /* APPSTORE_SEARCH_WITH_MATCHED_RECENT_TERMS_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = APPSTORE_SEARCH_WITH_MATCHED_RECENT_TERMS_light.png; sourceTree = "<group>"; };
 		B2A3B6B62AB5815E007B1B75 /* AppStoreRecentSearchTermViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreRecentSearchTermViewModel.swift; sourceTree = "<group>"; };
+		B2A3B6B82AB58340007B1B75 /* AppStoreSearchRatingMaskingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreSearchRatingMaskingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 				B2A3B6A92AB56E06007B1B75 /* AppStoreRecentSearchTermCell.swift */,
 				B2A3B6AB2AB56FB9007B1B75 /* AppStoreRecentSearchTermCellController.swift */,
 				B2A3B6AD2AB579FF007B1B75 /* AppStoreSearchViewController.swift */,
+				B2A3B6B82AB58340007B1B75 /* AppStoreSearchRatingMaskingView.swift */,
 			);
 			path = AppStoreSearchiOS;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 				B2A3B6B22AB57F1F007B1B75 /* AppStoreSearchViewModel.swift in Sources */,
 				B2A3B6852AB56013007B1B75 /* ScreenSafeArea.swift in Sources */,
 				B2A3B6AA2AB56E06007B1B75 /* AppStoreRecentSearchTermCell.swift in Sources */,
+				B2A3B6B92AB58340007B1B75 /* AppStoreSearchRatingMaskingView.swift in Sources */,
 				B2A3B69E2AB56AB8007B1B75 /* ListVIewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
