@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		B2A3B66F2AB55898007B1B75 /* AppStoreSearchiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2A3B6662AB55898007B1B75 /* AppStoreSearchiOS.framework */; };
 		B2A3B6742AB55898007B1B75 /* AppStoreSearchiOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3B6732AB55898007B1B75 /* AppStoreSearchiOSTests.swift */; };
-		B2A3B6752AB55898007B1B75 /* AppStoreSearchiOS.h in Headers */ = {isa = PBXBuildFile; fileRef = B2A3B6692AB55898007B1B75 /* AppStoreSearchiOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,7 +23,6 @@
 
 /* Begin PBXFileReference section */
 		B2A3B6662AB55898007B1B75 /* AppStoreSearchiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppStoreSearchiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B2A3B6692AB55898007B1B75 /* AppStoreSearchiOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppStoreSearchiOS.h; sourceTree = "<group>"; };
 		B2A3B66E2AB55898007B1B75 /* AppStoreSearchiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppStoreSearchiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2A3B6732AB55898007B1B75 /* AppStoreSearchiOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreSearchiOSTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,7 +67,6 @@
 		B2A3B6682AB55898007B1B75 /* AppStoreSearchiOS */ = {
 			isa = PBXGroup;
 			children = (
-				B2A3B6692AB55898007B1B75 /* AppStoreSearchiOS.h */,
 			);
 			path = AppStoreSearchiOS;
 			sourceTree = "<group>";
@@ -89,7 +86,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2A3B6752AB55898007B1B75 /* AppStoreSearchiOS.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
