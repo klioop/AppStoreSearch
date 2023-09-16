@@ -28,7 +28,6 @@ public final class ListViewController: UITableViewController {
         
         tableView.dataSource = dataSource
         refreshControl = refreshController?.view
-        dataSource.defaultRowAnimation = .fade
         configure?(tableView)
     }
     

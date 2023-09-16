@@ -27,6 +27,7 @@ final class AppStoreRecentSearchTitleCell: UITableViewCell {
         contentView.addSubview(label)
         label.snp.makeConstraints {
             $0.top.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(8)
             $0.leading.equalToSuperview().offset(20)
         }
     }
