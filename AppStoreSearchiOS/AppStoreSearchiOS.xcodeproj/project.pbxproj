@@ -28,6 +28,7 @@
 		B2A3B6AE2AB579FF007B1B75 /* AppStoreSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3B6AD2AB579FF007B1B75 /* AppStoreSearchViewController.swift */; };
 		B2A3B6B02AB57B7F007B1B75 /* APPSTORE_SEARCH_WITHOUT_RECENT_TERMS_light.png in Resources */ = {isa = PBXBuildFile; fileRef = B2A3B6AF2AB57B7F007B1B75 /* APPSTORE_SEARCH_WITHOUT_RECENT_TERMS_light.png */; };
 		B2A3B6B22AB57F1F007B1B75 /* AppStoreSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3B6B12AB57F1F007B1B75 /* AppStoreSearchViewModel.swift */; };
+		B2A3B6B42AB57F7F007B1B75 /* APPSTORE_SEARCH_WITH_MATCHED_RECENT_TERMS_light.png in Resources */ = {isa = PBXBuildFile; fileRef = B2A3B6B32AB57F7F007B1B75 /* APPSTORE_SEARCH_WITH_MATCHED_RECENT_TERMS_light.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		B2A3B6AD2AB579FF007B1B75 /* AppStoreSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreSearchViewController.swift; sourceTree = "<group>"; };
 		B2A3B6AF2AB57B7F007B1B75 /* APPSTORE_SEARCH_WITHOUT_RECENT_TERMS_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = APPSTORE_SEARCH_WITHOUT_RECENT_TERMS_light.png; sourceTree = "<group>"; };
 		B2A3B6B12AB57F1F007B1B75 /* AppStoreSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreSearchViewModel.swift; sourceTree = "<group>"; };
+		B2A3B6B32AB57F7F007B1B75 /* APPSTORE_SEARCH_WITH_MATCHED_RECENT_TERMS_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = APPSTORE_SEARCH_WITH_MATCHED_RECENT_TERMS_light.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +154,7 @@
 			children = (
 				B2A3B6AF2AB57B7F007B1B75 /* APPSTORE_SEARCH_WITHOUT_RECENT_TERMS_light.png */,
 				B2A3B6982AB568B2007B1B75 /* APPSTORE_SEARCH_WITH_RECENT_TERMS_light.png */,
+				B2A3B6B32AB57F7F007B1B75 /* APPSTORE_SEARCH_WITH_MATCHED_RECENT_TERMS_light.png */,
 			);
 			path = snapshots;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2A3B6B42AB57F7F007B1B75 /* APPSTORE_SEARCH_WITH_MATCHED_RECENT_TERMS_light.png in Resources */,
 				B2A3B6B02AB57B7F007B1B75 /* APPSTORE_SEARCH_WITHOUT_RECENT_TERMS_light.png in Resources */,
 				B2A3B6992AB568B2007B1B75 /* APPSTORE_SEARCH_WITH_RECENT_TERMS_light.png in Resources */,
 			);

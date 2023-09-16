@@ -8,11 +8,11 @@
 import UIKit
 
 public struct AppStoreRecentSearchTermViewModel {
-    public let isRecentMatched: Bool
+    public let isMatchedRecent: Bool
     public let term: String
     
-    public init(isRecentMatched: Bool = false, term: String) {
-        self.isRecentMatched = isRecentMatched
+    public init(isMatchedRecent: Bool = false, term: String) {
+        self.isMatchedRecent = isMatchedRecent
         self.term = term
     }
 }
@@ -31,7 +31,7 @@ public final class AppStoreRecentSearchTermCellController: NSObject, UITableView
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = AppStoreRecentSearchTermCell()
-        cell.isRecentMatched = viewModel.isRecentMatched
+        cell.isMatchedRecent = viewModel.isMatchedRecent
         cell.term = viewModel.term
         return cell
     }

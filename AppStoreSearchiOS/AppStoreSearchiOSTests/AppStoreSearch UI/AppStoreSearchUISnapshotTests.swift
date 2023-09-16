@@ -28,6 +28,15 @@ final class AppStoreSearchUISnapshotTests: XCTestCase {
         record(sut.snapshot(for: .iPhone11(style: .light)), named: "APPSTORE_SEARCH_WITH_RECENT_TERMS_light")
     }
     
+    func test_appStoreSearchWithMatchedRecentTermsUI() {
+        let (sut, list) = makeSUT()
+        
+        list.display(matchedRecentTerms())
+        sut.loadViewIfNeeded()
+        
+        record(sut.snapshot(for: .iPhone11(style: .light)), named: "APPSTORE_SEARCH_WITH_MATCHED_RECENT_TERMS_light")
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT() -> (sut: AppStoreSearchContainerViewController, list: ListViewController) {
@@ -58,5 +67,21 @@ final class AppStoreSearchUISnapshotTests: XCTestCase {
             viewModel: AppStoreRecentSearchTermViewModel(term: "a term2")
         )
         return [titleCellController, termCellController0, termCellController1, termCellController2].map(TableCellController.init)
+    }
+    
+    private func matchedRecentTerms() -> [TableCellController] {
+        let termCellController0 = AppStoreRecentSearchTermCellController(
+            viewModel: AppStoreRecentSearchTermViewModel(
+                isMatchedRecent: true,
+                term: "a term0"
+            )
+        )
+        let termCellController1 = AppStoreRecentSearchTermCellController(
+            viewModel: AppStoreRecentSearchTermViewModel(
+                isMatchedRecent: true,
+                term: "a term1"
+            )
+        )
+        return [termCellController0, termCellController1].map(TableCellController.init)
     }
 }
