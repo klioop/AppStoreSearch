@@ -10,7 +10,23 @@ import AppStoreSearchiOS
 
 final class AppStoreSearchUISnapshotTests: XCTestCase {
     
-    func test_appStoreSearchUI() {
+    func test_appStoreSearchWithoutRecentTermsUI() {
+        let searchViewController = AppStoreSearchViewController(
+            viewModel: AppStoreSearchViewModel(title: "a title", placeholder: "a placeholder")
+        )
+        let list = ListViewController()
+        let container = AppStoreSearchContainerViewController(
+            searchView: searchViewController.view(),
+            listViewController: list
+        )
+        
+        list.display(emptyRecentTerms())
+        container.loadViewIfNeeded()
+        
+        record(container.snapshot(for: .iPhone11(style: .light)), named: "APPSTORE_SEARCH_WITHOUT_RECENT_TERMS_light")
+    }
+    
+    func test_appStoreSearchWithRecentTermsUI() {
         let searchViewController = AppStoreSearchViewController(
             viewModel: AppStoreSearchViewModel(title: "a title", placeholder: "a placeholder")
         )
@@ -23,10 +39,14 @@ final class AppStoreSearchUISnapshotTests: XCTestCase {
         list.display(recentTerms())
         container.loadViewIfNeeded()
         
-        record(container.snapshot(for: .iPhone11(style: .light)), named: "APPSTORE_SEARCH_light")
+        record(container.snapshot(for: .iPhone11(style: .light)), named: "APPSTORE_SEARCH_WITH_RECENT_TERMS_light")
     }
     
     // MARK: - Helpers
+    
+    private func emptyRecentTerms() -> [TableCellController] {
+        []
+    }
     
     private func recentTerms() -> [TableCellController] {
         let titleCellController = AppStoreRecentSearchTitleCellController(viewModel: "a title")
