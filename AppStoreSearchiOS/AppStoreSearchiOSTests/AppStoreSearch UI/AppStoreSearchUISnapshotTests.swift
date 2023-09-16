@@ -11,38 +11,36 @@ import AppStoreSearchiOS
 final class AppStoreSearchUISnapshotTests: XCTestCase {
     
     func test_appStoreSearchWithoutRecentTermsUI() {
-        let searchViewController = AppStoreSearchViewController(
-            viewModel: AppStoreSearchViewModel(title: "a title", placeholder: "a placeholder")
-        )
-        let list = ListViewController()
-        let container = AppStoreSearchContainerViewController(
-            searchView: searchViewController.view(),
-            listViewController: list
-        )
+        let (sut, list) = makeSUT()
         
         list.display(emptyRecentTerms())
-        container.loadViewIfNeeded()
+        sut.loadViewIfNeeded()
         
-        record(container.snapshot(for: .iPhone11(style: .light)), named: "APPSTORE_SEARCH_WITHOUT_RECENT_TERMS_light")
+        record(sut.snapshot(for: .iPhone11(style: .light)), named: "APPSTORE_SEARCH_WITHOUT_RECENT_TERMS_light")
     }
     
     func test_appStoreSearchWithRecentTermsUI() {
+        let (sut, list) = makeSUT()
+        
+        list.display(recentTerms())
+        sut.loadViewIfNeeded()
+        
+        record(sut.snapshot(for: .iPhone11(style: .light)), named: "APPSTORE_SEARCH_WITH_RECENT_TERMS_light")
+    }
+    
+    // MARK: - Helpers
+    
+    private func makeSUT() -> (sut: AppStoreSearchContainerViewController, list: ListViewController) {
         let searchViewController = AppStoreSearchViewController(
             viewModel: AppStoreSearchViewModel(title: "a title", placeholder: "a placeholder")
         )
         let list = ListViewController()
-        let container = AppStoreSearchContainerViewController(
+        let sut = AppStoreSearchContainerViewController(
             searchView: searchViewController.view(),
             listViewController: list
         )
-        
-        list.display(recentTerms())
-        container.loadViewIfNeeded()
-        
-        record(container.snapshot(for: .iPhone11(style: .light)), named: "APPSTORE_SEARCH_WITH_RECENT_TERMS_light")
+        return (sut, list)
     }
-    
-    // MARK: - Helpers
     
     private func emptyRecentTerms() -> [TableCellController] {
         []
