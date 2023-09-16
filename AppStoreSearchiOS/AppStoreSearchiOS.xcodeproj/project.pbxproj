@@ -12,6 +12,7 @@
 		B2A3B6802AB55B47007B1B75 /* AppStoreSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3B67F2AB55B47007B1B75 /* AppStoreSearchView.swift */; };
 		B2A3B6832AB55B7B007B1B75 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B2A3B6822AB55B7B007B1B75 /* SnapKit */; };
 		B2A3B6852AB56013007B1B75 /* ScreenSafeArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3B6842AB56013007B1B75 /* ScreenSafeArea.swift */; };
+		B2A3B6872AB564C0007B1B75 /* AppStoreSearchContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3B6862AB564C0007B1B75 /* AppStoreSearchContainerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,6 +31,7 @@
 		B2A3B6732AB55898007B1B75 /* AppStoreSearchiOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreSearchiOSTests.swift; sourceTree = "<group>"; };
 		B2A3B67F2AB55B47007B1B75 /* AppStoreSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreSearchView.swift; sourceTree = "<group>"; };
 		B2A3B6842AB56013007B1B75 /* ScreenSafeArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSafeArea.swift; sourceTree = "<group>"; };
+		B2A3B6862AB564C0007B1B75 /* AppStoreSearchContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreSearchContainerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,8 +83,9 @@
 		B2A3B67E2AB55B3C007B1B75 /* AppStoreSearchiOS */ = {
 			isa = PBXGroup;
 			children = (
-				B2A3B67F2AB55B47007B1B75 /* AppStoreSearchView.swift */,
 				B2A3B6842AB56013007B1B75 /* ScreenSafeArea.swift */,
+				B2A3B67F2AB55B47007B1B75 /* AppStoreSearchView.swift */,
+				B2A3B6862AB564C0007B1B75 /* AppStoreSearchContainerViewController.swift */,
 			);
 			path = AppStoreSearchiOS;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2A3B6802AB55B47007B1B75 /* AppStoreSearchView.swift in Sources */,
+				B2A3B6872AB564C0007B1B75 /* AppStoreSearchContainerViewController.swift in Sources */,
 				B2A3B6852AB56013007B1B75 /* ScreenSafeArea.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

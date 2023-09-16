@@ -39,7 +39,7 @@ final class AppStoreSearchView: UIView {
         return imageView
     }()
     
-    private var topPadding: CGFloat { ScreenSafeArea.top + 20 }
+    private var topPadding: CGFloat { 20 }
     private var horizontalPadding: CGFloat { 20 }
     
     override init(frame: CGRect) {
