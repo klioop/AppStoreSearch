@@ -8,10 +8,6 @@
 import UIKit
 import SnapKit
 
-struct ScreenSafeArea {
-    static let top = UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0
-}
-
 final class AppStoreSearchView: UIView {
     
     var title: String {
