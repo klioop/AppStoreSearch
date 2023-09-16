@@ -8,13 +8,19 @@
 import UIKit
 import SnapKit
 
-final class AppStoreSearchContainerViewController: UIViewController {
+public final class AppStoreSearchContainerViewController: UIViewController {
     
     private var searchView: UIView!
     
-    override func viewDidLoad() {
+    public convenience init(searchView: UIView) {
+        self.init()
+        self.searchView = searchView
+    }
+    
+    public override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = .systemBackground
         view.addSubview(searchView)
         searchView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(ScreenSafeArea.top)

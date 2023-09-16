@@ -1,0 +1,25 @@
+{
+  "configurations" : [
+    {
+      "id" : "DCB7F817-3920-44CC-8EC7-91507B4A9869",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "testExecutionOrdering" : "random"
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:AppStoreSearchiOS.xcodeproj",
+        "identifier" : "B2A3B66D2AB55898007B1B75",
+        "name" : "AppStoreSearchiOSTests"
+      }
+    }
+  ],
+  "version" : 1
+}
