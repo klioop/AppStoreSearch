@@ -19,7 +19,7 @@ final class AppStoreRecentSearchTermCell: UITableViewCell {
         let stack = UIStackView()
         stack.axis = .horizontal
         stack.alignment = .center
-        stack.spacing = 10
+        stack.spacing = 8
         indicatingImageView.snp.makeConstraints { $0.width.height.equalTo(16) }
         [indicatingImageView, termLabel].forEach(stack.addArrangedSubview)
         return stack
