@@ -434,7 +434,7 @@
 			children = (
 				B23A6AD72AB68D02006067F7 /* App UI */,
 				B23A6AD42AB688E5006067F7 /* Search UI */,
-				B2A3B6A42AB56BD2007B1B75 /* Shared */,
+				B23A6B142AB6E1FC006067F7 /* Shared UI */,
 			);
 			path = AppStoreSearchiOS;
 			sourceTree = "<group>";
@@ -466,14 +466,6 @@
 				B23A6ACE2AB5DBEA006067F7 /* APPSTORE_SEARCH_RESULT_light.png */,
 			);
 			path = snapshots;
-			sourceTree = "<group>";
-		};
-		B2A3B6A42AB56BD2007B1B75 /* Shared */ = {
-			isa = PBXGroup;
-			children = (
-				B23A6B142AB6E1FC006067F7 /* Shared UI */,
-			);
-			path = Shared;
 			sourceTree = "<group>";
 		};
 		B2A3B6B52AB5813F007B1B75 /* Presentation */ = {
