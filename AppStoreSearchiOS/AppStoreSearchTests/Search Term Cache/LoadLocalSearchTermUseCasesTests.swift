@@ -43,6 +43,18 @@ class LoadLocalSearchTermUseCasesTests: XCTestCase {
         })
     }
     
+    func test_load_doesNotDeliverResultAfterSUTInstanceHasBeenDeAllocated() {
+        let store = SearchTermStoreSpy()
+        var sut: LocalSearchTermLoader? = LocalSearchTermLoader(store: store)
+        
+        var receivedResults = [Result<[LocalSearchTerm], Error>]()
+        sut?.load { receivedResults.append($0) }
+        sut = nil
+        store.completeRetrieval()
+        
+        XCTAssertTrue(receivedResults.isEmpty)
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: LocalSearchTermLoader, store: SearchTermStoreSpy) {

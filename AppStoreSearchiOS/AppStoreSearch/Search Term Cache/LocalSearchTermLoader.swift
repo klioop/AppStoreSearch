@@ -32,7 +32,9 @@ public final class LocalSearchTermLoader {
     }
     
     public func load(completion: @escaping (Result<[LocalSearchTerm], Error>) -> Void) {
-        store.retrieve { result in
+        store.retrieve { [weak self] result in
+            guard self != nil else { return }
+            
             completion(
                 Result {
                     switch result {
