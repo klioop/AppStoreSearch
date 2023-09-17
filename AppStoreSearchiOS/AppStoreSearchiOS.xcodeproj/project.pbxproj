@@ -273,6 +273,19 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		B23A6B142AB6E1FC006067F7 /* Shared UI */ = {
+			isa = PBXGroup;
+			children = (
+				B23A6B082AB6BDE2006067F7 /* Helpers */,
+				B2A3B69B2AB56AB8007B1B75 /* ListVIewController.swift */,
+				B2A3B69C2AB56AB8007B1B75 /* CollectionListViewController.swift */,
+				B2A3B6A02AB56AD3007B1B75 /* CellController.swift */,
+				B2A3B6A12AB56AD3007B1B75 /* TableCellController.swift */,
+				B2A3B69A2AB56AB8007B1B75 /* RefreshController.swift */,
+			);
+			path = "Shared UI";
+			sourceTree = "<group>";
+		};
 		B2A3B65C2AB55898007B1B75 = {
 			isa = PBXGroup;
 			children = (
@@ -345,12 +358,7 @@
 		B2A3B6A42AB56BD2007B1B75 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				B23A6B082AB6BDE2006067F7 /* Helpers */,
-				B2A3B69B2AB56AB8007B1B75 /* ListVIewController.swift */,
-				B2A3B69C2AB56AB8007B1B75 /* CollectionListViewController.swift */,
-				B2A3B6A02AB56AD3007B1B75 /* CellController.swift */,
-				B2A3B6A12AB56AD3007B1B75 /* TableCellController.swift */,
-				B2A3B69A2AB56AB8007B1B75 /* RefreshController.swift */,
+				B23A6B142AB6E1FC006067F7 /* Shared UI */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
