@@ -14,7 +14,7 @@ final class AppStoreSearchAPIEndToEndTests: XCTestCase {
         Task {
             do {
                 let apps = try await getSearchApps()
-                XCTAssertFalse(apps.isEmpty, "API 통신에 성공한 결과는 빈 값이 아니다")
+                XCTAssertFalse(apps.isEmpty, "API 통신에 성공한 결과, 값을 반환한다")
             } catch {
                 XCTFail("API 통신은 실패하면 안된다")
             }
