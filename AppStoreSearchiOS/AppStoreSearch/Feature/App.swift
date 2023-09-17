@@ -18,26 +18,26 @@ public struct AppID {
 public struct App {
     public let id: AppID
     public let title: String
-    public let description: String
+    public let seller: String
     public let rating: Double
     public let numberOfRatings: Int
     public let version: String
     public let currentReleaseDate: Date
-    public let rank: Int
+    public let releaseNotes: String
     public let genre: String
     public let age: String
     public let logo: URL
     public let images: [URL]
     
-    public init(id: AppID, title: String, description: String, rating: Double, numberOfRatings: Int, version: String, currentReleaseDate: Date, rank: Int, genre: String, age: String, logo: URL, images: [URL]) {
+    public init(id: AppID, title: String, seller: String, rating: Double, numberOfRatings: Int, version: String, currentReleaseDate: Date, releaseNotes: String, genre: String, age: String, logo: URL, images: [URL]) {
         self.id = id
         self.title = title
-        self.description = description
+        self.seller = seller
         self.rating = rating
         self.numberOfRatings = numberOfRatings
         self.version = version
         self.currentReleaseDate = currentReleaseDate
-        self.rank = rank
+        self.releaseNotes = releaseNotes
         self.genre = genre
         self.age = age
         self.logo = logo
