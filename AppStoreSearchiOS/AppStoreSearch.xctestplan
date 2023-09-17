@@ -1,0 +1,33 @@
+{
+  "configurations" : [
+    {
+      "id" : "E416B93C-875C-4DD9-910C-8E4C87869E2C",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:AppStoreSearchiOS.xcodeproj",
+          "identifier" : "B23A6B272AB6F267006067F7",
+          "name" : "AppStoreSearch"
+        }
+      ]
+    },
+    "testExecutionOrdering" : "random"
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:AppStoreSearchiOS.xcodeproj",
+        "identifier" : "B23A6B2E2AB6F267006067F7",
+        "name" : "AppStoreSearchTests"
+      }
+    }
+  ],
+  "version" : 1
+}
