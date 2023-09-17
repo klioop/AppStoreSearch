@@ -40,17 +40,7 @@ final class AppStoreSearchUISnapshotTests: XCTestCase {
     func test_appStoreSearchResultsUI() {
         let (sut, list) = makeSUT()
         
-        let view = AppStoreSearchResultCellController(
-            viewModel: AppStoreSearchResultViewModel(
-                title: "a title",
-                description: "a description",
-                ratings: (3, 0.44),
-                numberOfRatingsText: "1.1만",
-                logoImage: URL(string: "https:any-url.com")!,
-                images: [URL(string: "https:any-url.com")!]
-            )
-        )
-        list.display([TableCellController(view)])
+        list.display(searchResults())
         sut.loadViewIfNeeded()
         
         record(sut.snapshot(for: .iPhone11(style: .light)), named: "APPSTORE_SEARCH_RESULT_light")
@@ -105,5 +95,29 @@ final class AppStoreSearchUISnapshotTests: XCTestCase {
             )
         )
         return [termCellController0, termCellController1].map(TableCellController.init)
+    }
+    
+    private func searchResults() -> [TableCellController] {
+        let view0 = AppStoreSearchResultCellController(
+            viewModel: AppStoreSearchResultViewModel(
+                title: "a title",
+                description: "a description",
+                ratings: (3, 0.44),
+                numberOfRatingsText: "1.1만",
+                logoImage: URL(string: "https:any-url.com")!,
+                images: [URL(string: "https:any-url.com")!]
+            )
+        )
+        let view1 = AppStoreSearchResultCellController(
+            viewModel: AppStoreSearchResultViewModel(
+                title: "a title",
+                description: "a description",
+                ratings: (4, 0.44),
+                numberOfRatingsText: "3.7천",
+                logoImage: URL(string: "https:any-url.com")!,
+                images: [URL(string: "https:any-url.com")!]
+            )
+        )
+        return [view0, view1].map(TableCellController.init)
     }
 }
