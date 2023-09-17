@@ -29,15 +29,13 @@ final class LocalSearchTermLoader {
 class LocalSearchTermLoaderTests: XCTestCase {
     
     func test_init_doesNotSendAnyMessagesToStore() {
-        let store = SearchTermStoreSpy()
-        let sut = LocalSearchTermLoader(store: store)
+        let (_, store) = makeSUT()
         
         XCTAssertTrue(store.receivedMessages.isEmpty)
     }
     
     func test_save_sendInsertionMessageToStore() {
-        let store = SearchTermStoreSpy()
-        let sut = LocalSearchTermLoader(store: store)
+        let (sut, store) = makeSUT()
         let term = LocalSearchTerm(term: "a term")
         
         sut.save(term) {_ in }
@@ -47,6 +45,14 @@ class LocalSearchTermLoaderTests: XCTestCase {
     }
     
     // MARK: - Helpers
+    
+    private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: LocalSearchTermLoader, store: SearchTermStoreSpy) {
+        let store = SearchTermStoreSpy()
+        let sut = LocalSearchTermLoader(store: store)
+        trackMemoryLeak(store, file: file, line: line)
+        trackMemoryLeak(sut, file: file, line: line)
+        return (sut, store)
+    }
     
     final class SearchTermStoreSpy: SearchTermStore {
         private(set) var receivedMessages: [Message] = []
@@ -64,6 +70,19 @@ class LocalSearchTermLoaderTests: XCTestCase {
         
         func completeInsertion(with error: Error = NSError(domain: "a error", code: 0), at index: Int = 0) {
             insertionCompletions[index](.failure(error))
+        }
+    }
+}
+
+extension XCTestCase {
+    func trackMemoryLeak(_ instance: AnyObject, file: StaticString, line: UInt) {
+        addTeardownBlock { [weak instance] in
+            XCTAssertNil(
+                instance,
+                "테스트가 끝난 후 객체는 메모리에서 해제되어야 한다. 이 에러는 메모리 릭을 암시",
+                file: file,
+                line:  line
+            )
         }
     }
 }
