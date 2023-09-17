@@ -8,24 +8,6 @@
 import XCTest
 import AppStoreSearch
 
-protocol SearchTermStore {
-    typealias InsertionResult = Result<Void, Error>
-    
-    func insert(_ term: LocalSearchTerm, completion: @escaping (InsertionResult) -> Void)
-}
-
-final class LocalSearchTermLoader {
-    private let store: SearchTermStore
-    
-    init(store: SearchTermStore) {
-        self.store = store
-    }
-    
-    func save(_ term: LocalSearchTerm, completion: @escaping (Result<Void, Error>) -> Void) {
-        store.insert(term, completion: completion)
-    }
-}
-
 class CacheLocalSearchTermUseCasesTests: XCTestCase {
     
     func test_init_doesNotSendAnyMessagesToStore() {
