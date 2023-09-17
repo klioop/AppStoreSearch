@@ -30,4 +30,8 @@ public final class LocalSearchTermLoader {
             )
         }
     }
+    
+    public func load() {
+        store.retrieve {_ in }
+    }
 }

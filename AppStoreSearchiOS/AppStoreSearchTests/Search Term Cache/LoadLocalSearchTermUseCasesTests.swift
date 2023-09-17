@@ -10,10 +10,19 @@ import AppStoreSearch
 
 class LoadLocalSearchTermUseCasesTests: XCTestCase {
     
-    func test_initDoesNotSendRetrieveMessageToStore() {
+    func test_init_DoesNotSendRetrieveMessageToStore() {
         let (_, store) = makeSUT()
         
         XCTAssertTrue(store.receivedMessages.isEmpty)
+    }
+    
+    func test_load_sendRetrieveMessageToStore() {
+        let (sut, store) = makeSUT()
+        
+        sut.load()
+        store.completeRetrieval()
+        
+        XCTAssertEqual(store.receivedMessages, [.retrieve])
     }
     
     // MARK: - Helpers

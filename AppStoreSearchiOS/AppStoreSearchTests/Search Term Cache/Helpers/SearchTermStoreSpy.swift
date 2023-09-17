@@ -12,6 +12,7 @@ final class SearchTermStoreSpy: SearchTermStore {
     private(set) var receivedMessages: [Message] = []
     
     private var insertionCompletions: [(InsertionResult) -> Void] = []
+    private var retrievalCompletions: [(RetrievalResult) -> Void] = []
     
     enum Message: Equatable {
         case insert(_ term: LocalSearchTerm)
@@ -24,13 +25,19 @@ final class SearchTermStoreSpy: SearchTermStore {
     }
     
     func retrieve(completion: @escaping (RetrievalResult) -> Void) {
+        receivedMessages.append(.retrieve)
+        retrievalCompletions.append(completion)
     }
     
-    func completeInsertion(with error: Error = NSError(domain: "a error", code: 0), at index: Int = 0) {
+    func completeInsertion(with error: Error = anyError(), at index: Int = 0) {
         insertionCompletions[index](.failure(error))
     }
     
     func completeInsertionSuccessfully(at index: Int = 0) {
         insertionCompletions[index](.success(()))
+    }
+    
+    func completeRetrieval(with error: Error = anyError(), at index: Int = 0) {
+        retrievalCompletions[index](.failure(error))
     }
 }
