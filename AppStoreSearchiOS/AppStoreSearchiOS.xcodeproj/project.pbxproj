@@ -37,6 +37,8 @@
 		B23A6B122AB6D021006067F7 /* AppPreviewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23A6B112AB6D021006067F7 /* AppPreviewCellController.swift */; };
 		B23A6B192AB6E26D006067F7 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23A6B172AB6E26D006067F7 /* HTTPClient.swift */; };
 		B23A6B1A2AB6E26D006067F7 /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23A6B182AB6E26D006067F7 /* URLSessionHTTPClient.swift */; };
+		B23A6B1D2AB6E53A006067F7 /* AppStoreSearchEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23A6B1C2AB6E53A006067F7 /* AppStoreSearchEndPoint.swift */; };
+		B23A6B202AB6E5FE006067F7 /* AppStoreSearchEndPointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23A6B1F2AB6E5FE006067F7 /* AppStoreSearchEndPointTests.swift */; };
 		B2A3B66F2AB55898007B1B75 /* AppStoreSearchiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2A3B6662AB55898007B1B75 /* AppStoreSearchiOS.framework */; };
 		B2A3B6802AB55B47007B1B75 /* AppStoreSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3B67F2AB55B47007B1B75 /* AppStoreSearchView.swift */; };
 		B2A3B6832AB55B7B007B1B75 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B2A3B6822AB55B7B007B1B75 /* SnapKit */; };
@@ -106,6 +108,8 @@
 		B23A6B112AB6D021006067F7 /* AppPreviewCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPreviewCellController.swift; sourceTree = "<group>"; };
 		B23A6B172AB6E26D006067F7 /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		B23A6B182AB6E26D006067F7 /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
+		B23A6B1C2AB6E53A006067F7 /* AppStoreSearchEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreSearchEndPoint.swift; sourceTree = "<group>"; };
+		B23A6B1F2AB6E5FE006067F7 /* AppStoreSearchEndPointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreSearchEndPointTests.swift; sourceTree = "<group>"; };
 		B2A3B6662AB55898007B1B75 /* AppStoreSearchiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppStoreSearchiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2A3B66E2AB55898007B1B75 /* AppStoreSearchiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppStoreSearchiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2A3B67F2AB55B47007B1B75 /* AppStoreSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreSearchView.swift; sourceTree = "<group>"; };
@@ -299,6 +303,22 @@
 			path = "Shared API";
 			sourceTree = "<group>";
 		};
+		B23A6B1B2AB6E518006067F7 /* Search API */ = {
+			isa = PBXGroup;
+			children = (
+				B23A6B1C2AB6E53A006067F7 /* AppStoreSearchEndPoint.swift */,
+			);
+			path = "Search API";
+			sourceTree = "<group>";
+		};
+		B23A6B1E2AB6E543006067F7 /* Search API */ = {
+			isa = PBXGroup;
+			children = (
+				B23A6B1F2AB6E5FE006067F7 /* AppStoreSearchEndPointTests.swift */,
+			);
+			path = "Search API";
+			sourceTree = "<group>";
+		};
 		B2A3B65C2AB55898007B1B75 = {
 			isa = PBXGroup;
 			children = (
@@ -321,6 +341,7 @@
 		B2A3B6722AB55898007B1B75 /* AppStoreSearchiOSTests */ = {
 			isa = PBXGroup;
 			children = (
+				B23A6B1E2AB6E543006067F7 /* Search API */,
 				B2A3B6922AB566C7007B1B75 /* Search UI */,
 				B23A6AE42AB6943E006067F7 /* App UI */,
 				B2A3B6912AB56629007B1B75 /* Helpers */,
@@ -331,6 +352,7 @@
 		B2A3B67E2AB55B3C007B1B75 /* AppStoreSearchiOS */ = {
 			isa = PBXGroup;
 			children = (
+				B23A6B1B2AB6E518006067F7 /* Search API */,
 				B23A6AD72AB68D02006067F7 /* App UI */,
 				B23A6AD42AB688E5006067F7 /* Search UI */,
 				B2A3B6B52AB5813F007B1B75 /* Presentation */,
@@ -536,6 +558,7 @@
 				B23A6AF32AB6A694006067F7 /* AppDescriptionCellController.swift in Sources */,
 				B23A6B072AB6BDC9006067F7 /* UITableView+register.swift in Sources */,
 				B23A6ADB2AB691B4006067F7 /* AppTitleCellController.swift in Sources */,
+				B23A6B1D2AB6E53A006067F7 /* AppStoreSearchEndPoint.swift in Sources */,
 				B2A3B6B22AB57F1F007B1B75 /* AppStoreSearchViewModel.swift in Sources */,
 				B2A3B6852AB56013007B1B75 /* ScreenSafeArea.swift in Sources */,
 				B23A6AF72AB6A871006067F7 /* AppDescriptionGeneralInfoView.swift in Sources */,
@@ -558,6 +581,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B23A6B202AB6E5FE006067F7 /* AppStoreSearchEndPointTests.swift in Sources */,
 				B2A3B6942AB566E6007B1B75 /* AppStoreSearchUISnapshotTests.swift in Sources */,
 				B23A6AE62AB69459006067F7 /* AppUISnapshotTests.swift in Sources */,
 				B2A3B6902AB56609007B1B75 /* UIViewController+snapshot.swift in Sources */,
