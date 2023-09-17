@@ -7,18 +7,6 @@
 
 import UIKit
 
-public struct AppDescriptionViewModel {
-    public let ratingText: String
-    public let numberOfRatingText: String
-    public let rating: (int: Int, decimal: Double)
-    
-    public init(ratingText: String, numberOfRatingText: String, rating: (int: Int, decimal: Double)) {
-        self.ratingText = ratingText
-        self.numberOfRatingText = numberOfRatingText
-        self.rating = rating
-    }
-}
-
 public final class AppDescriptionCellController: NSObject, UITableViewDataSource, UITableViewDelegate {
     
     private let viewModel: AppDescriptionViewModel
