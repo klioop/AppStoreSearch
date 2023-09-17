@@ -27,19 +27,11 @@ class LoadLocalSearchTermUseCasesTests: XCTestCase {
     
     func test_load_deliversErrorOnRetrievalFailure() {
         let (sut, store) = makeSUT()
-        let exp = expectation(description: "a wait for load completion")
+        let retrievalError = anyError()
         
-        var receivedError: Error?
-        sut.load { result in
-            if case let .failure(error) = result {
-                receivedError = error
-            }
-            exp.fulfill()
-        }
-        store.completeRetrieval()
-        wait(for: [exp], timeout: 1.0)
-        
-        XCTAssertNotNil(receivedError)
+        expect(sut, toCompletedWith: .failure(retrievalError), when: {
+            store.completeRetrieval()
+        })
     }
     
     // MARK: - Helpers
@@ -50,5 +42,26 @@ class LoadLocalSearchTermUseCasesTests: XCTestCase {
         trackMemoryLeak(store, file: file, line: line)
         trackMemoryLeak(sut, file: file, line: line)
         return (sut, store)
+    }
+    
+    private func expect(_ sut: LocalSearchTermLoader, toCompletedWith expectedResult: Result<[LocalSearchTerm], Error>, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
+        let exp = expectation(description: "a wait for load completion")
+        
+        sut.load { receivedResult in
+            switch (receivedResult, expectedResult) {
+            case let (.success(receivedTerms), .success(expectedTerms)):
+                XCTAssertEqual(receivedTerms, expectedTerms, file: file, line: line)
+                
+            case let (.failure(receivedError as NSError), .failure(expectedError as NSError)):
+                XCTAssertEqual(receivedError, expectedError, file: file, line: line)
+                
+            default:
+                XCTFail("\(expectedResult) 를 기대 했지만, \(receivedResult) 가 나옴", file: file, line: line)
+            }
+            exp.fulfill()
+        }
+        
+        action()
+        wait(for: [exp], timeout: 1.0)
     }
 }
