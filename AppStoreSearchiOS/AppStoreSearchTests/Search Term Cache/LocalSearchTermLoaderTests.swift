@@ -22,7 +22,11 @@ final class LocalSearchTermLoader {
     }
     
     func save(_ term: LocalSearchTerm, completion: @escaping (Result<Void, Error>) -> Void) {
-        store.insert(term) {_ in }
+        store.insert(term) { result in
+            if case let .failure(error) = result {
+                completion(.failure(error))
+            }
+        }
     }
 }
 
@@ -34,7 +38,7 @@ class LocalSearchTermLoaderTests: XCTestCase {
         XCTAssertTrue(store.receivedMessages.isEmpty)
     }
     
-    func test_save_sendInsertionMessageToStore() {
+    func test_save_sendInsertMessageToStore() {
         let (sut, store) = makeSUT()
         let term = LocalSearchTerm(term: "a term")
         
@@ -42,6 +46,25 @@ class LocalSearchTermLoaderTests: XCTestCase {
         store.completeInsertion()
         
         XCTAssertEqual(store.receivedMessages, [.insert(term)])
+    }
+    
+    func test_save_failsOnInsertionError() {
+        let (sut, store) = makeSUT()
+        let term = LocalSearchTerm(term: "a term")
+        let insertionError = NSError(domain: "insertion error", code: 0)
+        let exp = expectation(description: "a wait for save completion")
+        
+        var receivedError: Error?
+        sut.save(term) { result in
+            if case let .failure(error) = result {
+                receivedError = error
+            }
+        }
+        store.completeInsertion(with: insertionError)
+        exp.fulfill()
+        wait(for: [exp], timeout: 1.0)
+        
+        XCTAssertEqual(receivedError as NSError?, insertionError)
     }
     
     // MARK: - Helpers
