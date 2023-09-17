@@ -21,10 +21,11 @@ public final class AppHeaderView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        backgroundColor = .systemGray6
         addSubview(button)
         button.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(16)
-            $0.bottom.equalToSuperview()
+            $0.verticalEdges.equalToSuperview().inset(16)
             $0.leading.equalToSuperview().offset(16)
             $0.width.height.equalTo(24)
         }
