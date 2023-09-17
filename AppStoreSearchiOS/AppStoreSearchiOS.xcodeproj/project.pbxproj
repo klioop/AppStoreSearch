@@ -13,6 +13,8 @@
 		B23A6AD92AB68E3D006067F7 /* AppTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23A6AD82AB68E3D006067F7 /* AppTitleCell.swift */; };
 		B23A6ADB2AB691B4006067F7 /* AppTitleCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23A6ADA2AB691B4006067F7 /* AppTitleCellController.swift */; };
 		B23A6ADF2AB69237006067F7 /* AppTitleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23A6ADE2AB69237006067F7 /* AppTitleViewModel.swift */; };
+		B23A6AE12AB692E2006067F7 /* AppHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23A6AE02AB692E2006067F7 /* AppHeaderView.swift */; };
+		B23A6AE32AB693CE006067F7 /* AppHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23A6AE22AB693CE006067F7 /* AppHeaderViewController.swift */; };
 		B2A3B66F2AB55898007B1B75 /* AppStoreSearchiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2A3B6662AB55898007B1B75 /* AppStoreSearchiOS.framework */; };
 		B2A3B6802AB55B47007B1B75 /* AppStoreSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3B67F2AB55B47007B1B75 /* AppStoreSearchView.swift */; };
 		B2A3B6832AB55B7B007B1B75 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B2A3B6822AB55B7B007B1B75 /* SnapKit */; };
@@ -58,6 +60,8 @@
 		B23A6AD82AB68E3D006067F7 /* AppTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTitleCell.swift; sourceTree = "<group>"; };
 		B23A6ADA2AB691B4006067F7 /* AppTitleCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTitleCellController.swift; sourceTree = "<group>"; };
 		B23A6ADE2AB69237006067F7 /* AppTitleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTitleViewModel.swift; sourceTree = "<group>"; };
+		B23A6AE02AB692E2006067F7 /* AppHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHeaderView.swift; sourceTree = "<group>"; };
+		B23A6AE22AB693CE006067F7 /* AppHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHeaderViewController.swift; sourceTree = "<group>"; };
 		B2A3B6662AB55898007B1B75 /* AppStoreSearchiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppStoreSearchiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2A3B66E2AB55898007B1B75 /* AppStoreSearchiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppStoreSearchiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2A3B67F2AB55B47007B1B75 /* AppStoreSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreSearchView.swift; sourceTree = "<group>"; };
@@ -146,6 +150,8 @@
 			children = (
 				B23A6AD82AB68E3D006067F7 /* AppTitleCell.swift */,
 				B23A6ADA2AB691B4006067F7 /* AppTitleCellController.swift */,
+				B23A6AE02AB692E2006067F7 /* AppHeaderView.swift */,
+				B23A6AE22AB693CE006067F7 /* AppHeaderViewController.swift */,
 			);
 			path = "App UI";
 			sourceTree = "<group>";
@@ -396,10 +402,12 @@
 				B2A3B6B22AB57F1F007B1B75 /* AppStoreSearchViewModel.swift in Sources */,
 				B2A3B6852AB56013007B1B75 /* ScreenSafeArea.swift in Sources */,
 				B23A6ACD2AB5D964006067F7 /* AppStoreSearchResultCellController.swift in Sources */,
+				B23A6AE12AB692E2006067F7 /* AppHeaderView.swift in Sources */,
 				B2A3B6AA2AB56E06007B1B75 /* AppStoreRecentSearchTermCell.swift in Sources */,
 				B2A3B6B92AB58340007B1B75 /* AppStoreSearchRatingMaskingView.swift in Sources */,
 				B2A3B6BB2AB58766007B1B75 /* AppStoreSearchResultCell.swift in Sources */,
 				B2A3B69E2AB56AB8007B1B75 /* ListVIewController.swift in Sources */,
+				B23A6AE32AB693CE006067F7 /* AppHeaderViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
