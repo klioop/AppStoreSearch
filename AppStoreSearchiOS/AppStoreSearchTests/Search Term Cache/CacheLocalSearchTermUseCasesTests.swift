@@ -10,7 +10,7 @@ import AppStoreSearch
 
 class CacheLocalSearchTermUseCasesTests: XCTestCase {
     
-    func test_init_doesNotSendAnyMessagesToStore() {
+    func test_init_doesNotSendInsertMessageToStore() {
         let (_, store) = makeSUT()
         
         XCTAssertTrue(store.receivedMessages.isEmpty)
@@ -81,52 +81,5 @@ class CacheLocalSearchTermUseCasesTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
         
         XCTAssertEqual(receivedError as NSError? , expectedError)
-    }
-    
-    private func makeLocalTerm(term: String = "a term") -> LocalSearchTerm {
-        LocalSearchTerm(term: term)
-    }
-    
-    private func anyError() -> NSError {
-        NSError(domain: "a error", code: 0)
-    }
-    
-    final class SearchTermStoreSpy: SearchTermStore {
-        func retrieve(completion: @escaping (RetrievalResult) -> Void) {
-        }
-        
-        private(set) var receivedMessages: [Message] = []
-        
-        private var insertionCompletions: [(InsertionResult) -> Void] = []
-        
-        enum Message: Equatable {
-            case insert(_ term: LocalSearchTerm)
-        }
-        
-        func insert(_ term: LocalSearchTerm, completion: @escaping (InsertionResult) -> Void) {
-            receivedMessages.append(.insert(term))
-            insertionCompletions.append(completion)
-        }
-        
-        func completeInsertion(with error: Error = NSError(domain: "a error", code: 0), at index: Int = 0) {
-            insertionCompletions[index](.failure(error))
-        }
-        
-        func completeInsertionSuccessfully(at index: Int = 0) {
-            insertionCompletions[index](.success(()))
-        }
-    }
-}
-
-extension XCTestCase {
-    func trackMemoryLeak(_ instance: AnyObject, file: StaticString, line: UInt) {
-        addTeardownBlock { [weak instance] in
-            XCTAssertNil(
-                instance,
-                "테스트가 끝난 후 객체는 메모리에서 해제되어야 한다. 이 에러는 메모리 릭을 암시",
-                file: file,
-                line:  line
-            )
-        }
     }
 }

@@ -49,6 +49,9 @@
 		B26AA83B2AB72A5B002F5761 /* LocalSearchTermLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26AA83A2AB72A5B002F5761 /* LocalSearchTermLoader.swift */; };
 		B26AA83D2AB72A98002F5761 /* SearchTermStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26AA83C2AB72A98002F5761 /* SearchTermStore.swift */; };
 		B26AA83F2AB72D7E002F5761 /* LoadLocalSearchTermUseCasesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26AA83E2AB72D7E002F5761 /* LoadLocalSearchTermUseCasesTests.swift */; };
+		B26AA8422AB7384A002F5761 /* SearchTermStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26AA8412AB7384A002F5761 /* SearchTermStoreSpy.swift */; };
+		B26AA8442AB7388C002F5761 /* SearchTermTestsHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26AA8432AB7388C002F5761 /* SearchTermTestsHelpers.swift */; };
+		B26AA8462AB738B8002F5761 /* XCTestCase+trackMemoryLeak.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26AA8452AB738B8002F5761 /* XCTestCase+trackMemoryLeak.swift */; };
 		B2A3B66F2AB55898007B1B75 /* AppStoreSearchiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2A3B6662AB55898007B1B75 /* AppStoreSearchiOS.framework */; };
 		B2A3B6802AB55B47007B1B75 /* AppStoreSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3B67F2AB55B47007B1B75 /* AppStoreSearchView.swift */; };
 		B2A3B6832AB55B7B007B1B75 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B2A3B6822AB55B7B007B1B75 /* SnapKit */; };
@@ -165,6 +168,9 @@
 		B26AA83A2AB72A5B002F5761 /* LocalSearchTermLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalSearchTermLoader.swift; sourceTree = "<group>"; };
 		B26AA83C2AB72A98002F5761 /* SearchTermStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTermStore.swift; sourceTree = "<group>"; };
 		B26AA83E2AB72D7E002F5761 /* LoadLocalSearchTermUseCasesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadLocalSearchTermUseCasesTests.swift; sourceTree = "<group>"; };
+		B26AA8412AB7384A002F5761 /* SearchTermStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTermStoreSpy.swift; sourceTree = "<group>"; };
+		B26AA8432AB7388C002F5761 /* SearchTermTestsHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTermTestsHelpers.swift; sourceTree = "<group>"; };
+		B26AA8452AB738B8002F5761 /* XCTestCase+trackMemoryLeak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+trackMemoryLeak.swift"; sourceTree = "<group>"; };
 		B2A3B6662AB55898007B1B75 /* AppStoreSearchiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppStoreSearchiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2A3B66E2AB55898007B1B75 /* AppStoreSearchiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppStoreSearchiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2A3B67F2AB55B47007B1B75 /* AppStoreSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreSearchView.swift; sourceTree = "<group>"; };
@@ -440,6 +446,16 @@
 			path = Feature;
 			sourceTree = "<group>";
 		};
+		B26AA8402AB7382E002F5761 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B26AA8412AB7384A002F5761 /* SearchTermStoreSpy.swift */,
+				B26AA8432AB7388C002F5761 /* SearchTermTestsHelpers.swift */,
+				B26AA8452AB738B8002F5761 /* XCTestCase+trackMemoryLeak.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		B2A3B65C2AB55898007B1B75 = {
 			isa = PBXGroup;
 			children = (
@@ -547,6 +563,7 @@
 		B2F15B292AB71ADF00158D5A /* Search Term Cache */ = {
 			isa = PBXGroup;
 			children = (
+				B26AA8402AB7382E002F5761 /* Helpers */,
 				B2F15B2A2AB71B2700158D5A /* CacheLocalSearchTermUseCasesTests.swift */,
 				B26AA83E2AB72D7E002F5761 /* LoadLocalSearchTermUseCasesTests.swift */,
 			);
@@ -790,8 +807,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B26AA8462AB738B8002F5761 /* XCTestCase+trackMemoryLeak.swift in Sources */,
+				B26AA8442AB7388C002F5761 /* SearchTermTestsHelpers.swift in Sources */,
 				B2F15B2B2AB71B2700158D5A /* CacheLocalSearchTermUseCasesTests.swift in Sources */,
 				B23A6B492AB6F42C006067F7 /* AppStoreSearchEndPointTests.swift in Sources */,
+				B26AA8422AB7384A002F5761 /* SearchTermStoreSpy.swift in Sources */,
 				B26AA83F2AB72D7E002F5761 /* LoadLocalSearchTermUseCasesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
