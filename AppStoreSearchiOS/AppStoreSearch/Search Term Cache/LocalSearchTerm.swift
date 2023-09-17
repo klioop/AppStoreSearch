@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct LocalSearchTerm {
+public struct LocalSearchTerm: Equatable {
     public let term: String
     
     public init(term: String) {
