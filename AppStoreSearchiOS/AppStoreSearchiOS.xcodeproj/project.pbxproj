@@ -167,7 +167,7 @@
 		B2A3B6722AB55898007B1B75 /* AppStoreSearchiOSTests */ = {
 			isa = PBXGroup;
 			children = (
-				B2A3B6922AB566C7007B1B75 /* AppStoreSearch UI */,
+				B2A3B6922AB566C7007B1B75 /* Search UI */,
 				B2A3B6912AB56629007B1B75 /* Helpers */,
 			);
 			path = AppStoreSearchiOSTests;
@@ -193,13 +193,13 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		B2A3B6922AB566C7007B1B75 /* AppStoreSearch UI */ = {
+		B2A3B6922AB566C7007B1B75 /* Search UI */ = {
 			isa = PBXGroup;
 			children = (
 				B2A3B6972AB568B2007B1B75 /* snapshots */,
 				B2A3B6932AB566E6007B1B75 /* AppStoreSearchUISnapshotTests.swift */,
 			);
-			path = "AppStoreSearch UI";
+			path = "Search UI";
 			sourceTree = "<group>";
 		};
 		B2A3B6972AB568B2007B1B75 /* snapshots */ = {
