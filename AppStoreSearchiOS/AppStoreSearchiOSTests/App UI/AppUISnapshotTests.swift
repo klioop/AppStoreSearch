@@ -7,6 +7,7 @@
 
 import XCTest
 import AppStoreSearchiOS
+import AppStoreSearch
 
 final class AppUISnapshotTests: XCTestCase {
     

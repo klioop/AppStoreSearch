@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AppStoreSearch
 
 public final class AppStoreSearchViewController {
     private let viewModel: AppStoreSearchViewModel

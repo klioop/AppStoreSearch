@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AppStoreSearch
 
 public final class AppDescriptionCellController: NSObject, UITableViewDataSource, UITableViewDelegate {
     

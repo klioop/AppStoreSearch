@@ -6,7 +6,7 @@
 //
 
 import XCTest
-import AppStoreSearchiOS
+import AppStoreSearch
 
 class AppStoreSearchEndPointTests: XCTestCase {
     

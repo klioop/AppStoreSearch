@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AppStoreSearch
 
 public final class AppStoreSearchResultCellController: NSObject, UITableViewDataSource, UITableViewDelegate {
     private var cell: AppStoreSearchResultCell?
