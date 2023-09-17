@@ -77,6 +77,8 @@ final class AppTitleCell: UITableViewCell {
             $0.leading.equalTo(logoImageView.snp.leading).offset(12)
             $0.height.equalTo(30)
         }
+        logoImageView.layer.cornerRadius = 8
+        logoImageView.layer.cornerCurve = .continuous
         buttonContainer.layer.cornerRadius = 30 * 0.5
         buttonContainer.layer.cornerCurve = .continuous
     }
