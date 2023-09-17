@@ -9,7 +9,15 @@
     }
   ],
   "defaultOptions" : {
-    "codeCoverage" : false,
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:AppStoreSearchiOS.xcodeproj",
+          "identifier" : "B2A3B6652AB55898007B1B75",
+          "name" : "AppStoreSearchiOS"
+        }
+      ]
+    },
     "testExecutionOrdering" : "random"
   },
   "testTargets" : [
