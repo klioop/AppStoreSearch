@@ -43,6 +43,18 @@ class CacheLocalSearchTermUseCasesTests: XCTestCase {
         })
     }
     
+    func test_save_doesNotDeliverInsertionError_afterSUTInstanceHasBeenDeallocated() {
+        let store = SearchTermStoreSpy()
+        var sut: LocalSearchTermLoader? = LocalSearchTermLoader(store: store)
+        
+        var receivedResults = [Result<Void, Error>]()
+        sut?.save(makeLocalTerm()) { receivedResults.append($0) }
+        sut = nil
+        store.completeInsertion()
+        
+        XCTAssertTrue(receivedResults.isEmpty)
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: LocalSearchTermLoader, store: SearchTermStoreSpy) {

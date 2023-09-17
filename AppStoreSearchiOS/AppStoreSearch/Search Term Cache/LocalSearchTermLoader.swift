@@ -15,6 +15,19 @@ public final class LocalSearchTermLoader {
     }
     
     public func save(_ term: LocalSearchTerm, completion: @escaping (Result<Void, Error>) -> Void) {
-        store.insert(term, completion: completion)
+        store.insert(term) { [weak self] result in
+            guard self != nil else { return }
+            
+            completion(
+                Result {
+                    switch result {
+                    case .success: return
+                        
+                    case let .failure(error):
+                        throw error
+                    }
+                }
+            )
+        }
     }
 }
