@@ -92,6 +92,9 @@ class CacheLocalSearchTermUseCasesTests: XCTestCase {
     }
     
     final class SearchTermStoreSpy: SearchTermStore {
+        func retrieve(completion: @escaping (RetrievalResult) -> Void) {
+        }
+        
         private(set) var receivedMessages: [Message] = []
         
         private var insertionCompletions: [(InsertionResult) -> Void] = []
