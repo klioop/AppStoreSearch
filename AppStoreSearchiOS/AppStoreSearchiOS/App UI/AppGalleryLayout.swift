@@ -14,17 +14,21 @@ public final class AppGalleryLayout {
         UICollectionViewCompositionalLayout { _, _ in
             let itemSize = NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(1.0),
-                heightDimension: .absolute(UIScreen.main.bounds.height * 0.6)
+                heightDimension: .fractionalHeight(1.0)
             )
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
+            item.contentInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 10)
             let groupSize = NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(0.5),
-                heightDimension: .absolute(UIScreen.main.bounds.height * 0.6)
+                widthDimension: .fractionalWidth(0.7),
+                heightDimension: .fractionalHeight(1.0)
             )
-            let group = NSCollectionLayoutGroup(layoutSize: groupSize)
-            group.interItemSpacing = .fixed(10)
+            let group = NSCollectionLayoutGroup.horizontal(
+                layoutSize: groupSize,
+                subitems: [item]
+            )
             let section = NSCollectionLayoutSection(group: group)
-            section.contentInsets = .init(top: 16, leading: 16, bottom: 0, trailing: 0)
+            section.orthogonalScrollingBehavior = .continuous
+            
             return section
         }
     }

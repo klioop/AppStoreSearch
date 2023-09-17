@@ -38,7 +38,11 @@ final class AppUISnapshotTests: XCTestCase {
                 secondDescription: "a description"
             )
         )
-        let cellControllers = [title, description, feature].map(TableCellController.init)
+        let galleryCell0 = AppGalleryCellController(viewModel: anyURL())
+        let galleryCell1 = AppGalleryCellController(viewModel: anyURL())
+        let gallery = [galleryCell0, galleryCell1].map(CellController.init)
+        let preview = AppPreviewCellController(galleryCellControllers: gallery)
+        let cellControllers = [title, description, feature, preview].map(TableCellController.init)
         
         list.display(cellControllers)
         sut.loadViewIfNeeded()
@@ -55,9 +59,6 @@ final class AppUISnapshotTests: XCTestCase {
             header: headerViewController.view(),
             listViewController: list
         )
-        list.configure = { tableView in
-            tableView.separatorStyle = .none
-        }
         return (sut, list)
     }
 }

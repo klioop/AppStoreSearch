@@ -33,6 +33,8 @@
 		B23A6B0A2AB6BE85006067F7 /* AppGalleryLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23A6B092AB6BE85006067F7 /* AppGalleryLayout.swift */; };
 		B23A6B0C2AB6CDC3006067F7 /* AppGalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23A6B0B2AB6CDC3006067F7 /* AppGalleryCell.swift */; };
 		B23A6B0E2AB6CE2E006067F7 /* AppGalleryCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23A6B0D2AB6CE2E006067F7 /* AppGalleryCellController.swift */; };
+		B23A6B102AB6CEE7006067F7 /* AppPreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23A6B0F2AB6CEE7006067F7 /* AppPreviewCell.swift */; };
+		B23A6B122AB6D021006067F7 /* AppPreviewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23A6B112AB6D021006067F7 /* AppPreviewCellController.swift */; };
 		B2A3B66F2AB55898007B1B75 /* AppStoreSearchiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2A3B6662AB55898007B1B75 /* AppStoreSearchiOS.framework */; };
 		B2A3B6802AB55B47007B1B75 /* AppStoreSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3B67F2AB55B47007B1B75 /* AppStoreSearchView.swift */; };
 		B2A3B6832AB55B7B007B1B75 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B2A3B6822AB55B7B007B1B75 /* SnapKit */; };
@@ -98,6 +100,8 @@
 		B23A6B092AB6BE85006067F7 /* AppGalleryLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGalleryLayout.swift; sourceTree = "<group>"; };
 		B23A6B0B2AB6CDC3006067F7 /* AppGalleryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGalleryCell.swift; sourceTree = "<group>"; };
 		B23A6B0D2AB6CE2E006067F7 /* AppGalleryCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGalleryCellController.swift; sourceTree = "<group>"; };
+		B23A6B0F2AB6CEE7006067F7 /* AppPreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPreviewCell.swift; sourceTree = "<group>"; };
+		B23A6B112AB6D021006067F7 /* AppPreviewCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPreviewCellController.swift; sourceTree = "<group>"; };
 		B2A3B6662AB55898007B1B75 /* AppStoreSearchiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppStoreSearchiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2A3B66E2AB55898007B1B75 /* AppStoreSearchiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppStoreSearchiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2A3B67F2AB55B47007B1B75 /* AppStoreSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreSearchView.swift; sourceTree = "<group>"; };
@@ -237,6 +241,7 @@
 				B23A6AF22AB6A694006067F7 /* AppDescriptionCellController.swift */,
 				B23A6AFC2AB6B179006067F7 /* AppNewFeatureCellController.swift */,
 				B23A6B0D2AB6CE2E006067F7 /* AppGalleryCellController.swift */,
+				B23A6B112AB6D021006067F7 /* AppPreviewCellController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -251,6 +256,7 @@
 				B23A6AF62AB6A871006067F7 /* AppDescriptionGeneralInfoView.swift */,
 				B23A6AFA2AB6AEA4006067F7 /* AppNewFeatureCell.swift */,
 				B23A6B0B2AB6CDC3006067F7 /* AppGalleryCell.swift */,
+				B23A6B0F2AB6CEE7006067F7 /* AppPreviewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -484,6 +490,7 @@
 				B23A6AD32AB688A4006067F7 /* AppStoreSearchResultViewModel.swift in Sources */,
 				B23A6AD92AB68E3D006067F7 /* AppTitleCell.swift in Sources */,
 				B23A6ADF2AB69237006067F7 /* AppTitleViewModel.swift in Sources */,
+				B23A6B102AB6CEE7006067F7 /* AppPreviewCell.swift in Sources */,
 				B2A3B6A32AB56AD3007B1B75 /* TableCellController.swift in Sources */,
 				B23A6AF12AB69C97006067F7 /* AppDescriptionRatingView.swift in Sources */,
 				B23A6B0C2AB6CDC3006067F7 /* AppGalleryCell.swift in Sources */,
@@ -493,6 +500,7 @@
 				B23A6AF52AB6A829006067F7 /* AppDescriptionViewModel.swift in Sources */,
 				B2A3B6A62AB56C97007B1B75 /* AppStoreRecentSearchTitleCell.swift in Sources */,
 				B2A3B6B72AB5815E007B1B75 /* AppStoreRecentSearchTermViewModel.swift in Sources */,
+				B23A6B122AB6D021006067F7 /* AppPreviewCellController.swift in Sources */,
 				B2A3B6AC2AB56FB9007B1B75 /* AppStoreRecentSearchTermCellController.swift in Sources */,
 				B2A3B6802AB55B47007B1B75 /* AppStoreSearchView.swift in Sources */,
 				B2A3B6A82AB56D7C007B1B75 /* AppStoreRecentSearchTitleCellController.swift in Sources */,
