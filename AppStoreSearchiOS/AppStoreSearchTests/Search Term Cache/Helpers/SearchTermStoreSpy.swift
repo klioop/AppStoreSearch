@@ -19,14 +19,11 @@ final class SearchTermStoreSpy: SearchTermStore {
         case retrieve
     }
     
+    // MARK: - insert
+    
     func insert(_ term: LocalSearchTerm, completion: @escaping (InsertionResult) -> Void) {
         receivedMessages.append(.insert(term))
         insertionCompletions.append(completion)
-    }
-    
-    func retrieve(completion: @escaping (RetrievalResult) -> Void) {
-        receivedMessages.append(.retrieve)
-        retrievalCompletions.append(completion)
     }
     
     func completeInsertion(with error: Error = anyError(), at index: Int = 0) {
@@ -37,7 +34,18 @@ final class SearchTermStoreSpy: SearchTermStore {
         insertionCompletions[index](.success(()))
     }
     
+    // MARK: - retrieve
+
+    func retrieve(completion: @escaping (RetrievalResult) -> Void) {
+        receivedMessages.append(.retrieve)
+        retrievalCompletions.append(completion)
+    }
+    
     func completeRetrieval(with error: Error = anyError(), at index: Int = 0) {
         retrievalCompletions[index](.failure(error))
+    }
+    
+    func completeRetrieval(with terms: [LocalSearchTerm], at index: Int = 0) {
+        retrievalCompletions[index](.success(terms))
     }
 }

@@ -36,7 +36,8 @@ public final class LocalSearchTermLoader {
             completion(
                 Result {
                     switch result {
-                    case .success: return []
+                    case let .success(terms):
+                        return terms
 
                     case let .failure(error):
                         throw error

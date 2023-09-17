@@ -34,6 +34,15 @@ class LoadLocalSearchTermUseCasesTests: XCTestCase {
         })
     }
     
+    func test_load_deliversSearchTermsOnRetrievalSuccess() {
+        let (sut, store) = makeSUT()
+        let expectedTerms = [makeLocalTerm(term: "term0"), makeLocalTerm(term: "term1")]
+        
+        expect(sut, toCompletedWith: .success(expectedTerms), when: {
+            store.completeRetrieval(with: expectedTerms)
+        })
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: LocalSearchTermLoader, store: SearchTermStoreSpy) {
