@@ -19,8 +19,11 @@ final class AppStoreSearchRatingMaskingView: UIView {
     
     private let maskLayer = CALayer()
     
+    private var constraint: Constraint?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
+        addSubview(progressView)
     }
     
     required init?(coder: NSCoder) { nil }
@@ -28,13 +31,11 @@ final class AppStoreSearchRatingMaskingView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        addSubview(progressView)
-        let offset = frame.size.width * progress
-        progressView.snp.makeConstraints {
-            $0.verticalEdges.equalToSuperview()
-            $0.leading.equalToSuperview().offset(offset)
-        }
-        maskLayer.contents = UIImage(systemName: "star")?.cgImage
+        progressView.frame = bounds
+        progressView.frame.size.width = bounds.width * progress
+        maskLayer.contents = UIImage(systemName: "star.fill")?.cgImage
+        maskLayer.frame = bounds
         layer.mask = maskLayer
     }
 }
+

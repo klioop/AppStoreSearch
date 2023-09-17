@@ -30,7 +30,7 @@ final class AppStoreSearchResultRatingView: UIView {
     
     private lazy var countLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 9)
+        label.font = .systemFont(ofSize: 12)
         label.textColor = .tertiaryLabel
         return label
     }()
@@ -53,13 +53,12 @@ final class AppStoreSearchResultRatingView: UIView {
             maskingViews[index].progress = 1.0
         }
         maskingViews[ratings.int].progress = ratings.decimal
-        let startLeftIndex = 5 - ratings.int
-        maskingViews[startLeftIndex...].forEach { $0.progress = 0.0 }
+        maskingViews[(ratings.int + 1)...].forEach { $0.isHidden = true }
     }
     
     private func maskingView() -> AppStoreSearchRatingMaskingView {
         let view = AppStoreSearchRatingMaskingView()
-        view.snp.makeConstraints { $0.width.height.equalTo(16) }
+        view.snp.makeConstraints { $0.width.height.equalTo(12) }
         return view
     }
 }

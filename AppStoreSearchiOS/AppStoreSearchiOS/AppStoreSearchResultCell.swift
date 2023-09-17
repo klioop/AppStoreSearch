@@ -30,7 +30,11 @@ final class AppStoreSearchResultCell: UITableViewCell {
         set { ratingsView.numberOfRatings = newValue }
     }
     
-    private(set) lazy var logoImageView = UIImageView()
+    private(set) lazy var logoImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.backgroundColor = .systemGray4
+        return imageView
+    }()
     
     private lazy var container: UIStackView = {
         let stack = UIStackView()
@@ -45,7 +49,7 @@ final class AppStoreSearchResultCell: UITableViewCell {
         color: .label
     )
     private lazy var descriptionLabel = label(
-        font: .systemFont(ofSize: 11, weight: .regular),
+        font: .systemFont(ofSize: 14, weight: .regular),
         color: .secondaryLabel
     )
     private lazy var ratingsView = AppStoreSearchResultRatingView()
@@ -77,20 +81,21 @@ final class AppStoreSearchResultCell: UITableViewCell {
             $0.top.equalToSuperview().offset(20)
             $0.bottom.equalToSuperview().inset(20)
             $0.leading.equalToSuperview().offset(20)
-            $0.width.height.equalTo(56)
+            $0.width.height.equalTo(64)
         }
         container.snp.makeConstraints {
             $0.top.equalTo(logoImageView.snp.top)
             $0.leading.equalTo(logoImageView.snp.trailing).offset(10)
+            $0.bottom.equalToSuperview().inset(20)
         }
         buttonContainer.snp.makeConstraints {
             $0.centerY.equalTo(logoImageView.snp.centerY)
             $0.trailing.equalToSuperview().inset(20)
-            $0.height.equalTo(36)
+            $0.height.equalTo(30)
         }
         logoImageView.layer.cornerRadius = 8
         logoImageView.layer.cornerCurve = .continuous
-        buttonContainer.layer.cornerRadius = 36 / 2
+        buttonContainer.layer.cornerRadius = 30 / 2
         buttonContainer.layer.cornerCurve = .continuous
     }
     
