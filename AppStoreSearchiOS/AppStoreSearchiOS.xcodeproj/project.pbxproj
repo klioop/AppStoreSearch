@@ -73,7 +73,7 @@
 		B2F15B1E2AB70B8A00158D5A /* AppStoreSearchAPIEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F15B1D2AB70B8A00158D5A /* AppStoreSearchAPIEndToEndTests.swift */; };
 		B2F15B1F2AB70B8A00158D5A /* AppStoreSearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B23A6B282AB6F267006067F7 /* AppStoreSearch.framework */; };
 		B2F15B282AB71A4800158D5A /* LocalSearchTerm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F15B272AB71A4800158D5A /* LocalSearchTerm.swift */; };
-		B2F15B2B2AB71B2700158D5A /* LocalSearchTermLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F15B2A2AB71B2700158D5A /* LocalSearchTermLoaderTests.swift */; };
+		B2F15B2B2AB71B2700158D5A /* CacheLocalSearchTermUseCasesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F15B2A2AB71B2700158D5A /* CacheLocalSearchTermUseCasesTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -190,7 +190,7 @@
 		B2F15B1D2AB70B8A00158D5A /* AppStoreSearchAPIEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreSearchAPIEndToEndTests.swift; sourceTree = "<group>"; };
 		B2F15B252AB70C7300158D5A /* AppStoreSearchAPIEndToEndTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = AppStoreSearchAPIEndToEndTests.xctestplan; sourceTree = "<group>"; };
 		B2F15B272AB71A4800158D5A /* LocalSearchTerm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalSearchTerm.swift; sourceTree = "<group>"; };
-		B2F15B2A2AB71B2700158D5A /* LocalSearchTermLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalSearchTermLoaderTests.swift; sourceTree = "<group>"; };
+		B2F15B2A2AB71B2700158D5A /* CacheLocalSearchTermUseCasesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheLocalSearchTermUseCasesTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -539,7 +539,7 @@
 		B2F15B292AB71ADF00158D5A /* Search Term Cache */ = {
 			isa = PBXGroup;
 			children = (
-				B2F15B2A2AB71B2700158D5A /* LocalSearchTermLoaderTests.swift */,
+				B2F15B2A2AB71B2700158D5A /* CacheLocalSearchTermUseCasesTests.swift */,
 			);
 			path = "Search Term Cache";
 			sourceTree = "<group>";
@@ -779,7 +779,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2F15B2B2AB71B2700158D5A /* LocalSearchTermLoaderTests.swift in Sources */,
+				B2F15B2B2AB71B2700158D5A /* CacheLocalSearchTermUseCasesTests.swift in Sources */,
 				B23A6B492AB6F42C006067F7 /* AppStoreSearchEndPointTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

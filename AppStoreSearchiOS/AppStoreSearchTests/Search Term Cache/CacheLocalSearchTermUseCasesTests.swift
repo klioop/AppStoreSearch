@@ -1,5 +1,5 @@
 //
-//  LocalSearchTermLoaderTests.swift
+//  CacheLocalSearchTermUseCasesTests.swift
 //  AppStoreSearchTests
 //
 //  Created by Lee Sam on 2023/09/17.
@@ -26,7 +26,7 @@ final class LocalSearchTermLoader {
     }
 }
 
-class LocalSearchTermLoaderTests: XCTestCase {
+class CacheLocalSearchTermUseCasesTests: XCTestCase {
     
     func test_init_doesNotSendAnyMessagesToStore() {
         let (_, store) = makeSUT()
