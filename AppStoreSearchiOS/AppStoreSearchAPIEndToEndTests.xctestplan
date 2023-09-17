@@ -1,0 +1,25 @@
+{
+  "configurations" : [
+    {
+      "id" : "0EBC8483-762B-4F2C-B987-5CFA9ACDC4B3",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "testExecutionOrdering" : "random"
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:AppStoreSearchiOS.xcodeproj",
+        "identifier" : "B2F15B1A2AB70B8A00158D5A",
+        "name" : "AppStoreSearchAPIEndToEndTests"
+      }
+    }
+  ],
+  "version" : 1
+}
