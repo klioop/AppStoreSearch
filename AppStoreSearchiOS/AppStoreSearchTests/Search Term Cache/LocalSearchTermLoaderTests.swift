@@ -47,36 +47,18 @@ class LocalSearchTermLoaderTests: XCTestCase {
     func test_save_failsOnInsertionError() {
         let (sut, store) = makeSUT()
         let insertionError = anyError()
-        let exp = expectation(description: "a wait for save completion")
         
-        var receivedError: Error?
-        sut.save(makeLocalTerm()) { result in
-            if case let .failure(error) = result {
-                receivedError = error
-            }
-        }
-        store.completeInsertion(with: insertionError)
-        exp.fulfill()
-        wait(for: [exp], timeout: 1.0)
-        
-        XCTAssertEqual(receivedError as NSError?, insertionError)
+        expect(sut, toCompletedWith: insertionError, when: {
+            store.completeInsertion(with: insertionError)
+        })
     }
     
     func test_save_successOnSuccessfulInsertion() {
         let (sut, store) = makeSUT()
-        let exp = expectation(description: "a wait for save completion")
         
-        var receivedError: Error?
-        sut.save(makeLocalTerm()) { result in
-            if case let .failure(error) = result {
-                receivedError = error
-            }
-        }
-        store.completeInsertionSuccessfully()
-        exp.fulfill()
-        wait(for: [exp], timeout: 1.0)
-        
-        XCTAssertNil(receivedError)
+        expect(sut, toCompletedWith: .none, when: {
+            store.completeInsertionSuccessfully()
+        })
     }
     
     // MARK: - Helpers
@@ -87,6 +69,24 @@ class LocalSearchTermLoaderTests: XCTestCase {
         trackMemoryLeak(store, file: file, line: line)
         trackMemoryLeak(sut, file: file, line: line)
         return (sut, store)
+    }
+    
+    private func expect(_ sut: LocalSearchTermLoader, toCompletedWith expectedError: NSError?, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
+        let exp = expectation(description: "a wait for save completion")
+        
+        var receivedError: Error?
+        sut.save(makeLocalTerm()) { result in
+            if case let .failure(error) = result {
+                receivedError = error
+            }
+            exp.fulfill()
+        }
+        
+        action()
+        
+        wait(for: [exp], timeout: 1.0)
+        
+        XCTAssertEqual(receivedError as NSError? , expectedError)
     }
     
     private func makeLocalTerm(term: String = "a term") -> LocalSearchTerm {
