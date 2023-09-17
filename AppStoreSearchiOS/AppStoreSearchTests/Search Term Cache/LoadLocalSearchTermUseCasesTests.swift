@@ -19,10 +19,27 @@ class LoadLocalSearchTermUseCasesTests: XCTestCase {
     func test_load_sendRetrieveMessageToStore() {
         let (sut, store) = makeSUT()
         
-        sut.load()
+        sut.load {_ in }
         store.completeRetrieval()
         
         XCTAssertEqual(store.receivedMessages, [.retrieve])
+    }
+    
+    func test_load_deliversErrorOnRetrievalFailure() {
+        let (sut, store) = makeSUT()
+        let exp = expectation(description: "a wait for load completion")
+        
+        var receivedError: Error?
+        sut.load { result in
+            if case let .failure(error) = result {
+                receivedError = error
+            }
+            exp.fulfill()
+        }
+        store.completeRetrieval()
+        wait(for: [exp], timeout: 1.0)
+        
+        XCTAssertNotNil(receivedError)
     }
     
     // MARK: - Helpers

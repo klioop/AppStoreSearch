@@ -31,7 +31,18 @@ public final class LocalSearchTermLoader {
         }
     }
     
-    public func load() {
-        store.retrieve {_ in }
+    public func load(completion: @escaping (Result<[LocalSearchTerm], Error>) -> Void) {
+        store.retrieve { result in
+            completion(
+                Result {
+                    switch result {
+                    case .success: return []
+
+                    case let .failure(error):
+                        throw error
+                    }
+                }
+            )
+        }
     }
 }
