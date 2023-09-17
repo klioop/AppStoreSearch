@@ -30,7 +30,15 @@ final class AppUISnapshotTests: XCTestCase {
                 ageDescription: "age"
             )
         )
-        let cellControllers = [title, description].map(TableCellController.init)
+        let feature = AppNewFeatureCellController(
+            viewModel: AppNewFeatureViewModel(
+                title: "a title",
+                version: "version x.xx.x",
+                firstDescription: "- a description\n- a description a description a description a description a description a description",
+                secondDescription: "a description"
+            )
+        )
+        let cellControllers = [title, description, feature].map(TableCellController.init)
         
         list.display(cellControllers)
         sut.loadViewIfNeeded()

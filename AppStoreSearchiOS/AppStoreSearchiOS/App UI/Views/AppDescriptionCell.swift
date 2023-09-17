@@ -54,8 +54,7 @@ final class AppDescriptionCell: UITableViewCell {
         
         [ratingView, rankingView, ageView].forEach(contentView.addSubview)
         ratingView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(30)
-            $0.bottom.equalToSuperview()
+            $0.verticalEdges.equalToSuperview().inset(16)
             $0.leading.equalToSuperview().offset(16)
         }
         rankingView.snp.makeConstraints {

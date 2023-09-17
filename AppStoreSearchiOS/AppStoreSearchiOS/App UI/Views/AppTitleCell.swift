@@ -35,7 +35,7 @@ final class AppTitleCell: UITableViewCell {
     }()
     
     private lazy var titleLabel = label(
-        font: .systemFont(ofSize: 24, weight: .medium),
+        font: .systemFont(ofSize: 24, weight: .bold),
         color: .label
     )
     private lazy var descriptionLabel = label(
@@ -71,8 +71,7 @@ final class AppTitleCell: UITableViewCell {
         
         [logoImageView, container, buttonContainer].forEach(contentView.addSubview)
         logoImageView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(16)
-            $0.bottom.equalToSuperview()
+            $0.verticalEdges.equalToSuperview().inset(16)
             $0.leading.equalToSuperview().offset(16)
             $0.width.height.equalTo(120)
         }
