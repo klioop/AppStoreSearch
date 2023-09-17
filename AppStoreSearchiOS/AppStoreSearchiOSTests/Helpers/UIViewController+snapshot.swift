@@ -13,10 +13,6 @@ extension UIViewController {
     func snapshot(for configuration: SnapshotConfiguration) -> UIImage {
         SnapshotWindow(configuration: configuration, root: self).snapshot()
     }
-    
-    func snapshotAtViewLevel(for configuration: SnapshotConfiguration) -> UIImage {
-        SnapshotWindow(configuration: configuration, root: self).snapShotAtViewLevel()
-    }
 }
 
 struct SnapshotConfiguration {
@@ -26,20 +22,24 @@ struct SnapshotConfiguration {
     let traitCollection: UITraitCollection
     
     static func iPhone11(style: UIUserInterfaceStyle) -> SnapshotConfiguration {
-        return SnapshotConfiguration(size: .init(width: 414, height: 896),
-                                     safeAreaInset: .init(top: 48, left: 0, bottom: 34, right: 0),
-                                     layoutMargins: .init(top: 48, left: 20, bottom: 34, right: 20),
-                                     traitCollection: UITraitCollection(traitsFrom: [
-                                        .init(forceTouchCapability: .available),
-                                        .init(layoutDirection: .leftToRight),
-                                        .init(horizontalSizeClass: .compact),
-                                        .init(verticalSizeClass: .regular),
-                                        .init(displayGamut: .P3),
-                                        .init(userInterfaceIdiom: .phone),
-                                        .init(preferredContentSizeCategory: .medium),
-                                        .init(displayScale: 2),
-                                        .init(userInterfaceStyle: style),
-                                     ]))
+        return SnapshotConfiguration(
+            size: .init(width: 414, height: 896),
+            safeAreaInset: .init(top: 48, left: 0, bottom: 34, right: 0),
+            layoutMargins: .init(top: 48, left: 20, bottom: 34, right: 20),
+            traitCollection: UITraitCollection(
+                traitsFrom: [
+                    .init(forceTouchCapability: .available),
+                    .init(layoutDirection: .leftToRight),
+                    .init(horizontalSizeClass: .compact),
+                    .init(verticalSizeClass: .regular),
+                    .init(displayGamut: .P3),
+                    .init(userInterfaceIdiom: .phone),
+                    .init(preferredContentSizeCategory: .medium),
+                    .init(displayScale: 2),
+                    .init(userInterfaceStyle: style),
+                ]
+            )
+        )
     }
 }
 
@@ -61,13 +61,6 @@ class SnapshotWindow: UIWindow {
         let renderer = UIGraphicsImageRenderer(bounds: bounds)
         return renderer.image { action in
             layer.render(in: action.cgContext)
-        }
-    }
-    
-    func snapShotAtViewLevel() -> UIImage {
-        let renderer = UIGraphicsImageRenderer(bounds: bounds)
-        return renderer.image { action in
-            drawHierarchy(in: bounds, afterScreenUpdates: false)
         }
     }
 }

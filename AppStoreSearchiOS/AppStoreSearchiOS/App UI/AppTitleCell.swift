@@ -29,13 +29,13 @@ final class AppTitleCell: UITableViewCell {
     private lazy var container: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
-        stack.spacing = 6
+        stack.spacing = 3
         [titleLabel, descriptionLabel].forEach(stack.addArrangedSubview)
         return stack
     }()
     
     private lazy var titleLabel = label(
-        font: .systemFont(ofSize: 18, weight: .medium),
+        font: .systemFont(ofSize: 24, weight: .medium),
         color: .label
     )
     private lazy var descriptionLabel = label(
@@ -44,7 +44,7 @@ final class AppTitleCell: UITableViewCell {
     )
     private lazy var buttonContainer: UIView = {
         let view = UIView()
-        view.backgroundColor = .systemGray5
+        view.backgroundColor = .link
         view.addSubview(button)
         button.snp.makeConstraints {
             $0.centerY.equalToSuperview()
@@ -55,7 +55,14 @@ final class AppTitleCell: UITableViewCell {
     
     private lazy var button: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("받기", for: .normal)
+        let attributed = NSAttributedString(
+            string: "받기",
+            attributes: [
+                .font: UIFont.systemFont(ofSize: 16, weight: .bold),
+                .foregroundColor: UIColor.white
+            ]
+        )
+        button.setAttributedTitle(attributed, for: .normal)
         return button
     }()
     
@@ -65,19 +72,20 @@ final class AppTitleCell: UITableViewCell {
         [logoImageView, container, buttonContainer].forEach(contentView.addSubview)
         logoImageView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(16)
+            $0.bottom.equalToSuperview()
             $0.leading.equalToSuperview().offset(16)
-            $0.width.height.equalTo(84)
+            $0.width.height.equalTo(120)
         }
         container.snp.makeConstraints {
             $0.top.equalTo(logoImageView.snp.top)
-            $0.leading.equalTo(logoImageView.snp.leading).offset(12)
+            $0.leading.equalTo(logoImageView.snp.trailing).offset(12)
         }
         buttonContainer.snp.makeConstraints {
             $0.bottom.equalTo(logoImageView.snp.bottom)
-            $0.leading.equalTo(logoImageView.snp.leading).offset(12)
+            $0.leading.equalTo(logoImageView.snp.trailing).offset(12)
             $0.height.equalTo(30)
         }
-        logoImageView.layer.cornerRadius = 8
+        logoImageView.layer.cornerRadius = 16
         logoImageView.layer.cornerCurve = .continuous
         buttonContainer.layer.cornerRadius = 30 * 0.5
         buttonContainer.layer.cornerCurve = .continuous

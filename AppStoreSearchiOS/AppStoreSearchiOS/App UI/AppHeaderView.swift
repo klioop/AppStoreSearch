@@ -12,8 +12,9 @@ public final class AppHeaderView: UIView {
     
     private lazy var button: UIButton = {
         let button = UIButton(type: .system)
-        let image = UIImage(systemName: "chevron.left")?.withTintColor(.systemGray2)
+        let image = UIImage(systemName: "chevron.left")
         button.setImage(image, for: .normal)
+        button.tintColor = .systemGray2
         button.addTarget(self, action: #selector(didTap), for: .touchUpInside)
         return button
     }()
@@ -23,6 +24,7 @@ public final class AppHeaderView: UIView {
         addSubview(button)
         button.snp.makeConstraints {
             $0.top.equalToSuperview().offset(16)
+            $0.bottom.equalToSuperview()
             $0.leading.equalToSuperview().offset(16)
             $0.width.height.equalTo(24)
         }

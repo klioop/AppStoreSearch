@@ -15,6 +15,9 @@
 		B23A6ADF2AB69237006067F7 /* AppTitleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23A6ADE2AB69237006067F7 /* AppTitleViewModel.swift */; };
 		B23A6AE12AB692E2006067F7 /* AppHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23A6AE02AB692E2006067F7 /* AppHeaderView.swift */; };
 		B23A6AE32AB693CE006067F7 /* AppHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23A6AE22AB693CE006067F7 /* AppHeaderViewController.swift */; };
+		B23A6AE62AB69459006067F7 /* AppUISnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23A6AE52AB69459006067F7 /* AppUISnapshotTests.swift */; };
+		B23A6AE82AB69488006067F7 /* AppContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23A6AE72AB69488006067F7 /* AppContainerViewController.swift */; };
+		B23A6AEB2AB698F0006067F7 /* APP_light.png in Resources */ = {isa = PBXBuildFile; fileRef = B23A6AEA2AB698F0006067F7 /* APP_light.png */; };
 		B2A3B66F2AB55898007B1B75 /* AppStoreSearchiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2A3B6662AB55898007B1B75 /* AppStoreSearchiOS.framework */; };
 		B2A3B6802AB55B47007B1B75 /* AppStoreSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3B67F2AB55B47007B1B75 /* AppStoreSearchView.swift */; };
 		B2A3B6832AB55B7B007B1B75 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B2A3B6822AB55B7B007B1B75 /* SnapKit */; };
@@ -62,6 +65,9 @@
 		B23A6ADE2AB69237006067F7 /* AppTitleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTitleViewModel.swift; sourceTree = "<group>"; };
 		B23A6AE02AB692E2006067F7 /* AppHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHeaderView.swift; sourceTree = "<group>"; };
 		B23A6AE22AB693CE006067F7 /* AppHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHeaderViewController.swift; sourceTree = "<group>"; };
+		B23A6AE52AB69459006067F7 /* AppUISnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUISnapshotTests.swift; sourceTree = "<group>"; };
+		B23A6AE72AB69488006067F7 /* AppContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainerViewController.swift; sourceTree = "<group>"; };
+		B23A6AEA2AB698F0006067F7 /* APP_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = APP_light.png; sourceTree = "<group>"; };
 		B2A3B6662AB55898007B1B75 /* AppStoreSearchiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppStoreSearchiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2A3B66E2AB55898007B1B75 /* AppStoreSearchiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppStoreSearchiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2A3B67F2AB55B47007B1B75 /* AppStoreSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreSearchView.swift; sourceTree = "<group>"; };
@@ -152,6 +158,7 @@
 				B23A6ADA2AB691B4006067F7 /* AppTitleCellController.swift */,
 				B23A6AE02AB692E2006067F7 /* AppHeaderView.swift */,
 				B23A6AE22AB693CE006067F7 /* AppHeaderViewController.swift */,
+				B23A6AE72AB69488006067F7 /* AppContainerViewController.swift */,
 			);
 			path = "App UI";
 			sourceTree = "<group>";
@@ -172,6 +179,23 @@
 				B23A6ADE2AB69237006067F7 /* AppTitleViewModel.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		B23A6AE42AB6943E006067F7 /* App UI */ = {
+			isa = PBXGroup;
+			children = (
+				B23A6AE92AB698F0006067F7 /* snapshots */,
+				B23A6AE52AB69459006067F7 /* AppUISnapshotTests.swift */,
+			);
+			path = "App UI";
+			sourceTree = "<group>";
+		};
+		B23A6AE92AB698F0006067F7 /* snapshots */ = {
+			isa = PBXGroup;
+			children = (
+				B23A6AEA2AB698F0006067F7 /* APP_light.png */,
+			);
+			path = snapshots;
 			sourceTree = "<group>";
 		};
 		B2A3B65C2AB55898007B1B75 = {
@@ -197,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				B2A3B6922AB566C7007B1B75 /* Search UI */,
+				B23A6AE42AB6943E006067F7 /* App UI */,
 				B2A3B6912AB56629007B1B75 /* Helpers */,
 			);
 			path = AppStoreSearchiOSTests;
@@ -373,6 +398,7 @@
 				B2A3B6B02AB57B7F007B1B75 /* APPSTORE_SEARCH_WITHOUT_RECENT_TERMS_light.png in Resources */,
 				B23A6ACF2AB5DBEA006067F7 /* APPSTORE_SEARCH_RESULT_light.png in Resources */,
 				B2A3B6992AB568B2007B1B75 /* APPSTORE_SEARCH_WITH_RECENT_TERMS_light.png in Resources */,
+				B23A6AEB2AB698F0006067F7 /* APP_light.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,6 +409,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B23A6AE82AB69488006067F7 /* AppContainerViewController.swift in Sources */,
 				B2A3B6AE2AB579FF007B1B75 /* AppStoreSearchViewController.swift in Sources */,
 				B23A6AD32AB688A4006067F7 /* AppStoreSearchResultViewModel.swift in Sources */,
 				B23A6AD92AB68E3D006067F7 /* AppTitleCell.swift in Sources */,
@@ -416,6 +443,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2A3B6942AB566E6007B1B75 /* AppStoreSearchUISnapshotTests.swift in Sources */,
+				B23A6AE62AB69459006067F7 /* AppUISnapshotTests.swift in Sources */,
 				B2A3B6902AB56609007B1B75 /* UIViewController+snapshot.swift in Sources */,
 				B2A3B68F2AB56609007B1B75 /* XCTestCase+SnapshotHelpers.swift in Sources */,
 			);
