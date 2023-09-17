@@ -40,7 +40,7 @@ class LocalSearchTermLoaderTests: XCTestCase {
     
     func test_save_sendInsertMessageToStore() {
         let (sut, store) = makeSUT()
-        let term = LocalSearchTerm(term: "a term")
+        let term = makeLocalTerm()
         
         sut.save(term) {_ in }
         store.completeInsertion()
@@ -50,12 +50,11 @@ class LocalSearchTermLoaderTests: XCTestCase {
     
     func test_save_failsOnInsertionError() {
         let (sut, store) = makeSUT()
-        let term = LocalSearchTerm(term: "a term")
-        let insertionError = NSError(domain: "insertion error", code: 0)
+        let insertionError = anyError()
         let exp = expectation(description: "a wait for save completion")
         
         var receivedError: Error?
-        sut.save(term) { result in
+        sut.save(makeLocalTerm()) { result in
             if case let .failure(error) = result {
                 receivedError = error
             }
@@ -75,6 +74,14 @@ class LocalSearchTermLoaderTests: XCTestCase {
         trackMemoryLeak(store, file: file, line: line)
         trackMemoryLeak(sut, file: file, line: line)
         return (sut, store)
+    }
+    
+    private func makeLocalTerm(term: String = "a term") -> LocalSearchTerm {
+        LocalSearchTerm(term: term)
+    }
+    
+    private func anyError() -> NSError {
+        NSError(domain: "a error", code: 0)
     }
     
     final class SearchTermStoreSpy: SearchTermStore {
