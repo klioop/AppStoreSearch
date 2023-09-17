@@ -22,11 +22,7 @@ final class LocalSearchTermLoader {
     }
     
     func save(_ term: LocalSearchTerm, completion: @escaping (Result<Void, Error>) -> Void) {
-        store.insert(term) { result in
-            if case let .failure(error) = result {
-                completion(.failure(error))
-            }
-        }
+        store.insert(term, completion: completion)
     }
 }
 
@@ -66,6 +62,23 @@ class LocalSearchTermLoaderTests: XCTestCase {
         XCTAssertEqual(receivedError as NSError?, insertionError)
     }
     
+    func test_save_successOnSuccessfulInsertion() {
+        let (sut, store) = makeSUT()
+        let exp = expectation(description: "a wait for save completion")
+        
+        var receivedError: Error?
+        sut.save(makeLocalTerm()) { result in
+            if case let .failure(error) = result {
+                receivedError = error
+            }
+        }
+        store.completeInsertionSuccessfully()
+        exp.fulfill()
+        wait(for: [exp], timeout: 1.0)
+        
+        XCTAssertNil(receivedError)
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: LocalSearchTermLoader, store: SearchTermStoreSpy) {
@@ -100,6 +113,10 @@ class LocalSearchTermLoaderTests: XCTestCase {
         
         func completeInsertion(with error: Error = NSError(domain: "a error", code: 0), at index: Int = 0) {
             insertionCompletions[index](.failure(error))
+        }
+        
+        func completeInsertionSuccessfully(at index: Int = 0) {
+            insertionCompletions[index](.success(()))
         }
     }
 }
