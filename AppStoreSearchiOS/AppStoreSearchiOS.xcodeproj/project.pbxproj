@@ -154,11 +154,8 @@
 		B23A6AD72AB68D02006067F7 /* App UI */ = {
 			isa = PBXGroup;
 			children = (
-				B23A6AD82AB68E3D006067F7 /* AppTitleCell.swift */,
-				B23A6ADA2AB691B4006067F7 /* AppTitleCellController.swift */,
-				B23A6AE02AB692E2006067F7 /* AppHeaderView.swift */,
-				B23A6AE22AB693CE006067F7 /* AppHeaderViewController.swift */,
-				B23A6AE72AB69488006067F7 /* AppContainerViewController.swift */,
+				B23A6AEC2AB69C2F006067F7 /* Controllers */,
+				B23A6AED2AB69C34006067F7 /* Views */,
 			);
 			path = "App UI";
 			sourceTree = "<group>";
@@ -196,6 +193,25 @@
 				B23A6AEA2AB698F0006067F7 /* APP_light.png */,
 			);
 			path = snapshots;
+			sourceTree = "<group>";
+		};
+		B23A6AEC2AB69C2F006067F7 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B23A6ADA2AB691B4006067F7 /* AppTitleCellController.swift */,
+				B23A6AE22AB693CE006067F7 /* AppHeaderViewController.swift */,
+				B23A6AE72AB69488006067F7 /* AppContainerViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B23A6AED2AB69C34006067F7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B23A6AD82AB68E3D006067F7 /* AppTitleCell.swift */,
+				B23A6AE02AB692E2006067F7 /* AppHeaderView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		B2A3B65C2AB55898007B1B75 = {

@@ -10,7 +10,7 @@ import AppStoreSearchiOS
 
 final class AppUISnapshotTests: XCTestCase {
     
-    func test_() {
+    func test_appUI() {
         let (sut, list) = makeSUT()
         let title = AppTitleCellController(
             viewModel: AppTitleViewModel(
