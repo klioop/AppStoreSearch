@@ -47,7 +47,7 @@ final class AppUISnapshotTests: XCTestCase {
         list.display(cellControllers)
         sut.loadViewIfNeeded()
         
-        record(sut.snapshot(for: .iPhone11(style: .light)), named: "APP_light")
+        assert(sut.snapshot(for: .iPhone11(style: .light)), named: "APP_light")
     }
     
     // MARK: - Helpers

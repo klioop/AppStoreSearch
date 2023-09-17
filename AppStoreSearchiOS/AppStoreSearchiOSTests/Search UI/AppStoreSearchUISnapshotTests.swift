@@ -16,7 +16,7 @@ final class AppStoreSearchUISnapshotTests: XCTestCase {
         list.display(emptyRecentTerms())
         sut.loadViewIfNeeded()
         
-        record(sut.snapshot(for: .iPhone11(style: .light)), named: "APPSTORE_SEARCH_WITHOUT_RECENT_TERMS_light")
+        assert(sut.snapshot(for: .iPhone11(style: .light)), named: "APPSTORE_SEARCH_WITHOUT_RECENT_TERMS_light")
     }
     
     func test_appStoreSearchWithRecentTermsUI() {
@@ -25,7 +25,7 @@ final class AppStoreSearchUISnapshotTests: XCTestCase {
         list.display(recentTerms())
         sut.loadViewIfNeeded()
         
-        record(sut.snapshot(for: .iPhone11(style: .light)), named: "APPSTORE_SEARCH_WITH_RECENT_TERMS_light")
+        assert(sut.snapshot(for: .iPhone11(style: .light)), named: "APPSTORE_SEARCH_WITH_RECENT_TERMS_light")
     }
     
     func test_appStoreSearchWithMatchedRecentTermsUI() {
@@ -34,7 +34,7 @@ final class AppStoreSearchUISnapshotTests: XCTestCase {
         list.display(matchedRecentTerms())
         sut.loadViewIfNeeded()
         
-        record(sut.snapshot(for: .iPhone11(style: .light)), named: "APPSTORE_SEARCH_WITH_MATCHED_RECENT_TERMS_light")
+        assert(sut.snapshot(for: .iPhone11(style: .light)), named: "APPSTORE_SEARCH_WITH_MATCHED_RECENT_TERMS_light")
     }
     
     func test_appStoreSearchResultsUI() {
@@ -43,7 +43,7 @@ final class AppStoreSearchUISnapshotTests: XCTestCase {
         list.display(searchResults())
         sut.loadViewIfNeeded()
         
-        record(sut.snapshot(for: .iPhone11(style: .light)), named: "APPSTORE_SEARCH_RESULT_light")
+        assert(sut.snapshot(for: .iPhone11(style: .light)), named: "APPSTORE_SEARCH_RESULT_light")
     }
     
     // MARK: - Helpers
