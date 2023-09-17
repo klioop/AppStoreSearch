@@ -53,7 +53,7 @@ final class AppStoreRecentSearchTermCell: UITableViewCell {
     // MARK: - Helpers
     
     private func updateUI(upon isMatchedRecent: Bool) {
-        let fontSize: CGFloat = isMatchedRecent ? 11 : 14
+        let fontSize: CGFloat = isMatchedRecent ? 12 : 14
         let color: UIColor = isMatchedRecent ? .label : .link
         termLabel.font = .systemFont(ofSize: fontSize)
         termLabel.textColor = color

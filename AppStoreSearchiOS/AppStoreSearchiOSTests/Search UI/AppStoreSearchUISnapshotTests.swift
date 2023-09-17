@@ -67,6 +67,9 @@ final class AppStoreSearchUISnapshotTests: XCTestCase {
             searchView: searchViewController.view(),
             listViewController: list
         )
+        list.configure = { tableView in
+            AppStoreSearchResultCellController.register(for: tableView)
+        }
         return (sut, list)
     }
     
