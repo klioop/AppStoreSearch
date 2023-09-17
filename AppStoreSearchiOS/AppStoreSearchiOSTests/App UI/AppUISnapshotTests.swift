@@ -19,8 +19,15 @@ final class AppUISnapshotTests: XCTestCase {
                 logoImage: anyURL()
             )
         )
+        let description = AppDescriptionCellController(
+            viewModel: AppDescriptionViewModel(
+                ratingText: "3.4",
+                numberOfRatingText: "1.1만개의 평가",
+                rating: (3, 0.43))
+            )
+        let cellControllers = [title, description].map(TableCellController.init)
         
-        list.display([TableCellController(title)])
+        list.display(cellControllers)
         sut.loadViewIfNeeded()
         
         record(sut.snapshot(for: .iPhone11(style: .light)), named: "APP_light")
