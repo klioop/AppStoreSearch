@@ -23,8 +23,13 @@ final class AppUISnapshotTests: XCTestCase {
             viewModel: AppDescriptionViewModel(
                 ratingText: "3.4",
                 numberOfRatingText: "1.1만개의 평가",
-                rating: (3, 0.43))
+                rating: (3, 0.43),
+                rankingText: "#4",
+                rankDescription: "rank",
+                ageText: "4+",
+                ageDescription: "age"
             )
+        )
         let cellControllers = [title, description].map(TableCellController.init)
         
         list.display(cellControllers)

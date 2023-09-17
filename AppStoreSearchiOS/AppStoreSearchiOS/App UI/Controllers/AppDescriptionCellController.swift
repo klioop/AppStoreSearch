@@ -24,6 +24,10 @@ public final class AppDescriptionCellController: NSObject, UITableViewDataSource
         cell.ratingText = viewModel.ratingText
         cell.numberOfRatingText = viewModel.numberOfRatingText
         cell.rating = (viewModel.rating.int, CGFloat(viewModel.rating.decimal))
+        cell.rankingTitle = viewModel.rankingText
+        cell.rankingDescription = viewModel.rankDescription
+        cell.ageTitle = viewModel.ageText
+        cell.ageDescription = viewModel.ageDescription
         return cell
     }
 }

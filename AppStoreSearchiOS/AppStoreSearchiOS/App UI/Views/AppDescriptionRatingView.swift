@@ -43,7 +43,7 @@ final class AppDescriptionRatingView: UIView {
     
     private lazy var ratingLabel = label(
         font: .systemFont(ofSize: 20, weight: .bold),
-        color: .gray
+        color: .systemGray
     )
     private lazy var numberOfRatingLabel = label(
         font: .systemFont(ofSize: 12, weight: .regular),
