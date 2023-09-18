@@ -11,7 +11,7 @@
 		B26AA85C2AB84C50002F5761 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26AA85B2AB84C50002F5761 /* SceneDelegate.swift */; };
 		B26AA8632AB84C52002F5761 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B26AA8622AB84C52002F5761 /* Assets.xcassets */; };
 		B26AA8662AB84C52002F5761 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B26AA8642AB84C52002F5761 /* LaunchScreen.storyboard */; };
-		B26AA8712AB84C52002F5761 /* AppStoreSearchAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26AA8702AB84C52002F5761 /* AppStoreSearchAppTests.swift */; };
+		B26AA8712AB84C52002F5761 /* AppStoreSearchUIIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26AA8702AB84C52002F5761 /* AppStoreSearchUIIntegrationTests.swift */; };
 		B26AA88B2AB84DA6002F5761 /* AppStoreSearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B26AA88A2AB84DA6002F5761 /* AppStoreSearch.framework */; };
 		B26AA88C2AB84DA6002F5761 /* AppStoreSearch.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B26AA88A2AB84DA6002F5761 /* AppStoreSearch.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B26AA88F2AB84DAA002F5761 /* AppStoreSearchiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B26AA88E2AB84DAA002F5761 /* AppStoreSearchiOS.framework */; };
@@ -54,7 +54,7 @@
 		B26AA8652AB84C52002F5761 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B26AA8672AB84C52002F5761 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B26AA86C2AB84C52002F5761 /* AppStoreSearchAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppStoreSearchAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B26AA8702AB84C52002F5761 /* AppStoreSearchAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreSearchAppTests.swift; sourceTree = "<group>"; };
+		B26AA8702AB84C52002F5761 /* AppStoreSearchUIIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreSearchUIIntegrationTests.swift; sourceTree = "<group>"; };
 		B26AA88A2AB84DA6002F5761 /* AppStoreSearch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AppStoreSearch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B26AA88E2AB84DAA002F5761 /* AppStoreSearchiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AppStoreSearchiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B26AA8922AB84FF1002F5761 /* Combine+HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Combine+HTTPClient.swift"; sourceTree = "<group>"; };
@@ -104,6 +104,7 @@
 		B26AA8582AB84C50002F5761 /* AppStoreSearchApp */ = {
 			isa = PBXGroup;
 			children = (
+				B26AA8672AB84C52002F5761 /* Info.plist */,
 				B26AA8912AB84F49002F5761 /* Combine+ */,
 				B26AA8962AB85318002F5761 /* Supporting */,
 				B26AA8592AB84C50002F5761 /* AppDelegate.swift */,
@@ -115,7 +116,7 @@
 		B26AA86F2AB84C52002F5761 /* AppStoreSearchAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				B26AA8702AB84C52002F5761 /* AppStoreSearchAppTests.swift */,
+				B26AA8702AB84C52002F5761 /* AppStoreSearchUIIntegrationTests.swift */,
 			);
 			path = AppStoreSearchAppTests;
 			sourceTree = "<group>";
@@ -144,7 +145,6 @@
 			children = (
 				B26AA8622AB84C52002F5761 /* Assets.xcassets */,
 				B26AA8642AB84C52002F5761 /* LaunchScreen.storyboard */,
-				B26AA8672AB84C52002F5761 /* Info.plist */,
 			);
 			path = Supporting;
 			sourceTree = "<group>";
@@ -262,7 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B26AA8712AB84C52002F5761 /* AppStoreSearchAppTests.swift in Sources */,
+				B26AA8712AB84C52002F5761 /* AppStoreSearchUIIntegrationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,7 +414,6 @@
 				INFOPLIST_FILE = AppStoreSearchApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -442,7 +441,6 @@
 				INFOPLIST_FILE = AppStoreSearchApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

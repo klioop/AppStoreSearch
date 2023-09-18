@@ -15,5 +15,4 @@ final class AppStoreSearchPresenterTests: XCTestCase {
         XCTAssertEqual(viewModel.title, "검색")
         XCTAssertEqual(viewModel.placeholder, "게임, 앱, 스토리 등")
     }
-
 }

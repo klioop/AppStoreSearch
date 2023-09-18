@@ -10,10 +10,10 @@ import SnapKit
 
 public final class AppStoreSearchContainerViewController: UIViewController {
     
-    private var searchView: UIView!
-    private var listViewController: UIViewController!
+    public private(set) var searchView: AppStoreSearchView!
+    public private(set) var listViewController: ListViewController!
     
-    public convenience init(searchView: UIView, listViewController: UIViewController) {
+    public convenience init(searchView: AppStoreSearchView, listViewController: ListViewController) {
         self.init()
         self.searchView = searchView
         self.listViewController = listViewController
