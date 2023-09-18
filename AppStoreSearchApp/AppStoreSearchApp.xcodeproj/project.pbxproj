@@ -103,11 +103,9 @@
 			isa = PBXGroup;
 			children = (
 				B26AA8912AB84F49002F5761 /* Combine+ */,
+				B26AA8962AB85318002F5761 /* Supporting */,
 				B26AA8592AB84C50002F5761 /* AppDelegate.swift */,
 				B26AA85B2AB84C50002F5761 /* SceneDelegate.swift */,
-				B26AA8622AB84C52002F5761 /* Assets.xcassets */,
-				B26AA8642AB84C52002F5761 /* LaunchScreen.storyboard */,
-				B26AA8672AB84C52002F5761 /* Info.plist */,
 			);
 			path = AppStoreSearchApp;
 			sourceTree = "<group>";
@@ -136,6 +134,16 @@
 				B26AA8922AB84FF1002F5761 /* Combine+HTTPClient.swift */,
 			);
 			path = "Combine+";
+			sourceTree = "<group>";
+		};
+		B26AA8962AB85318002F5761 /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				B26AA8622AB84C52002F5761 /* Assets.xcassets */,
+				B26AA8642AB84C52002F5761 /* LaunchScreen.storyboard */,
+				B26AA8672AB84C52002F5761 /* Info.plist */,
+			);
+			path = Supporting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
