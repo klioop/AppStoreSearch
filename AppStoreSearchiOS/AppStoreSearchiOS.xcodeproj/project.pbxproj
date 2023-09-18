@@ -53,6 +53,7 @@
 		B26AA8442AB7388C002F5761 /* SearchTermTestsHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26AA8432AB7388C002F5761 /* SearchTermTestsHelpers.swift */; };
 		B26AA8462AB738B8002F5761 /* XCTestCase+trackMemoryLeak.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26AA8452AB738B8002F5761 /* XCTestCase+trackMemoryLeak.swift */; };
 		B26AA8482AB74095002F5761 /* UserDefaultsSearchTermStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26AA8472AB74095002F5761 /* UserDefaultsSearchTermStore.swift */; };
+		B26AA89A2AB858AC002F5761 /* SearchTerm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26AA8992AB858AC002F5761 /* SearchTerm.swift */; };
 		B2A3B66F2AB55898007B1B75 /* AppStoreSearchiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2A3B6662AB55898007B1B75 /* AppStoreSearchiOS.framework */; };
 		B2A3B6802AB55B47007B1B75 /* AppStoreSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3B67F2AB55B47007B1B75 /* AppStoreSearchView.swift */; };
 		B2A3B6832AB55B7B007B1B75 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B2A3B6822AB55B7B007B1B75 /* SnapKit */; };
@@ -173,6 +174,7 @@
 		B26AA8432AB7388C002F5761 /* SearchTermTestsHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTermTestsHelpers.swift; sourceTree = "<group>"; };
 		B26AA8452AB738B8002F5761 /* XCTestCase+trackMemoryLeak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+trackMemoryLeak.swift"; sourceTree = "<group>"; };
 		B26AA8472AB74095002F5761 /* UserDefaultsSearchTermStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsSearchTermStore.swift; sourceTree = "<group>"; };
+		B26AA8992AB858AC002F5761 /* SearchTerm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTerm.swift; sourceTree = "<group>"; };
 		B2A3B6662AB55898007B1B75 /* AppStoreSearchiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppStoreSearchiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2A3B66E2AB55898007B1B75 /* AppStoreSearchiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppStoreSearchiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2A3B67F2AB55B47007B1B75 /* AppStoreSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreSearchView.swift; sourceTree = "<group>"; };
@@ -444,6 +446,7 @@
 			isa = PBXGroup;
 			children = (
 				B23A6B4F2AB6F564006067F7 /* App.swift */,
+				B26AA8992AB858AC002F5761 /* SearchTerm.swift */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -798,6 +801,7 @@
 				B23A6B422AB6F34E006067F7 /* AppNewFeatureViewModel.swift in Sources */,
 				B23A6B4A2AB6F43C006067F7 /* AppStoreSearchEndPoint.swift in Sources */,
 				B23A6B3E2AB6F341006067F7 /* AppStoreRecentSearchTermViewModel.swift in Sources */,
+				B26AA89A2AB858AC002F5761 /* SearchTerm.swift in Sources */,
 				B26AA83D2AB72A98002F5761 /* SearchTermStore.swift in Sources */,
 				B26AA8482AB74095002F5761 /* UserDefaultsSearchTermStore.swift in Sources */,
 				B23A6B3F2AB6F344006067F7 /* AppStoreSearchViewModel.swift in Sources */,
