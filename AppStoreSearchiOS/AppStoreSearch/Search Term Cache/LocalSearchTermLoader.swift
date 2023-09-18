@@ -50,4 +50,25 @@ public final class LocalSearchTermLoader {
             )
         }
     }
+    
+    public func load(containing searchTerm: SearchTerm, completion: @escaping (Result<[SearchTerm], Error>) -> Void) {
+        load { [weak self] result in
+            guard self != nil else { return }
+            
+            completion(
+                Result {
+                    switch result {
+                    case let .success(terms):
+                        return terms
+                            .map(\.term)
+                            .filter { $0.contains(searchTerm.term) }
+                            .map(SearchTerm.init)
+
+                    case let .failure(error):
+                        throw error
+                    }
+                }
+            )
+        }
+    }
 }

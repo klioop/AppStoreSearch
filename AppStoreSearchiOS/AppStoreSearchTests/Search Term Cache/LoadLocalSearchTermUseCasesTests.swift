@@ -52,6 +52,27 @@ class LoadLocalSearchTermUseCasesTests: XCTestCase {
         })
     }
     
+    func test_loadContainingSearchTerm_deliversSearchTermsWithAGivenTerm() {
+        let (sut, store) = makeSUT()
+        let term = makeSearchTerm("ter")
+        let termLiteral0 = "term0"
+        let termLiteral1 = "term1"
+        let termLiteral2 = "any"
+        let localTerms = [
+            makeLocalTerm(termLiteral0),
+            makeLocalTerm(termLiteral1),
+            makeLocalTerm(termLiteral2)
+        ]
+        let expectedTerms = [
+            makeSearchTerm(termLiteral0),
+            makeSearchTerm(termLiteral1)
+        ]
+        
+        expect(sut, toCompletedWith: .success(expectedTerms), forContainingTerm: term, when: {
+            store.completeRetrieval(with: localTerms)
+        })
+    }
+    
     func test_load_doesNotDeliverResultAfterSUTInstanceHasBeenDeAllocated() {
         let store = SearchTermStoreSpy()
         var sut: LocalSearchTermLoader? = LocalSearchTermLoader(store: store)
@@ -86,7 +107,28 @@ class LoadLocalSearchTermUseCasesTests: XCTestCase {
                 XCTAssertEqual(receivedError, expectedError, file: file, line: line)
                 
             default:
-                XCTFail("\(expectedResult) 를 기대 했지만, \(receivedResult) 가 나옴", file: file, line: line)
+                XCTFail("\(expectedResult)를 기대 했지만, \(receivedResult)가 나옴", file: file, line: line)
+            }
+            exp.fulfill()
+        }
+        
+        action()
+        wait(for: [exp], timeout: 1.0)
+    }
+    
+    private func expect(_ sut: LocalSearchTermLoader, toCompletedWith expectedResult: Result<[SearchTerm], Error>, forContainingTerm term: SearchTerm, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
+        let exp = expectation(description: "a wait for load completion")
+        
+        sut.load(containing: term) { receivedResult in
+            switch (receivedResult, expectedResult) {
+            case let (.success(receivedTerms), .success(expectedTerms)):
+                XCTAssertEqual(receivedTerms, expectedTerms, file: file, line: line)
+                
+            case let (.failure(receivedError as NSError), .failure(expectedError as NSError)):
+                XCTAssertEqual(receivedError, expectedError, file: file, line: line)
+                
+            default:
+                XCTFail("\(expectedResult)를 기대 했지만, \(receivedResult)가 나옴", file: file, line: line)
             }
             exp.fulfill()
         }
