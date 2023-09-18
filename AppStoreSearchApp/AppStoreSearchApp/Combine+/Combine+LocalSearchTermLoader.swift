@@ -17,3 +17,14 @@ extension LocalSearchTermLoader {
         .eraseToAnyPublisher()
     }
 }
+
+extension LocalSearchTermLoader {
+    func loadPublisher(containing term: SearchTerm) -> AnyPublisher<[SearchTerm], Error> {
+        Deferred {
+            Future { completion in
+                self.load(containing: term, completion: completion)
+            }
+        }
+        .eraseToAnyPublisher()
+    }
+}
