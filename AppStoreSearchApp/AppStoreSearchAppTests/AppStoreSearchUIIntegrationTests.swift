@@ -23,6 +23,17 @@ final class AppStoreSearchUIIntegrationTests: XCTestCase {
         XCTAssertEqual(list.numberOfViews(in: recentTermsSection), 0)
     }
     
+    func test_viewDidLoad_rendersTitleAndRecentTermsOnNonEmptyRecentSearchTerms() {
+        let (sut, list, termsLoader) = makeSUT()
+        let terms = [makeTerm("term0"), makeTerm("term1")]
+        
+        sut.loadViewIfNeeded()
+        termsLoader.loadComplete(with: terms)
+        
+        XCTAssertEqual(list.numberOfViews(in: recentTitleSection), 1)
+        XCTAssertEqual(list.numberOfViews(in: recentTermsSection), terms.count)
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(
@@ -55,6 +66,10 @@ final class AppStoreSearchUIIntegrationTests: XCTestCase {
             searchTermRequests[index].send(searchTerms)
             searchTermRequests[index].send(completion: .finished)
         }
+    }
+    
+    private func makeTerm(_ term: String) -> SearchTerm {
+        SearchTerm(term: term)
     }
 }
 
