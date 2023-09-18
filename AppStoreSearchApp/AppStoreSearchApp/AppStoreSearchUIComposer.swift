@@ -31,10 +31,9 @@ final class RecentSearchTermViewAdapter: ResourceView {
         let terms = viewModel.map { term -> (SearchTerm, AppStoreRecentSearchTermCellController) in
             (
                 term,
-                AppStoreRecentSearchTermCellController(viewModel: AppStoreRecentSearchTermViewModel(term: term.term))
+                AppStoreRecentSearchTermCellController(viewModel: AppStoreRecentSearchTermPresenter.map(term))
             )
         }
-        
         let termsCellControllers = terms.map(TableCellController.init)
         
         controller.display([titleCellController], termsCellControllers)
