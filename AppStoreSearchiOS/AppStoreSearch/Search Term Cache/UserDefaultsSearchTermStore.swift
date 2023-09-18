@@ -24,6 +24,7 @@ public final class UserDefaultsSearchTermStore: SearchTermStore {
             InsertionResult {
                 guard isNotExist(term) else { return }
                 
+                cache(terms() + [term.term])
             }
         )
     }
@@ -34,6 +35,10 @@ public final class UserDefaultsSearchTermStore: SearchTermStore {
     }
     
     // MARK: - Helpers
+    
+    private func cache(_ terms: [String]) {
+        defaults.set(terms, forKey: key)
+    }
     
     private func isNotExist(_ term: LocalSearchTerm) -> Bool {
         !terms().contains { $0 == term.term }
