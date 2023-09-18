@@ -18,6 +18,7 @@
 		B26AA8902AB84DAA002F5761 /* AppStoreSearchiOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B26AA88E2AB84DAA002F5761 /* AppStoreSearchiOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B26AA8942AB84FF1002F5761 /* Combine+HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26AA8922AB84FF1002F5761 /* Combine+HTTPClient.swift */; };
 		B26AA8952AB84FF1002F5761 /* Combine+DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26AA8932AB84FF1002F5761 /* Combine+DispatchQueue.swift */; };
+		B26AA89C2AB85AAE002F5761 /* Combine+LocalSearchTermLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26AA89B2AB85AAE002F5761 /* Combine+LocalSearchTermLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		B26AA88E2AB84DAA002F5761 /* AppStoreSearchiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AppStoreSearchiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B26AA8922AB84FF1002F5761 /* Combine+HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Combine+HTTPClient.swift"; sourceTree = "<group>"; };
 		B26AA8932AB84FF1002F5761 /* Combine+DispatchQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Combine+DispatchQueue.swift"; sourceTree = "<group>"; };
+		B26AA89B2AB85AAE002F5761 /* Combine+LocalSearchTermLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Combine+LocalSearchTermLoader.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 			children = (
 				B26AA8932AB84FF1002F5761 /* Combine+DispatchQueue.swift */,
 				B26AA8922AB84FF1002F5761 /* Combine+HTTPClient.swift */,
+				B26AA89B2AB85AAE002F5761 /* Combine+LocalSearchTermLoader.swift */,
 			);
 			path = "Combine+";
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B26AA8952AB84FF1002F5761 /* Combine+DispatchQueue.swift in Sources */,
+				B26AA89C2AB85AAE002F5761 /* Combine+LocalSearchTermLoader.swift in Sources */,
 				B26AA85A2AB84C50002F5761 /* AppDelegate.swift in Sources */,
 				B26AA8942AB84FF1002F5761 /* Combine+HTTPClient.swift in Sources */,
 				B26AA85C2AB84C50002F5761 /* SceneDelegate.swift in Sources */,
