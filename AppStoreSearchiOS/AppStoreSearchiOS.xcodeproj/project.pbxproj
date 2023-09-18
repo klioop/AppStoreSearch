@@ -476,9 +476,9 @@
 		B26AA8402AB7382E002F5761 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				B26AA8452AB738B8002F5761 /* XCTestCase+trackMemoryLeak.swift */,
 				B26AA8412AB7384A002F5761 /* SearchTermStoreSpy.swift */,
 				B26AA8432AB7388C002F5761 /* SearchTermTestsHelpers.swift */,
-				B26AA8452AB738B8002F5761 /* XCTestCase+trackMemoryLeak.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";

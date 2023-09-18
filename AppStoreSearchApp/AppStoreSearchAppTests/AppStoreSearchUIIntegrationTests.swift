@@ -13,18 +13,33 @@ import AppStoreSearchApp
 
 final class AppStoreSearchUIIntegrationTests: XCTestCase {
     
-    func test_viewDidLoad_rendersNoTitleAndRecentTermsOnEmptyRecentSearchTerms() {
-        let termLoader = SearchTermLoaderSpy()
-        let sut = AppStoreSearchUIComposer.composedWith(termLoader: termLoader.loadPublisher)
-        let list = sut.listViewController
+    func test_viewDidLoad_rendersOnlyTitleOnEmptyRecentSearchTerms() {
+        let (sut, list, termsLoader) = makeSUT()
         
         sut.loadViewIfNeeded()
-        termLoader.loadComplete(with: [])
+        termsLoader.loadComplete(with: [])
         
-        let tableView = list?.tableView
-        XCTAssertEqual(tableView?.numberOfSections, 2)
-        XCTAssertEqual(tableView?.numberOfRows(inSection: 0), 1)
-        XCTAssertEqual(tableView?.numberOfRows(inSection: 1), 0)
+        XCTAssertEqual(list.numberOfViews(in: recentTitleSection), 1)
+        XCTAssertEqual(list.numberOfViews(in: recentTermsSection), 0)
+    }
+    
+    // MARK: - Helpers
+    
+    private func makeSUT(
+        file: StaticString = #filePath,
+        line: UInt = #line
+    ) -> (
+        sut: AppStoreSearchContainerViewController,
+        list: ListViewController,
+        termsLoader: SearchTermLoaderSpy
+    ) {
+        let termsLoader = SearchTermLoaderSpy()
+        let sut = AppStoreSearchUIComposer.composedWith(termLoader: termsLoader.loadPublisher)
+        let list = sut.listViewController!
+        trackMemoryLeak(termsLoader, file: file, line: line)
+        trackMemoryLeak(sut, file: file, line: line)
+        trackMemoryLeak(list, file: file, line: line)
+        return (sut, list, termsLoader)
     }
     
     private class SearchTermLoaderSpy {
@@ -40,5 +55,14 @@ final class AppStoreSearchUIIntegrationTests: XCTestCase {
             searchTermRequests[index].send(searchTerms)
             searchTermRequests[index].send(completion: .finished)
         }
+    }
+}
+
+var recentTitleSection: Int { 0 }
+var recentTermsSection: Int { 1 }
+
+extension ListViewController {
+    func numberOfViews(in section: Int) -> Int {
+        tableView.numberOfRows(inSection: section)
     }
 }

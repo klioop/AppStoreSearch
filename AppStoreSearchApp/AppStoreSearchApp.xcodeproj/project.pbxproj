@@ -22,6 +22,7 @@
 		B26AA8A32AB8650D002F5761 /* LoadResourcePresentationAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26AA8A22AB8650D002F5761 /* LoadResourcePresentationAdapter.swift */; };
 		B26AA8B02AB86757002F5761 /* AppStoreSearchUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26AA8AF2AB86757002F5761 /* AppStoreSearchUIComposer.swift */; };
 		B26AA8B62AB87118002F5761 /* RecentSearchTermViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26AA8B52AB87118002F5761 /* RecentSearchTermViewAdapter.swift */; };
+		B26AA8B92AB873B9002F5761 /* XCTest+trackMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26AA8B82AB873B9002F5761 /* XCTest+trackMemory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		B26AA8A22AB8650D002F5761 /* LoadResourcePresentationAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadResourcePresentationAdapter.swift; sourceTree = "<group>"; };
 		B26AA8AF2AB86757002F5761 /* AppStoreSearchUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreSearchUIComposer.swift; sourceTree = "<group>"; };
 		B26AA8B52AB87118002F5761 /* RecentSearchTermViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchTermViewAdapter.swift; sourceTree = "<group>"; };
+		B26AA8B82AB873B9002F5761 /* XCTest+trackMemory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTest+trackMemory.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				B26AA8702AB84C52002F5761 /* AppStoreSearchUIIntegrationTests.swift */,
+				B26AA8B82AB873B9002F5761 /* XCTest+trackMemory.swift */,
 			);
 			path = AppStoreSearchAppTests;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B26AA8712AB84C52002F5761 /* AppStoreSearchUIIntegrationTests.swift in Sources */,
+				B26AA8B92AB873B9002F5761 /* XCTest+trackMemory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
