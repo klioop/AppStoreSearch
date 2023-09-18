@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		B26AA85A2AB84C50002F5761 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26AA8592AB84C50002F5761 /* AppDelegate.swift */; };
 		B26AA85C2AB84C50002F5761 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26AA85B2AB84C50002F5761 /* SceneDelegate.swift */; };
-		B26AA85E2AB84C50002F5761 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26AA85D2AB84C50002F5761 /* ViewController.swift */; };
-		B26AA8612AB84C50002F5761 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B26AA85F2AB84C50002F5761 /* Main.storyboard */; };
 		B26AA8632AB84C52002F5761 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B26AA8622AB84C52002F5761 /* Assets.xcassets */; };
 		B26AA8662AB84C52002F5761 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B26AA8642AB84C52002F5761 /* LaunchScreen.storyboard */; };
 		B26AA8712AB84C52002F5761 /* AppStoreSearchAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26AA8702AB84C52002F5761 /* AppStoreSearchAppTests.swift */; };
@@ -51,8 +49,6 @@
 		B26AA8562AB84C50002F5761 /* AppStoreSearchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppStoreSearchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B26AA8592AB84C50002F5761 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B26AA85B2AB84C50002F5761 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B26AA85D2AB84C50002F5761 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		B26AA8602AB84C50002F5761 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B26AA8622AB84C52002F5761 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B26AA8652AB84C52002F5761 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B26AA8672AB84C52002F5761 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -109,8 +105,6 @@
 				B26AA8912AB84F49002F5761 /* Combine+ */,
 				B26AA8592AB84C50002F5761 /* AppDelegate.swift */,
 				B26AA85B2AB84C50002F5761 /* SceneDelegate.swift */,
-				B26AA85D2AB84C50002F5761 /* ViewController.swift */,
-				B26AA85F2AB84C50002F5761 /* Main.storyboard */,
 				B26AA8622AB84C52002F5761 /* Assets.xcassets */,
 				B26AA8642AB84C52002F5761 /* LaunchScreen.storyboard */,
 				B26AA8672AB84C52002F5761 /* Info.plist */,
@@ -228,7 +222,6 @@
 			files = (
 				B26AA8662AB84C52002F5761 /* LaunchScreen.storyboard in Resources */,
 				B26AA8632AB84C52002F5761 /* Assets.xcassets in Resources */,
-				B26AA8612AB84C50002F5761 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,7 +240,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B26AA8952AB84FF1002F5761 /* Combine+DispatchQueue.swift in Sources */,
-				B26AA85E2AB84C50002F5761 /* ViewController.swift in Sources */,
 				B26AA85A2AB84C50002F5761 /* AppDelegate.swift in Sources */,
 				B26AA8942AB84FF1002F5761 /* Combine+HTTPClient.swift in Sources */,
 				B26AA85C2AB84C50002F5761 /* SceneDelegate.swift in Sources */,
@@ -273,14 +265,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		B26AA85F2AB84C50002F5761 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B26AA8602AB84C50002F5761 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		B26AA8642AB84C52002F5761 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
