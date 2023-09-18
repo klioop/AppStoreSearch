@@ -1,0 +1,38 @@
+{
+  "configurations" : [
+    {
+      "id" : "F2C10311-33DC-4C81-9F60-335AF8B7F33E",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:AppStoreSearchApp.xcodeproj",
+          "identifier" : "B26AA8552AB84C50002F5761",
+          "name" : "AppStoreSearchApp"
+        }
+      ]
+    },
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:AppStoreSearchApp.xcodeproj",
+      "identifier" : "B26AA8552AB84C50002F5761",
+      "name" : "AppStoreSearchApp"
+    },
+    "testExecutionOrdering" : "random"
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:AppStoreSearchApp.xcodeproj",
+        "identifier" : "B26AA86B2AB84C52002F5761",
+        "name" : "AppStoreSearchAppTests"
+      }
+    }
+  ],
+  "version" : 1
+}
