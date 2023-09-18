@@ -86,13 +86,13 @@ final class AppStoreSearchUISnapshotTests: XCTestCase {
         let termCellController0 = AppStoreRecentSearchTermCellController(
             viewModel: AppStoreRecentSearchTermViewModel(
                 isMatchedRecent: true,
-                term: "a term0"
+                term: "a matched term0"
             )
         )
         let termCellController1 = AppStoreRecentSearchTermCellController(
             viewModel: AppStoreRecentSearchTermViewModel(
                 isMatchedRecent: true,
-                term: "a term1"
+                term: "a matched term1"
             )
         )
         return [termCellController0, termCellController1].map(TableCellController.init)
