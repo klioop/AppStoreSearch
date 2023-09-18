@@ -18,6 +18,8 @@
 		B26AA88C2AB84DA6002F5761 /* AppStoreSearch.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B26AA88A2AB84DA6002F5761 /* AppStoreSearch.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B26AA88F2AB84DAA002F5761 /* AppStoreSearchiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B26AA88E2AB84DAA002F5761 /* AppStoreSearchiOS.framework */; };
 		B26AA8902AB84DAA002F5761 /* AppStoreSearchiOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B26AA88E2AB84DAA002F5761 /* AppStoreSearchiOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B26AA8942AB84FF1002F5761 /* Combine+HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26AA8922AB84FF1002F5761 /* Combine+HTTPClient.swift */; };
+		B26AA8952AB84FF1002F5761 /* Combine+DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26AA8932AB84FF1002F5761 /* Combine+DispatchQueue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,8 @@
 		B26AA8702AB84C52002F5761 /* AppStoreSearchAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreSearchAppTests.swift; sourceTree = "<group>"; };
 		B26AA88A2AB84DA6002F5761 /* AppStoreSearch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AppStoreSearch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B26AA88E2AB84DAA002F5761 /* AppStoreSearchiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AppStoreSearchiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B26AA8922AB84FF1002F5761 /* Combine+HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Combine+HTTPClient.swift"; sourceTree = "<group>"; };
+		B26AA8932AB84FF1002F5761 /* Combine+DispatchQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Combine+DispatchQueue.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,7 @@
 		B26AA8582AB84C50002F5761 /* AppStoreSearchApp */ = {
 			isa = PBXGroup;
 			children = (
+				B26AA8912AB84F49002F5761 /* Combine+ */,
 				B26AA8592AB84C50002F5761 /* AppDelegate.swift */,
 				B26AA85B2AB84C50002F5761 /* SceneDelegate.swift */,
 				B26AA85D2AB84C50002F5761 /* ViewController.swift */,
@@ -128,6 +133,15 @@
 				B26AA88A2AB84DA6002F5761 /* AppStoreSearch.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B26AA8912AB84F49002F5761 /* Combine+ */ = {
+			isa = PBXGroup;
+			children = (
+				B26AA8932AB84FF1002F5761 /* Combine+DispatchQueue.swift */,
+				B26AA8922AB84FF1002F5761 /* Combine+HTTPClient.swift */,
+			);
+			path = "Combine+";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,8 +246,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B26AA8952AB84FF1002F5761 /* Combine+DispatchQueue.swift in Sources */,
 				B26AA85E2AB84C50002F5761 /* ViewController.swift in Sources */,
 				B26AA85A2AB84C50002F5761 /* AppDelegate.swift in Sources */,
+				B26AA8942AB84FF1002F5761 /* Combine+HTTPClient.swift in Sources */,
 				B26AA85C2AB84C50002F5761 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
