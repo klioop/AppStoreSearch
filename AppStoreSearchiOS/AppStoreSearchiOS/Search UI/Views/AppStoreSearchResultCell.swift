@@ -71,37 +71,45 @@ final class AppStoreSearchResultCell: UITableViewCell {
         return button
     }()
     
-    private lazy var imageViews = (0..<3).map { _ in UIImageView() }
+    var gallery: UIView! {
+        didSet { layout() }
+    }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        [logoImageView, container, buttonContainer].forEach(contentView.addSubview)
+    }
+    
+    required init?(coder: NSCoder) { nil }
+    
+    // MARK: - Helpers
+    
+    private func layout() {
+        [logoImageView, container, buttonContainer, gallery].forEach(contentView.addSubview)
         logoImageView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(20)
-            $0.bottom.equalToSuperview().inset(20)
             $0.leading.equalToSuperview().offset(20)
             $0.width.height.equalTo(64)
         }
         container.snp.makeConstraints {
             $0.top.equalTo(logoImageView.snp.top)
             $0.leading.equalTo(logoImageView.snp.trailing).offset(10)
-            $0.bottom.equalToSuperview().inset(20)
         }
         buttonContainer.snp.makeConstraints {
             $0.centerY.equalTo(logoImageView.snp.centerY)
             $0.trailing.equalToSuperview().inset(20)
             $0.height.equalTo(30)
         }
+        gallery.snp.makeConstraints {
+            $0.top.equalTo(logoImageView.snp.bottom).offset(30)
+            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.bottom.equalToSuperview().inset(20)
+            $0.height.equalTo(180)
+        }
         logoImageView.layer.cornerRadius = 8
         logoImageView.layer.cornerCurve = .continuous
         buttonContainer.layer.cornerRadius = 30 / 2
         buttonContainer.layer.cornerCurve = .continuous
     }
-    
-    required init?(coder: NSCoder) { nil }
-    
-    // MARK: - Helpers
     
     private func label(font: UIFont, color: UIColor) -> UILabel {
         let label = UILabel()

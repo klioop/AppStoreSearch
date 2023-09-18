@@ -99,6 +99,10 @@ final class AppStoreSearchUISnapshotTests: XCTestCase {
     }
     
     private func searchResults() -> [TableCellController] {
+        let galleryCell0 = AppGalleryCellController(viewModel: anyURL())
+        let galleryCell1 = AppGalleryCellController(viewModel: anyURL())
+        let galleryCell2 = AppGalleryCellController(viewModel: anyURL())
+        let gallery = [galleryCell0, galleryCell1, galleryCell2].map(CellController.init)
         let view0 = AppStoreSearchResultCellController(
             viewModel: AppStoreSearchResultViewModel(
                 title: "a title0",
@@ -107,7 +111,8 @@ final class AppStoreSearchUISnapshotTests: XCTestCase {
                 numberOfRatingsText: "1.1만",
                 logoImage: URL(string: "https:any-url.com")!,
                 images: [URL(string: "https:any-url.com")!]
-            )
+            ),
+            galleryCellControllers: gallery
         )
         let view1 = AppStoreSearchResultCellController(
             viewModel: AppStoreSearchResultViewModel(
@@ -117,7 +122,8 @@ final class AppStoreSearchUISnapshotTests: XCTestCase {
                 numberOfRatingsText: "3.7천",
                 logoImage: URL(string: "https:any-url.com")!,
                 images: [URL(string: "https:any-url.com")!]
-            )
+            ),
+            galleryCellControllers: gallery
         )
         return [view0, view1].map(TableCellController.init)
     }
