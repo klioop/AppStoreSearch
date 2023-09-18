@@ -11,8 +11,9 @@ import AppStoreSearch
 class AppStoreSearchEndPointTests: XCTestCase {
     
     func test_appStoreSearch_endPoint() {
-        let searchTerm = "search"
-        let url = AppStoreSearchEndPoint.get(searchTerm).url()
+        let term = "a search"
+        let urlEncoded = term.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
+        let url = AppStoreSearchEndPoint.get(SearchTerm(term: term)).url()
         
         XCTAssertEqual(url.scheme, "https")
         XCTAssertEqual(url.host, "itunes.apple.com")
@@ -21,6 +22,6 @@ class AppStoreSearchEndPointTests: XCTestCase {
         XCTAssertEqual(url.query?.contains("country=kr"), true)
         XCTAssertEqual(url.query?.contains("media=software"), true)
         XCTAssertEqual(url.query?.contains("limit=20"), true)
-        XCTAssertEqual(url.query?.contains("term=\(searchTerm)"), true)
+        XCTAssertEqual(url.query?.contains("term=\(urlEncoded!)"), true)
     }
 }

@@ -8,7 +8,7 @@
 import Foundation
 
 public enum AppStoreSearchEndPoint {
-    case get(_ searchTerm: String)
+    case get(_ searchTerm: SearchTerm)
     
     private enum DefaultQueries: String, CaseIterable {
         case country
@@ -38,7 +38,7 @@ public enum AppStoreSearchEndPoint {
             let baseQueries = DefaultQueries.allCases.map {
                 URLQueryItem(name: $0.rawValue, value: $0.value)
             }
-            components.queryItems = baseQueries + [URLQueryItem(name: "term", value: term)]
+            components.queryItems = baseQueries + [URLQueryItem(name: "term", value: term.term)]
             return components.url!
         }
     }
