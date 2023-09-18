@@ -14,6 +14,10 @@
 		B26AA8632AB84C52002F5761 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B26AA8622AB84C52002F5761 /* Assets.xcassets */; };
 		B26AA8662AB84C52002F5761 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B26AA8642AB84C52002F5761 /* LaunchScreen.storyboard */; };
 		B26AA8712AB84C52002F5761 /* AppStoreSearchAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26AA8702AB84C52002F5761 /* AppStoreSearchAppTests.swift */; };
+		B26AA88B2AB84DA6002F5761 /* AppStoreSearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B26AA88A2AB84DA6002F5761 /* AppStoreSearch.framework */; };
+		B26AA88C2AB84DA6002F5761 /* AppStoreSearch.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B26AA88A2AB84DA6002F5761 /* AppStoreSearch.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B26AA88F2AB84DAA002F5761 /* AppStoreSearchiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B26AA88E2AB84DAA002F5761 /* AppStoreSearchiOS.framework */; };
+		B26AA8902AB84DAA002F5761 /* AppStoreSearchiOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B26AA88E2AB84DAA002F5761 /* AppStoreSearchiOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +30,21 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		B26AA88D2AB84DA6002F5761 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B26AA8902AB84DAA002F5761 /* AppStoreSearchiOS.framework in Embed Frameworks */,
+				B26AA88C2AB84DA6002F5761 /* AppStoreSearch.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		B26AA8562AB84C50002F5761 /* AppStoreSearchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppStoreSearchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B26AA8592AB84C50002F5761 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +56,8 @@
 		B26AA8672AB84C52002F5761 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B26AA86C2AB84C52002F5761 /* AppStoreSearchAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppStoreSearchAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B26AA8702AB84C52002F5761 /* AppStoreSearchAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreSearchAppTests.swift; sourceTree = "<group>"; };
+		B26AA88A2AB84DA6002F5761 /* AppStoreSearch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AppStoreSearch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B26AA88E2AB84DAA002F5761 /* AppStoreSearchiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AppStoreSearchiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +65,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B26AA88F2AB84DAA002F5761 /* AppStoreSearchiOS.framework in Frameworks */,
+				B26AA88B2AB84DA6002F5761 /* AppStoreSearch.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +86,7 @@
 				B26AA8582AB84C50002F5761 /* AppStoreSearchApp */,
 				B26AA86F2AB84C52002F5761 /* AppStoreSearchAppTests */,
 				B26AA8572AB84C50002F5761 /* Products */,
+				B26AA8892AB84D79002F5761 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,6 +121,15 @@
 			path = AppStoreSearchAppTests;
 			sourceTree = "<group>";
 		};
+		B26AA8892AB84D79002F5761 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B26AA88E2AB84DAA002F5761 /* AppStoreSearchiOS.framework */,
+				B26AA88A2AB84DA6002F5761 /* AppStoreSearch.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -107,6 +140,7 @@
 				B26AA8522AB84C50002F5761 /* Sources */,
 				B26AA8532AB84C50002F5761 /* Frameworks */,
 				B26AA8542AB84C50002F5761 /* Resources */,
+				B26AA88D2AB84DA6002F5761 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
