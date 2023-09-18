@@ -6,32 +6,39 @@
 //
 
 import XCTest
+import Combine
 import AppStoreSearch
 import AppStoreSearchiOS
 import AppStoreSearchApp
 
-final class AppStoreSearchUI {
-    private init() {}
-    
-    static func composedWith() -> AppStoreSearchContainerViewController {
-        let searchViewController = AppStoreSearchViewController(viewModel: AppStoreSearchPresenter.viewModel())
-        let listViewController = ListViewController()
-        let container = AppStoreSearchContainerViewController(
-            searchView: searchViewController.view(),
-            listViewController: listViewController
-        )
-        return container
-    }
-}
-
 final class AppStoreSearchUIIntegrationTests: XCTestCase {
     
-    func test_() {
-        let sut = AppStoreSearchUI.composedWith()
+    func test_viewDidLoad_rendersNoTitleAndRecentTermsOnEmptyRecentSearchTerms() {
+        let termLoader = SearchTermLoaderSpy()
+        let sut = AppStoreSearchUIComposer.composedWith(termLoader: termLoader.loadPublisher)
         let list = sut.listViewController
         
         sut.loadViewIfNeeded()
+        termLoader.loadComplete(with: [])
         
-        XCTAssertEqual(list?.tableView.numberOfSections, 0)
+        let tableView = list?.tableView
+        XCTAssertEqual(tableView?.numberOfSections, 2)
+        XCTAssertEqual(tableView?.numberOfRows(inSection: 0), 1)
+        XCTAssertEqual(tableView?.numberOfRows(inSection: 1), 0)
+    }
+    
+    private class SearchTermLoaderSpy {
+        private var searchTermRequests: [PassthroughSubject<[SearchTerm], Error>] = []
+        
+        func loadPublisher() -> AnyPublisher<[SearchTerm], Error> {
+            let subject = PassthroughSubject<[SearchTerm], Error>()
+            searchTermRequests.append(subject)
+            return subject.eraseToAnyPublisher()
+        }
+        
+        func loadComplete(with searchTerms: [SearchTerm], at index: Int = 0) {
+            searchTermRequests[index].send(searchTerms)
+            searchTermRequests[index].send(completion: .finished)
+        }
     }
 }

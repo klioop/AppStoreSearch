@@ -19,6 +19,8 @@
 		B26AA8942AB84FF1002F5761 /* Combine+HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26AA8922AB84FF1002F5761 /* Combine+HTTPClient.swift */; };
 		B26AA8952AB84FF1002F5761 /* Combine+DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26AA8932AB84FF1002F5761 /* Combine+DispatchQueue.swift */; };
 		B26AA89C2AB85AAE002F5761 /* Combine+LocalSearchTermLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26AA89B2AB85AAE002F5761 /* Combine+LocalSearchTermLoader.swift */; };
+		B26AA8A32AB8650D002F5761 /* LoadResourcePresentationAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26AA8A22AB8650D002F5761 /* LoadResourcePresentationAdapter.swift */; };
+		B26AA8B02AB86757002F5761 /* AppStoreSearchUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26AA8AF2AB86757002F5761 /* AppStoreSearchUIComposer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +62,8 @@
 		B26AA8922AB84FF1002F5761 /* Combine+HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Combine+HTTPClient.swift"; sourceTree = "<group>"; };
 		B26AA8932AB84FF1002F5761 /* Combine+DispatchQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Combine+DispatchQueue.swift"; sourceTree = "<group>"; };
 		B26AA89B2AB85AAE002F5761 /* Combine+LocalSearchTermLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Combine+LocalSearchTermLoader.swift"; sourceTree = "<group>"; };
+		B26AA8A22AB8650D002F5761 /* LoadResourcePresentationAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadResourcePresentationAdapter.swift; sourceTree = "<group>"; };
+		B26AA8AF2AB86757002F5761 /* AppStoreSearchUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreSearchUIComposer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,8 @@
 				B26AA8962AB85318002F5761 /* Supporting */,
 				B26AA8592AB84C50002F5761 /* AppDelegate.swift */,
 				B26AA85B2AB84C50002F5761 /* SceneDelegate.swift */,
+				B26AA8A22AB8650D002F5761 /* LoadResourcePresentationAdapter.swift */,
+				B26AA8AF2AB86757002F5761 /* AppStoreSearchUIComposer.swift */,
 			);
 			path = AppStoreSearchApp;
 			sourceTree = "<group>";
@@ -250,11 +256,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B26AA8B02AB86757002F5761 /* AppStoreSearchUIComposer.swift in Sources */,
 				B26AA8952AB84FF1002F5761 /* Combine+DispatchQueue.swift in Sources */,
 				B26AA89C2AB85AAE002F5761 /* Combine+LocalSearchTermLoader.swift in Sources */,
 				B26AA85A2AB84C50002F5761 /* AppDelegate.swift in Sources */,
 				B26AA8942AB84FF1002F5761 /* Combine+HTTPClient.swift in Sources */,
 				B26AA85C2AB84C50002F5761 /* SceneDelegate.swift in Sources */,
+				B26AA8A32AB8650D002F5761 /* LoadResourcePresentationAdapter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

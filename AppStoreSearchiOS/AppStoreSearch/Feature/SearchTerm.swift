@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct SearchTerm: Equatable {
+public struct SearchTerm: Equatable, Hashable {
     public let term: String
     
     public init(term: String) {
