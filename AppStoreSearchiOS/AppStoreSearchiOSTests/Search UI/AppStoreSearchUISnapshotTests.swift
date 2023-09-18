@@ -101,8 +101,8 @@ final class AppStoreSearchUISnapshotTests: XCTestCase {
     private func searchResults() -> [TableCellController] {
         let view0 = AppStoreSearchResultCellController(
             viewModel: AppStoreSearchResultViewModel(
-                title: "a title",
-                description: "a description",
+                title: "a title0",
+                seller: "a seller0",
                 ratings: (3, 0.44),
                 numberOfRatingsText: "1.1만",
                 logoImage: URL(string: "https:any-url.com")!,
@@ -111,8 +111,8 @@ final class AppStoreSearchUISnapshotTests: XCTestCase {
         )
         let view1 = AppStoreSearchResultCellController(
             viewModel: AppStoreSearchResultViewModel(
-                title: "a title",
-                description: "a description",
+                title: "a title1",
+                seller: "a seller1",
                 ratings: (4, 0.44),
                 numberOfRatingsText: "3.7천",
                 logoImage: URL(string: "https:any-url.com")!,

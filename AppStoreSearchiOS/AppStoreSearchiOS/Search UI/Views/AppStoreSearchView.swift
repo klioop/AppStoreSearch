@@ -30,6 +30,7 @@ public final class AppStoreSearchView: UIView {
         let search = UISearchBar()
         search.searchBarStyle = .minimal
         search.delegate = self
+        search.searchTextField.clearButtonMode = .whileEditing
         return search
     }()
     

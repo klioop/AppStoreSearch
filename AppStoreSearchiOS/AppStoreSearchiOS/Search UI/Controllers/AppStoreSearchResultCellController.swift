@@ -28,7 +28,7 @@ public final class AppStoreSearchResultCellController: NSObject, UITableViewData
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         self.cell = tableView.dequeueReusableCell()
         cell?.title = viewModel.title
-        cell?.descriptionText = viewModel.description
+        cell?.seller = viewModel.seller
         cell?.ratings = viewModel.ratings
         cell?.numberOfRatings = viewModel.numberOfRatingsText
         return cell!

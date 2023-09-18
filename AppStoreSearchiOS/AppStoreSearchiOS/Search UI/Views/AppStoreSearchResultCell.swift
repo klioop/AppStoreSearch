@@ -15,9 +15,9 @@ final class AppStoreSearchResultCell: UITableViewCell {
         set { titleLabel.text = newValue }
     }
     
-    var descriptionText: String {
-        get { descriptionLabel.text ?? "" }
-        set { descriptionLabel.text = newValue }
+    var seller: String {
+        get { sellerLabel.text ?? "" }
+        set { sellerLabel.text = newValue }
     }
     
     var ratings: (int: Int, decimal: CGFloat) {
@@ -40,7 +40,7 @@ final class AppStoreSearchResultCell: UITableViewCell {
         let stack = UIStackView()
         stack.axis = .vertical
         stack.spacing = 6
-        [titleLabel, descriptionLabel, ratingsView].forEach(stack.addArrangedSubview)
+        [titleLabel, sellerLabel, ratingsView].forEach(stack.addArrangedSubview)
         return stack
     }()
     
@@ -48,7 +48,7 @@ final class AppStoreSearchResultCell: UITableViewCell {
         font: .systemFont(ofSize: 14, weight: .medium),
         color: .label
     )
-    private lazy var descriptionLabel = label(
+    private lazy var sellerLabel = label(
         font: .systemFont(ofSize: 14, weight: .regular),
         color: .secondaryLabel
     )
