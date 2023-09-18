@@ -31,7 +31,7 @@ public final class LocalSearchTermLoader {
         }
     }
     
-    public func load(completion: @escaping (Result<[LocalSearchTerm], Error>) -> Void) {
+    public func load(completion: @escaping (Result<[SearchTerm], Error>) -> Void) {
         store.retrieve { [weak self] result in
             guard self != nil else { return }
             
@@ -40,6 +40,8 @@ public final class LocalSearchTermLoader {
                     switch result {
                     case let .success(terms):
                         return terms
+                            .map(\.term)
+                            .map(SearchTerm.init)
 
                     case let .failure(error):
                         throw error

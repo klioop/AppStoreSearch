@@ -36,10 +36,19 @@ class LoadLocalSearchTermUseCasesTests: XCTestCase {
     
     func test_load_deliversSearchTermsOnRetrievalSuccess() {
         let (sut, store) = makeSUT()
-        let expectedTerms = [makeLocalTerm(term: "term0"), makeLocalTerm(term: "term1")]
+        let termLiteral0 = "term0"
+        let termLiteral1 = "term1"
+        let localTerms = [
+            makeLocalTerm(termLiteral0),
+            makeLocalTerm(termLiteral1)
+        ]
+        let expectedTerms = [
+            makeSearchTerm(termLiteral0),
+            makeSearchTerm(termLiteral1)
+        ]
         
         expect(sut, toCompletedWith: .success(expectedTerms), when: {
-            store.completeRetrieval(with: expectedTerms)
+            store.completeRetrieval(with: localTerms)
         })
     }
     
@@ -47,7 +56,7 @@ class LoadLocalSearchTermUseCasesTests: XCTestCase {
         let store = SearchTermStoreSpy()
         var sut: LocalSearchTermLoader? = LocalSearchTermLoader(store: store)
         
-        var receivedResults = [Result<[LocalSearchTerm], Error>]()
+        var receivedResults = [Result<[SearchTerm], Error>]()
         sut?.load { receivedResults.append($0) }
         sut = nil
         store.completeRetrieval()
@@ -65,7 +74,7 @@ class LoadLocalSearchTermUseCasesTests: XCTestCase {
         return (sut, store)
     }
     
-    private func expect(_ sut: LocalSearchTermLoader, toCompletedWith expectedResult: Result<[LocalSearchTerm], Error>, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
+    private func expect(_ sut: LocalSearchTermLoader, toCompletedWith expectedResult: Result<[SearchTerm], Error>, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
         let exp = expectation(description: "a wait for load completion")
         
         sut.load { receivedResult in
@@ -84,5 +93,9 @@ class LoadLocalSearchTermUseCasesTests: XCTestCase {
         
         action()
         wait(for: [exp], timeout: 1.0)
+    }
+    
+    private func makeSearchTerm(_ term: String = "any term") -> SearchTerm {
+        SearchTerm(term: term)
     }
 }

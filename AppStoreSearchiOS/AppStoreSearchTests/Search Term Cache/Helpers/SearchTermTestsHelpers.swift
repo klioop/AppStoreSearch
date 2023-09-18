@@ -8,7 +8,7 @@
 import Foundation
 import AppStoreSearch
 
-func makeLocalTerm(term: String = "a term") -> LocalSearchTerm {
+func makeLocalTerm(_ term: String = "a term") -> LocalSearchTerm {
     LocalSearchTerm(term: term)
 }
 
