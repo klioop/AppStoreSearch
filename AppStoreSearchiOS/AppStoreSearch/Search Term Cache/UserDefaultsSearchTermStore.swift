@@ -20,14 +20,24 @@ public final class UserDefaultsSearchTermStore: SearchTermStore {
     }
     
     public func insert(_ term: LocalSearchTerm, completion: @escaping (InsertionResult) -> Void) {
-        guard !(terms().contains { $0 == term.term }) else { return }
+        completion(
+            InsertionResult {
+                guard isNotExist(term) else { return }
+                
+            }
+        )
     }
     
     public func retrieve(completion: @escaping (RetrievalResult) -> Void) {
-        completion(.success(terms().map(LocalSearchTerm.init)))
+        let terms = terms().map(LocalSearchTerm.init)
+        completion(.success(terms))
     }
     
     // MARK: - Helpers
+    
+    private func isNotExist(_ term: LocalSearchTerm) -> Bool {
+        !terms().contains { $0 == term.term }
+    }
     
     private func terms() -> [String] {
         defaults.stringArray(forKey: key) ?? []
