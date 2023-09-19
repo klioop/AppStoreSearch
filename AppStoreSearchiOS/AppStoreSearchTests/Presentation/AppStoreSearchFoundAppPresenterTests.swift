@@ -6,50 +6,14 @@
 //
 
 import XCTest
-import AppStoreSearch
-
-extension Double {
-    var formatted: String {
-        switch self {
-        case ..<1_000:
-            return String(Int(self))
-            
-        case 1_000 ..< 10_000:
-            return String(format: "%.1f천", locale: Locale.current, self / 1_000)
-            
-        default:
-            return String(format: "%.1f만", locale: Locale.current, self / 10_000)
-        }
-    }
-}
-
-public final class AppStoreSearchFoundAppPresenter {
-    
-    public static func map(_ app: App) -> AppStoreSearchResultViewModel {
-        return AppStoreSearchResultViewModel(
-            title: app.title,
-            seller: app.seller,
-            ratings: map(app.rating),
-            numberOfRatingsText: Double(app.numberOfRatings).formatted,
-            logoImage: app.logo
-        )
-    }
-    
-    // MARK: - Helpers
-    
-    private static func map(_ rating: Double) -> (int: Int, decimal: CGFloat) {
-        let int = Int(rating)
-        let decimal = rating.truncatingRemainder(dividingBy: Double(int))
-        return (int, decimal)
-    }
-}
+@testable import AppStoreSearch
 
 final class AppStoreSearchFoundAppPresenterTests: XCTestCase {
     
     func test_map_AppStoreSearchResultViewModel() {
         let app = makeAnyApp()
         let viewModel = AppStoreSearchFoundAppPresenter.map(app)
-        let formattedNumberOfRatings = Double(app.numberOfRatings).formatted
+        let formattedNumberOfRatings = Double(app.numberOfRatings).formattedText
         let convertedRating = convert(app.rating)
         
         XCTAssertEqual(app.title, viewModel.title)
