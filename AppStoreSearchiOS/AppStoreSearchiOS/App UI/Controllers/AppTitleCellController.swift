@@ -23,7 +23,7 @@ public final class AppTitleCellController: NSObject, UITableViewDataSource, UITa
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = AppTitleCell()
         cell.title = viewModel.title
-        cell.descriptionText = viewModel.description
+        cell.descriptionText = viewModel.seller
         return cell
     }
 }

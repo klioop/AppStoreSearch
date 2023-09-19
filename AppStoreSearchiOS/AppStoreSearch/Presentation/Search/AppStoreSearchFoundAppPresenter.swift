@@ -13,14 +13,34 @@ public final class AppStoreSearchFoundAppPresenter {
         AppStoreSearchResultViewModel(
             title: app.title,
             seller: app.seller,
-            ratings: map(app.rating),
+            ratings: convert(app.rating),
             numberOfRatingsText: Double(app.numberOfRatings).formattedText
+        )
+    }
+    
+    public static func map(_ app: App) -> AppDescriptionViewModel {
+        AppDescriptionViewModel(
+            ratingText: ratingText(from: app.rating),
+            numberOfRatingText: Double(app.numberOfRatings).formattedText + "개의 평가",
+            rating: convert(app.rating),
+            genre: app.genre,
+            genreDescription: "장르",
+            ageText: app.age,
+            ageDescription: "연령"
         )
     }
     
     // MARK: - Helpers
     
-    private static func map(_ rating: Double) -> (int: Int, decimal: CGFloat) {
+    private static func ratingText(from rating: Double) -> String {
+        let formatted = String(format: "%.1f", rating)
+        let separated = formatted.components(separatedBy: ".")
+        
+        guard separated.count == 2 else { return "\(Int(rating))"}
+        return formatted
+    }
+    
+    private static func convert(_ rating: Double) -> (int: Int, decimal: CGFloat) {
         let formatted = String(format: "%.2f", rating)
         let separated = formatted.components(separatedBy: ".")
         let int = (Int(separated[0]) ?? 0)

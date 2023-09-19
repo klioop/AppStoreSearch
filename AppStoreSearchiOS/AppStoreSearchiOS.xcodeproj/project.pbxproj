@@ -65,6 +65,7 @@
 		B26AA8B22AB86F14002F5761 /* AppStoreRecentSearchTermPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26AA8B12AB86F14002F5761 /* AppStoreRecentSearchTermPresenterTests.swift */; };
 		B26AA8B42AB8701C002F5761 /* AppStoreRecentSearchTermPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26AA8B32AB8701C002F5761 /* AppStoreRecentSearchTermPresenter.swift */; };
 		B26AA8BB2AB88C81002F5761 /* AppGalleryOnSearchLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26AA8BA2AB88C81002F5761 /* AppGalleryOnSearchLayout.swift */; };
+		B2783E972AB9F6E200493F4F /* AppNewFeaturePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2783E962AB9F6E200493F4F /* AppNewFeaturePresenter.swift */; };
 		B2A3B66F2AB55898007B1B75 /* AppStoreSearchiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2A3B6662AB55898007B1B75 /* AppStoreSearchiOS.framework */; };
 		B2A3B6802AB55B47007B1B75 /* AppStoreSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3B67F2AB55B47007B1B75 /* AppStoreSearchView.swift */; };
 		B2A3B6832AB55B7B007B1B75 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B2A3B6822AB55B7B007B1B75 /* SnapKit */; };
@@ -201,6 +202,7 @@
 		B26AA8B12AB86F14002F5761 /* AppStoreRecentSearchTermPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreRecentSearchTermPresenterTests.swift; sourceTree = "<group>"; };
 		B26AA8B32AB8701C002F5761 /* AppStoreRecentSearchTermPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreRecentSearchTermPresenter.swift; sourceTree = "<group>"; };
 		B26AA8BA2AB88C81002F5761 /* AppGalleryOnSearchLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGalleryOnSearchLayout.swift; sourceTree = "<group>"; };
+		B2783E962AB9F6E200493F4F /* AppNewFeaturePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNewFeaturePresenter.swift; sourceTree = "<group>"; };
 		B2A3B6662AB55898007B1B75 /* AppStoreSearchiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppStoreSearchiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2A3B66E2AB55898007B1B75 /* AppStoreSearchiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppStoreSearchiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2A3B67F2AB55B47007B1B75 /* AppStoreSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreSearchView.swift; sourceTree = "<group>"; };
@@ -347,6 +349,7 @@
 				B23A6ADE2AB69237006067F7 /* AppTitleViewModel.swift */,
 				B23A6AF42AB6A829006067F7 /* AppDescriptionViewModel.swift */,
 				B23A6AFE2AB6B301006067F7 /* AppNewFeatureViewModel.swift */,
+				B2783E962AB9F6E200493F4F /* AppNewFeaturePresenter.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -371,9 +374,9 @@
 		B23A6AEC2AB69C2F006067F7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B23A6AE72AB69488006067F7 /* AppContainerViewController.swift */,
 				B23A6ADA2AB691B4006067F7 /* AppTitleCellController.swift */,
 				B23A6AE22AB693CE006067F7 /* AppHeaderViewController.swift */,
-				B23A6AE72AB69488006067F7 /* AppContainerViewController.swift */,
 				B23A6AF22AB6A694006067F7 /* AppDescriptionCellController.swift */,
 				B23A6AFC2AB6B179006067F7 /* AppNewFeatureCellController.swift */,
 				B23A6B0D2AB6CE2E006067F7 /* AppGalleryCellController.swift */,
@@ -863,6 +866,7 @@
 			files = (
 				B26AA8A62AB8656F002F5761 /* LoadResourcePresenter.swift in Sources */,
 				B23A6B3D2AB6F33D006067F7 /* AppStoreSearchResultViewModel.swift in Sources */,
+				B2783E972AB9F6E200493F4F /* AppNewFeaturePresenter.swift in Sources */,
 				B26AA8A12AB85E80002F5761 /* AppStoreSearchPresenter.swift in Sources */,
 				B2C62CAC2AB9799C00944326 /* Double+formatted.swift in Sources */,
 				B2F15B282AB71A4800158D5A /* LocalSearchTerm.swift in Sources */,

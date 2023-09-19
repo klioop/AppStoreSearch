@@ -27,6 +27,7 @@
 		B26AA8B62AB87118002F5761 /* RecentSearchTermViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26AA8B52AB87118002F5761 /* RecentSearchTermViewAdapter.swift */; };
 		B26AA8B92AB873B9002F5761 /* XCTest+trackMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26AA8B82AB873B9002F5761 /* XCTest+trackMemory.swift */; };
 		B26AA8BD2AB94D70002F5761 /* MatchedSearchTermsViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26AA8BC2AB94D70002F5761 /* MatchedSearchTermsViewAdapter.swift */; };
+		B2783E952AB9F07900493F4F /* AppUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2783E942AB9F07900493F4F /* AppUIComposer.swift */; };
 		B2C62CA52AB963A700944326 /* AppsFoundViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C62CA42AB963A700944326 /* AppsFoundViewAdapter.swift */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +78,7 @@
 		B26AA8B52AB87118002F5761 /* RecentSearchTermViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchTermViewAdapter.swift; sourceTree = "<group>"; };
 		B26AA8B82AB873B9002F5761 /* XCTest+trackMemory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTest+trackMemory.swift"; sourceTree = "<group>"; };
 		B26AA8BC2AB94D70002F5761 /* MatchedSearchTermsViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchedSearchTermsViewAdapter.swift; sourceTree = "<group>"; };
+		B2783E942AB9F07900493F4F /* AppUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUIComposer.swift; sourceTree = "<group>"; };
 		B2C62CA42AB963A700944326 /* AppsFoundViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsFoundViewAdapter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -180,6 +182,7 @@
 				B2C62CA42AB963A700944326 /* AppsFoundViewAdapter.swift */,
 				B242D7B72AB98FE7001195BF /* WeakRefVirtualProxy.swift */,
 				B242D7B92AB99DED001195BF /* UIImage+tryMake.swift */,
+				B2783E942AB9F07900493F4F /* AppUIComposer.swift */,
 			);
 			path = Composition;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				B2C62CA52AB963A700944326 /* AppsFoundViewAdapter.swift in Sources */,
 				B242D7B82AB98FE7001195BF /* WeakRefVirtualProxy.swift in Sources */,
 				B26AA85C2AB84C50002F5761 /* SceneDelegate.swift in Sources */,
+				B2783E952AB9F07900493F4F /* AppUIComposer.swift in Sources */,
 				B242D7BA2AB99DED001195BF /* UIImage+tryMake.swift in Sources */,
 				B242D7BE2AB9BDB4001195BF /* Combine+logRequest.swift in Sources */,
 				B26AA8BD2AB94D70002F5761 /* MatchedSearchTermsViewAdapter.swift in Sources */,

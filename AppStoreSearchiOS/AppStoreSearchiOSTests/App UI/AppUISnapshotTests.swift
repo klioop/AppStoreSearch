@@ -16,8 +16,7 @@ final class AppUISnapshotTests: XCTestCase {
         let title = AppTitleCellController(
             viewModel: AppTitleViewModel(
                 title: "a title",
-                description: "a description",
-                logoImage: anyURL()
+                seller: "a description"
             )
         )
         let description = AppDescriptionCellController(
@@ -25,8 +24,8 @@ final class AppUISnapshotTests: XCTestCase {
                 ratingText: "3.4",
                 numberOfRatingText: "1.1만개의 평가",
                 rating: (3, 0.43),
-                rankingText: "#4",
-                rankDescription: "rank",
+                genre: "finance",
+                genreDescription: "genre",
                 ageText: "4+",
                 ageDescription: "age"
             )

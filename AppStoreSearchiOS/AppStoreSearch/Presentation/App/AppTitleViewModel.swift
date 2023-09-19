@@ -9,12 +9,10 @@ import Foundation
 
 public struct AppTitleViewModel {
     public let title: String
-    public let description: String
-    public let logoImage: URL
+    public let seller: String
     
-    public init(title: String, description: String, logoImage: URL) {
+    public init(title: String, seller: String) {
         self.title = title
-        self.description = description
-        self.logoImage = logoImage
+        self.seller = seller
     }
 }
