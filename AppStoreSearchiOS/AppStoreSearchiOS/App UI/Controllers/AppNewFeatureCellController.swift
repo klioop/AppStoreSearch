@@ -26,6 +26,10 @@ public final class AppNewFeatureCellController: NSObject, UITableViewDataSource,
         cell.version = viewModel.version
         cell.firstDescription = viewModel.firstDescription
         cell.secondDescription = viewModel.secondDescription
+        cell.onTap = {
+            tableView.beginUpdates()
+            tableView.endUpdates()
+        }
         return cell
     }
 }

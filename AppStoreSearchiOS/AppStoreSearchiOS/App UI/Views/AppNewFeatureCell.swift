@@ -67,6 +67,13 @@ final class AppNewFeatureCell: UITableViewCell {
         lines: 0
     )
     
+    private lazy var buttonContainer: UIStackView = {
+        let stack = UIStackView()
+        button.snp.makeConstraints { $0.height.equalTo(24) }
+        stack.addArrangedSubview(button)
+        return stack
+    }()
+    
     private lazy var button: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("더 보기", for: .normal)
@@ -77,7 +84,7 @@ final class AppNewFeatureCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        [container, descriptionContainer, button].forEach(contentView.addSubview)
+        [container, descriptionContainer, buttonContainer].forEach(contentView.addSubview)
         container.snp.makeConstraints {
             $0.top.equalToSuperview().offset(16)
             $0.leading.equalToSuperview().offset(16)
@@ -86,12 +93,12 @@ final class AppNewFeatureCell: UITableViewCell {
             $0.top.equalTo(container.snp.bottom).offset(10)
             $0.horizontalEdges.equalToSuperview().inset(16)
         }
-        button.snp.makeConstraints {
+        buttonContainer.snp.makeConstraints {
             $0.top.equalTo(descriptionContainer.snp.bottom)
-            $0.trailing.equalToSuperview().inset(16)
+            $0.trailing.equalToSuperview().inset(20)
             $0.bottom.equalToSuperview().inset(26)
-            $0.height.equalTo(24)
         }
+        
         descriptionLabel1.isHidden = true
     }
     
@@ -110,6 +117,8 @@ final class AppNewFeatureCell: UITableViewCell {
     }
     
     @objc private func didTap() {
+        self.descriptionLabel1.isHidden = false
+        self.button.isHidden = true
         onTap?()
     }
 }
