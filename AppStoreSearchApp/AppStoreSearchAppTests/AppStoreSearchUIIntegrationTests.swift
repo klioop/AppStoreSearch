@@ -88,13 +88,10 @@ final class AppStoreSearchUIIntegrationTests: XCTestCase {
         appsLoader.loadComplete(with: [app0, app1])
         XCTAssertEqual(appsLoader.requestedURLs, [], "첫번째 앱이 화면에 보이기 전에는 로고이미지를 요청하지 않는다")
         
-        let ds = list.tableView.dataSource
-        let indexPath0 = IndexPath(row: 0, section: appsFoundSection)
-        let view0 = ds?.tableView(list.tableView, cellForRowAt: indexPath0) as? AppStoreSearchResultCell
+        list.simulateAppViewVisible(in: 0)
         XCTAssertEqual(appsLoader.requestedURLs, [app0.logo], "첫 번째 앱이 화면에 보이면 로고이미지를 한 번 요청한다")
         
-        let indexPath1 = IndexPath(row: 1, section: appsFoundSection)
-        let view1 = ds?.tableView(list.tableView, cellForRowAt: indexPath1) as? AppStoreSearchResultCell
+        list.simulateAppViewVisible(in: 1)
         XCTAssertEqual(appsLoader.requestedURLs, [app0.logo, app1.logo], "두 번째 앱이 화면에 보이면 로고이미지를 두 번 요청한다")
     }
     
@@ -229,5 +226,17 @@ extension AppStoreSearchContainerViewController {
 extension ListViewController {
     func numberOfViews(in section: Int) -> Int {
         tableView.numberOfRows(inSection: section)
+    }
+    
+    @discardableResult
+    func simulateAppViewVisible(in row: Int, section: Int = appsFoundSection) -> AppStoreSearchResultCell? {
+        cell(in: row) as? AppStoreSearchResultCell
+    }
+    
+    
+    func cell(in row: Int, section: Int = appsFoundSection) -> UITableViewCell? {
+        let ds = tableView.dataSource
+        let indexPath0 = IndexPath(row: row, section: section)
+        return ds?.tableView(tableView, cellForRowAt: indexPath0)
     }
 }
