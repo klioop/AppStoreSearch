@@ -51,4 +51,3 @@ final class LoadResourcePresentationAdapter<RequiredInfo, Resource, View: Resour
             )
     }
 }
-

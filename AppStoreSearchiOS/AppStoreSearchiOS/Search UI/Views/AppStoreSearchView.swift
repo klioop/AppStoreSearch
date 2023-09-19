@@ -64,6 +64,41 @@ public final class AppStoreSearchView: UIView {
     }
     
     public required init?(coder: NSCoder) { nil }
+    
+    public var onTapSearch: ((String) -> Void)?
+    public var onTextChange: ((String) -> Void)?
+    public var onTapCancel: (() -> Void)?
 }
 
-extension AppStoreSearchView: UISearchBarDelegate {}
+extension AppStoreSearchView: UISearchBarDelegate {
+    public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        hiddenCancelButtonAndKeyboard()
+        onTapSearch?(searchBar.text ?? "")
+    }
+    
+    public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        hiddenCancelButtonAndKeyboard()
+    }
+    
+    public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        onTextChange?(searchBar.text ?? "")
+        hiddenCancelButton(upon: searchBar.text)
+    }
+    
+    public func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        hiddenCancelButton(upon: searchBar.text)
+    }
+    
+    // MARK: - Helpers
+    
+    private func hiddenCancelButtonAndKeyboard() {
+        searchBar.resignFirstResponder()
+        searchBar.showsCancelButton = false
+    }
+    
+    private func hiddenCancelButton(upon searchTerm: String?) {
+        guard let term = searchBar.text else { return }
+        searchBar.showsCancelButton = !term.isEmpty
+    }
+}

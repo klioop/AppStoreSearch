@@ -25,13 +25,29 @@ final class AppStoreSearchUIIntegrationTests: XCTestCase {
     
     func test_viewDidLoad_rendersTitleAndRecentTermsOnNonEmptyRecentSearchTerms() {
         let (sut, list, termsLoader) = makeSUT()
-        let terms = [makeTerm("term0"), makeTerm("term1")]
+        let recentTerms = [makeTerm("term0"), makeTerm("term1")]
         
         sut.loadViewIfNeeded()
-        termsLoader.loadComplete(with: terms)
+        termsLoader.loadComplete(with: recentTerms)
         
         XCTAssertEqual(list.numberOfViews(in: recentTitleSection), 1)
-        XCTAssertEqual(list.numberOfViews(in: recentTermsSection), terms.count)
+        XCTAssertEqual(list.numberOfViews(in: recentTermsSection), recentTerms.count)
+    }
+    
+    func test_viewDidLoad_rendersMatchedTermsWhenSearchBarTextChanged() {
+        let (sut, list, termsLoader) = makeSUT()
+        let recentTerms = [makeTerm("any"), makeTerm("matched0"), makeTerm("matched1")]
+        let matchedTerms = [makeTerm("matched0"), makeTerm("matched1")]
+        sut.loadViewIfNeeded()
+        termsLoader.loadComplete(with: recentTerms, at: 0)
+        
+        XCTAssertEqual(list.numberOfViews(in: recentTitleSection), 1)
+        XCTAssertEqual(list.numberOfViews(in: recentTermsSection), recentTerms.count)
+        
+        sut.searchView.onTextChange?("match")
+        termsLoader.loadComplete(with: matchedTerms, at: 1)
+        
+        XCTAssertEqual(list.numberOfViews(in: matchedTermsSection), matchedTerms.count)
     }
     
     // MARK: - Helpers
@@ -42,10 +58,16 @@ final class AppStoreSearchUIIntegrationTests: XCTestCase {
     ) -> (
         sut: AppStoreSearchContainerViewController,
         list: ListViewController,
-        termsLoader: SearchTermLoaderSpy
+        termsLoader: SearchTermsLoaderSpy
     ) {
-        let termsLoader = SearchTermLoaderSpy()
-        let sut = AppStoreSearchUIComposer.composedWith(termLoader: termsLoader.loadPublisher)
+        let termsLoader = SearchTermsLoaderSpy()
+        let appsLoader = AppsLoaderSpy()
+        let sut = AppStoreSearchUIComposer.composedWith(
+            recentTermsLoader:
+                termsLoader.loadPublisher,
+            matchedTermsLoader: termsLoader.loadPublisher(containing:),
+            appsLoader: appsLoader.loadPublisher
+        )
         let list = sut.listViewController!
         trackMemoryLeak(termsLoader, file: file, line: line)
         trackMemoryLeak(sut, file: file, line: line)
@@ -53,10 +75,16 @@ final class AppStoreSearchUIIntegrationTests: XCTestCase {
         return (sut, list, termsLoader)
     }
     
-    private class SearchTermLoaderSpy {
+    private class SearchTermsLoaderSpy {
         private var searchTermRequests: [PassthroughSubject<[SearchTerm], Error>] = []
         
         func loadPublisher() -> AnyPublisher<[SearchTerm], Error> {
+            let subject = PassthroughSubject<[SearchTerm], Error>()
+            searchTermRequests.append(subject)
+            return subject.eraseToAnyPublisher()
+        }
+        
+        func loadPublisher(containing searchTerm: SearchTerm) -> AnyPublisher<[SearchTerm], Error> {
             let subject = PassthroughSubject<[SearchTerm], Error>()
             searchTermRequests.append(subject)
             return subject.eraseToAnyPublisher()
@@ -68,6 +96,21 @@ final class AppStoreSearchUIIntegrationTests: XCTestCase {
         }
     }
     
+    private class AppsLoaderSpy {
+        private var appsRequests: [PassthroughSubject<[App], Error>] = []
+        
+        func loadPublisher(for searchTerm: SearchTerm) -> AnyPublisher<[App], Error> {
+            let subject = PassthroughSubject<[App], Error>()
+            appsRequests.append(subject)
+            return subject.eraseToAnyPublisher()
+        }
+        
+        func loadComplete(with apps: [App], at index: Int = 0) {
+            appsRequests[index].send(apps)
+            appsRequests[index].send(completion: .finished)
+        }
+    }
+    
     private func makeTerm(_ term: String) -> SearchTerm {
         SearchTerm(term: term)
     }
@@ -75,6 +118,7 @@ final class AppStoreSearchUIIntegrationTests: XCTestCase {
 
 var recentTitleSection: Int { 0 }
 var recentTermsSection: Int { 1 }
+var matchedTermsSection: Int { 0 }
 
 extension ListViewController {
     func numberOfViews(in section: Int) -> Int {
