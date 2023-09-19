@@ -15,7 +15,7 @@ final class AppStoreSearchResultRatingView: UIView {
         set { countLabel.text = newValue }
     }
     
-    var ratings: (int: Int, decimal: CGFloat) = (5, 0.0) {
+    var ratings: (int: Int, decimal: CGFloat) = (1, 0.0) {
         didSet { update(ratings) }
     }
     

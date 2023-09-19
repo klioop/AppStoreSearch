@@ -31,6 +31,7 @@ public final class AppGalleryCell: UICollectionViewCell {
         imageContainer.snp.makeConstraints { $0.edges.equalToSuperview() }
         imageContainer.layer.cornerRadius = 16
         imageContainer.layer.cornerCurve = .continuous
+        imageContainer.layer.masksToBounds = true
     }
     
     required init?(coder: NSCoder) { nil }

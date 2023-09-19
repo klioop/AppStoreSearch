@@ -22,7 +22,13 @@ public final class AppStoreSearchResultCell: UITableViewCell {
     
     var ratings: (int: Int, decimal: CGFloat) {
         get { ratingsView.ratings }
-        set { ratingsView.ratings = newValue }
+        set {
+            let shouldShowRatingView = newValue.decimal > 0.0
+            ratingsView.isHidden = !shouldShowRatingView
+            
+            guard shouldShowRatingView else { return }
+            ratingsView.ratings = newValue
+        }
     }
     
     var numberOfRatings: String {
@@ -38,7 +44,11 @@ public final class AppStoreSearchResultCell: UITableViewCell {
         return view
     }()
     
-    private(set) lazy var logoImageView = UIImageView()
+    private(set) lazy var logoImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+    }()
     
     private lazy var container: UIStackView = {
         let stack = UIStackView()
@@ -62,16 +72,19 @@ public final class AppStoreSearchResultCell: UITableViewCell {
         let view = UIView()
         view.backgroundColor = .systemGray5
         view.addSubview(button)
-        button.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.horizontalEdges.equalToSuperview().inset(16)
-        }
+        button.snp.makeConstraints { $0.center.equalToSuperview() }
         return view
     }()
     
     private lazy var button: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("받기", for: .normal)
+        let attributed = NSAttributedString(
+            string: "받기",
+            attributes: [
+                .font: UIFont.systemFont(ofSize: 14, weight: .bold)
+            ]
+        )
+        button.setAttributedTitle(attributed, for: .normal)
         return button
     }()
     
@@ -102,27 +115,31 @@ public final class AppStoreSearchResultCell: UITableViewCell {
         }
         container.snp.makeConstraints {
             $0.top.equalTo(logoImageView.snp.top)
-            $0.leading.equalTo(logoImageView.snp.trailing).offset(10)
+            $0.leading.equalTo(logoContainer.snp.trailing).offset(10)
+            $0.trailing.equalTo(buttonContainer.snp.leading).inset(-10)
         }
         buttonContainer.snp.makeConstraints {
-            $0.centerY.equalTo(logoImageView.snp.centerY)
+            $0.centerY.equalTo(logoContainer.snp.centerY)
             $0.trailing.equalToSuperview().inset(20)
+            $0.width.equalTo(50)
             $0.height.equalTo(30)
         }
         gallery.snp.makeConstraints {
-            $0.top.equalTo(logoImageView.snp.bottom).offset(30)
+            $0.top.equalTo(logoContainer.snp.bottom).offset(30)
             $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.bottom.equalToSuperview().inset(20)
+            $0.bottom.equalToSuperview().inset(20).priority(999)
             $0.height.equalTo(180)
         }
         logoContainer.layer.cornerRadius = 8
         logoContainer.layer.cornerCurve = .continuous
+        logoContainer.layer.masksToBounds = true
         buttonContainer.layer.cornerRadius = 30 / 2
         buttonContainer.layer.cornerCurve = .continuous
     }
     
     private func label(font: UIFont, color: UIColor) -> UILabel {
         let label = UILabel()
+        label.adjustsFontSizeToFitWidth = true
         label.font = font
         label.textColor = color
         return label
