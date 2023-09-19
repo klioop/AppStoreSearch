@@ -10,27 +10,6 @@ import Combine
 import AppStoreSearch
 import AppStoreSearchiOS
 
-final class MatchedSearchTermsViewAdapter: ResourceView {
-    
-    private weak var controller: ListViewController?
-    
-    init(controller: ListViewController) {
-        self.controller = controller
-    }
-    
-    func display(_ viewModel: [SearchTerm]) {
-        let cellControllers = viewModel.map { term -> (SearchTerm, AppStoreRecentSearchTermCellController) in
-            (
-                term,
-                AppStoreRecentSearchTermCellController(viewModel: AppStoreRecentSearchTermViewModel(isMatchedRecent: true, term: term.term))
-            )
-        }
-            .map(TableCellController.init)
-        
-        controller?.display(cellControllers)
-    }
-}
-
 final class AppsViewAdapter: ResourceView {
     
     private weak var controller: ListViewController?
