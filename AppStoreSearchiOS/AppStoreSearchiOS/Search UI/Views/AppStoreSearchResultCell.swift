@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class AppStoreSearchResultCell: UITableViewCell {
+public final class AppStoreSearchResultCell: UITableViewCell {
     
     var title: String {
         get { titleLabel.text ?? "" }

@@ -60,8 +60,8 @@ final class AppStoreSearchUIIntegrationTests: XCTestCase {
         var termsSearched = [SearchTerm]()
         let (sut, list, termsLoader, appsLoader) = makeSUT { termsSearched.append($0) }
         let recentTerms = [makeTerm("recent0"), makeTerm("recent1")]
-        let firstAppsFound = [makeApp(with: 0), makeApp(with: 1), makeApp(with: 2)]
-        let secondAppsFound = [makeApp(with: 0), makeApp(with: 1)]
+        let firstAppsFound = [makeApp(id: 0), makeApp(id: 1), makeApp(id: 2)]
+        let secondAppsFound = [makeApp(id: 0), makeApp(id: 1)]
         sut.loadViewIfNeeded()
         termsLoader.loadComplete(with: recentTerms)
         
@@ -76,6 +76,26 @@ final class AppStoreSearchUIIntegrationTests: XCTestCase {
         
         appsLoader.loadComplete(with: secondAppsFound, at: 1)
         XCTAssertEqual(list.numberOfViews(in: appsFoundSection), secondAppsFound.count, "검색 후, 찾아진 앱 \(secondAppsFound.count)개가 보인다")
+    }
+    
+    func test_appViewVisible_requestsLogoImage() {
+        let (sut, list, _, appsLoader) = makeSUT()
+        let app0 = makeApp(id: 0, logo: URL(string: "http//:logo0.com")!)
+        let app1 = makeApp(id: 1, logo: URL(string: "http//:logo0.com")!)
+        
+        sut.loadViewIfNeeded()
+        sut.simulateDidSearch(with: "any")
+        appsLoader.loadComplete(with: [app0, app1])
+        XCTAssertEqual(appsLoader.requestedURLs, [], "첫번째 앱이 화면에 보이기 전에는 로고이미지를 요청하지 않는다")
+        
+        let ds = list.tableView.dataSource
+        let indexPath0 = IndexPath(row: 0, section: appsFoundSection)
+        let view0 = ds?.tableView(list.tableView, cellForRowAt: indexPath0) as? AppStoreSearchResultCell
+        XCTAssertEqual(appsLoader.requestedURLs, [app0.logo], "첫 번째 앱이 화면에 보이면 로고이미지를 한 번 요청한다")
+        
+        let indexPath1 = IndexPath(row: 1, section: appsFoundSection)
+        let view1 = ds?.tableView(list.tableView, cellForRowAt: indexPath1) as? AppStoreSearchResultCell
+        XCTAssertEqual(appsLoader.requestedURLs, [app0.logo, app1.logo], "두 번째 앱이 화면에 보이면 로고이미지를 두 번 요청한다")
     }
     
     // MARK: - Helpers
@@ -96,6 +116,7 @@ final class AppStoreSearchUIIntegrationTests: XCTestCase {
             recentTermsLoader: termsLoader.loadPublisher,
             matchedTermsLoader: termsLoader.loadPublisher(containing:),
             appsLoader: appsLoader.loadPublisher,
+            imageDataLoader: appsLoader.loadImageData,
             save: save
         )
         let list = sut.listViewController!
@@ -139,13 +160,32 @@ final class AppStoreSearchUIIntegrationTests: XCTestCase {
             appsRequests[index].send(apps)
             appsRequests[index].send(completion: .finished)
         }
+        
+        // MARK: - Image Data Loader Spy
+        
+        private var imageRequests: [(url: URL, subject: PassthroughSubject<Data, Error>)] = []
+        
+        var requestedURLs: [URL] {
+            imageRequests.map(\.url)
+        }
+        
+        func loadImageData(from url: URL) -> AnyPublisher<Data, Error> {
+            let subject = PassthroughSubject<Data, Error>()
+            imageRequests.append((url, subject))
+            return subject.eraseToAnyPublisher()
+        }
+        
+        func loadCompleteImage(with data: Data, at index: Int = 0) {
+            imageRequests[index].subject.send(data)
+            imageRequests[index].subject.send(completion: .finished)
+        }
     }
     
     private func makeTerm(_ term: String) -> SearchTerm {
         SearchTerm(term: term)
     }
     
-    private func makeApp(with id: Int) -> App {
+    private func makeApp(id: Int, logo: URL = anyURL(), images: [URL] = [anyURL()]) -> App {
         App(
             id: AppID(id: id),
             title: "a title",
@@ -157,14 +197,14 @@ final class AppStoreSearchUIIntegrationTests: XCTestCase {
             releaseNotes: "a release note",
             genre: "a genre",
             age: "a age",
-            logo: anyURL(),
-            images: [anyURL()]
+            logo: logo,
+            images: images
         )
     }
-    
-    private func anyURL() -> URL {
-        URL(string: "http://any-url.com")!
-    }
+}
+
+func anyURL() -> URL {
+    URL(string: "http://any-url.com")!
 }
 
 var recentTitleSection: Int { 0 }

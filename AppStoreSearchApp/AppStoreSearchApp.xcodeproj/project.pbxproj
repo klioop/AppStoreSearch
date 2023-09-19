@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B242D7B82AB98FE7001195BF /* WeakRefVirtualProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B242D7B72AB98FE7001195BF /* WeakRefVirtualProxy.swift */; };
 		B26AA85A2AB84C50002F5761 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26AA8592AB84C50002F5761 /* AppDelegate.swift */; };
 		B26AA85C2AB84C50002F5761 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26AA85B2AB84C50002F5761 /* SceneDelegate.swift */; };
 		B26AA8632AB84C52002F5761 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B26AA8622AB84C52002F5761 /* Assets.xcassets */; };
@@ -53,6 +54,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B242D7B72AB98FE7001195BF /* WeakRefVirtualProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakRefVirtualProxy.swift; sourceTree = "<group>"; };
 		B26AA8562AB84C50002F5761 /* AppStoreSearchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppStoreSearchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B26AA8592AB84C50002F5761 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B26AA85B2AB84C50002F5761 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				B26AA8B52AB87118002F5761 /* RecentSearchTermViewAdapter.swift */,
 				B26AA8BC2AB94D70002F5761 /* MatchedSearchTermsViewAdapter.swift */,
 				B2C62CA42AB963A700944326 /* AppsFoundViewAdapter.swift */,
+				B242D7B72AB98FE7001195BF /* WeakRefVirtualProxy.swift */,
 			);
 			path = Composition;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				B26AA8942AB84FF1002F5761 /* Combine+HTTPClient.swift in Sources */,
 				B26AA8B62AB87118002F5761 /* RecentSearchTermViewAdapter.swift in Sources */,
 				B2C62CA52AB963A700944326 /* AppsFoundViewAdapter.swift in Sources */,
+				B242D7B82AB98FE7001195BF /* WeakRefVirtualProxy.swift in Sources */,
 				B26AA85C2AB84C50002F5761 /* SceneDelegate.swift in Sources */,
 				B26AA8BD2AB94D70002F5761 /* MatchedSearchTermsViewAdapter.swift in Sources */,
 				B26AA8A32AB8650D002F5761 /* LoadResourcePresentationAdapter.swift in Sources */,

@@ -24,10 +24,16 @@ public final class AppStoreSearchResultCellController: NSObject, UITableViewData
     
     private let viewModel: AppStoreSearchResultViewModel
     private let galleryCellControllers: [CellController]
+    private let requestLogo: () -> Void
     
-    public init(viewModel: AppStoreSearchResultViewModel, galleryCellControllers: [CellController]) {
+    public init(
+        viewModel: AppStoreSearchResultViewModel,
+        galleryCellControllers: [CellController],
+        requestLogo: @escaping () -> Void
+    ) {
         self.viewModel = viewModel
         self.galleryCellControllers = galleryCellControllers
+        self.requestLogo = requestLogo
     }
     
     public static func register(for tableView: UITableView) {
@@ -45,6 +51,19 @@ public final class AppStoreSearchResultCellController: NSObject, UITableViewData
         cell?.seller = viewModel.seller
         cell?.ratings = viewModel.ratings
         cell?.numberOfRatings = viewModel.numberOfRatingsText
+        requestLogo()
         return cell!
+    }
+}
+
+extension AppStoreSearchResultCellController: ResourceView, ResourceLoadingView {
+    public typealias ResourceViewModel = UIImage
+    
+    public func display(_ image: UIImage) {
+        cell?.logoImageView.image = image
+    }
+    
+    public func display(_ viewModel: ResourceLoadingViewModel) {
+        cell?.logoContainer.isShimmering = viewModel.isLoading
     }
 }
