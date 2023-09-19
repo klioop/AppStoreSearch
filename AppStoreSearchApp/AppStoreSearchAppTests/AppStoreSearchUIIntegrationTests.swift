@@ -78,21 +78,29 @@ final class AppStoreSearchUIIntegrationTests: XCTestCase {
         XCTAssertEqual(list.numberOfViews(in: appsFoundSection), secondAppsFound.count, "검색 후, 찾아진 앱 \(secondAppsFound.count)개가 보인다")
     }
     
-    func test_appViewVisible_requestsLogoImage() {
+    func test_appViewVisible_requestsLogoImageAndAppImages() {
         let (sut, list, _, appsLoader) = makeSUT()
-        let app0 = makeApp(id: 0, logo: URL(string: "http//:logo0.com")!)
-        let app1 = makeApp(id: 1, logo: URL(string: "http//:logo0.com")!)
+        let logo0 = URL(string: "http//:logo0.com")!
+        let logo1 = URL(string: "http//:logo1.com")!
+        let images0 = [URL(string: "http//:app0-image0.com")!, URL(string: "http//:app0-image1.com")!]
+        let images1 = [URL(string: "http//:app1-image0.com")!, URL(string: "http//:app1-image1.com")!]
+        let app0 = makeApp(id: 0, logo: logo0, images: images0)
+        let app1 = makeApp(id: 1, logo: logo1, images: images1)
         
         sut.loadViewIfNeeded()
         sut.simulateDidSearch(with: "any")
         appsLoader.loadComplete(with: [app0, app1])
         XCTAssertEqual(appsLoader.requestedURLs, [], "첫번째 앱이 화면에 보이기 전에는 로고이미지를 요청하지 않는다")
         
-        list.simulateAppViewVisible(in: 0)
-        XCTAssertEqual(appsLoader.requestedURLs, [app0.logo], "첫 번째 앱이 화면에 보이면 로고이미지를 한 번 요청한다")
+        let view0 = list.simulateAppViewVisible(in: 0)
+        view0?.simulateGalleryViewVisible(in: 0)
+        view0?.simulateGalleryViewVisible(in: 1)
+        XCTAssertEqual(appsLoader.requestedURLs, [app0.logo] + app0.images, "첫 번째 앱이 화면에 보이면 로고이미지와 앱 스크린샷 리스트를 한 번 요청한다")
         
-        list.simulateAppViewVisible(in: 1)
-        XCTAssertEqual(appsLoader.requestedURLs, [app0.logo, app1.logo], "두 번째 앱이 화면에 보이면 로고이미지를 두 번 요청한다")
+        let view1 = list.simulateAppViewVisible(in: 1)
+        view1?.simulateGalleryViewVisible(in: 0)
+        view1?.simulateGalleryViewVisible(in: 1)
+        XCTAssertEqual(appsLoader.requestedURLs, [app0.logo] + app0.images + [app1.logo] + app1.images, "두 번째 앱이 화면에 보이면 로고이미지와 앱 스크린샷 리스트를 두 번 요청한다")
     }
     
     // MARK: - Helpers
@@ -238,5 +246,20 @@ extension ListViewController {
         let ds = tableView.dataSource
         let indexPath0 = IndexPath(row: row, section: section)
         return ds?.tableView(tableView, cellForRowAt: indexPath0)
+    }
+}
+
+extension AppStoreSearchResultCell {
+    
+    @discardableResult
+    func simulateGalleryViewVisible(in item: Int) -> AppGalleryCell? {
+        galleryImageView(in: item) as? AppGalleryCell
+    }
+    
+    
+    func galleryImageView(in item: Int) -> UICollectionViewCell? {
+        let ds = gallery.dataSource
+        let indexPath = IndexPath(item: item, section: 0)
+        return ds?.collectionView(gallery, cellForItemAt: indexPath)
     }
 }

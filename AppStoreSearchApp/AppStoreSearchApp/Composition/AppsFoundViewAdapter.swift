@@ -11,7 +11,8 @@ import AppStoreSearch
 import AppStoreSearchiOS
 
 final class AppsFoundViewAdapter: ResourceView {
-    private typealias ImageDataLoadPresentationAdapter = LoadResourcePresentationAdapter<URL, Data, WeakRefVirtualProxy<AppStoreSearchResultCellController>>
+    private typealias LogoImageDataLoadPresentationAdapter = LoadResourcePresentationAdapter<URL, Data, WeakRefVirtualProxy<AppStoreSearchResultCellController>>
+    private typealias AppImageDataLoadPresentationAdapter = LoadResourcePresentationAdapter<URL, Data, WeakRefVirtualProxy<AppGalleryCellController>>
     
     private weak var controller: ListViewController?
     private let imageDataLoader: (URL) -> AnyPublisher<Data, Error>
@@ -23,7 +24,7 @@ final class AppsFoundViewAdapter: ResourceView {
     
     func display(_ viewModel: [App]) {
         let cellControllers = viewModel.map { app -> (App, AppStoreSearchResultCellController) in
-            let imageDataPresentationAdapter = ImageDataLoadPresentationAdapter(loader: imageDataLoader)
+            let imageDataPresentationAdapter = LogoImageDataLoadPresentationAdapter(loader: imageDataLoader)
             let cell = AppStoreSearchResultCellController(
                 viewModel: AppStoreSearchFoundAppPresenter.map(app),
                 galleryCellControllers: galleries(for: app.images),
@@ -49,16 +50,19 @@ final class AppsFoundViewAdapter: ResourceView {
         let totalImageCount = images.count
         let endIndex = totalImageCount < maxImageCount ? totalImageCount : 3
         return images[..<endIndex]
-            .map(AppGalleryCellController.init)
+            .map { image in
+                let imageDataPresentationAdapter = AppImageDataLoadPresentationAdapter(loader: imageDataLoader)
+                let cell = AppGalleryCellController{
+                    imageDataPresentationAdapter.loadResource(with: image)
+                }
+                imageDataPresentationAdapter.presenter = LoadResourcePresenter(
+                    resourceView: WeakRefVirtualProxy(cell),
+                    loadingView: WeakRefVirtualProxy(cell),
+                    errorView: .none,
+                    mapper: UIImage.tryMake
+                )
+                return cell
+            }
             .map(CellController.init)
     }
 }
-
-extension UIImage {
-    static func tryMake(_ data: Data) throws -> UIImage {
-        guard let image = UIImage(data: data) else { throw InvalidImageDataRepresentation() }
-        return image
-    }
-}
-
-struct InvalidImageDataRepresentation: Error {}

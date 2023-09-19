@@ -14,8 +14,7 @@ public final class AppStoreSearchFoundAppPresenter {
             title: app.title,
             seller: app.seller,
             ratings: map(app.rating),
-            numberOfRatingsText: Double(app.numberOfRatings).formattedText,
-            logoImage: app.logo
+            numberOfRatingsText: Double(app.numberOfRatings).formattedText
         )
     }
     

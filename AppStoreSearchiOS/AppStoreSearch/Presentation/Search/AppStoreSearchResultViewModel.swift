@@ -12,13 +12,11 @@ public struct AppStoreSearchResultViewModel {
     public let seller: String
     public let ratings: (int: Int, decimal: CGFloat)
     public let numberOfRatingsText: String
-    public let logoImage: URL
     
-    public init(title: String, seller: String, ratings: (int: Int, decimal: CGFloat), numberOfRatingsText: String, logoImage: URL) {
+    public init(title: String, seller: String, ratings: (int: Int, decimal: CGFloat), numberOfRatingsText: String) {
         self.title = title
         self.seller = seller
         self.ratings = ratings
         self.numberOfRatingsText = numberOfRatingsText
-        self.logoImage = logoImage
     }
 }

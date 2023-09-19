@@ -8,9 +8,9 @@
 import UIKit
 import SnapKit
 
-final class AppGalleryCell: UICollectionViewCell {
+public final class AppGalleryCell: UICollectionViewCell {
     
-    private(set) lazy var container: ShimmeringView = {
+    private(set) lazy var imageContainer: ShimmeringView = {
         let view = ShimmeringView()
         view.addSubview(imageView)
         view.backgroundColor = .systemGray4
@@ -27,10 +27,10 @@ final class AppGalleryCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        contentView.addSubview(container)
-        container.snp.makeConstraints { $0.edges.equalToSuperview() }
-        container.layer.cornerRadius = 16
-        container.layer.cornerCurve = .continuous
+        contentView.addSubview(imageContainer)
+        imageContainer.snp.makeConstraints { $0.edges.equalToSuperview() }
+        imageContainer.layer.cornerRadius = 16
+        imageContainer.layer.cornerCurve = .continuous
     }
     
     required init?(coder: NSCoder) { nil }

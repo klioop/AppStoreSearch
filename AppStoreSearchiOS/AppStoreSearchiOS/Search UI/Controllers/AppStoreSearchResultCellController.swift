@@ -46,7 +46,7 @@ public final class AppStoreSearchResultCellController: NSObject, UITableViewData
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         self.cell = tableView.dequeueReusableCell()
-        cell?.gallery = galleryView.view
+        cell?.gallery = galleryView.collectionView
         cell?.title = viewModel.title
         cell?.seller = viewModel.seller
         cell?.ratings = viewModel.ratings
@@ -59,8 +59,8 @@ public final class AppStoreSearchResultCellController: NSObject, UITableViewData
 extension AppStoreSearchResultCellController: ResourceView, ResourceLoadingView {
     public typealias ResourceViewModel = UIImage
     
-    public func display(_ image: UIImage) {
-        cell?.logoImageView.image = image
+    public func display(_ viewModel: UIImage) {
+        cell?.logoImageView.image = viewModel
     }
     
     public func display(_ viewModel: ResourceLoadingViewModel) {

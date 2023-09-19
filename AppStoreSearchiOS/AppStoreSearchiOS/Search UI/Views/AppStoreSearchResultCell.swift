@@ -75,7 +75,7 @@ public final class AppStoreSearchResultCell: UITableViewCell {
         return button
     }()
     
-    var gallery: UIView! {
+    public var gallery: UICollectionView! {
         didSet { layout() }
     }
     

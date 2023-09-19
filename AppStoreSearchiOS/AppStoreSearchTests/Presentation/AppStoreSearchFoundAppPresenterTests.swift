@@ -21,7 +21,6 @@ final class AppStoreSearchFoundAppPresenterTests: XCTestCase {
         XCTAssertEqual(convertedRating.int, viewModel.ratings.int)
         XCTAssertEqual(convertedRating.decimal, viewModel.ratings.decimal)
         XCTAssertEqual(formattedNumberOfRatings, viewModel.numberOfRatingsText)
-        XCTAssertEqual(app.logo, viewModel.logoImage)
     }
     
     // MARK: - Helpers

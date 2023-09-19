@@ -114,20 +114,20 @@ final class AppStoreSearchUISnapshotTests: XCTestCase {
                 title: "a title0",
                 seller: "a seller0",
                 ratings: (3, 0.44),
-                numberOfRatingsText: "1.1만",
-                logoImage: URL(string: "https:any-url.com")!
+                numberOfRatingsText: "1.1만"
             ),
-            galleryCellControllers: gallery
+            galleryCellControllers: gallery,
+            requestLogo: {}
         )
         let view1 = AppStoreSearchResultCellController(
             viewModel: AppStoreSearchResultViewModel(
                 title: "a title1",
                 seller: "a seller1",
                 ratings: (4, 0.44),
-                numberOfRatingsText: "3.7천",
-                logoImage: URL(string: "https:any-url.com")!
+                numberOfRatingsText: "3.7천"
             ),
-            galleryCellControllers: gallery
+            galleryCellControllers: gallery,
+            requestLogo: {}
         )
         return [view0, view1].map(TableCellController.init)
     }

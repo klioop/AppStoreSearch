@@ -6,16 +6,16 @@
 //
 
 import UIKit
+import AppStoreSearch
 
 public final class AppGalleryCellController: NSObject, UICollectionViewDataSource, UICollectionViewDelegate {
-    public typealias ViewModel = URL
     
     private var cell: AppGalleryCell?
     
-    private let viewModel: ViewModel
+    private let requestImage: () -> Void
     
-    public init(viewModel: ViewModel) {
-        self.viewModel = viewModel
+    public init(requestImage: @escaping () -> Void) {
+        self.requestImage = requestImage
     }
     
     public static func register(for collectionView: UICollectionView) {
@@ -28,6 +28,19 @@ public final class AppGalleryCellController: NSObject, UICollectionViewDataSourc
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         self.cell = collectionView.dequeueReusableCell(for: indexPath)
+        requestImage()
         return cell!
+    }
+}
+
+extension AppGalleryCellController: ResourceView, ResourceLoadingView {
+    public typealias ResourceViewModel = UIImage
+    
+    public func display(_ viewModel: UIImage) {
+        cell?.imageView.image = viewModel
+    }
+    
+    public func display(_ viewModel: ResourceLoadingViewModel) {
+        cell?.imageContainer.isShimmering = viewModel.isLoading
     }
 }
