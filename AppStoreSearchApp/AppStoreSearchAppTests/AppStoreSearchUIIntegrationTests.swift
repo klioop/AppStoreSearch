@@ -52,9 +52,23 @@ final class AppStoreSearchUIIntegrationTests: XCTestCase {
         XCTAssertEqual(list.numberOfViews(in: recentTitleSection), 1, "최근 검색어 리스트가 로드되면, 최근 검색어 제목이 보여야 한다")
     }
     
+    func test_search_saveTheSearchTerm() {
+        let searchLiteral = "search"
+        let searchTerm = makeTerm(searchLiteral)
+        var termsSearched = [SearchTerm]()
+        let (sut, _, termsLoader) = makeSUT { termsSearched.append($0) }
+        let recentTerms = [makeTerm("recent0"), makeTerm("recent1")]
+        sut.loadViewIfNeeded()
+        termsLoader.loadComplete(with: recentTerms, at: 0)
+        
+        sut.simulateDidSearch(with: searchLiteral)
+        XCTAssertEqual(termsSearched, [searchTerm], "검색을 하면 검색어가 저장된다")
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(
+        save: @escaping (SearchTerm) -> Void = {_ in },
         file: StaticString = #filePath,
         line: UInt = #line
     ) -> (
@@ -65,10 +79,10 @@ final class AppStoreSearchUIIntegrationTests: XCTestCase {
         let termsLoader = SearchTermsLoaderSpy()
         let appsLoader = AppsLoaderSpy()
         let sut = AppStoreSearchUIComposer.composedWith(
-            recentTermsLoader:
-                termsLoader.loadPublisher,
+            recentTermsLoader: termsLoader.loadPublisher,
             matchedTermsLoader: termsLoader.loadPublisher(containing:),
-            appsLoader: appsLoader.loadPublisher
+            appsLoader: appsLoader.loadPublisher,
+            save: save
         )
         let list = sut.listViewController!
         trackMemoryLeak(termsLoader, file: file, line: line)
@@ -123,6 +137,10 @@ var recentTermsSection: Int { 1 }
 var matchedTermsSection: Int { 0 }
 
 extension AppStoreSearchContainerViewController {
+    func simulateDidSearch(with term: String) {
+        searchView.onTapSearch?(term)
+    }
+    
     func simulateDidSearchTextChange(_ text: String) {
         searchView.onTextChange?(text)
     }

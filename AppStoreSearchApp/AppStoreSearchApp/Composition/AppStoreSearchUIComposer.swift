@@ -32,7 +32,8 @@ public final class AppStoreSearchUIComposer {
     public static func composedWith(
         recentTermsLoader: @escaping () -> AnyPublisher<[SearchTerm], Error>,
         matchedTermsLoader: @escaping (SearchTerm) -> AnyPublisher<[SearchTerm], Error>,
-        appsLoader: @escaping (SearchTerm) -> AnyPublisher<[App], Error>
+        appsLoader: @escaping (SearchTerm) -> AnyPublisher<[App], Error>,
+        save: @escaping (SearchTerm) -> Void
     ) -> AppStoreSearchContainerViewController {
         let recentTermsPresentationAdapter = RecentSearchTermLoadPresentationAdapter(loader: recentTermsLoader)
         let matchedTermsPresentationAdapter = MatchedSearchTermLoadPresentationAdapter(loader: matchedTermsLoader)
@@ -40,7 +41,9 @@ public final class AppStoreSearchUIComposer {
         let searchViewController = AppStoreSearchViewController(
             viewModel: AppStoreSearchPresenter.viewModel(),
             searchCallback: {
-                appsPresentationAdapter.loadResource(with: SearchTerm(term: $0))
+                let term = SearchTerm(term: $0)
+                save(term)
+                appsPresentationAdapter.loadResource(with: term)
             },
             textChangeCallback: {
                 textChangeCallback(
