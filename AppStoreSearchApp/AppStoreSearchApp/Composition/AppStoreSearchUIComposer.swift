@@ -51,12 +51,18 @@ public final class AppStoreSearchUIComposer {
             listViewController: listViewController
         )
         recentTermsPresentationAdapter.presenter = LoadResourcePresenter(
-            resourceView: RecentSearchTermViewAdapter(controller: listViewController),
+            resourceView: RecentSearchTermViewAdapter(
+                controller: listViewController,
+                selection: appsPresentationAdapter.loadResource
+            ),
             loadingView: .none,
             errorView: .none
         )
         matchedTermsPresentationAdapter.presenter = LoadResourcePresenter(
-            resourceView: MatchedSearchTermsViewAdapter(controller: listViewController),
+            resourceView: MatchedSearchTermsViewAdapter(
+                controller: listViewController,
+                selection: appsPresentationAdapter.loadResource
+            ),
             loadingView: .none,
             errorView: .none
         )

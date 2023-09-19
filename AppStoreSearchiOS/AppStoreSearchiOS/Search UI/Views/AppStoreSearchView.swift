@@ -77,6 +77,7 @@ extension AppStoreSearchView: UISearchBarDelegate {
     }
     
     public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        onTapCancel?()
         searchBar.text = ""
         hiddenCancelButtonAndKeyboard()
     }

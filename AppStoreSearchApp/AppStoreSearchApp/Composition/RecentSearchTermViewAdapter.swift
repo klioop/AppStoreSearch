@@ -12,9 +12,11 @@ import AppStoreSearchiOS
 final class RecentSearchTermViewAdapter: ResourceView {
     
     private weak var controller: ListViewController?
+    private let selection: (SearchTerm) -> Void
     
-    init(controller: ListViewController) {
+    init(controller: ListViewController, selection: @escaping (SearchTerm) -> Void) {
         self.controller = controller
+        self.selection = selection
     }
     
     func display(_ viewModel: [SearchTerm]) {
@@ -30,7 +32,12 @@ final class RecentSearchTermViewAdapter: ResourceView {
         let terms = viewModel.map { term -> (SearchTerm, AppStoreRecentSearchTermCellController) in
             (
                 term,
-                AppStoreRecentSearchTermCellController(viewModel: AppStoreRecentSearchTermPresenter.map(term))
+                AppStoreRecentSearchTermCellController(
+                    viewModel: AppStoreRecentSearchTermPresenter.map(term),
+                    selection: { [weak self] in
+                        self?.selection(SearchTerm(term: $0))
+                    }
+                )
             )
         }
         let termsCellControllers = terms.map(TableCellController.init)

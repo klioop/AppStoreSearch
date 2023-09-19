@@ -52,7 +52,7 @@ final class AppStoreSearchUIIntegrationTests: XCTestCase {
         XCTAssertEqual(list.numberOfViews(in: recentTitleSection), 1, "최근 검색어 리스트가 로드되면, 최근 검색어 제목이 보여야 한다")
     }
     
-    func test_search_savesTheSearchTermAndLoadsFoundApp() {
+    func test_search_savesTheSearchTermAndLoadsAppsFromSearch() {
         let firstTermLiteral = "first search"
         let secondTermLiteral = "second search"
         let firstSearchTerm = makeTerm(firstTermLiteral)

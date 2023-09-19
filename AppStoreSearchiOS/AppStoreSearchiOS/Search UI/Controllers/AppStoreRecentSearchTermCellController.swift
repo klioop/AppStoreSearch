@@ -11,9 +11,11 @@ import AppStoreSearch
 public final class AppStoreRecentSearchTermCellController: NSObject, UITableViewDataSource, UITableViewDelegate {
     
     private let viewModel: AppStoreRecentSearchTermViewModel
+    private let selection: (String) -> Void
     
-    public init(viewModel: AppStoreRecentSearchTermViewModel) {
+    public init(viewModel: AppStoreRecentSearchTermViewModel, selection: @escaping (String) -> Void) {
         self.viewModel = viewModel
+        self.selection = selection
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -25,5 +27,9 @@ public final class AppStoreRecentSearchTermCellController: NSObject, UITableView
         cell.isMatchedRecent = viewModel.isMatchedRecent
         cell.term = viewModel.term
         return cell
+    }
+    
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selection(viewModel.term)
     }
 }

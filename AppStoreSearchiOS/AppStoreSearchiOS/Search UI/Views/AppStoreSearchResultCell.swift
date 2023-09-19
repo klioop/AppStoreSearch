@@ -94,6 +94,8 @@ public final class AppStoreSearchResultCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        selectionStyle = .none
     }
     
     required init?(coder: NSCoder) { nil }

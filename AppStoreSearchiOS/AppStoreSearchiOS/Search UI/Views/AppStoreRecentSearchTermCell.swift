@@ -41,6 +41,7 @@ final class AppStoreRecentSearchTermCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        selectionStyle = .none
         contentView.addSubview(container)
         container.snp.makeConstraints {
             $0.verticalEdges.equalToSuperview().inset(8)
