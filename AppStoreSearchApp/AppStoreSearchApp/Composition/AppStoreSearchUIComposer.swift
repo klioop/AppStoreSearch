@@ -64,7 +64,11 @@ public final class AppStoreSearchUIComposer {
                 appsPresentationAdapter.loadResource(with: SearchTerm(term: $0))
             },
             textChangeCallback: {
-                matchedTermsPresentationAdapter.loadResource(with: SearchTerm(term: $0))
+                if $0.isEmpty {
+                    recentTermsPresentationAdapter.loadResource(with: ())
+                } else {
+                    matchedTermsPresentationAdapter.loadResource(with: SearchTerm(term: $0))
+                }
             },
             cancelCallback: {
                 recentTermsPresentationAdapter.loadResource(with: ())
