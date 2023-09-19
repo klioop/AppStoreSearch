@@ -11,7 +11,7 @@ import AppStoreSearch
 import AppStoreSearchiOS
 
 public final class AppUIComposer {
-    private typealias LogoImageDataLoadPresentationAdapter = LoadResourcePresentationAdapter<URL, Data, WeakRefVirtualProxy<AppStoreSearchResultCellController>>
+    private typealias LogoImageDataLoadPresentationAdapter = LoadResourcePresentationAdapter<URL, Data, WeakRefVirtualProxy<AppTitleCellController>>
     private typealias AppImageDataLoadPresentationAdapter = LoadResourcePresentationAdapter<URL, Data, WeakRefVirtualProxy<AppGalleryCellController>>
     
     private init() {}
@@ -21,6 +21,7 @@ public final class AppUIComposer {
         imageDataLoader: @escaping (URL) -> AnyPublisher<Data, Error>,
         callback: @escaping () -> Void
     ) -> AppContainerViewController {
+        let logoImagePresentationAdapter = LogoImageDataLoadPresentationAdapter(loader: imageDataLoader)
         let headerViewController = AppHeaderViewController(callback: callback)
         let list = ListViewController()
         let container = AppContainerViewController(
@@ -31,7 +32,8 @@ public final class AppUIComposer {
             viewModel: AppTitleViewModel(
                 title: app.title,
                 seller: app.seller
-            )
+            ),
+            requestLogoImage: { logoImagePresentationAdapter.loadResource(with: app.logo) }
         )
         let description = AppDescriptionCellController(
             viewModel: AppStoreSearchFoundAppPresenter.map(app)
@@ -56,6 +58,12 @@ public final class AppUIComposer {
             .map(CellController.init)
         let preview = AppPreviewCellController(galleryCellControllers: galleries)
         let cellControllers = [title, description, newFeature, preview].map(TableCellController.init)
+        logoImagePresentationAdapter.presenter = LoadResourcePresenter(
+            resourceView: WeakRefVirtualProxy(title),
+            loadingView: WeakRefVirtualProxy(title),
+            errorView: .none,
+            mapper: UIImage.tryMake
+        )
         list.display(cellControllers)
         return container
     }

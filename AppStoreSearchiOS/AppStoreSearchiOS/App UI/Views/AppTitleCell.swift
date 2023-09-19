@@ -20,9 +20,16 @@ final class AppTitleCell: UITableViewCell {
         set { descriptionLabel.text = newValue }
     }
     
+    private(set) lazy var logoContainer: ShimmeringView = {
+        let view = ShimmeringView()
+        view.addSubview(logoImageView)
+        view.backgroundColor = .systemGray4
+        logoImageView.snp.makeConstraints { $0.edges.equalToSuperview() }
+        return view
+    }()
+    
     private(set) lazy var logoImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .systemGray4
         return imageView
     }()
     
@@ -69,23 +76,24 @@ final class AppTitleCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        [logoImageView, container, buttonContainer].forEach(contentView.addSubview)
-        logoImageView.snp.makeConstraints {
+        [logoContainer, container, buttonContainer].forEach(contentView.addSubview)
+        logoContainer.snp.makeConstraints {
             $0.verticalEdges.equalToSuperview().inset(16)
             $0.leading.equalToSuperview().offset(16)
             $0.width.height.equalTo(120)
         }
         container.snp.makeConstraints {
-            $0.top.equalTo(logoImageView.snp.top)
-            $0.leading.equalTo(logoImageView.snp.trailing).offset(12)
+            $0.top.equalTo(logoContainer.snp.top)
+            $0.leading.equalTo(logoContainer.snp.trailing).offset(12)
         }
         buttonContainer.snp.makeConstraints {
-            $0.bottom.equalTo(logoImageView.snp.bottom)
-            $0.leading.equalTo(logoImageView.snp.trailing).offset(12)
+            $0.bottom.equalTo(logoContainer.snp.bottom)
+            $0.leading.equalTo(logoContainer.snp.trailing).offset(12)
             $0.height.equalTo(30)
         }
-        logoImageView.layer.cornerRadius = 16
-        logoImageView.layer.cornerCurve = .continuous
+        logoContainer.layer.cornerRadius = 16
+        logoContainer.layer.cornerCurve = .continuous
+        logoContainer.layer.masksToBounds = true
         buttonContainer.layer.cornerRadius = 30 * 0.5
         buttonContainer.layer.cornerCurve = .continuous
     }
