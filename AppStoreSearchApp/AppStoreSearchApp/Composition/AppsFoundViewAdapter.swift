@@ -19,18 +19,10 @@ final class AppsFoundViewAdapter: ResourceView {
     
     func display(_ viewModel: [App]) {
         let cellControllers = viewModel.map { app -> (App, AppStoreSearchResultCellController) in
-            let int = Int(app.rating)
-            let decimal = app.rating.truncatingRemainder(dividingBy: Double(int))
             return (
                 app,
                 AppStoreSearchResultCellController(
-                    viewModel: AppStoreSearchResultViewModel(
-                        title: app.title,
-                        seller: app.seller,
-                        ratings: (int, decimal),
-                        numberOfRatingsText: "\(app.numberOfRatings)",
-                        logoImage: app.logo
-                    ),
+                    viewModel: AppStoreSearchFoundAppPresenter.map(app),
                     galleryCellControllers: galleries(for: app.images)
                 )
             )
