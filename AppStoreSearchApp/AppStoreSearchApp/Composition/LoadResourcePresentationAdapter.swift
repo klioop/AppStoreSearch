@@ -50,4 +50,9 @@ final class LoadResourcePresentationAdapter<RequiredInfo, Resource, View: Resour
                 }
             )
     }
+    
+    func cancel() {
+        cancellable?.cancel()
+        cancellable = .none
+    }
 }

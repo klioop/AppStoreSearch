@@ -28,7 +28,8 @@ final class AppsFoundViewAdapter: ResourceView {
             let cell = AppStoreSearchResultCellController(
                 viewModel: AppStoreSearchFoundAppPresenter.map(app),
                 galleryCellControllers: galleries(for: app.images),
-                requestLogo: { imageDataPresentationAdapter.loadResource(with: app.logo) }
+                requestLogoImage: { imageDataPresentationAdapter.loadResource(with: app.logo) },
+                cancelRequestLogoImage: imageDataPresentationAdapter.cancel
             )
             imageDataPresentationAdapter.presenter = LoadResourcePresenter(
                 resourceView: WeakRefVirtualProxy(cell),
@@ -48,13 +49,14 @@ final class AppsFoundViewAdapter: ResourceView {
     private func galleries(for images: [URL]) -> [CellController] {
         let maxImageCount = 3
         let totalImageCount = images.count
-        let endIndex = totalImageCount < maxImageCount ? totalImageCount : 3
+        let endIndex = totalImageCount < maxImageCount ? totalImageCount : maxImageCount
         return images[..<endIndex]
             .map { image in
                 let imageDataPresentationAdapter = AppImageDataLoadPresentationAdapter(loader: imageDataLoader)
-                let cell = AppGalleryCellController{
-                    imageDataPresentationAdapter.loadResource(with: image)
-                }
+                let cell = AppGalleryCellController(
+                    requestImage: { imageDataPresentationAdapter.loadResource(with: image) },
+                    cancelRequestImage: imageDataPresentationAdapter.cancel
+                )
                 imageDataPresentationAdapter.presenter = LoadResourcePresenter(
                     resourceView: WeakRefVirtualProxy(cell),
                     loadingView: WeakRefVirtualProxy(cell),

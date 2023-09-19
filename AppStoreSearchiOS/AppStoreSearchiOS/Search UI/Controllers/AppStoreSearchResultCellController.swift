@@ -24,16 +24,19 @@ public final class AppStoreSearchResultCellController: NSObject, UITableViewData
     
     private let viewModel: AppStoreSearchResultViewModel
     private let galleryCellControllers: [CellController]
-    private let requestLogo: () -> Void
+    private let requestLogoImage: () -> Void
+    private let cancelRequestLogoImage: () -> Void
     
     public init(
         viewModel: AppStoreSearchResultViewModel,
         galleryCellControllers: [CellController],
-        requestLogo: @escaping () -> Void
+        requestLogoImage: @escaping () -> Void,
+        cancelRequestLogoImage: @escaping () -> Void
     ) {
         self.viewModel = viewModel
         self.galleryCellControllers = galleryCellControllers
-        self.requestLogo = requestLogo
+        self.requestLogoImage = requestLogoImage
+        self.cancelRequestLogoImage = cancelRequestLogoImage
     }
     
     public static func register(for tableView: UITableView) {
@@ -51,8 +54,19 @@ public final class AppStoreSearchResultCellController: NSObject, UITableViewData
         cell?.seller = viewModel.seller
         cell?.ratings = viewModel.ratings
         cell?.numberOfRatings = viewModel.numberOfRatingsText
-        requestLogo()
+        requestLogoImage()
         return cell!
+    }
+    
+    public func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cancelRequestLogoImage()
+        releaseCellForReuse()
+    }
+    
+    // MARK: - Helpers
+    
+    private func releaseCellForReuse() {
+        self.cell = nil
     }
 }
 

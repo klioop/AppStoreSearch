@@ -13,9 +13,11 @@ public final class AppGalleryCellController: NSObject, UICollectionViewDataSourc
     private var cell: AppGalleryCell?
     
     private let requestImage: () -> Void
+    private let cancelRequestImage: () -> Void
     
-    public init(requestImage: @escaping () -> Void) {
+    public init(requestImage: @escaping () -> Void, cancelRequestImage: @escaping () -> Void) {
         self.requestImage = requestImage
+        self.cancelRequestImage = cancelRequestImage
     }
     
     public static func register(for collectionView: UICollectionView) {
@@ -30,6 +32,17 @@ public final class AppGalleryCellController: NSObject, UICollectionViewDataSourc
         self.cell = collectionView.dequeueReusableCell(for: indexPath)
         requestImage()
         return cell!
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        cancelRequestImage()
+        releaseCellForReuse()
+    }
+    
+    // MARK: - Helpers
+    
+    private func releaseCellForReuse() {
+        self.cell = nil
     }
 }
 

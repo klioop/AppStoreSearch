@@ -90,17 +90,42 @@ final class AppStoreSearchUIIntegrationTests: XCTestCase {
         sut.loadViewIfNeeded()
         sut.simulateDidSearch(with: "any")
         appsLoader.loadComplete(with: [app0, app1])
-        XCTAssertEqual(appsLoader.requestedURLs, [], "첫번째 앱이 화면에 보이기 전에는 로고이미지를 요청하지 않는다")
+        XCTAssertEqual(appsLoader.requestedURLs, [], "첫번째 앱이 화면에 보이기 전에는 어떤 이미지도 요청하지 않는다")
         
         let view0 = list.simulateAppViewVisible(in: 0)
         view0?.simulateGalleryViewVisible(in: 0)
         view0?.simulateGalleryViewVisible(in: 1)
-        XCTAssertEqual(appsLoader.requestedURLs, [app0.logo] + app0.images, "첫 번째 앱이 화면에 보이면 로고이미지와 앱 스크린샷 리스트를 한 번 요청한다")
+        XCTAssertEqual(appsLoader.requestedURLs, [app0.logo] + app0.images, "첫 번째 앱이 화면에 보이면 로고이미지와 앱 이미지 리스트를 한 번 요청한다")
         
         let view1 = list.simulateAppViewVisible(in: 1)
         view1?.simulateGalleryViewVisible(in: 0)
         view1?.simulateGalleryViewVisible(in: 1)
-        XCTAssertEqual(appsLoader.requestedURLs, [app0.logo] + app0.images + [app1.logo] + app1.images, "두 번째 앱이 화면에 보이면 로고이미지와 앱 스크린샷 리스트를 두 번 요청한다")
+        XCTAssertEqual(appsLoader.requestedURLs, [app0.logo] + app0.images + [app1.logo] + app1.images, "두 번째 앱이 화면에 보이면 로고이미지와 앱 이미지 리스트를 두 번 요청한다")
+    }
+    
+    func test_appViewNotVisible_cancelsRequestsImagesBeforeCompleteImageLoading() {
+        let (sut, list, _, appsLoader) = makeSUT()
+        let logo0 = URL(string: "http//:logo0.com")!
+        let logo1 = URL(string: "http//:logo1.com")!
+        let images0 = [URL(string: "http//:app0-image0.com")!, URL(string: "http//:app0-image1.com")!]
+        let images1 = [URL(string: "http//:app1-image0.com")!, URL(string: "http//:app1-image1.com")!]
+        let app0 = makeApp(id: 0, logo: logo0, images: images0)
+        let app1 = makeApp(id: 1, logo: logo1, images: images1)
+        
+        sut.loadViewIfNeeded()
+        sut.simulateDidSearch(with: "any")
+        appsLoader.loadComplete(with: [app0, app1])
+        XCTAssertEqual(appsLoader.cancelImageURLs, [], "첫번째 앱이 화면에 보이기 전에는 이미지 요청을 취소하지 않는다")
+        
+        let view0 = list.simulateAppViewNotVisible(in: 0)
+        view0?.simulateGalleryViewNotVisible(in: 0)
+        view0?.simulateGalleryViewNotVisible(in: 1)
+        XCTAssertEqual(appsLoader.cancelImageURLs, [app0.logo] + app0.images, "첫 번째 앱이 화면에 보인후 이미지 로딩이 완료되지 않고 화면에서 사라지면, 로고이미지와 앱 이미지 리스트 요청을 한 번 취소한다")
+        
+        let view1 = list.simulateAppViewNotVisible(in: 1)
+        view1?.simulateGalleryViewNotVisible(in: 0)
+        view1?.simulateGalleryViewNotVisible(in: 1)
+        XCTAssertEqual(appsLoader.requestedURLs, [app0.logo] + app0.images + [app1.logo] + app1.images, "두 번째 앱이 화면에 보인후 이미지 로딩이 완료되지 않고 화면에서 사라지면, 로고이미지와 앱 이미지 리스트 요청을 두 번 취소한다")
     }
     
     // MARK: - Helpers
@@ -169,6 +194,7 @@ final class AppStoreSearchUIIntegrationTests: XCTestCase {
         // MARK: - Image Data Loader Spy
         
         private var imageRequests: [(url: URL, subject: PassthroughSubject<Data, Error>)] = []
+        private(set) var cancelImageURLs: [URL] = []
         
         var requestedURLs: [URL] {
             imageRequests.map(\.url)
@@ -177,7 +203,12 @@ final class AppStoreSearchUIIntegrationTests: XCTestCase {
         func loadImageData(from url: URL) -> AnyPublisher<Data, Error> {
             let subject = PassthroughSubject<Data, Error>()
             imageRequests.append((url, subject))
-            return subject.eraseToAnyPublisher()
+            return subject
+                .handleEvents(receiveCancel: { [weak self] in
+                    self?.cancelImageURLs.append(url)
+                })
+                .eraseToAnyPublisher()
+                
         }
         
         func loadCompleteImage(with data: Data, at index: Int = 0) {
@@ -241,6 +272,15 @@ extension ListViewController {
         cell(in: row) as? AppStoreSearchResultCell
     }
     
+    @discardableResult
+    func simulateAppViewNotVisible(in row: Int, section: Int = appsFoundSection) -> AppStoreSearchResultCell? {
+        let view = simulateAppViewVisible(in: row, section: section)
+        let dl = tableView.delegate
+        let indexPath = IndexPath(row: row, section: section)
+        dl?.tableView?(tableView, didEndDisplaying: view!, forRowAt: indexPath)
+        return view
+    }
+    
     
     func cell(in row: Int, section: Int = appsFoundSection) -> UITableViewCell? {
         let ds = tableView.dataSource
@@ -254,6 +294,15 @@ extension AppStoreSearchResultCell {
     @discardableResult
     func simulateGalleryViewVisible(in item: Int) -> AppGalleryCell? {
         galleryImageView(in: item) as? AppGalleryCell
+    }
+    
+    @discardableResult
+    func simulateGalleryViewNotVisible(in item: Int) -> AppGalleryCell? {
+        let view = galleryImageView(in: item) as? AppGalleryCell
+        let dl = gallery.delegate
+        let indexPath = IndexPath(item: item, section: 0)
+        dl?.collectionView?(gallery, didEndDisplaying: view!, forItemAt: indexPath)
+        return view
     }
     
     
