@@ -19,8 +19,6 @@ final class AppStoreSearchRatingMaskingView: UIView {
     
     private let maskLayer = CALayer()
     
-    private var constraint: Constraint?
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(progressView)
