@@ -21,7 +21,9 @@ final class MatchedSearchTermsViewAdapter: ResourceView {
         let cellControllers = viewModel.map { term -> (SearchTerm, AppStoreRecentSearchTermCellController) in
             return (
                 term,
-                AppStoreRecentSearchTermCellController(viewModel: AppStoreRecentSearchTermViewModel(isMatchedRecent: true, term: term.term))
+                AppStoreRecentSearchTermCellController(
+                    viewModel: AppStoreRecentSearchTermPresenter.mapToMatched(term)
+                )
             )
         }
             .map(TableCellController.init)
