@@ -27,7 +27,9 @@ final class AppStoreSearchFoundAppPresenterTests: XCTestCase {
     
     private func convert(_ rating: Double) -> (int: Int, decimal: CGFloat) {
         let int = Int(rating)
-        let decimal = rating.truncatingRemainder(dividingBy: Double(int))
+        let formatted = String(format: "%.2f", rating)
+        let separated = formatted.components(separatedBy: ".")
+        let decimal = (Double(separated[1]) ?? 0.0) / 100
         return (int, decimal)
     }
     

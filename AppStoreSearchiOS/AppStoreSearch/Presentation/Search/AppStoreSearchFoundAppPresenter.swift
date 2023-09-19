@@ -21,8 +21,13 @@ public final class AppStoreSearchFoundAppPresenter {
     // MARK: - Helpers
     
     private static func map(_ rating: Double) -> (int: Int, decimal: CGFloat) {
-        let int = Int(rating)
-        let decimal = rating.truncatingRemainder(dividingBy: Double(int))
+        let formatted = String(format: "%.2f", rating)
+        let separated = formatted.components(separatedBy: ".")
+        let int = (Int(separated[0]) ?? 0)
+        
+        guard separated.count == 2 else { return (int, 0.0) }
+        
+        let decimal = (Double(separated[1]) ?? 0.0) / 100
         return (int, decimal)
     }
 }
