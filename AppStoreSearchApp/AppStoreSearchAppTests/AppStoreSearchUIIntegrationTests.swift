@@ -33,20 +33,20 @@ final class AppStoreSearchUIIntegrationTests: XCTestCase {
         XCTAssertEqual(list.numberOfViews(in: recentTitleSection), 1, "뷰가 로드되면, 최근 검색어 제목이 보여야 한다")
         XCTAssertEqual(list.numberOfViews(in: recentTermsSection), recentTerms.count, "뷰가 로드되면, 최근 검색어가 있을 때 검색어 \(recentTerms.count)개 보여야한다")
         
-        sut.searchView.onTextChange?("match")
+        sut.simulateDidSearchTextChange("match")
         termsLoader.loadComplete(with: matchedTerms, at: 1)
         XCTAssertEqual(list.numberOfViews(in: matchedTermsSection), matchedTerms.count, "검색바에 검색어가 변할 때 마다, 최근 검색어와 매칭된 검색어가 있으면 매칭된 검색어 \(matchedTerms.count)개가 보여야 한다")
         
-        sut.searchView.onTextChange?("")
+        sut.simulateDidSearchTextChange("")
         termsLoader.loadComplete(with: recentTerms, at: 2)
         XCTAssertEqual(list.numberOfViews(in: recentTermsSection), recentTerms.count, "검색바에 검색어가 빈 값으로 변하면, 최근 검색어 \(recentTerms.count)개가 보여야 한다")
         XCTAssertEqual(list.numberOfViews(in: recentTitleSection), 1, "최근 검색어 리스트가 로드되면, 최근 검색어 제목이 보여야 한다")
         
-        sut.searchView.onTextChange?("mat")
+        sut.simulateDidSearchTextChange("mat")
         termsLoader.loadComplete(with: matchedTerms, at: 3)
         XCTAssertEqual(list.numberOfViews(in: matchedTermsSection), matchedTerms.count, "검색바에 검색어가 변할 때 마다, 최근 검색어와 매칭된 검색어가 있으면, 매칭된 검색어 \(matchedTerms.count)개가 보여야 한다")
         
-        sut.searchView.onTapCancel?()
+        sut.simulateDidCancelSearch()
         termsLoader.loadComplete(with: recentTerms, at: 4)
         XCTAssertEqual(list.numberOfViews(in: recentTermsSection), recentTerms.count, "검색어 입력 중 취소하면, 최근 검색어 \(recentTerms)개가 보여야 한다")
         XCTAssertEqual(list.numberOfViews(in: recentTitleSection), 1, "최근 검색어 리스트가 로드되면, 최근 검색어 제목이 보여야 한다")
@@ -121,6 +121,16 @@ final class AppStoreSearchUIIntegrationTests: XCTestCase {
 var recentTitleSection: Int { 0 }
 var recentTermsSection: Int { 1 }
 var matchedTermsSection: Int { 0 }
+
+extension AppStoreSearchContainerViewController {
+    func simulateDidSearchTextChange(_ text: String) {
+        searchView.onTextChange?(text)
+    }
+    
+    func simulateDidCancelSearch() {
+        searchView.onTapCancel?()
+    }
+}
 
 extension ListViewController {
     func numberOfViews(in section: Int) -> Int {
