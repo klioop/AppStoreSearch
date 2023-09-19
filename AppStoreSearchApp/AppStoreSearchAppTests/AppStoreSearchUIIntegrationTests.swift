@@ -53,20 +53,29 @@ final class AppStoreSearchUIIntegrationTests: XCTestCase {
     }
     
     func test_search_savesTheSearchTermAndLoadsFoundApp() {
-        let searchLiteral = "search"
-        let searchTerm = makeTerm(searchLiteral)
+        let firstTermLiteral = "first search"
+        let secondTermLiteral = "second search"
+        let firstSearchTerm = makeTerm(firstTermLiteral)
+        let secondSearchTerm = makeTerm(secondTermLiteral)
         var termsSearched = [SearchTerm]()
         let (sut, list, termsLoader, appsLoader) = makeSUT { termsSearched.append($0) }
         let recentTerms = [makeTerm("recent0"), makeTerm("recent1")]
-        let appsFound = [makeApp(with: 0), makeApp(with: 1), makeApp(with: 2)]
+        let firstAppsFound = [makeApp(with: 0), makeApp(with: 1), makeApp(with: 2)]
+        let secondAppsFound = [makeApp(with: 0), makeApp(with: 1)]
         sut.loadViewIfNeeded()
         termsLoader.loadComplete(with: recentTerms)
         
-        sut.simulateDidSearch(with: searchLiteral)
-        XCTAssertEqual(termsSearched, [searchTerm], "검색을 하면 검색어가 저장된다")
+        sut.simulateDidSearch(with: firstTermLiteral)
+        XCTAssertEqual(termsSearched, [firstSearchTerm], "검색을 하면 검색어가 저장된다")
         
-        appsLoader.loadComplete(with: appsFound)
-        XCTAssertEqual(list.numberOfViews(in: appsFoundSection), appsFound.count, "검색 후, 찾아진 앱이 \(appsFound.count)개가 보인다")
+        appsLoader.loadComplete(with: firstAppsFound, at: 0)
+        XCTAssertEqual(list.numberOfViews(in: appsFoundSection), firstAppsFound.count, "검색 후, 찾아진 앱 \(firstAppsFound.count)개가 보인다")
+        
+        sut.simulateDidSearch(with: secondTermLiteral)
+        XCTAssertEqual(termsSearched, [firstSearchTerm, secondSearchTerm], "검색을 하면 검색어가 저장된다")
+        
+        appsLoader.loadComplete(with: secondAppsFound, at: 1)
+        XCTAssertEqual(list.numberOfViews(in: appsFoundSection), secondAppsFound.count, "검색 후, 찾아진 앱 \(secondAppsFound.count)개가 보인다")
     }
     
     // MARK: - Helpers
