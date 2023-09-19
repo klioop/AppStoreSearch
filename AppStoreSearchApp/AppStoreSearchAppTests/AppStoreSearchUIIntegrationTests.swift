@@ -19,8 +19,8 @@ final class AppStoreSearchUIIntegrationTests: XCTestCase {
         sut.loadViewIfNeeded()
         termsLoader.loadComplete(with: [])
         
-        XCTAssertEqual(list.numberOfViews(in: recentTitleSection), 1)
-        XCTAssertEqual(list.numberOfViews(in: recentTermsSection), 0)
+        XCTAssertEqual(list.numberOfViews(in: recentTitleSection), 1, "뷰가 로드되면, 최근 검색어 제목이 보여야 한다")
+        XCTAssertEqual(list.numberOfViews(in: recentTermsSection), 0, "뷰가 로드되면, 최근 검색어가 없을 때 아무 검색어도 보이면 안된다")
     }
     
     func test_viewDidLoad_rendersTitleAndRecentTermsOnNonEmptyRecentSearchTerms() {
@@ -30,8 +30,8 @@ final class AppStoreSearchUIIntegrationTests: XCTestCase {
         sut.loadViewIfNeeded()
         termsLoader.loadComplete(with: recentTerms)
         
-        XCTAssertEqual(list.numberOfViews(in: recentTitleSection), 1)
-        XCTAssertEqual(list.numberOfViews(in: recentTermsSection), recentTerms.count)
+        XCTAssertEqual(list.numberOfViews(in: recentTitleSection), 1, "뷰가 로드되면, 최근 검색어 제목이 보여야 한다")
+        XCTAssertEqual(list.numberOfViews(in: recentTermsSection), recentTerms.count, "뷰가 로드되면, 최근 검색어가 있을 때 검색어가 보여야한다")
     }
     
     func test_viewDidLoad_rendersMatchedTermsWhenSearchBarTextChanged() {
@@ -41,13 +41,13 @@ final class AppStoreSearchUIIntegrationTests: XCTestCase {
         sut.loadViewIfNeeded()
         termsLoader.loadComplete(with: recentTerms, at: 0)
         
-        XCTAssertEqual(list.numberOfViews(in: recentTitleSection), 1)
-        XCTAssertEqual(list.numberOfViews(in: recentTermsSection), recentTerms.count)
+        XCTAssertEqual(list.numberOfViews(in: recentTitleSection), 1, "뷰가 로드되면, 최근 검색어 제목이 보여야 한다")
+        XCTAssertEqual(list.numberOfViews(in: recentTermsSection), recentTerms.count, "뷰가 로드되면, 최근 검색어가 있을 때 검색어가 보여야한다")
         
         sut.searchView.onTextChange?("match")
         termsLoader.loadComplete(with: matchedTerms, at: 1)
         
-        XCTAssertEqual(list.numberOfViews(in: matchedTermsSection), matchedTerms.count)
+        XCTAssertEqual(list.numberOfViews(in: matchedTermsSection), matchedTerms.count, "검색바에 검색어가 변할 때 마다, 최근 검색어와 매칭된 검색어가 있으면 매칭된 검색어들만 보여야 한다")
     }
     
     // MARK: - Helpers
