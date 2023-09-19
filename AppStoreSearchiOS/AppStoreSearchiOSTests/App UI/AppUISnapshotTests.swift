@@ -39,8 +39,8 @@ final class AppUISnapshotTests: XCTestCase {
                 secondDescription: "a description"
             )
         )
-        let galleryCell0 = AppGalleryCellController(viewModel: anyURL())
-        let galleryCell1 = AppGalleryCellController(viewModel: anyURL())
+        let galleryCell0 = AppGalleryCellController(requestImage: {}, cancelRequestImage: {})
+        let galleryCell1 = AppGalleryCellController(requestImage: {}, cancelRequestImage: {})
         let gallery = [galleryCell0, galleryCell1].map(CellController.init)
         let preview = AppPreviewCellController(galleryCellControllers: gallery)
         let cellControllers = [title, description, feature, preview].map(TableCellController.init)

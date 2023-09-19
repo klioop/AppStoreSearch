@@ -48,7 +48,7 @@ final class AppStoreSearchResultRatingView: UIView {
     
     // MARK: - Helpers
     
-    private func update(_ ratings: (int: Int, decimal: CGFloat)) {
+    func update(_ ratings: (int: Int, decimal: CGFloat)) {
         (0..<ratings.int).forEach { index in
             maskingViews[index].progress = 1.0
         }
