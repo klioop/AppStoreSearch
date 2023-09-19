@@ -9,6 +9,12 @@ import Foundation
 
 public final class UserDefaultsSearchTermStore: SearchTermStore {
     private let key = "SearchTerms.klioop"
+    private let queue = DispatchQueue(
+        label: "\(UserDefaultsSearchTermStore.self)Queue",
+        qos: .userInitiated,
+        attributes: .concurrent
+    )
+    
     private let defaults: UserDefaults
     
     public init(suiteName: String) throws {
@@ -20,18 +26,26 @@ public final class UserDefaultsSearchTermStore: SearchTermStore {
     }
     
     public func insert(_ term: LocalSearchTerm, completion: @escaping (InsertionResult) -> Void) {
-        completion(
-            InsertionResult {
-                guard isNotExist(term) else { return }
-                
-                cache(terms() + [term.term])
-            }
-        )
+        queue.async(flags: .barrier) {
+            completion(
+                InsertionResult { [weak self] in
+                    guard let self else { return }
+                    
+                    guard isNotExist(term) else { return }
+                    
+                    cache(terms() + [term.term])
+                }
+            )
+        }
     }
     
     public func retrieve(completion: @escaping (RetrievalResult) -> Void) {
-        let terms = terms().map(LocalSearchTerm.init)
-        completion(.success(terms))
+        queue.async { [weak self] in
+            guard let self else { return }
+            
+            let terms = terms().map(LocalSearchTerm.init)
+            completion(.success(terms))
+        }
     }
     
     // MARK: - Helpers
