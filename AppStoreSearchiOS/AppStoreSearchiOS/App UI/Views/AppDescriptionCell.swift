@@ -26,13 +26,13 @@ final class AppDescriptionCell: UITableViewCell {
     }
     
     var rankingTitle: String {
-        get { rankingView.title }
-        set { rankingView.title = newValue }
+        get { genreView.title }
+        set { genreView.title = newValue }
     }
     
     var rankingDescription: String {
-        get { rankingView.descriptionText }
-        set { rankingView.descriptionText = newValue }
+        get { genreView.descriptionText }
+        set { genreView.descriptionText = newValue }
     }
     
     var ageTitle: String {
@@ -46,24 +46,24 @@ final class AppDescriptionCell: UITableViewCell {
     }
     
     private lazy var ratingView = AppDescriptionRatingView()
-    private lazy var rankingView = AppDescriptionGeneralInfoView()
+    private lazy var genreView = AppDescriptionGeneralInfoView()
     private lazy var ageView = AppDescriptionGeneralInfoView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        [ratingView, rankingView, ageView].forEach(contentView.addSubview)
+        [ratingView, genreView, ageView].forEach(contentView.addSubview)
         ratingView.snp.makeConstraints {
             $0.verticalEdges.equalToSuperview().inset(16)
-            $0.leading.equalToSuperview().offset(16)
+            $0.leading.equalToSuperview().offset(20)
         }
-        rankingView.snp.makeConstraints {
+        genreView.snp.makeConstraints {
             $0.centerX.equalToSuperview().offset(50)
             $0.centerY.equalTo(ratingView.snp.centerY)
         }
         ageView.snp.makeConstraints {
             $0.centerY.equalTo(ratingView.snp.centerY)
-            $0.trailing.equalToSuperview().inset(16)
+            $0.trailing.equalToSuperview().inset(20)
         }
     }
     

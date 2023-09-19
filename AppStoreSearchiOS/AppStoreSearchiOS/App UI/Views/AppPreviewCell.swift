@@ -37,11 +37,11 @@ final class AppPreviewCell: UITableViewCell {
         [label, gallery].forEach(contentView.addSubview)
         label.snp.makeConstraints {
             $0.top.equalToSuperview().offset(16)
-            $0.horizontalEdges.equalToSuperview().inset(16)
+            $0.horizontalEdges.equalToSuperview().inset(20)
         }
         gallery.snp.makeConstraints {
             $0.top.equalTo(label.snp.bottom).offset(16)
-            $0.leading.equalToSuperview().offset(16)
+            $0.leading.equalToSuperview().offset(20)
             $0.bottom.trailing.equalToSuperview()
             $0.height.equalTo(UIScreen.main.bounds.height * 0.6)
         }

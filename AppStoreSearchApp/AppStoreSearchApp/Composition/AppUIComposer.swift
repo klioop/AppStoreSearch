@@ -64,6 +64,9 @@ public final class AppUIComposer {
             errorView: .none,
             mapper: UIImage.tryMake
         )
+        list.configure = { tableView in
+            tableView.allowsSelection = false
+        }
         list.display(cellControllers)
         return container
     }

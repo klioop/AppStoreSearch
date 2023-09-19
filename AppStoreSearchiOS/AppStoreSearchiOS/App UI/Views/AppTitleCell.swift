@@ -78,13 +78,14 @@ final class AppTitleCell: UITableViewCell {
         
         [logoContainer, container, buttonContainer].forEach(contentView.addSubview)
         logoContainer.snp.makeConstraints {
-            $0.verticalEdges.equalToSuperview().inset(16)
-            $0.leading.equalToSuperview().offset(16)
+            $0.verticalEdges.equalToSuperview().inset(16).priority(999)
+            $0.leading.equalToSuperview().offset(20)
             $0.width.height.equalTo(120)
         }
         container.snp.makeConstraints {
             $0.top.equalTo(logoContainer.snp.top)
             $0.leading.equalTo(logoContainer.snp.trailing).offset(12)
+            $0.trailing.equalToSuperview().inset(20)
         }
         buttonContainer.snp.makeConstraints {
             $0.bottom.equalTo(logoContainer.snp.bottom)

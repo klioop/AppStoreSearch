@@ -23,6 +23,7 @@ final class AppDescriptionGeneralInfoView: UIView {
     private lazy var container: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
+        stack.alignment = .center
         stack.spacing = 3
         [titleLabel, descriptionLabel].forEach(stack.addArrangedSubview)
         return stack
