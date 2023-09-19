@@ -18,4 +18,13 @@ class AppStoreRecentSearchTermPresenterTests: XCTestCase {
         XCTAssertFalse(viewModel.isMatchedRecent)
         XCTAssertEqual(viewModel.term, term)
     }
+    
+    func test_mapToMatched_searchTermToMatchedSearchTermViewModel() {
+        let term = "any term"
+        let searchTerm = SearchTerm(term: term)
+        let viewModel = AppStoreRecentSearchTermPresenter.mapToMatched(searchTerm)
+        
+        XCTAssertTrue(viewModel.isMatchedRecent)
+        XCTAssertEqual(viewModel.term, term)
+    }
 }

@@ -13,4 +13,11 @@ public final class AppStoreRecentSearchTermPresenter {
     public static func map(_ term: SearchTerm) -> AppStoreRecentSearchTermViewModel {
         AppStoreRecentSearchTermViewModel(term: term.term)
     }
+    
+    public static func mapToMatched(_ term: SearchTerm) -> AppStoreRecentSearchTermViewModel {
+        AppStoreRecentSearchTermViewModel(
+            isMatchedRecent: true,
+            term: term.term
+        )
+    }
 }
