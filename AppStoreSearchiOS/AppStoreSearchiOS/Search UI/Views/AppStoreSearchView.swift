@@ -34,7 +34,7 @@ public final class AppStoreSearchView: UIView {
         return search
     }()
     
-    private lazy var logoView: UIImageView = {
+    private lazy var profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "person.circle")
         return imageView
@@ -46,7 +46,7 @@ public final class AppStoreSearchView: UIView {
     public override init(frame: CGRect) {
         super.init(frame: frame)
         
-        [titleLabel, searchBar, logoView].forEach(addSubview)
+        [titleLabel, searchBar, profileImageView].forEach(addSubview)
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(topPadding)
             $0.leading.equalToSuperview().offset(20)
@@ -56,7 +56,7 @@ public final class AppStoreSearchView: UIView {
             $0.horizontalEdges.equalToSuperview().inset(10)
             $0.bottom.equalToSuperview().inset(20)
         }
-        logoView.snp.makeConstraints {
+        profileImageView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(horizontalPadding)
             $0.trailing.equalToSuperview().inset(horizontalPadding)
             $0.width.height.equalTo(36)

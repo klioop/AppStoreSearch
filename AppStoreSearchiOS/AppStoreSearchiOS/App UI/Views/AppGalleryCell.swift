@@ -9,9 +9,17 @@ import UIKit
 import SnapKit
 
 final class AppGalleryCell: UICollectionViewCell {
+    
+    private(set) lazy var container: ShimmeringView = {
+        let view = ShimmeringView()
+        view.addSubview(imageView)
+        view.backgroundColor = .systemGray4
+        imageView.snp.makeConstraints { $0.edges.equalToSuperview() }
+        return view
+    }()
+    
     private(set) lazy var imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .systemGray3
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
@@ -19,10 +27,10 @@ final class AppGalleryCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        contentView.addSubview(imageView)
-        imageView.snp.makeConstraints { $0.edges.equalToSuperview() }
-        imageView.layer.cornerRadius = 16
-        imageView.layer.cornerCurve = .continuous
+        contentView.addSubview(container)
+        container.snp.makeConstraints { $0.edges.equalToSuperview() }
+        container.layer.cornerRadius = 16
+        container.layer.cornerCurve = .continuous
     }
     
     required init?(coder: NSCoder) { nil }
