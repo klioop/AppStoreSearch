@@ -9,6 +9,7 @@ import UIKit
 
 public class ShimmeringView: UIView {
     public var isShimmering: Bool {
+        get { layer.mask?.animation(forKey: shimmerAnimationKey) != nil }
         set {
             if newValue {
                 startShimmering()
@@ -16,10 +17,7 @@ public class ShimmeringView: UIView {
                 stopShimmering()
             }
         }
-        
-        get {
-            return layer.mask?.animation(forKey: shimmerAnimationKey) != nil
-        }
+
     }
     
     private var shimmerAnimationKey: String {
