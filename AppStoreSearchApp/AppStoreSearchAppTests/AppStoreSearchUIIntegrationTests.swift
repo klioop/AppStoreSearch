@@ -34,23 +34,7 @@ final class AppStoreSearchUIIntegrationTests: XCTestCase {
         XCTAssertEqual(list.numberOfViews(in: recentTermsSection), recentTerms.count, "뷰가 로드되면, 최근 검색어가 있을 때 검색어가 보여야한다")
     }
     
-    func test_viewDidLoad_rendersMatchedTermsWhenSearchBarTextChanged() {
-        let (sut, list, termsLoader) = makeSUT()
-        let recentTerms = [makeTerm("any"), makeTerm("matched0"), makeTerm("matched1")]
-        let matchedTerms = [makeTerm("matched0"), makeTerm("matched1")]
-        sut.loadViewIfNeeded()
-        termsLoader.loadComplete(with: recentTerms, at: 0)
-        
-        XCTAssertEqual(list.numberOfViews(in: recentTitleSection), 1, "뷰가 로드되면, 최근 검색어 제목이 보여야 한다")
-        XCTAssertEqual(list.numberOfViews(in: recentTermsSection), recentTerms.count, "뷰가 로드되면, 최근 검색어가 있을 때 검색어가 보여야한다")
-        
-        sut.searchView.onTextChange?("match")
-        termsLoader.loadComplete(with: matchedTerms, at: 1)
-        
-        XCTAssertEqual(list.numberOfViews(in: matchedTermsSection), matchedTerms.count, "검색바에 검색어가 변할 때 마다, 최근 검색어와 매칭된 검색어가 있으면 매칭된 검색어들만 보여야 한다")
-    }
-    
-    func test_viewDidLoad_rendersRecentTermsTermsWhenSearchBarTextChangedToEmpty() {
+    func test_searchBarTextEditing_rendersRecentAndMatchedSearchTerms() {
         let (sut, list, termsLoader) = makeSUT()
         let recentTerms = [makeTerm("any"), makeTerm("matched0"), makeTerm("matched1")]
         let matchedTerms = [makeTerm("matched0"), makeTerm("matched1")]
@@ -66,7 +50,7 @@ final class AppStoreSearchUIIntegrationTests: XCTestCase {
         
         sut.searchView.onTextChange?("")
         termsLoader.loadComplete(with: recentTerms, at: 2)
-        XCTAssertEqual(list.numberOfViews(in: recentTitleSection), 1, "뷰가 로드되면, 최근 검색어 제목이 보여야 한다")
+        XCTAssertEqual(list.numberOfViews(in: recentTitleSection), 1, "최근 검색어 리스트가 로드되면, 최근 검색어 제목이 보여야 한다")
         XCTAssertEqual(list.numberOfViews(in: recentTermsSection), recentTerms.count, "검색바에 검색어가 빈 값으로 변하면, 최근 검색어 리스트가 보여야 한다")
     }
     
