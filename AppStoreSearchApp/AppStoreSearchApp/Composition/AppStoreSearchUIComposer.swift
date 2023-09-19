@@ -64,11 +64,11 @@ public final class AppStoreSearchUIComposer {
                 appsPresentationAdapter.loadResource(with: SearchTerm(term: $0))
             },
             textChangeCallback: {
-                if $0.isEmpty {
-                    recentTermsPresentationAdapter.loadResource(with: ())
-                } else {
-                    matchedTermsPresentationAdapter.loadResource(with: SearchTerm(term: $0))
-                }
+                textChangeCallback(
+                    recentTermsPresentationAdapter: recentTermsPresentationAdapter,
+                    matchedTermsPresentationAdapter: matchedTermsPresentationAdapter,
+                    upon: $0
+                )
             },
             cancelCallback: {
                 recentTermsPresentationAdapter.loadResource(with: ())
@@ -93,5 +93,19 @@ public final class AppStoreSearchUIComposer {
             recentTermsPresentationAdapter.loadResource(with: ())
         }
         return container
+    }
+    
+    // MARK: - Helpers
+    
+    private static func textChangeCallback(
+        recentTermsPresentationAdapter: RecentSearchTermLoadPresentationAdapter,
+        matchedTermsPresentationAdapter: MatchedSearchTermLoadPresentationAdapter,
+        upon text: String
+    ) {
+        if text.isEmpty {
+            recentTermsPresentationAdapter.loadResource(with: ())
+        } else {
+            matchedTermsPresentationAdapter.loadResource(with: SearchTerm(term: text))
+        }
     }
 }
