@@ -1,5 +1,5 @@
 //
-//  AppsViewAdapter.swift
+//  AppsFoundViewAdapter.swift
 //  AppStoreSearchApp
 //
 //  Created by Lee Sam on 2023/09/19.
@@ -9,7 +9,7 @@ import Foundation
 import AppStoreSearch
 import AppStoreSearchiOS
 
-final class AppsViewAdapter: ResourceView {
+final class AppsFoundViewAdapter: ResourceView {
     
     private weak var controller: ListViewController?
     

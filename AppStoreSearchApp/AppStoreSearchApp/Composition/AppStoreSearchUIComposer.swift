@@ -15,7 +15,7 @@ public final class AppStoreSearchUIComposer {
     
     private typealias RecentSearchTermLoadPresentationAdapter = LoadResourcePresentationAdapter<Void, [SearchTerm], RecentSearchTermViewAdapter>
     private typealias MatchedSearchTermLoadPresentationAdapter = LoadResourcePresentationAdapter<SearchTerm, [SearchTerm], MatchedSearchTermsViewAdapter>
-    private typealias AppsLoadPresentationAdapter = LoadResourcePresentationAdapter<SearchTerm, [App], AppsViewAdapter>
+    private typealias AppsLoadPresentationAdapter = LoadResourcePresentationAdapter<SearchTerm, [App], AppsFoundViewAdapter>
     
     public static func composedWith(
         recentTermsLoader: @escaping () -> AnyPublisher<[SearchTerm], Error>,
@@ -60,7 +60,7 @@ public final class AppStoreSearchUIComposer {
             errorView: .none
         )
         appsPresentationAdapter.presenter = LoadResourcePresenter(
-            resourceView: AppsViewAdapter(controller: listViewController),
+            resourceView: AppsFoundViewAdapter(controller: listViewController),
             loadingView: .none,
             errorView: .none
         )
