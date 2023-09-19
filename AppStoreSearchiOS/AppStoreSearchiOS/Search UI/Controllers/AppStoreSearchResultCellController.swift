@@ -26,17 +26,20 @@ public final class AppStoreSearchResultCellController: NSObject, UITableViewData
     private let galleryCellControllers: [CellController]
     private let requestLogoImage: () -> Void
     private let cancelRequestLogoImage: () -> Void
+    private let selection: () -> Void
     
     public init(
         viewModel: AppStoreSearchResultViewModel,
         galleryCellControllers: [CellController],
         requestLogoImage: @escaping () -> Void,
-        cancelRequestLogoImage: @escaping () -> Void
+        cancelRequestLogoImage: @escaping () -> Void,
+        selection: @escaping () -> Void
     ) {
         self.viewModel = viewModel
         self.galleryCellControllers = galleryCellControllers
         self.requestLogoImage = requestLogoImage
         self.cancelRequestLogoImage = cancelRequestLogoImage
+        self.selection = selection
     }
     
     public static func register(for tableView: UITableView) {
@@ -56,6 +59,10 @@ public final class AppStoreSearchResultCellController: NSObject, UITableViewData
         cell?.numberOfRatings = viewModel.numberOfRatingsText
         requestLogoImage()
         return cell!
+    }
+    
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selection()
     }
     
     public func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {

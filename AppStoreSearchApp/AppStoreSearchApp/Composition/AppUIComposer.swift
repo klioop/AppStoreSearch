@@ -16,7 +16,7 @@ public final class AppUIComposer {
     
     private init() {}
     
-    public func composedWith(
+    public static func composedWith(
         app: App,
         imageDataLoader: @escaping (URL) -> AnyPublisher<Data, Error>,
         callback: @escaping () -> Void

@@ -16,10 +16,16 @@ final class AppsFoundViewAdapter: ResourceView {
     
     private weak var controller: ListViewController?
     private let imageDataLoader: (URL) -> AnyPublisher<Data, Error>
+    private let selection: (App) -> Void
     
-    init(controller: ListViewController, imageDataLoader: @escaping (URL) -> AnyPublisher<Data, Error>) {
+    init(
+        controller: ListViewController,
+        imageDataLoader: @escaping (URL) -> AnyPublisher<Data, Error>,
+        selection: @escaping (App) -> Void
+    ) {
         self.controller = controller
         self.imageDataLoader = imageDataLoader
+        self.selection = selection
     }
     
     func display(_ viewModel: [App]) {
@@ -29,7 +35,10 @@ final class AppsFoundViewAdapter: ResourceView {
                 viewModel: AppStoreSearchFoundAppPresenter.map(app),
                 galleryCellControllers: galleries(for: app.images),
                 requestLogoImage: { imageDataPresentationAdapter.loadResource(with: app.logo) },
-                cancelRequestLogoImage: imageDataPresentationAdapter.cancel
+                cancelRequestLogoImage: imageDataPresentationAdapter.cancel,
+                selection: { [weak self] in
+                    self?.selection(app)
+                }
             )
             imageDataPresentationAdapter.presenter = LoadResourcePresenter(
                 resourceView: WeakRefVirtualProxy(cell),

@@ -22,7 +22,8 @@ public final class AppStoreSearchUIComposer {
         matchedTermsLoader: @escaping (SearchTerm) -> AnyPublisher<[SearchTerm], Error>,
         appsLoader: @escaping (SearchTerm) -> AnyPublisher<[App], Error>,
         imageDataLoader: @escaping (URL) -> AnyPublisher<Data, Error>,
-        save: @escaping (SearchTerm) -> Void
+        save: @escaping (SearchTerm) -> Void,
+        selection: @escaping (App) -> Void
     ) -> AppStoreSearchContainerViewController {
         let recentTermsPresentationAdapter = RecentSearchTermLoadPresentationAdapter(loader: recentTermsLoader)
         let matchedTermsPresentationAdapter = MatchedSearchTermLoadPresentationAdapter(loader: matchedTermsLoader)
@@ -69,7 +70,8 @@ public final class AppStoreSearchUIComposer {
         appsPresentationAdapter.presenter = LoadResourcePresenter(
             resourceView: AppsFoundViewAdapter(
                 controller: listViewController,
-                imageDataLoader: imageDataLoader
+                imageDataLoader: imageDataLoader,
+                selection: selection
             ),
             loadingView: .none,
             errorView: .none

@@ -147,7 +147,8 @@ final class AppStoreSearchUIIntegrationTests: XCTestCase {
             matchedTermsLoader: termsLoader.loadPublisher(containing:),
             appsLoader: appsLoader.loadPublisher,
             imageDataLoader: appsLoader.loadImageData,
-            save: save
+            save: save,
+            selection: {_ in }
         )
         let list = sut.listViewController!
         trackMemoryLeak(termsLoader, file: file, line: line)

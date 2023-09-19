@@ -32,7 +32,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             matchedTermsLoader: matchedSearchTermsLoader,
             appsLoader: appsLoader,
             imageDataLoader: imageDataLoader,
-            save: save
+            save: save,
+            selection: showApp
         )
         navigationController.setViewControllers([searchViewController], animated: false)
         window?.rootViewController = navigationController
@@ -40,6 +41,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     // MARK: - Helpers
+    
+    private func showApp(_ app: App) {
+        let appViewController = AppUIComposer.composedWith(
+            app: app,
+            imageDataLoader: imageDataLoader,
+            callback: { [weak navigationController] in
+                navigationController?.popViewController(animated: true)
+            }
+        )
+        navigationController.pushViewController(appViewController, animated: true)
+    }
     
     private func recentSearchTermsLoader() -> AnyPublisher<[SearchTerm], Error> {
         localSearchTermsLoader.loadPublisher()
