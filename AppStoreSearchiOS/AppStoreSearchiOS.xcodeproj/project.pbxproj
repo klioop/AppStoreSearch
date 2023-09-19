@@ -91,6 +91,7 @@
 		B2C62CA72AB96EFD00944326 /* AppStoreSearchFoundAppPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C62CA62AB96EFD00944326 /* AppStoreSearchFoundAppPresenterTests.swift */; };
 		B2C62CA92AB9796300944326 /* AppStoreSearchFoundAppPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C62CA82AB9796300944326 /* AppStoreSearchFoundAppPresenter.swift */; };
 		B2C62CAC2AB9799C00944326 /* Double+formatted.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C62CAB2AB9799C00944326 /* Double+formatted.swift */; };
+		B2C62CAE2AB97FDE00944326 /* ShimmeringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C62CAD2AB97FDE00944326 /* ShimmeringView.swift */; };
 		B2F15B1E2AB70B8A00158D5A /* AppStoreSearchAPIEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F15B1D2AB70B8A00158D5A /* AppStoreSearchAPIEndToEndTests.swift */; };
 		B2F15B1F2AB70B8A00158D5A /* AppStoreSearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B23A6B282AB6F267006067F7 /* AppStoreSearch.framework */; };
 		B2F15B282AB71A4800158D5A /* LocalSearchTerm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F15B272AB71A4800158D5A /* LocalSearchTerm.swift */; };
@@ -228,6 +229,7 @@
 		B2C62CA62AB96EFD00944326 /* AppStoreSearchFoundAppPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreSearchFoundAppPresenterTests.swift; sourceTree = "<group>"; };
 		B2C62CA82AB9796300944326 /* AppStoreSearchFoundAppPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreSearchFoundAppPresenter.swift; sourceTree = "<group>"; };
 		B2C62CAB2AB9799C00944326 /* Double+formatted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+formatted.swift"; sourceTree = "<group>"; };
+		B2C62CAD2AB97FDE00944326 /* ShimmeringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmeringView.swift; sourceTree = "<group>"; };
 		B2F15B1B2AB70B8A00158D5A /* AppStoreSearchAPIEndToEndTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppStoreSearchAPIEndToEndTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2F15B1D2AB70B8A00158D5A /* AppStoreSearchAPIEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreSearchAPIEndToEndTests.swift; sourceTree = "<group>"; };
 		B2F15B252AB70C7300158D5A /* AppStoreSearchAPIEndToEndTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = AppStoreSearchAPIEndToEndTests.xctestplan; sourceTree = "<group>"; };
@@ -414,6 +416,7 @@
 				B2A3B6A02AB56AD3007B1B75 /* CellController.swift */,
 				B2A3B6A12AB56AD3007B1B75 /* TableCellController.swift */,
 				B2A3B69A2AB56AB8007B1B75 /* RefreshController.swift */,
+				B2C62CAD2AB97FDE00944326 /* ShimmeringView.swift */,
 			);
 			path = "Shared UI";
 			sourceTree = "<group>";
@@ -922,6 +925,7 @@
 				B2A3B6A82AB56D7C007B1B75 /* AppStoreRecentSearchTitleCellController.swift in Sources */,
 				B23A6B052AB6BDC9006067F7 /* UICollectionView+dequeueing.swift in Sources */,
 				B2A3B69D2AB56AB8007B1B75 /* RefreshController.swift in Sources */,
+				B2C62CAE2AB97FDE00944326 /* ShimmeringView.swift in Sources */,
 				B2A3B6BD2AB588F0007B1B75 /* AppStoreSearchResultRatingView.swift in Sources */,
 				B2A3B6872AB564C0007B1B75 /* AppStoreSearchContainerViewController.swift in Sources */,
 				B23A6B0E2AB6CE2E006067F7 /* AppGalleryCellController.swift in Sources */,
