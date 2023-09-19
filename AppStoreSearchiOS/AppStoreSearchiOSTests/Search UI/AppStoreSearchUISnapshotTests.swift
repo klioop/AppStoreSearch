@@ -51,7 +51,13 @@ final class AppStoreSearchUISnapshotTests: XCTestCase {
     
     private func makeSUT() -> (sut: AppStoreSearchContainerViewController, list: ListViewController) {
         let searchViewController = AppStoreSearchViewController(
-            viewModel: AppStoreSearchViewModel(title: "a title", placeholder: "a placeholder")
+            viewModel: AppStoreSearchViewModel(
+                title: "a title",
+                placeholder: "a placeholder"
+            ),
+            searchCallback: {_ in },
+            textChangeCallback: {_ in },
+            cancelCallback: {}
         )
         let list = ListViewController()
         let sut = AppStoreSearchContainerViewController(
@@ -109,8 +115,7 @@ final class AppStoreSearchUISnapshotTests: XCTestCase {
                 seller: "a seller0",
                 ratings: (3, 0.44),
                 numberOfRatingsText: "1.1만",
-                logoImage: URL(string: "https:any-url.com")!,
-                images: [URL(string: "https:any-url.com")!]
+                logoImage: URL(string: "https:any-url.com")!
             ),
             galleryCellControllers: gallery
         )
@@ -120,8 +125,7 @@ final class AppStoreSearchUISnapshotTests: XCTestCase {
                 seller: "a seller1",
                 ratings: (4, 0.44),
                 numberOfRatingsText: "3.7천",
-                logoImage: URL(string: "https:any-url.com")!,
-                images: [URL(string: "https:any-url.com")!]
+                logoImage: URL(string: "https:any-url.com")!
             ),
             galleryCellControllers: gallery
         )

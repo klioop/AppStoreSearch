@@ -18,7 +18,30 @@ final class AppsViewAdapter: ResourceView {
         self.controller = controller
     }
     
-    func display(_ viewModel: [App]) {}
+    func display(_ viewModel: [App]) {
+        let cellControllers = viewModel.map { app -> (App, AppStoreSearchResultCellController) in
+            let int = Int(app.rating)
+            let decimal = app.rating.truncatingRemainder(dividingBy: Double(int))
+            let endIndex = app.images.count < 3 ? app.images.count : 3
+            let galleries = app.images[..<endIndex].map(AppGalleryCellController.init)
+            return (
+                app,
+                AppStoreSearchResultCellController(
+                    viewModel: AppStoreSearchResultViewModel(
+                        title: app.title,
+                        seller: app.seller,
+                        ratings: (int, decimal),
+                        numberOfRatingsText: "\(app.numberOfRatings)",
+                        logoImage: app.logo
+                    ),
+                    galleryCellControllers: galleries.map(CellController.init)
+                )
+            )
+        }
+            .map(TableCellController.init)
+        
+        controller?.display(cellControllers)
+    }
 }
 
 
@@ -68,6 +91,11 @@ public final class AppStoreSearchUIComposer {
         )
         matchedTermsPresentationAdapter.presenter = LoadResourcePresenter(
             resourceView: MatchedSearchTermsViewAdapter(controller: listViewController),
+            loadingView: .none,
+            errorView: .none
+        )
+        appsPresentationAdapter.presenter = LoadResourcePresenter(
+            resourceView: AppsViewAdapter(controller: listViewController),
             loadingView: .none,
             errorView: .none
         )

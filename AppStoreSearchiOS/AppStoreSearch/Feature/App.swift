@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct AppID {
+public struct AppID: Hashable {
     public let id: Int
     
     public init(id: Int) {
@@ -42,5 +42,11 @@ public struct App {
         self.age = age
         self.logo = logo
         self.images = images
+    }
+}
+
+extension App: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
 }

@@ -14,7 +14,7 @@ import AppStoreSearchApp
 final class AppStoreSearchUIIntegrationTests: XCTestCase {
     
     func test_viewDidLoad_rendersOnlyTitleOnEmptyRecentSearchTerms() {
-        let (sut, list, termsLoader) = makeSUT()
+        let (sut, list, termsLoader, _) = makeSUT()
         
         sut.loadViewIfNeeded()
         termsLoader.loadComplete(with: [])
@@ -24,7 +24,7 @@ final class AppStoreSearchUIIntegrationTests: XCTestCase {
     }
     
     func test_searchBarState_rendersRecentAndMatchedSearchTerms() {
-        let (sut, list, termsLoader) = makeSUT()
+        let (sut, list, termsLoader, _) = makeSUT()
         let matchedTerms = [makeTerm("matched0"), makeTerm("matched1")]
         let recentTerms = [makeTerm("any")] + matchedTerms
         sut.loadViewIfNeeded()
@@ -52,17 +52,21 @@ final class AppStoreSearchUIIntegrationTests: XCTestCase {
         XCTAssertEqual(list.numberOfViews(in: recentTitleSection), 1, "최근 검색어 리스트가 로드되면, 최근 검색어 제목이 보여야 한다")
     }
     
-    func test_search_saveTheSearchTerm() {
+    func test_search_savesTheSearchTermAndLoadsFoundApp() {
         let searchLiteral = "search"
         let searchTerm = makeTerm(searchLiteral)
         var termsSearched = [SearchTerm]()
-        let (sut, _, termsLoader) = makeSUT { termsSearched.append($0) }
+        let (sut, list, termsLoader, appsLoader) = makeSUT { termsSearched.append($0) }
         let recentTerms = [makeTerm("recent0"), makeTerm("recent1")]
+        let appsFound = [makeApp(with: 0), makeApp(with: 1), makeApp(with: 2)]
         sut.loadViewIfNeeded()
-        termsLoader.loadComplete(with: recentTerms, at: 0)
+        termsLoader.loadComplete(with: recentTerms)
         
         sut.simulateDidSearch(with: searchLiteral)
         XCTAssertEqual(termsSearched, [searchTerm], "검색을 하면 검색어가 저장된다")
+        
+        appsLoader.loadComplete(with: appsFound)
+        XCTAssertEqual(list.numberOfViews(in: appsFoundSection), appsFound.count, "검색 후, 찾아진 앱이 \(appsFound.count)개가 보인다")
     }
     
     // MARK: - Helpers
@@ -74,7 +78,8 @@ final class AppStoreSearchUIIntegrationTests: XCTestCase {
     ) -> (
         sut: AppStoreSearchContainerViewController,
         list: ListViewController,
-        termsLoader: SearchTermsLoaderSpy
+        termsLoader: SearchTermsLoaderSpy,
+        appsLoader: AppsLoaderSpy
     ) {
         let termsLoader = SearchTermsLoaderSpy()
         let appsLoader = AppsLoaderSpy()
@@ -88,7 +93,7 @@ final class AppStoreSearchUIIntegrationTests: XCTestCase {
         trackMemoryLeak(termsLoader, file: file, line: line)
         trackMemoryLeak(sut, file: file, line: line)
         trackMemoryLeak(list, file: file, line: line)
-        return (sut, list, termsLoader)
+        return (sut, list, termsLoader, appsLoader)
     }
     
     private class SearchTermsLoaderSpy {
@@ -130,11 +135,33 @@ final class AppStoreSearchUIIntegrationTests: XCTestCase {
     private func makeTerm(_ term: String) -> SearchTerm {
         SearchTerm(term: term)
     }
+    
+    private func makeApp(with id: Int) -> App {
+        App(
+            id: AppID(id: id),
+            title: "a title",
+            seller: "a seller",
+            rating: 4.8888,
+            numberOfRatings: 3,
+            version: "x.xx.x",
+            currentReleaseDate: Date(),
+            releaseNotes: "a release note",
+            genre: "a genre",
+            age: "a age",
+            logo: anyURL(),
+            images: [anyURL()]
+        )
+    }
+    
+    private func anyURL() -> URL {
+        URL(string: "http://any-url.com")!
+    }
 }
 
 var recentTitleSection: Int { 0 }
 var recentTermsSection: Int { 1 }
 var matchedTermsSection: Int { 0 }
+var appsFoundSection: Int { 0 }
 
 extension AppStoreSearchContainerViewController {
     func simulateDidSearch(with term: String) {
