@@ -22,8 +22,6 @@ final class AppsViewAdapter: ResourceView {
         let cellControllers = viewModel.map { app -> (App, AppStoreSearchResultCellController) in
             let int = Int(app.rating)
             let decimal = app.rating.truncatingRemainder(dividingBy: Double(int))
-            let endIndex = app.images.count < 3 ? app.images.count : 3
-            let galleries = app.images[..<endIndex].map(AppGalleryCellController.init)
             return (
                 app,
                 AppStoreSearchResultCellController(
@@ -34,13 +32,24 @@ final class AppsViewAdapter: ResourceView {
                         numberOfRatingsText: "\(app.numberOfRatings)",
                         logoImage: app.logo
                     ),
-                    galleryCellControllers: galleries.map(CellController.init)
+                    galleryCellControllers: galleries(for: app.images)
                 )
             )
         }
             .map(TableCellController.init)
         
         controller?.display(cellControllers)
+    }
+    
+    // MARK: - Helpers
+    
+    private func galleries(for images: [URL]) -> [CellController] {
+        let maxImageCount = 3
+        let totalImageCount = images.count
+        let endIndex = totalImageCount < maxImageCount ? totalImageCount : 3
+        return images[..<endIndex]
+            .map(AppGalleryCellController.init)
+            .map(CellController.init)
     }
 }
 
