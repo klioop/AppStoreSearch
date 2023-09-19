@@ -85,6 +85,12 @@ public final class AppStoreSearchResultCell: UITableViewCell {
     
     required init?(coder: NSCoder) { nil }
     
+    public override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        logoImageView.image = .none
+    }
+    
     // MARK: - Helpers
     
     private func layout() {

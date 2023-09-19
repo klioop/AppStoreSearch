@@ -8,6 +8,14 @@
 import Foundation
 
 public final class AppMapper {
+    private struct Root: Decodable {
+        let results: [Item]
+        
+        var apps: [App] {
+            results.map(\.model)
+        }
+    }
+    
     private struct Item: Decodable {
         let trackId: Int
         let trackName: String
@@ -49,9 +57,12 @@ public final class AppMapper {
     public static func map(_ data: Data, from response: HTTPURLResponse) throws -> [App] {
         guard !data.isEmpty, isOK(response) else { throw Error.invalidData }
         
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        
         do {
-            let root = try JSONDecoder().decode([Item].self, from: data)
-            return root.map(\.model)
+            let root = try decoder.decode(Root.self, from: data)
+            return root.apps
         } catch {
             throw Error.invalidData
         }

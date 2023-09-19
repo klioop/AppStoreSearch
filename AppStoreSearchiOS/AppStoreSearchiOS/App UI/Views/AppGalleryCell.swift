@@ -34,4 +34,10 @@ public final class AppGalleryCell: UICollectionViewCell {
     }
     
     required init?(coder: NSCoder) { nil }
+    
+    public override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        imageView.image = .none
+    }
 }
