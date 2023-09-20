@@ -13,8 +13,8 @@ public final class AppStoreSearchFoundAppPresenter {
         AppStoreSearchResultViewModel(
             title: app.title,
             seller: app.seller,
-            ratings: convert(app.rating),
-            numberOfRatingsText: Double(app.numberOfRatings).formattedText
+            ratingText: "평점: \(ratingText(from: app.rating))",
+            numberOfRatingsText: Double(app.numberOfRatings).formattedText + "개"
         )
     }
     

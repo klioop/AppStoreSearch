@@ -20,20 +20,14 @@ public final class AppStoreSearchResultCell: UITableViewCell {
         set { sellerLabel.text = newValue }
     }
     
-    var ratings: (int: Int, decimal: CGFloat) {
-        get { ratingsView.ratings }
-        set {
-            let shouldShowRatingView = newValue.decimal > 0.0
-            ratingsView.isHidden = !shouldShowRatingView
-            
-            guard shouldShowRatingView else { return }
-            ratingsView.ratings = newValue
-        }
+    var ratingText: String {
+        get { ratingLabel.text ?? "" }
+        set { ratingLabel.text = newValue }
     }
     
     var numberOfRatings: String {
-        get { ratingsView.numberOfRatings }
-        set { ratingsView.numberOfRatings = newValue }
+        get { countLabel.text ?? "" }
+        set { update(newValue) }
     }
     
     private(set) lazy var logoContainer: ShimmeringView = {
@@ -54,7 +48,7 @@ public final class AppStoreSearchResultCell: UITableViewCell {
         let stack = UIStackView()
         stack.axis = .vertical
         stack.spacing = 6
-        [titleLabel, sellerLabel, ratingsView].forEach(stack.addArrangedSubview)
+        [titleLabel, sellerLabel, ratingContainer].forEach(stack.addArrangedSubview)
         return stack
     }()
     
@@ -66,7 +60,28 @@ public final class AppStoreSearchResultCell: UITableViewCell {
         font: .systemFont(ofSize: 14, weight: .regular),
         color: .secondaryLabel
     )
-    private lazy var ratingsView = AppStoreSearchResultRatingView()
+    
+    private lazy var ratingContainer: UIView = {
+        let view = UIView()
+        [ratingLabel, countLabel].forEach(view.addSubview)
+        ratingLabel.snp.makeConstraints {
+            $0.verticalEdges.leading.equalToSuperview()
+        }
+        countLabel.snp.makeConstraints {
+            $0.verticalEdges.trailing.equalToSuperview()
+            $0.leading.equalTo(ratingLabel.snp.trailing).offset(3)
+        }
+        return view
+    }()
+    
+    private lazy var ratingLabel = label(
+        font: .systemFont(ofSize: 12),
+        color: .gray
+    )
+    private lazy var countLabel = label(
+        font: .systemFont(ofSize: 12),
+        color: .tertiaryLabel
+    )
     
     private lazy var buttonContainer: UIView = {
         let view = UIView()
@@ -101,6 +116,12 @@ public final class AppStoreSearchResultCell: UITableViewCell {
     required init?(coder: NSCoder) { nil }
     
     // MARK: - Helpers
+    
+    private func update(_ numberOfRatings: String) {
+        guard let rating = numberOfRatings.first?.asString else { return }
+        ratingContainer.isHidden = (Int(rating) ?? 0) == 0
+        countLabel.text = numberOfRatings
+    }
     
     private func layout() {
         [logoContainer, container, buttonContainer, gallery].forEach(contentView.addSubview)
@@ -142,4 +163,8 @@ public final class AppStoreSearchResultCell: UITableViewCell {
         label.textColor = color
         return label
     }
+}
+
+private extension Character {
+    var asString: String { String(self) }
 }

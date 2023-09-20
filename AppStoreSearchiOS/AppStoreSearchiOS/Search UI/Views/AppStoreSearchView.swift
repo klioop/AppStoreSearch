@@ -40,13 +40,19 @@ public final class AppStoreSearchView: UIView {
         return imageView
     }()
     
+    private lazy var border: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black.withAlphaComponent(0.1)
+        return view
+    }()
+    
     private var topPadding: CGFloat { 20 }
     private var horizontalPadding: CGFloat { 20 }
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
         
-        [titleLabel, searchBar, profileImageView].forEach(addSubview)
+        [titleLabel, searchBar, profileImageView, border].forEach(addSubview)
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(topPadding)
             $0.leading.equalToSuperview().offset(20)
@@ -60,6 +66,10 @@ public final class AppStoreSearchView: UIView {
             $0.top.equalToSuperview().offset(horizontalPadding)
             $0.trailing.equalToSuperview().inset(horizontalPadding)
             $0.width.height.equalTo(36)
+        }
+        border.snp.makeConstraints {
+            $0.horizontalEdges.bottom.equalToSuperview()
+            $0.height.equalTo(1)
         }
     }
     

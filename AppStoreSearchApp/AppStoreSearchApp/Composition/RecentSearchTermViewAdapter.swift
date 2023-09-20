@@ -29,7 +29,7 @@ final class RecentSearchTermViewAdapter: ResourceView {
             return controller.display([titleCellController], [])
         }
         
-        let terms = viewModel.map { term -> (SearchTerm, AppStoreRecentSearchTermCellController) in
+        let terms = viewModel.reversed().map { term -> (SearchTerm, AppStoreRecentSearchTermCellController) in
             (
                 term,
                 AppStoreRecentSearchTermCellController(

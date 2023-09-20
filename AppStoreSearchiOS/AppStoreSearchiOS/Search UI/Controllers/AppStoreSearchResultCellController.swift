@@ -55,7 +55,7 @@ public final class AppStoreSearchResultCellController: NSObject, UITableViewData
         cell?.gallery = galleryView.collectionView
         cell?.title = viewModel.title
         cell?.seller = viewModel.seller
-        cell?.ratings = viewModel.ratings
+        cell?.ratingText = viewModel.ratingText
         cell?.numberOfRatings = viewModel.numberOfRatingsText
         requestLogoImage()
         return cell!
