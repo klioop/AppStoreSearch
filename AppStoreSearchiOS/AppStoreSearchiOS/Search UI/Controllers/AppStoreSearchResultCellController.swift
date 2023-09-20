@@ -13,6 +13,7 @@ public final class AppStoreSearchResultCellController: NSObject, UITableViewData
     private lazy var galleryView: CollectionListViewController = {
         let gallery = CollectionListViewController()
         gallery.configure = { collectionView in
+            collectionView.allowsSelection = false
             collectionView.collectionViewLayout = AppGalleryOnSearchLayout.layout()
             AppGalleryCellController.register(for: collectionView)
         }
@@ -57,6 +58,7 @@ public final class AppStoreSearchResultCellController: NSObject, UITableViewData
         cell?.seller = viewModel.seller
         cell?.ratingText = viewModel.ratingText
         cell?.numberOfRatings = viewModel.numberOfRatingsText
+        cell?.onTapGallery = selection
         requestLogoImage()
         return cell!
     }

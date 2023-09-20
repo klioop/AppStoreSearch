@@ -103,6 +103,12 @@ public final class AppStoreSearchResultCell: UITableViewCell {
         return button
     }()
     
+    private lazy var galleryContainerButton: UIButton = {
+        let button = UIButton()
+        button.addTarget(self, action: #selector(didTapGallery), for: .touchUpInside)
+        return button
+    }()
+    
     public var gallery: UICollectionView! {
         didSet { layout() }
     }
@@ -115,6 +121,8 @@ public final class AppStoreSearchResultCell: UITableViewCell {
     
     required init?(coder: NSCoder) { nil }
     
+    var onTapGallery: (() -> Void)?
+    
     // MARK: - Helpers
     
     private func update(_ numberOfRatings: String) {
@@ -123,7 +131,7 @@ public final class AppStoreSearchResultCell: UITableViewCell {
     }
     
     private func layout() {
-        [logoContainer, container, buttonContainer, gallery].forEach(contentView.addSubview)
+        [logoContainer, container, buttonContainer, gallery, galleryContainerButton].forEach(contentView.addSubview)
         logoContainer.snp.makeConstraints {
             $0.top.equalToSuperview().offset(20)
             $0.leading.equalToSuperview().offset(20)
@@ -146,6 +154,8 @@ public final class AppStoreSearchResultCell: UITableViewCell {
             $0.bottom.equalToSuperview().inset(20).priority(999)
             $0.height.equalTo(180)
         }
+        galleryContainerButton.snp.makeConstraints { $0.edges.equalTo(gallery.snp.edges) }
+        
         logoContainer.layer.cornerRadius = 8
         logoContainer.layer.cornerCurve = .continuous
         logoContainer.layer.masksToBounds = true
@@ -161,5 +171,9 @@ public final class AppStoreSearchResultCell: UITableViewCell {
         label.font = font
         label.textColor = color
         return label
+    }
+    
+    @objc private func didTapGallery() {
+        onTapGallery?()
     }
 }
