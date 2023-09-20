@@ -77,6 +77,7 @@ public final class AppStoreSearchUIComposer {
             errorView: .none
         )
         listViewController.configure = { tableView in
+            tableView.keyboardDismissMode = .onDrag
             AppStoreSearchResultCellController.register(for: tableView)
             recentTermsPresentationAdapter.loadResource(with: ())
         }
