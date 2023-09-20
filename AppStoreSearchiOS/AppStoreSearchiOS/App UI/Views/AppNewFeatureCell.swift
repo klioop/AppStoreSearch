@@ -20,10 +20,21 @@ final class AppNewFeatureCell: UITableViewCell {
         set { versionLabel.text = newValue }
     }
     
+    var releaseDateTitle: String {
+        get { releaseDateTitleLabel.text ?? "" }
+        set { releaseDateTitleLabel.text = newValue }
+    }
+    
+    var currentReleaseDate: String {
+        get { currentReleaseDateLabel.text ?? "" }
+        set { currentReleaseDateLabel.text = newValue }
+    }
+    
     var firstDescription: String {
         get { descriptionLabel0.text ?? "" }
         set { descriptionLabel0.text = newValue }
     }
+    
     var secondDescription: String {
         get { descriptionLabel1.text ?? "" }
         set {
@@ -32,7 +43,7 @@ final class AppNewFeatureCell: UITableViewCell {
         }
     }
     
-    private lazy var container: UIStackView = {
+    private lazy var titleContainer: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
         stack.spacing = 3
@@ -40,11 +51,28 @@ final class AppNewFeatureCell: UITableViewCell {
         return stack
     }()
     
+    private lazy var releaseContainer: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.alignment = .trailing
+        stack.spacing = 5
+        [releaseDateTitleLabel, currentReleaseDateLabel].forEach(stack.addArrangedSubview)
+        return stack
+    }()
+    
     private lazy var titleLabel = label(
-        font: .systemFont(ofSize: 24, weight: .bold),
+        font: .systemFont(ofSize: 18, weight: .bold),
         color: .label
     )
     private lazy var versionLabel = label(
+        font: .systemFont(ofSize: 14, weight: .regular),
+        color: .secondaryLabel
+    )
+    private lazy var releaseDateTitleLabel = label(
+        font: .systemFont(ofSize: 14, weight: .medium),
+        color: .label
+    )
+    private lazy var currentReleaseDateLabel = label(
         font: .systemFont(ofSize: 14, weight: .regular),
         color: .secondaryLabel
     )
@@ -84,19 +112,23 @@ final class AppNewFeatureCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        [container, descriptionContainer, buttonContainer].forEach(contentView.addSubview)
-        container.snp.makeConstraints {
+        [titleContainer, descriptionContainer, buttonContainer, releaseContainer].forEach(contentView.addSubview)
+        titleContainer.snp.makeConstraints {
             $0.top.equalToSuperview().offset(16)
-            $0.leading.equalToSuperview().offset(16)
+            $0.leading.equalToSuperview().offset(20)
         }
         descriptionContainer.snp.makeConstraints {
-            $0.top.equalTo(container.snp.bottom).offset(10)
-            $0.horizontalEdges.equalToSuperview().inset(16)
+            $0.top.equalTo(titleContainer.snp.bottom).offset(10)
+            $0.horizontalEdges.equalToSuperview().inset(20)
         }
         buttonContainer.snp.makeConstraints {
             $0.top.equalTo(descriptionContainer.snp.bottom)
             $0.trailing.equalToSuperview().inset(20)
             $0.bottom.equalToSuperview().inset(26)
+        }
+        releaseContainer.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(20)
+            $0.trailing.equalToSuperview().inset(20)
         }
         
         descriptionLabel1.isHidden = true

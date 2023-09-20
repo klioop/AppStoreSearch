@@ -24,6 +24,8 @@ public final class AppNewFeatureCellController: NSObject, UITableViewDataSource,
         let cell = AppNewFeatureCell()
         cell.title = viewModel.title
         cell.version = viewModel.version
+        cell.releaseDateTitle = viewModel.releaseDateTitle
+        cell.currentReleaseDate = viewModel.currentReleaseDate
         cell.firstDescription = viewModel.firstDescription
         cell.secondDescription = viewModel.secondDescription
         cell.onTap = {

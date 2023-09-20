@@ -35,6 +35,8 @@ final class AppUISnapshotTests: XCTestCase {
             viewModel: AppNewFeatureViewModel(
                 title: "a new feature title",
                 version: "version x.xx.x",
+                releaseDateTitle: "release title",
+                currentReleaseDate: "3 days ago",
                 firstDescription: "- a description\n- a description a description a description a description a description a description",
                 secondDescription: "a description"
             )
