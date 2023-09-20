@@ -77,13 +77,16 @@ final class AppStoreSearchUISnapshotTests: XCTestCase {
     private func recentTerms() -> [TableCellController] {
         let titleCellController = AppStoreRecentSearchTitleCellController(viewModel: "a title")
         let termCellController0 = AppStoreRecentSearchTermCellController(
-            viewModel: AppStoreRecentSearchTermViewModel(term: "a term0")
+            viewModel: AppStoreRecentSearchTermViewModel(term: "a term0"),
+            selection: {_ in }
         )
         let termCellController1 = AppStoreRecentSearchTermCellController(
-            viewModel: AppStoreRecentSearchTermViewModel(term: "a term1")
+            viewModel: AppStoreRecentSearchTermViewModel(term: "a term1"),
+            selection: {_ in }
         )
         let termCellController2 = AppStoreRecentSearchTermCellController(
-            viewModel: AppStoreRecentSearchTermViewModel(term: "a term2")
+            viewModel: AppStoreRecentSearchTermViewModel(term: "a term2"),
+            selection: {_ in }
         )
         return [titleCellController, termCellController0, termCellController1, termCellController2].map(TableCellController.init)
     }
@@ -93,13 +96,15 @@ final class AppStoreSearchUISnapshotTests: XCTestCase {
             viewModel: AppStoreRecentSearchTermViewModel(
                 isMatchedRecent: true,
                 term: "a matched term0"
-            )
+            ),
+            selection: {_ in}
         )
         let termCellController1 = AppStoreRecentSearchTermCellController(
             viewModel: AppStoreRecentSearchTermViewModel(
                 isMatchedRecent: true,
                 term: "a matched term1"
-            )
+            ),
+            selection: {_ in}
         )
         return [termCellController0, termCellController1].map(TableCellController.init)
     }
@@ -113,23 +118,25 @@ final class AppStoreSearchUISnapshotTests: XCTestCase {
             viewModel: AppStoreSearchResultViewModel(
                 title: "a title0",
                 seller: "a seller0",
-                ratings: (3, 0.44),
+                ratingText: "평점: 3.4",
                 numberOfRatingsText: "1.1만"
             ),
             galleryCellControllers: gallery,
             requestLogoImage: {},
-            cancelRequestLogoImage: {}
+            cancelRequestLogoImage: {},
+            selection: {}
         )
         let view1 = AppStoreSearchResultCellController(
             viewModel: AppStoreSearchResultViewModel(
                 title: "a title1",
                 seller: "a seller1",
-                ratings: (4, 0.44),
+                ratingText: "평점: 4.4",
                 numberOfRatingsText: "3.7천"
             ),
             galleryCellControllers: gallery,
             requestLogoImage: {},
-            cancelRequestLogoImage: {}
+            cancelRequestLogoImage: {},
+            selection: {}
         )
         return [view0, view1].map(TableCellController.init)
     }

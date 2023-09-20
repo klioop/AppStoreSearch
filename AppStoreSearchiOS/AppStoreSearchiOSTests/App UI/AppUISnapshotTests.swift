@@ -17,7 +17,8 @@ final class AppUISnapshotTests: XCTestCase {
             viewModel: AppTitleViewModel(
                 title: "a title",
                 seller: "a description"
-            )
+            ),
+            requestLogoImage: {}
         )
         let description = AppDescriptionCellController(
             viewModel: AppDescriptionViewModel(
