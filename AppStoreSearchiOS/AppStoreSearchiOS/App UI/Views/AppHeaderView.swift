@@ -18,7 +18,7 @@ public final class AppHeaderView: UIView {
         return label
     }()
     
-    private lazy var button: UIButton = {
+    public private(set) lazy var button: UIButton = {
         let button = UIButton()
         let image = UIImage(systemName: "chevron.left")
         button.setImage(image, for: .normal)
