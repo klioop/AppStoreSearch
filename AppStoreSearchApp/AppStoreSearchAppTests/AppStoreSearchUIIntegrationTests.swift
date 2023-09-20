@@ -78,7 +78,7 @@ final class AppStoreSearchUIIntegrationTests: XCTestCase {
         XCTAssertEqual(list.numberOfViews(in: appsFoundSection), secondAppsFound.count, "검색 후, 찾아진 앱 \(secondAppsFound.count)개가 보인다")
     }
     
-    func test_appViewVisible_requestsLogoImageAndAppImages() {
+    func test_appsViewVisible_requestsLogoImageAndAppImages() {
         let (sut, list, _, appsLoader) = makeSUT()
         let logo0 = URL(string: "http//:logo0.com")!
         let logo1 = URL(string: "http//:logo1.com")!
@@ -128,10 +128,30 @@ final class AppStoreSearchUIIntegrationTests: XCTestCase {
         XCTAssertEqual(appsLoader.requestedURLs, [app0.logo] + app0.images + [app1.logo] + app1.images, "두 번째 앱이 화면에 보인후 이미지 로딩이 완료되지 않고 화면에서 사라지면, 로고이미지와 앱 이미지 리스트 요청을 두 번 취소한다")
     }
     
+    func test_selectApps_sendMessagesToSelectionHandler() {
+        var selectionMessages = [App]()
+        let (sut, list, _, appsLoader) = makeSUT(selection: {
+            selectionMessages.append($0)
+        })
+        let app0 = makeApp(id: 0)
+        let app1 = makeApp(id: 1)
+        
+        sut.loadViewIfNeeded()
+        sut.simulateDidSearch(with: "any")
+        appsLoader.loadComplete(with: [app0, app1])
+        
+        list.simulateSelectView(in: 0)
+        XCTAssertEqual(selectionMessages, [app0], "첫 번째 앱을 선택했을 때, handler 에게 첫 번째 앱과 함께 메세지를 보낸다")
+        
+        list.simulateSelectView(in: 1)
+        XCTAssertEqual(selectionMessages, [app0, app1], "두 번째 앱을 선택했을 때, handler 에게 두 번째 앱과 함께 메세지를 보낸다")
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(
         save: @escaping (SearchTerm) -> Void = {_ in },
+        selection: @escaping (App) -> Void = {_ in },
         file: StaticString = #filePath,
         line: UInt = #line
     ) -> (
@@ -148,7 +168,7 @@ final class AppStoreSearchUIIntegrationTests: XCTestCase {
             appsLoader: appsLoader.loadPublisher,
             imageDataLoader: appsLoader.loadImageData,
             save: save,
-            selection: {_ in }
+            selection: selection
         )
         let list = sut.listViewController!
         trackMemoryLeak(termsLoader, file: file, line: line)
@@ -186,6 +206,7 @@ final class AppStoreSearchUIIntegrationTests: XCTestCase {
 private var recentTitleSection: Int { 0 }
 private var recentTermsSection: Int { 1 }
 private var matchedTermsSection: Int { 0 }
+private var gallerySection: Int { 0 }
 private var appsFoundSection: Int { 0 }
 
 private extension AppStoreSearchContainerViewController {
@@ -217,6 +238,12 @@ private extension ListViewController {
         dl?.tableView?(tableView, didEndDisplaying: view!, forRowAt: indexPath)
         return view
     }
+    
+    func simulateSelectView(in row: Int) {
+        let dl = tableView.delegate
+        let indexPath = IndexPath(row: row, section: appsFoundSection)
+        dl?.tableView?(tableView, didSelectRowAt: indexPath)
+    }
 }
 
 private extension AppStoreSearchResultCell {
@@ -230,15 +257,14 @@ private extension AppStoreSearchResultCell {
     func simulateGalleryViewNotVisible(in item: Int) -> AppGalleryCell? {
         let view = galleryImageView(in: item) as? AppGalleryCell
         let dl = gallery.delegate
-        let indexPath = IndexPath(item: item, section: 0)
+        let indexPath = IndexPath(item: item, section: gallerySection)
         dl?.collectionView?(gallery, didEndDisplaying: view!, forItemAt: indexPath)
         return view
     }
     
-    
     func galleryImageView(in item: Int) -> UICollectionViewCell? {
         let ds = gallery.dataSource
-        let indexPath = IndexPath(item: item, section: 0)
+        let indexPath = IndexPath(item: item, section: gallerySection)
         return ds?.collectionView(gallery, cellForItemAt: indexPath)
     }
 }
