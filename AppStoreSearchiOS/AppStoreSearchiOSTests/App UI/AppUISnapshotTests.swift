@@ -33,7 +33,7 @@ final class AppUISnapshotTests: XCTestCase {
         )
         let feature = AppNewFeatureCellController(
             viewModel: AppNewFeatureViewModel(
-                title: "a title",
+                title: "a new feature title",
                 version: "version x.xx.x",
                 firstDescription: "- a description\n- a description a description a description a description a description a description",
                 secondDescription: "a description"

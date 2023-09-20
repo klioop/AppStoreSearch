@@ -203,13 +203,10 @@ private extension AppStoreSearchContainerViewController {
 }
 
 private extension ListViewController {
-    func numberOfViews(in section: Int) -> Int {
-        tableView.numberOfRows(inSection: section)
-    }
     
     @discardableResult
     func simulateAppViewVisible(in row: Int, section: Int = appsFoundSection) -> AppStoreSearchResultCell? {
-        cell(in: row) as? AppStoreSearchResultCell
+        cell(in: row, section: section) as? AppStoreSearchResultCell
     }
     
     @discardableResult
@@ -219,13 +216,6 @@ private extension ListViewController {
         let indexPath = IndexPath(row: row, section: section)
         dl?.tableView?(tableView, didEndDisplaying: view!, forRowAt: indexPath)
         return view
-    }
-    
-    
-    func cell(in row: Int, section: Int = appsFoundSection) -> UITableViewCell? {
-        let ds = tableView.dataSource
-        let indexPath0 = IndexPath(row: row, section: section)
-        return ds?.tableView(tableView, cellForRowAt: indexPath0)
     }
 }
 

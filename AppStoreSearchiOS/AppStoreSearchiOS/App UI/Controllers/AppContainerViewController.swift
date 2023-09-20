@@ -10,8 +10,8 @@ import SnapKit
 
 public final class AppContainerViewController: UIViewController {
     
-    private var header: AppHeaderView!
-    private var listViewController: ListViewController!
+    public private(set) var header: AppHeaderView!
+    public private(set) var listViewController: ListViewController!
     
     public convenience init(header: AppHeaderView, listViewController: ListViewController) {
         self.init()
