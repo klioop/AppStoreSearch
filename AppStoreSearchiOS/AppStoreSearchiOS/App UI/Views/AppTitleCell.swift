@@ -42,8 +42,9 @@ final class AppTitleCell: UITableViewCell {
     }()
     
     private lazy var titleLabel = label(
-        font: .systemFont(ofSize: 24, weight: .bold),
-        color: .label
+        font: .systemFont(ofSize: 18, weight: .bold),
+        color: .label,
+        lines: 0
     )
     private lazy var descriptionLabel = label(
         font: .systemFont(ofSize: 16, weight: .regular),
@@ -105,10 +106,11 @@ final class AppTitleCell: UITableViewCell {
     
     // MARK: - Helpers
     
-    private func label(font: UIFont, color: UIColor) -> UILabel {
+    private func label(font: UIFont, color: UIColor, lines: Int = 1) -> UILabel {
         let label = UILabel()
         label.font = font
         label.textColor = color
+        label.numberOfLines = lines
         return label
     }
 }
