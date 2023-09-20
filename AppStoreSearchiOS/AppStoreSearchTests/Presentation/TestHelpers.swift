@@ -8,16 +8,16 @@
 import Foundation
 import AppStoreSearch
 
-func makeApp(title: String = "a title", seller: String = "a seller", rating: Double = 3.0, numberOfRating: Int = 10) -> App {
+func makeApp(title: String = "a title", seller: String = "a seller", rating: Double = 3.0, numberOfRating: Int = 10, version: String = "any version", notes: String = "any notes") -> App {
     App(
         id: AppID(id: 0),
         title: title,
         seller: seller,
         rating: rating,
         numberOfRatings: numberOfRating,
-        version: "x.xx.x",
+        version: version,
         currentReleaseDate: Date(),
-        releaseNotes: "a release note",
+        releaseNotes: notes,
         genre: "a genre",
         age: "a age",
         logo: anyURL(),
