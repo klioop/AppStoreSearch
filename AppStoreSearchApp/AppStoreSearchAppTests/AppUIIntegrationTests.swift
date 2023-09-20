@@ -29,10 +29,10 @@ class AppUIIntegrationTests: XCTestCase {
         sut.loadViewIfNeeded()
         
         sut.simulateBackAction()
-        XCTAssertEqual(callbackMessages.count, 1, "뒤로가기 액션은 주입받은 callback 에게 메세지를 한 번 보낸다")
+        XCTAssertEqual(callbackMessages.count, 1, "첫 번째 뒤로가기 액션은 주입받은 callback 에게 메세지를 한 번만 보낸다")
         
         sut.simulateBackAction()
-        XCTAssertEqual(callbackMessages.count, 2, "뒤로가기 액션은 주입받은 callback 에게 메세지를 두 번 보낸다")
+        XCTAssertEqual(callbackMessages.count, 2, "두 번째 뒤로가기 액션은 주입받은 callback 에게 메세지를 두 번째로 보낸다")
     }
     
     func test_viewsVisible_requestsToImageDataLoading() {

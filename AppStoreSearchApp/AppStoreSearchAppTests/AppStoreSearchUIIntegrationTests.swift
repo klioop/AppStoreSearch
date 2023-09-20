@@ -95,12 +95,12 @@ final class AppStoreSearchUIIntegrationTests: XCTestCase {
         let view0 = list.simulateAppViewVisible(in: 0)
         view0?.simulateGalleryViewVisible(in: 0)
         view0?.simulateGalleryViewVisible(in: 1)
-        XCTAssertEqual(appsLoader.requestedURLs, [app0.logo] + app0.images, "첫 번째 앱이 화면에 보이면 로고이미지와 앱 이미지 리스트를 한 번 요청한다")
+        XCTAssertEqual(appsLoader.requestedURLs, [app0.logo] + app0.images, "첫 번째 앱이 화면에 보이면 로고이미지와 앱 이미지 리스트를 한 번만 요청한다")
         
         let view1 = list.simulateAppViewVisible(in: 1)
         view1?.simulateGalleryViewVisible(in: 0)
         view1?.simulateGalleryViewVisible(in: 1)
-        XCTAssertEqual(appsLoader.requestedURLs, [app0.logo] + app0.images + [app1.logo] + app1.images, "두 번째 앱이 화면에 보이면 로고이미지와 앱 이미지 리스트를 두 번 요청한다")
+        XCTAssertEqual(appsLoader.requestedURLs, [app0.logo] + app0.images + [app1.logo] + app1.images, "두 번째 앱이 화면에 보이면 로고이미지와 앱 이미지 리스트를 두 번째로 요청한다")
     }
     
     func test_appViewNotVisible_cancelsRequestsImagesBeforeCompleteImageLoading() {
@@ -120,12 +120,12 @@ final class AppStoreSearchUIIntegrationTests: XCTestCase {
         let view0 = list.simulateAppViewNotVisible(in: 0)
         view0?.simulateGalleryViewNotVisible(in: 0)
         view0?.simulateGalleryViewNotVisible(in: 1)
-        XCTAssertEqual(appsLoader.cancelImageURLs, [app0.logo] + app0.images, "첫 번째 앱이 화면에 보인후 이미지 로딩이 완료되지 않고 화면에서 사라지면, 로고이미지와 앱 이미지 리스트 요청을 한 번 취소한다")
+        XCTAssertEqual(appsLoader.cancelImageURLs, [app0.logo] + app0.images, "첫 번째 앱이 화면에 보인후 이미지 로딩이 완료되지 않고 화면에서 사라지면, 로고이미지와 앱 이미지 리스트 요청을 한 번만 취소한다")
         
         let view1 = list.simulateAppViewNotVisible(in: 1)
         view1?.simulateGalleryViewNotVisible(in: 0)
         view1?.simulateGalleryViewNotVisible(in: 1)
-        XCTAssertEqual(appsLoader.requestedURLs, [app0.logo] + app0.images + [app1.logo] + app1.images, "두 번째 앱이 화면에 보인후 이미지 로딩이 완료되지 않고 화면에서 사라지면, 로고이미지와 앱 이미지 리스트 요청을 두 번 취소한다")
+        XCTAssertEqual(appsLoader.requestedURLs, [app0.logo] + app0.images + [app1.logo] + app1.images, "두 번째 앱이 화면에 보인후 이미지 로딩이 완료되지 않고 화면에서 사라지면, 로고이미지와 앱 이미지 리스트 요청을 두 번째 취소한다")
     }
     
     func test_selectApps_sendMessagesToSelectionHandler() {
@@ -141,10 +141,10 @@ final class AppStoreSearchUIIntegrationTests: XCTestCase {
         appsLoader.loadComplete(with: [app0, app1])
         
         list.simulateSelectView(in: 0)
-        XCTAssertEqual(selectionMessages, [app0], "첫 번째 앱을 선택했을 때, handler 에게 첫 번째 앱과 함께 메세지를 보낸다")
+        XCTAssertEqual(selectionMessages, [app0], "첫 번째 앱을 선택했을 때, handler 에게 첫 번째 앱과 함께 첫 번째 메세지를 보낸다")
         
         list.simulateSelectView(in: 1)
-        XCTAssertEqual(selectionMessages, [app0, app1], "두 번째 앱을 선택했을 때, handler 에게 두 번째 앱과 함께 메세지를 보낸다")
+        XCTAssertEqual(selectionMessages, [app0, app1], "두 번째 앱을 선택했을 때, handler 에게 두 번째 앱과 함께 두 번째 메세지를 보낸다")
     }
     
     // MARK: - Helpers
