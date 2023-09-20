@@ -12,7 +12,7 @@ final class AppStoreSearchFoundAppPresenterTests: XCTestCase {
     
     func test_map_AppStoreSearchResultViewModel() {
         let app = makeAnyApp()
-        let viewModel = AppStoreSearchFoundAppPresenter.map(app)
+        let viewModel = AppStoreAppPresenter.map(app)
         let formattedNumberOfRatings = Double(app.numberOfRatings).formattedText
         let convertedRating = convert(app.rating)
         

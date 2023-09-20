@@ -32,7 +32,7 @@ final class AppsFoundViewAdapter: ResourceView {
         let cellControllers = viewModel.map { app -> (App, AppStoreSearchResultCellController) in
             let imageDataPresentationAdapter = LogoImageDataLoadPresentationAdapter(loader: imageDataLoader)
             let cell = AppStoreSearchResultCellController(
-                viewModel: AppStoreSearchFoundAppPresenter.map(app),
+                viewModel: AppStoreAppPresenter.map(app),
                 galleryCellControllers: galleries(for: app.images),
                 requestLogoImage: { imageDataPresentationAdapter.loadResource(with: app.logo) },
                 cancelRequestLogoImage: imageDataPresentationAdapter.cancel,
