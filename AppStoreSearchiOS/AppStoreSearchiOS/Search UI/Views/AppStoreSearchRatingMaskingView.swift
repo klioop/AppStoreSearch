@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SnapKit
 
 final class AppStoreSearchRatingMaskingView: UIView {
     var progress: CGFloat = 1.0
