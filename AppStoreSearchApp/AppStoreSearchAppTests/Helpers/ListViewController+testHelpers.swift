@@ -1,5 +1,5 @@
 //
-//  ListViewController+.swift
+//  ListViewController+testHelpers.swift
 //  AppStoreSearchAppTests
 //
 //  Created by Lee Sam on 2023/09/20.

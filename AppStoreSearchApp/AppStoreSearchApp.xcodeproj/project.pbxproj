@@ -31,7 +31,7 @@
 		B2783EA62ABA976200493F4F /* AppUIIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2783EA52ABA976200493F4F /* AppUIIntegrationTests.swift */; };
 		B2783EA92ABA979700493F4F /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2783EA82ABA979700493F4F /* TestHelpers.swift */; };
 		B2783EAB2ABA982600493F4F /* Apps+ImageDataLoaderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2783EAA2ABA982600493F4F /* Apps+ImageDataLoaderSpy.swift */; };
-		B2783EAD2ABA99F100493F4F /* ListViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2783EAC2ABA99F100493F4F /* ListViewController+.swift */; };
+		B2783EAD2ABA99F100493F4F /* ListViewController+testHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2783EAC2ABA99F100493F4F /* ListViewController+testHelpers.swift */; };
 		B2C62CA52AB963A700944326 /* AppsFromSearchViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C62CA42AB963A700944326 /* AppsFromSearchViewAdapter.swift */; };
 /* End PBXBuildFile section */
 
@@ -86,7 +86,7 @@
 		B2783EA52ABA976200493F4F /* AppUIIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUIIntegrationTests.swift; sourceTree = "<group>"; };
 		B2783EA82ABA979700493F4F /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
 		B2783EAA2ABA982600493F4F /* Apps+ImageDataLoaderSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Apps+ImageDataLoaderSpy.swift"; sourceTree = "<group>"; };
-		B2783EAC2ABA99F100493F4F /* ListViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListViewController+.swift"; sourceTree = "<group>"; };
+		B2783EAC2ABA99F100493F4F /* ListViewController+testHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListViewController+testHelpers.swift"; sourceTree = "<group>"; };
 		B2C62CA42AB963A700944326 /* AppsFromSearchViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsFromSearchViewAdapter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -202,7 +202,7 @@
 			children = (
 				B2783EA82ABA979700493F4F /* TestHelpers.swift */,
 				B2783EAA2ABA982600493F4F /* Apps+ImageDataLoaderSpy.swift */,
-				B2783EAC2ABA99F100493F4F /* ListViewController+.swift */,
+				B2783EAC2ABA99F100493F4F /* ListViewController+testHelpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -329,7 +329,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2783EAD2ABA99F100493F4F /* ListViewController+.swift in Sources */,
+				B2783EAD2ABA99F100493F4F /* ListViewController+testHelpers.swift in Sources */,
 				B26AA8712AB84C52002F5761 /* AppStoreSearchUIIntegrationTests.swift in Sources */,
 				B26AA8B92AB873B9002F5761 /* XCTest+trackMemory.swift in Sources */,
 				B2783EAB2ABA982600493F4F /* Apps+ImageDataLoaderSpy.swift in Sources */,
