@@ -62,7 +62,7 @@ public final class LocalSearchTermLoader {
                         return terms
                             .map(\.term)
                             .filter {
-                                $0.removingWhiteSpace.contains(searchTerm.term.removingWhiteSpace)
+                                $0.removeAllWhiteSpaces.contains(searchTerm.term.removeAllWhiteSpaces)
                             }
                             .map(SearchTerm.init)
 
@@ -76,7 +76,7 @@ public final class LocalSearchTermLoader {
 }
 
 private extension String {
-    var removingWhiteSpace: String {
+    var removeAllWhiteSpaces: String {
         self.replacingOccurrences(of: " ", with: "")
     }
 }
