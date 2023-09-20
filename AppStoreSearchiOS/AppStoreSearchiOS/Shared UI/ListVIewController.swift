@@ -11,7 +11,7 @@ import UIKit
 public final class ListViewController: UITableViewController {
     private var refreshController: RefreshController?
     
-    convenience init(refreshController: RefreshController, style: UITableView.Style = .plain) {
+    public convenience init(refreshController: RefreshController, style: UITableView.Style = .plain) {
         self.init(style: style)
         self.refreshController = refreshController
     }

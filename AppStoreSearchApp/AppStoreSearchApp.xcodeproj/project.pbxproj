@@ -185,14 +185,14 @@
 		B26AA8B72AB87145002F5761 /* Composition */ = {
 			isa = PBXGroup;
 			children = (
-				B26AA8A22AB8650D002F5761 /* LoadResourcePresentationAdapter.swift */,
 				B26AA8AF2AB86757002F5761 /* AppStoreSearchUIComposer.swift */,
+				B2783E942AB9F07900493F4F /* AppUIComposer.swift */,
+				B26AA8A22AB8650D002F5761 /* LoadResourcePresentationAdapter.swift */,
 				B26AA8B52AB87118002F5761 /* RecentSearchTermViewAdapter.swift */,
 				B26AA8BC2AB94D70002F5761 /* MatchedSearchTermsViewAdapter.swift */,
 				B2C62CA42AB963A700944326 /* AppsFromSearchViewAdapter.swift */,
 				B242D7B72AB98FE7001195BF /* WeakRefVirtualProxy.swift */,
 				B242D7B92AB99DED001195BF /* UIImage+tryMake.swift */,
-				B2783E942AB9F07900493F4F /* AppUIComposer.swift */,
 			);
 			path = Composition;
 			sourceTree = "<group>";

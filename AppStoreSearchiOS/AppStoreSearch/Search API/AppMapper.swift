@@ -26,7 +26,7 @@ public final class AppMapper {
         let userRatingCount: Int
         let version: String
         let currentVersionReleaseDate: Date
-        let releaseNotes: String
+        let releaseNotes: String?
         let artworkUrl512: URL
         let screenshotUrls: [URL]
         
@@ -39,7 +39,7 @@ public final class AppMapper {
                 numberOfRatings: userRatingCount,
                 version: version,
                 currentReleaseDate: currentVersionReleaseDate,
-                releaseNotes: releaseNotes,
+                releaseNotes: releaseNotes ?? "",
                 genre: primaryGenreName,
                 age: contentAdvisoryRating,
                 logo: artworkUrl512,
