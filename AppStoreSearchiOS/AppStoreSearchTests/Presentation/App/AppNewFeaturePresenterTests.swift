@@ -12,7 +12,7 @@ class AppNewFeaturePresenterTests: XCTestCase {
     
     func test_map_AppNewFeatureViewModel() {
         let now = Date()
-        var calendar = Calendar(identifier: .gregorian)
+        let calendar = Calendar(identifier: .gregorian)
         let locale = Locale(identifier: "en-US")
         let app = makeApp(
             version: "1.23.4",
@@ -30,7 +30,7 @@ class AppNewFeaturePresenterTests: XCTestCase {
     
     func test_map_AppNewFeatureViewModelWithEmptySecondDescriptionsOnShortNotes() {
         let now = Date()
-        var calendar = Calendar(identifier: .gregorian)
+        let calendar = Calendar(identifier: .gregorian)
         let locale = Locale(identifier: "en-US")
         let app = makeApp(
             version: "1.23.4",
