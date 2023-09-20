@@ -1,5 +1,5 @@
 //
-//  AppsFoundViewAdapter.swift
+//  AppsFromSearchViewAdapter.swift
 //  AppStoreSearchApp
 //
 //  Created by Lee Sam on 2023/09/19.
@@ -10,7 +10,7 @@ import Combine
 import AppStoreSearch
 import AppStoreSearchiOS
 
-final class AppsFoundViewAdapter: ResourceView {
+final class AppsFromSearchViewAdapter: ResourceView {
     private typealias LogoImageDataLoadPresentationAdapter = LoadResourcePresentationAdapter<URL, Data, WeakRefVirtualProxy<AppStoreSearchResultCellController>>
     private typealias AppImageDataLoadPresentationAdapter = LoadResourcePresentationAdapter<URL, Data, WeakRefVirtualProxy<AppGalleryCellController>>
     
