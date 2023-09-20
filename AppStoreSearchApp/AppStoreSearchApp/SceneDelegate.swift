@@ -40,14 +40,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     private func showApp(_ app: App) {
-        let appViewController = AppUIComposer.composedWith(
+        navigationController.pushViewController(viewController(for: app), animated: true)
+    }
+    
+    private func viewController(for app: App) -> AppContainerViewController {
+        AppUIComposer.composedWith(
             app: app,
             imageDataLoader: imageDataLoader,
             callback: { [weak navigationController] in
                 navigationController?.popViewController(animated: true)
             }
         )
-        navigationController.pushViewController(appViewController, animated: true)
     }
     
     private func searchViewController() -> AppStoreSearchContainerViewController {
