@@ -61,7 +61,9 @@ public final class LocalSearchTermLoader {
                     case let .success(terms):
                         return terms
                             .map(\.term)
-                            .filter { $0.contains(searchTerm.term) }
+                            .filter {
+                                $0.removingWhiteSpace.contains(searchTerm.term.removingWhiteSpace)
+                            }
                             .map(SearchTerm.init)
 
                     case let .failure(error):
@@ -70,5 +72,11 @@ public final class LocalSearchTermLoader {
                 }
             )
         }
+    }
+}
+
+private extension String {
+    var removingWhiteSpace: String {
+        self.replacingOccurrences(of: " ", with: "")
     }
 }
