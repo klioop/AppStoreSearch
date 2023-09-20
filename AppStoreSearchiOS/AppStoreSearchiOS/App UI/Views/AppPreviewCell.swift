@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class AppPreviewCell: UITableViewCell {
+public final class AppPreviewCell: UITableViewCell {
     
     var title: String {
         get { label.text ?? "" }
@@ -21,7 +21,7 @@ final class AppPreviewCell: UITableViewCell {
         return label
     }()
     
-    var gallery: UIView! {
+    public var gallery: UICollectionView! {
         didSet { layout() }
     }
     

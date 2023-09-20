@@ -35,6 +35,29 @@ class AppUIIntegrationTests: XCTestCase {
         XCTAssertEqual(callbackMessages.count, 2, "뒤로가기 액션은 주입받은 callback 에게 메세지를 두 번 보낸다")
     }
     
+    func test_viewsVisible_requestsToImageDataLoading() {
+        let logo = URL(string: "http://logo-image.com")!
+        let images = [
+            URL(string: "http://app-image0.com")!,
+            URL(string: "http://app-image0.com")!,
+            URL(string: "http://app-image0.com")!
+        ]
+        let app = makeApp(id: 1, logo: logo, images: images)
+        let (sut, list, imageDataLoader) = makeSUT(app: app)
+        sut.loadViewIfNeeded()
+        
+        XCTAssertEqual(imageDataLoader.requestedURLs, [], "뷰들이 화면에 보이기 전에는 이미지 데이터를 요청하지 않는다")
+        
+        list.simulateTitleVisible()
+        XCTAssertEqual(imageDataLoader.requestedURLs, [logo], "타이틀 뷰가 화면에 보이면 로고 이미지 데이터를 요청한다")
+        
+        let preview = list.simulatePreviewVisible()
+        images.enumerated().forEach { index, _ in
+            preview?.simulateGalleryViewsVisible(in: index)
+        }
+        XCTAssertEqual(imageDataLoader.requestedURLs, [logo] + images, "preview 가 화면에 보이고 스크린샷을 나타내는 갤러리 뷰가 화면에 나타나면, 앱 이미지 데이터를 요청한다")
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(
@@ -63,9 +86,39 @@ class AppUIIntegrationTests: XCTestCase {
 
 private var numberOfViews: Int { 4 }
 private var section: Int { 0 }
+private var gallerySection: Int { 0 }
+private var titleRow: Int { 0 }
+private var previewRow: Int { 3 }
 
 private extension AppContainerViewController {
     func simulateBackAction() {
         header.button.sendActions(for: .touchUpInside)
+    }
+}
+
+private extension ListViewController {
+    
+    @discardableResult
+    func simulateTitleVisible() -> AppTitleCell? {
+        cell(in: titleRow, section: section) as? AppTitleCell
+    }
+    
+    @discardableResult
+    func simulatePreviewVisible() -> AppPreviewCell? {
+        cell(in: previewRow, section: section) as? AppPreviewCell
+    }
+}
+
+private extension AppPreviewCell {
+    
+    @discardableResult
+    func simulateGalleryViewsVisible(in item: Int) -> AppGalleryCell? {
+        galleryImageView(in: item) as? AppGalleryCell
+    }
+    
+    func galleryImageView(in item: Int) -> UICollectionViewCell? {
+        let ds = gallery.dataSource
+        let indexPath = IndexPath(item: item, section: gallerySection)
+        return ds?.collectionView(gallery, cellForItemAt: indexPath)
     }
 }

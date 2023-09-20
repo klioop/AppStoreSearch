@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class AppTitleCell: UITableViewCell {
+public final class AppTitleCell: UITableViewCell {
     
     var title: String {
         get { titleLabel.text ?? "" }

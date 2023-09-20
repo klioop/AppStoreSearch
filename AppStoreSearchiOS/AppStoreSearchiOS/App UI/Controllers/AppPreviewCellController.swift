@@ -32,7 +32,7 @@ public final class AppPreviewCellController: NSObject, UITableViewDataSource, UI
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = AppPreviewCell()
         cell.title = "미리보기"
-        cell.gallery = galleryView.view
+        cell.gallery = galleryView.collectionView
         return cell
     }
 }

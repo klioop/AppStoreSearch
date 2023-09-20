@@ -219,7 +219,7 @@ private extension ListViewController {
     }
 }
 
-extension AppStoreSearchResultCell {
+private extension AppStoreSearchResultCell {
     
     @discardableResult
     func simulateGalleryViewVisible(in item: Int) -> AppGalleryCell? {
