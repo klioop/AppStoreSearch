@@ -1,9 +1,7 @@
 //
 //  ListViewController.swift
-//  Teuida
 //
 //  Created by Lee Sam on 2022/11/21.
-//  Copyright © 2022 Teuida. All rights reserved.
 //
 
 import UIKit

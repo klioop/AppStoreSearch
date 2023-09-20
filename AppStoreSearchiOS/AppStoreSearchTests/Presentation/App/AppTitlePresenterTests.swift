@@ -14,7 +14,7 @@ class AppTitlePresenterTests: XCTestCase {
         let app = makeApp(title: "app title", seller: "app seller")
         let viewModel = AppTitlePresenter.map(app)
         
-        XCTAssertEqual(app.title, viewModel.title)
-        XCTAssertEqual(app.seller, viewModel.seller)
+        XCTAssertEqual(viewModel.title, app.title)
+        XCTAssertEqual(viewModel.seller, app.seller)
     }
 }

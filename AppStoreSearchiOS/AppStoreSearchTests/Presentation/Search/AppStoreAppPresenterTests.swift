@@ -15,17 +15,17 @@ final class AppStoreAppPresenterTests: XCTestCase {
         let viewModel = AppStoreAppPresenter.map(app)
         let formattedNumberOfRatings = Double(app.numberOfRatings).formattedText
         
-        XCTAssertEqual(app.title, viewModel.title)
-        XCTAssertEqual(app.seller, viewModel.seller)
-        XCTAssertEqual("평점: " + convert(app.rating), viewModel.ratingText)
-        XCTAssertEqual("\(formattedNumberOfRatings)개", viewModel.numberOfRatingsText)
+        XCTAssertEqual(viewModel.title, app.title)
+        XCTAssertEqual(viewModel.seller, app.seller)
+        XCTAssertEqual(viewModel.ratingText, "평점: " + convert(app.rating))
+        XCTAssertEqual(viewModel.numberOfRatingsText, "\(formattedNumberOfRatings)개")
     }
     
     func test_map_AppStoreSearchResultViewModelWithEmptyNumberOfStringsOnZeroRatingCount() {
         let app = makeApp(rating: 0.0, numberOfRating: 0)
         let viewModel = AppStoreAppPresenter.map(app)
         
-        XCTAssertEqual("", viewModel.numberOfRatingsText)
+        XCTAssertEqual(viewModel.numberOfRatingsText, "")
     }
     
     func test_map_AppDescriptionViewModel() {
@@ -33,12 +33,12 @@ final class AppStoreAppPresenterTests: XCTestCase {
         let viewModel = AppStoreAppPresenter.mapToDescription(app)
         let formattedNumberOfRatings = Double(app.numberOfRatings).formattedText
         
-        XCTAssertEqual(app.genre, viewModel.genre)
-        XCTAssertEqual("장르", viewModel.genreDescription)
-        XCTAssertEqual(app.age, viewModel.ageText)
-        XCTAssertEqual("연령", viewModel.ageDescription)
-        XCTAssertEqual(convert(app.rating), viewModel.ratingText)
-        XCTAssertEqual("\(formattedNumberOfRatings)개의 평가", viewModel.numberOfRatingText)
+        XCTAssertEqual(viewModel.genre, app.genre)
+        XCTAssertEqual(viewModel.genreDescription, "장르")
+        XCTAssertEqual(viewModel.ageText, app.age)
+        XCTAssertEqual(viewModel.ageDescription, "연령")
+        XCTAssertEqual(viewModel.ratingText, convert(app.rating))
+        XCTAssertEqual(viewModel.numberOfRatingText, "\(formattedNumberOfRatings)개의 평가")
     }
     
     // MARK: - Helpers
