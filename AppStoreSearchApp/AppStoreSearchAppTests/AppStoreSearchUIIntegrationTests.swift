@@ -178,78 +178,17 @@ final class AppStoreSearchUIIntegrationTests: XCTestCase {
         }
     }
     
-    private class AppsLoaderSpy {
-        private var appsRequests: [PassthroughSubject<[App], Error>] = []
-        
-        func loadPublisher(for searchTerm: SearchTerm) -> AnyPublisher<[App], Error> {
-            let subject = PassthroughSubject<[App], Error>()
-            appsRequests.append(subject)
-            return subject.eraseToAnyPublisher()
-        }
-        
-        func loadComplete(with apps: [App], at index: Int = 0) {
-            appsRequests[index].send(apps)
-            appsRequests[index].send(completion: .finished)
-        }
-        
-        // MARK: - Image Data Loader Spy
-        
-        private var imageRequests: [(url: URL, subject: PassthroughSubject<Data, Error>)] = []
-        private(set) var cancelImageURLs: [URL] = []
-        
-        var requestedURLs: [URL] {
-            imageRequests.map(\.url)
-        }
-        
-        func loadImageData(from url: URL) -> AnyPublisher<Data, Error> {
-            let subject = PassthroughSubject<Data, Error>()
-            imageRequests.append((url, subject))
-            return subject
-                .handleEvents(receiveCancel: { [weak self] in
-                    self?.cancelImageURLs.append(url)
-                })
-                .eraseToAnyPublisher()
-                
-        }
-        
-        func loadCompleteImage(with data: Data, at index: Int = 0) {
-            imageRequests[index].subject.send(data)
-            imageRequests[index].subject.send(completion: .finished)
-        }
-    }
-    
     private func makeTerm(_ term: String) -> SearchTerm {
         SearchTerm(term: term)
     }
-    
-    private func makeApp(id: Int, logo: URL = anyURL(), images: [URL] = [anyURL()]) -> App {
-        App(
-            id: AppID(id: id),
-            title: "a title",
-            seller: "a seller",
-            rating: 4.8888,
-            numberOfRatings: 3,
-            version: "x.xx.x",
-            currentReleaseDate: Date(),
-            releaseNotes: "a release note",
-            genre: "a genre",
-            age: "a age",
-            logo: logo,
-            images: images
-        )
-    }
 }
 
-func anyURL() -> URL {
-    URL(string: "http://any-url.com")!
-}
+private var recentTitleSection: Int { 0 }
+private var recentTermsSection: Int { 1 }
+private var matchedTermsSection: Int { 0 }
+private var appsFoundSection: Int { 0 }
 
-var recentTitleSection: Int { 0 }
-var recentTermsSection: Int { 1 }
-var matchedTermsSection: Int { 0 }
-var appsFoundSection: Int { 0 }
-
-extension AppStoreSearchContainerViewController {
+private extension AppStoreSearchContainerViewController {
     func simulateDidSearch(with term: String) {
         searchView.onTapSearch?(term)
     }
@@ -263,7 +202,7 @@ extension AppStoreSearchContainerViewController {
     }
 }
 
-extension ListViewController {
+private extension ListViewController {
     func numberOfViews(in section: Int) -> Int {
         tableView.numberOfRows(inSection: section)
     }

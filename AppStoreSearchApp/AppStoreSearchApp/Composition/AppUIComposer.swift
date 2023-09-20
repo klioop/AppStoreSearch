@@ -55,6 +55,7 @@ public final class AppUIComposer {
             .map(CellController.init)
         let preview = AppPreviewCellController(galleryCellControllers: galleries)
         let cellControllers = [title, description, newFeature, preview].map(TableCellController.init)
+        
         logoImagePresentationAdapter.presenter = LoadResourcePresenter(
             resourceView: WeakRefVirtualProxy(title),
             loadingView: WeakRefVirtualProxy(title),
