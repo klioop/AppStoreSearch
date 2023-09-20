@@ -94,6 +94,8 @@ final class AppTitleCell: UITableViewCell {
         }
         logoContainer.layer.cornerRadius = 16
         logoContainer.layer.cornerCurve = .continuous
+        logoContainer.layer.borderColor = UIColor.systemGray6.cgColor
+        logoContainer.layer.borderWidth = 2
         logoContainer.layer.masksToBounds = true
         buttonContainer.layer.cornerRadius = 30 * 0.5
         buttonContainer.layer.cornerCurve = .continuous

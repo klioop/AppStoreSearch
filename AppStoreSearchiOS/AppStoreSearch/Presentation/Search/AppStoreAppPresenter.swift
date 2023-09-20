@@ -14,7 +14,7 @@ public final class AppStoreAppPresenter {
             title: app.title,
             seller: app.seller,
             ratingText: "평점: \(ratingText(from: app.rating))",
-            numberOfRatingsText: numberOfRatingText(from: app.numberOfRatings)
+            numberOfRatingsText: numberOfRatingTextOnSearch(from: app.numberOfRatings)
         )
     }
     
@@ -40,7 +40,7 @@ public final class AppStoreAppPresenter {
         return formatted
     }
     
-    private static func numberOfRatingText(from numberOfRatings: Int) -> String {
+    private static func numberOfRatingTextOnSearch(from numberOfRatings: Int) -> String {
         numberOfRatings == 0 ? "" : Double(numberOfRatings).formattedText + "개"
     }
     
