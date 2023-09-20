@@ -333,12 +333,10 @@
 		B23A6ADC2AB69220006067F7 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				B2783E982ABA8E5F00493F4F /* Presenters */,
 				B2A3B6B12AB57F1F007B1B75 /* AppStoreSearchViewModel.swift */,
 				B2A3B6B62AB5815E007B1B75 /* AppStoreRecentSearchTermViewModel.swift */,
 				B23A6AD22AB688A4006067F7 /* AppStoreSearchResultViewModel.swift */,
-				B26AA8A02AB85E80002F5761 /* AppStoreSearchPresenter.swift */,
-				B26AA8B32AB8701C002F5761 /* AppStoreRecentSearchTermPresenter.swift */,
-				B2C62CA82AB9796300944326 /* AppStoreAppPresenter.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -522,6 +520,16 @@
 				B26AA8AD2AB8660A002F5761 /* ResourceErrorViewModel.swift */,
 			);
 			path = "Shared Presentation";
+			sourceTree = "<group>";
+		};
+		B2783E982ABA8E5F00493F4F /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				B26AA8A02AB85E80002F5761 /* AppStoreSearchPresenter.swift */,
+				B26AA8B32AB8701C002F5761 /* AppStoreRecentSearchTermPresenter.swift */,
+				B2C62CA82AB9796300944326 /* AppStoreAppPresenter.swift */,
+			);
+			path = Presenters;
 			sourceTree = "<group>";
 		};
 		B2A3B65C2AB55898007B1B75 = {
