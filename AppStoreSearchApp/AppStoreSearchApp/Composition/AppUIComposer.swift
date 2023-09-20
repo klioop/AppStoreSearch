@@ -66,6 +66,7 @@ public final class AppUIComposer {
         )
         list.configure = { tableView in
             tableView.allowsSelection = false
+            tableView.backgroundColor = .systemGray6
         }
         list.display(cellControllers)
         return container
