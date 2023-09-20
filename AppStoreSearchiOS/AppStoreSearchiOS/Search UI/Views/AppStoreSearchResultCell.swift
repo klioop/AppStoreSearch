@@ -129,6 +129,8 @@ public final class AppStoreSearchResultCell: UITableViewCell {
         logoContainer.layer.cornerRadius = 8
         logoContainer.layer.cornerCurve = .continuous
         logoContainer.layer.masksToBounds = true
+        logoContainer.layer.borderColor = UIColor.systemGray6.cgColor
+        logoContainer.layer.borderWidth = 2
         buttonContainer.layer.cornerRadius = 30 / 2
         buttonContainer.layer.cornerCurve = .continuous
     }
