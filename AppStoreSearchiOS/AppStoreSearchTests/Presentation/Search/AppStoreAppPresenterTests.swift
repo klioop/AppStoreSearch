@@ -50,25 +50,4 @@ final class AppStoreAppPresenterTests: XCTestCase {
         guard separated.count == 2 else { return "\(Int(rating))"}
         return formatted
     }
-    
-    private func makeApp(rating: Double, numberOfRating: Int) -> App {
-        App(
-            id: AppID(id: 0),
-            title: "a title",
-            seller: "a seller",
-            rating: rating,
-            numberOfRatings: numberOfRating,
-            version: "x.xx.x",
-            currentReleaseDate: Date(),
-            releaseNotes: "a release note",
-            genre: "a genre",
-            age: "a age",
-            logo: anyURL(),
-            images: [anyURL()]
-        )
-    }
-    
-    private func anyURL() -> URL {
-        URL(string: "http://any-url.com")!
-    }
 }

@@ -29,10 +29,7 @@ public final class AppUIComposer {
             listViewController: list
         )
         let title = AppTitleCellController(
-            viewModel: AppTitleViewModel(
-                title: app.title,
-                seller: app.seller
-            ),
+            viewModel: AppTitlePresenter.map(app),
             requestLogoImage: { logoImagePresentationAdapter.loadResource(with: app.logo) }
         )
         let description = AppDescriptionCellController(
