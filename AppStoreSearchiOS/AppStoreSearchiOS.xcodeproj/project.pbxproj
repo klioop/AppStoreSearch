@@ -356,7 +356,6 @@
 				B23A6ADE2AB69237006067F7 /* AppTitleViewModel.swift */,
 				B23A6AF42AB6A829006067F7 /* AppDescriptionViewModel.swift */,
 				B23A6AFE2AB6B301006067F7 /* AppNewFeatureViewModel.swift */,
-				B2783E962AB9F6E200493F4F /* AppNewFeaturePresenter.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -545,6 +544,7 @@
 			isa = PBXGroup;
 			children = (
 				B2783E9A2ABA8E8E00493F4F /* AppTitlePresenter.swift */,
+				B2783E962AB9F6E200493F4F /* AppNewFeaturePresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
