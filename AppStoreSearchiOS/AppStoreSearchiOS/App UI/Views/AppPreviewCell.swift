@@ -27,6 +27,7 @@ public final class AppPreviewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        separatorInset = .init(top: 0, left: 0, bottom: 0, right: -1)
     }
     
     required init?(coder: NSCoder) { nil }
@@ -41,7 +42,8 @@ public final class AppPreviewCell: UITableViewCell {
         }
         gallery.snp.makeConstraints {
             $0.top.equalTo(label.snp.bottom).offset(16)
-            $0.bottom.horizontalEdges.equalToSuperview()
+            $0.horizontalEdges.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(20)
             $0.height.equalTo(UIScreen.main.bounds.height * 0.6)
         }
     }
