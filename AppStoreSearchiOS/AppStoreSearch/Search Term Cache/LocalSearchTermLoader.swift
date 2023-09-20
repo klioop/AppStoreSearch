@@ -61,8 +61,10 @@ public final class LocalSearchTermLoader {
                     case let .success(terms):
                         return terms
                             .map(\.term)
-                            .filter {
-                                $0.removeAllWhiteSpaces.contains(searchTerm.term.removeAllWhiteSpaces)
+                            .filter { term in
+                                term.lowercased()
+                                    .removeAllWhiteSpaces
+                                    .contains(searchTerm.term.removeAllWhiteSpaces.lowercased())
                             }
                             .map(SearchTerm.init)
 
