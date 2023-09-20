@@ -8,7 +8,7 @@
 import Foundation
 import AppStoreSearch
 
-func makeApp(title: String = "a title", seller: String = "a seller", rating: Double = 3.0, numberOfRating: Int = 10, version: String = "any version", notes: String = "any notes") -> App {
+func makeApp(title: String = "a title", seller: String = "a seller", rating: Double = 3.0, numberOfRating: Int = 10, version: String = "any version", notes: String = "any notes", releaseDate: Date = Date()) -> App {
     App(
         id: AppID(id: 0),
         title: title,
@@ -16,7 +16,7 @@ func makeApp(title: String = "a title", seller: String = "a seller", rating: Dou
         rating: rating,
         numberOfRatings: numberOfRating,
         version: version,
-        currentReleaseDate: Date(),
+        currentReleaseDate: releaseDate,
         releaseNotes: notes,
         genre: "a genre",
         age: "a age",
