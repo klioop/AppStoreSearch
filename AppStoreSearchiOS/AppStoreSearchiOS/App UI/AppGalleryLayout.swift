@@ -28,6 +28,12 @@ public final class AppGalleryLayout {
             )
             let section = NSCollectionLayoutSection(group: group)
             section.orthogonalScrollingBehavior = .paging
+            section.contentInsets = .init(
+                top: 0,
+                leading: 20,
+                bottom: 0,
+                trailing: 10
+            )
             return section
         }
     }
