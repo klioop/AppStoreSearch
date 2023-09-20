@@ -28,6 +28,19 @@ final class AppStoreAppPresenterTests: XCTestCase {
         XCTAssertEqual("", viewModel.numberOfRatingsText)
     }
     
+    func test_map_AppDescriptionViewModel() {
+        let app = makeApp(rating: 4.333, numberOfRating: 32454)
+        let viewModel = AppStoreAppPresenter.mapToDescription(app)
+        let formattedNumberOfRatings = Double(app.numberOfRatings).formattedText
+        
+        XCTAssertEqual(app.genre, viewModel.genre)
+        XCTAssertEqual("장르", viewModel.genreDescription)
+        XCTAssertEqual(app.age, viewModel.ageText)
+        XCTAssertEqual("연령", viewModel.ageDescription)
+        XCTAssertEqual(convert(app.rating), viewModel.ratingText)
+        XCTAssertEqual("\(formattedNumberOfRatings)개의 평가", viewModel.numberOfRatingText)
+    }
+    
     // MARK: - Helpers
     
     private func convert(_ rating: Double) -> String {
