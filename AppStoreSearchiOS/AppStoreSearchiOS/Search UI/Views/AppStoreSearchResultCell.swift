@@ -48,7 +48,7 @@ public final class AppStoreSearchResultCell: UITableViewCell {
         let stack = UIStackView()
         stack.axis = .vertical
         stack.spacing = 6
-        [titleLabel, sellerLabel, ratingContainer].forEach(stack.addArrangedSubview)
+        [titleLabel, sellerLabel].forEach(stack.addArrangedSubview)
         return stack
     }()
     
@@ -131,7 +131,7 @@ public final class AppStoreSearchResultCell: UITableViewCell {
     }
     
     private func layout() {
-        [logoContainer, container, buttonContainer, gallery, galleryContainerButton].forEach(contentView.addSubview)
+        [logoContainer, container, ratingContainer, buttonContainer, gallery, galleryContainerButton].forEach(contentView.addSubview)
         logoContainer.snp.makeConstraints {
             $0.top.equalToSuperview().offset(20)
             $0.leading.equalToSuperview().offset(20)
@@ -141,6 +141,10 @@ public final class AppStoreSearchResultCell: UITableViewCell {
             $0.top.equalTo(logoImageView.snp.top)
             $0.leading.equalTo(logoContainer.snp.trailing).offset(10)
             $0.trailing.equalTo(buttonContainer.snp.leading).inset(-10)
+        }
+        ratingContainer.snp.makeConstraints {
+            $0.top.equalTo(container.snp.bottom).offset(6)
+            $0.leading.equalTo(logoContainer.snp.trailing).offset(10)
         }
         buttonContainer.snp.makeConstraints {
             $0.centerY.equalTo(logoContainer.snp.centerY)
