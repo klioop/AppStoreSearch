@@ -30,7 +30,7 @@ final class AppDescriptionGeneralInfoView: UIView {
     }()
     
     private lazy var titleLabel = label(
-        font: .systemFont(ofSize: 20, weight: .bold),
+        font: .systemFont(ofSize: 16, weight: .bold),
         color: .systemGray
     )
     private lazy var descriptionLabel = label(
