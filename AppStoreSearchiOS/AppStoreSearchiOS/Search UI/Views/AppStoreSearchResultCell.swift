@@ -118,8 +118,7 @@ public final class AppStoreSearchResultCell: UITableViewCell {
     // MARK: - Helpers
     
     private func update(_ numberOfRatings: String) {
-        guard let rating = numberOfRatings.first?.asString else { return }
-        ratingContainer.isHidden = (Int(rating) ?? 0) == 0
+        ratingContainer.isHidden = numberOfRatings.isEmpty
         countLabel.text = numberOfRatings
     }
     
@@ -163,8 +162,4 @@ public final class AppStoreSearchResultCell: UITableViewCell {
         label.textColor = color
         return label
     }
-}
-
-private extension Character {
-    var asString: String { String(self) }
 }

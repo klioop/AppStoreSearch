@@ -1,5 +1,5 @@
 //
-//  AppStoreSearchFoundAppPresenterTests.swift
+//  AppStoreAppPresenterTests.swift
 //  AppStoreSearchTests
 //
 //  Created by Lee Sam on 2023/09/19.
@@ -8,38 +8,43 @@
 import XCTest
 @testable import AppStoreSearch
 
-final class AppStoreSearchFoundAppPresenterTests: XCTestCase {
+final class AppStoreAppPresenterTests: XCTestCase {
     
     func test_map_AppStoreSearchResultViewModel() {
-        let app = makeAnyApp()
+        let app = makeApp(rating: 4.888, numberOfRating: 644)
         let viewModel = AppStoreAppPresenter.map(app)
         let formattedNumberOfRatings = Double(app.numberOfRatings).formattedText
-        let convertedRating = convert(app.rating)
         
         XCTAssertEqual(app.title, viewModel.title)
         XCTAssertEqual(app.seller, viewModel.seller)
-        XCTAssertEqual(convertedRating.int, viewModel.ratings.int)
-        XCTAssertEqual(convertedRating.decimal, viewModel.ratings.decimal)
-        XCTAssertEqual(formattedNumberOfRatings, viewModel.numberOfRatingsText)
+        XCTAssertEqual("평점: " + convert(app.rating), viewModel.ratingText)
+        XCTAssertEqual("\(formattedNumberOfRatings)개", viewModel.numberOfRatingsText)
+    }
+    
+    func test_map_AppStoreSearchResultViewModelWithEmptyNumberOfStringsOnZeroRatingCount() {
+        let app = makeApp(rating: 0.0, numberOfRating: 0)
+        let viewModel = AppStoreAppPresenter.map(app)
+        
+        XCTAssertEqual("", viewModel.numberOfRatingsText)
     }
     
     // MARK: - Helpers
     
-    private func convert(_ rating: Double) -> (int: Int, decimal: CGFloat) {
-        let int = Int(rating)
-        let formatted = String(format: "%.2f", rating)
+    private func convert(_ rating: Double) -> String {
+        let formatted = String(format: "%.1f", rating)
         let separated = formatted.components(separatedBy: ".")
-        let decimal = (Double(separated[1]) ?? 0.0) / 100
-        return (int, decimal)
+        
+        guard separated.count == 2 else { return "\(Int(rating))"}
+        return formatted
     }
     
-    private func makeAnyApp() -> App {
+    private func makeApp(rating: Double, numberOfRating: Int) -> App {
         App(
             id: AppID(id: 0),
             title: "a title",
             seller: "a seller",
-            rating: 4.8888,
-            numberOfRatings: 654,
+            rating: rating,
+            numberOfRatings: numberOfRating,
             version: "x.xx.x",
             currentReleaseDate: Date(),
             releaseNotes: "a release note",

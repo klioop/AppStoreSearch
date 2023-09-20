@@ -36,7 +36,7 @@ public final class AppUIComposer {
             requestLogoImage: { logoImagePresentationAdapter.loadResource(with: app.logo) }
         )
         let description = AppDescriptionCellController(
-            viewModel: AppStoreAppPresenter.map(app)
+            viewModel: AppStoreAppPresenter.mapToDescription(app)
         )
         let newFeature = AppNewFeatureCellController(
             viewModel: AppNewFeaturePresenter.map(app)

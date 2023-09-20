@@ -14,11 +14,11 @@ public final class AppStoreAppPresenter {
             title: app.title,
             seller: app.seller,
             ratingText: "평점: \(ratingText(from: app.rating))",
-            numberOfRatingsText: Double(app.numberOfRatings).formattedText + "개"
+            numberOfRatingsText: numberOfRatingText(from: app.numberOfRatings)
         )
     }
     
-    public static func map(_ app: App) -> AppDescriptionViewModel {
+    public static func mapToDescription(_ app: App) -> AppDescriptionViewModel {
         AppDescriptionViewModel(
             ratingText: ratingText(from: app.rating),
             numberOfRatingText: Double(app.numberOfRatings).formattedText + "개의 평가",
@@ -38,6 +38,10 @@ public final class AppStoreAppPresenter {
         
         guard separated.count == 2 else { return "\(Int(rating))"}
         return formatted
+    }
+    
+    private static func numberOfRatingText(from numberOfRatings: Int) -> String {
+        numberOfRatings == 0 ? "" : Double(numberOfRatings).formattedText + "개"
     }
     
     private static func convert(_ rating: Double) -> (int: Int, decimal: CGFloat) {
