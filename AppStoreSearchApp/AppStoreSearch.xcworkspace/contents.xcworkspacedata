@@ -10,4 +10,7 @@
    <FileRef
       location = "group:../AppStoreSearchApp.xctestplan">
    </FileRef>
+   <FileRef
+      location = "group:../CI.xctestplan">
+   </FileRef>
 </Workspace>

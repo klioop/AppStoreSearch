@@ -1,0 +1,56 @@
+{
+  "configurations" : [
+    {
+      "id" : "11299517-3732-433B-925A-5F6857572243",
+      "name" : "Test Scheme Action",
+      "options" : {
+        "testExecutionOrdering" : "random"
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:AppStoreSearchApp.xcodeproj",
+          "identifier" : "B26AA8552AB84C50002F5761",
+          "name" : "AppStoreSearchApp"
+        },
+        {
+          "containerPath" : "container:..\/AppStoreSearchiOS\/AppStoreSearchiOS.xcodeproj",
+          "identifier" : "B23A6B272AB6F267006067F7",
+          "name" : "AppStoreSearch"
+        }
+      ]
+    },
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:AppStoreSearchApp.xcodeproj",
+      "identifier" : "B26AA8552AB84C50002F5761",
+      "name" : "AppStoreSearchApp"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:AppStoreSearchApp.xcodeproj",
+        "identifier" : "B26AA86B2AB84C52002F5761",
+        "name" : "AppStoreSearchAppTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:..\/AppStoreSearchiOS\/AppStoreSearchiOS.xcodeproj",
+        "identifier" : "B23A6B2E2AB6F267006067F7",
+        "name" : "AppStoreSearchTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:..\/AppStoreSearchiOS\/AppStoreSearchiOS.xcodeproj",
+        "identifier" : "B2F15B1A2AB70B8A00158D5A",
+        "name" : "AppStoreSearchAPIEndToEndTests"
+      }
+    }
+  ],
+  "version" : 1
+}
