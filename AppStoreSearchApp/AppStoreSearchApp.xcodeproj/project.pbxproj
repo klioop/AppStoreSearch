@@ -32,6 +32,8 @@
 		B2783EA92ABA979700493F4F /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2783EA82ABA979700493F4F /* TestHelpers.swift */; };
 		B2783EAB2ABA982600493F4F /* Apps+ImageDataLoaderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2783EAA2ABA982600493F4F /* Apps+ImageDataLoaderSpy.swift */; };
 		B2783EAD2ABA99F100493F4F /* ListViewController+testHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2783EAC2ABA99F100493F4F /* ListViewController+testHelpers.swift */; };
+		B2B3FEF22ABAC7EB00561B2A /* LocalSearchTerm+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B3FEF12ABAC7EB00561B2A /* LocalSearchTerm+init.swift */; };
+		B2B3FEF42ABAC80A00561B2A /* LocalSearchTermLoader+saveIgnoringResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B3FEF32ABAC80A00561B2A /* LocalSearchTermLoader+saveIgnoringResult.swift */; };
 		B2C62CA52AB963A700944326 /* AppsFromSearchViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C62CA42AB963A700944326 /* AppsFromSearchViewAdapter.swift */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +89,8 @@
 		B2783EA82ABA979700493F4F /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
 		B2783EAA2ABA982600493F4F /* Apps+ImageDataLoaderSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Apps+ImageDataLoaderSpy.swift"; sourceTree = "<group>"; };
 		B2783EAC2ABA99F100493F4F /* ListViewController+testHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListViewController+testHelpers.swift"; sourceTree = "<group>"; };
+		B2B3FEF12ABAC7EB00561B2A /* LocalSearchTerm+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalSearchTerm+init.swift"; sourceTree = "<group>"; };
+		B2B3FEF32ABAC80A00561B2A /* LocalSearchTermLoader+saveIgnoringResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalSearchTermLoader+saveIgnoringResult.swift"; sourceTree = "<group>"; };
 		B2C62CA42AB963A700944326 /* AppsFromSearchViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsFromSearchViewAdapter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -132,6 +136,7 @@
 		B26AA8582AB84C50002F5761 /* AppStoreSearchApp */ = {
 			isa = PBXGroup;
 			children = (
+				B2B3FEF02ABAC7D700561B2A /* Helpers */,
 				B26AA8672AB84C52002F5761 /* Info.plist */,
 				B26AA8B72AB87145002F5761 /* Composition */,
 				B26AA8912AB84F49002F5761 /* Combine+ */,
@@ -203,6 +208,15 @@
 				B2783EA82ABA979700493F4F /* TestHelpers.swift */,
 				B2783EAA2ABA982600493F4F /* Apps+ImageDataLoaderSpy.swift */,
 				B2783EAC2ABA99F100493F4F /* ListViewController+testHelpers.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		B2B3FEF02ABAC7D700561B2A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B2B3FEF12ABAC7EB00561B2A /* LocalSearchTerm+init.swift */,
+				B2B3FEF32ABAC80A00561B2A /* LocalSearchTermLoader+saveIgnoringResult.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -309,6 +323,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B26AA8B02AB86757002F5761 /* AppStoreSearchUIComposer.swift in Sources */,
+				B2B3FEF22ABAC7EB00561B2A /* LocalSearchTerm+init.swift in Sources */,
 				B26AA8952AB84FF1002F5761 /* Combine+DispatchQueue.swift in Sources */,
 				B26AA89C2AB85AAE002F5761 /* Combine+LocalSearchTermLoader.swift in Sources */,
 				B26AA85A2AB84C50002F5761 /* AppDelegate.swift in Sources */,
@@ -322,6 +337,7 @@
 				B242D7BE2AB9BDB4001195BF /* Combine+logRequest.swift in Sources */,
 				B26AA8BD2AB94D70002F5761 /* MatchedSearchTermsViewAdapter.swift in Sources */,
 				B26AA8A32AB8650D002F5761 /* LoadResourcePresentationAdapter.swift in Sources */,
+				B2B3FEF42ABAC80A00561B2A /* LocalSearchTermLoader+saveIgnoringResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

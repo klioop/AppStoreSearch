@@ -27,20 +27,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         window = UIWindow(windowScene: windowScene)
-        let searchViewController = AppStoreSearchUIComposer.composedWith(
-            recentTermsLoader: recentSearchTermsLoader,
-            matchedTermsLoader: matchedSearchTermsLoader,
-            appsLoader: appsLoader,
-            imageDataLoader: imageDataLoader,
-            save: save,
-            selection: showApp
-        )
-        navigationController.setViewControllers([searchViewController], animated: false)
-        window?.rootViewController = navigationController
-        window?.makeKeyAndVisible()
+        
+        configureWindow()
     }
     
     // MARK: - Helpers
+    
+    private func configureWindow() {
+        navigationController.setViewControllers([searchViewController()], animated: false)
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
+    }
     
     private func showApp(_ app: App) {
         let appViewController = AppUIComposer.composedWith(
@@ -51,6 +48,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             }
         )
         navigationController.pushViewController(appViewController, animated: true)
+    }
+    
+    private func searchViewController() -> AppStoreSearchContainerViewController {
+        AppStoreSearchUIComposer.composedWith(
+            recentTermsLoader: recentSearchTermsLoader,
+            matchedTermsLoader: matchedSearchTermsLoader,
+            appsLoader: appsLoader,
+            imageDataLoader: imageDataLoader,
+            save: save,
+            selection: showApp
+        )
     }
     
     private func recentSearchTermsLoader() -> AnyPublisher<[SearchTerm], Error> {
@@ -80,17 +88,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private func save(_ searchTerm: SearchTerm) {
         localSearchTermsLoader.saveIgnoringResult(LocalSearchTerm(from: searchTerm))
-    }
-}
-
-extension LocalSearchTerm {
-    init(from model: SearchTerm) {
-        self.init(term: model.term)
-    }
-}
-
-extension LocalSearchTermLoader {
-    func saveIgnoringResult(_ searchTerm: LocalSearchTerm) {
-        save(searchTerm) {_ in }
     }
 }
