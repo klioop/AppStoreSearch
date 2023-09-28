@@ -44,23 +44,29 @@ final class AppStoreAppPresenterTests: XCTestCase {
     // MARK: - Helpers
     
     private func convert(_ rating: Double) -> (Int, CGFloat) {
-        let formatted = String(format: "%.2f", rating)
-        let separated = formatted.components(separatedBy: ".")
+        let separated = separate(rating, decimalLimit: 2)
         let intPart = Int(rating)
         
-        guard separated.count == 2 else { return (intPart, 0.0)}
+        guard hasRatingDecimalPart(separated) else { return (intPart, 0.0)}
         
         let decimal = (Double(separated[1]) ?? 0.0) / 100
         return (intPart, decimal)
     }
     
     private func convert(_ rating: Double) -> String {
-        let formatted = String(format: "%.1f", rating)
-        let separated = formatted.components(separatedBy: ".")
-        
-        guard separated.count == 2 else { return "\(Int(rating))"}
-        
-        return formatted
+        guard hasRatingDecimalPart(separate(rating, decimalLimit: 1)) else {
+            return "\(Int(rating))"
+        }
+        return String(format: "%.1f", rating)
+    }
+    
+    private func hasRatingDecimalPart(_ ratings: [String]) -> Bool {
+        ratings.count == 2
+    }
+    
+    private func separate(_ rating: Double, decimalLimit: Int) -> [String] {
+        let formatted = String(format: "%.\(decimalLimit)f", rating)
+        return formatted.components(separatedBy: ".")
     }
     
     private func assertEqual(_ rating1: [(Int, CGFloat)],  _ rating2: [(Int, CGFloat)], file: StaticString = #filePath, line: UInt = #line) {
