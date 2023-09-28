@@ -67,8 +67,15 @@ final class AppDescriptionRatingView: UIView {
         (0..<rating.int).forEach { index in
             maskingViews[index].progress = 1.0
         }
+        
+        guard isNotMax(rating.int) else { return }
+        
         maskingViews[rating.int].progress = rating.decimal
         maskingViews[(rating.int + 1)...].forEach { $0.isHidden = true }
+    }
+    
+    private func isNotMax(_ rating: Int) -> Bool {
+        !(rating == 5)
     }
     
     private func maskingView() -> AppStoreSearchRatingMaskingView {
