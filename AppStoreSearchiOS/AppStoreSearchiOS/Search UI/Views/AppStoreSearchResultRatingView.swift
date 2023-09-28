@@ -49,7 +49,7 @@ final class AppStoreSearchResultRatingView: UIView {
     
     // MARK: - Helpers
     
-    func reset() {
+    private func reset() {
         maskingViews.forEach { $0.reset() }
     }
     
