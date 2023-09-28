@@ -13,7 +13,7 @@ public final class AppStoreAppPresenter {
         AppStoreSearchResultViewModel(
             title: app.title,
             seller: app.seller,
-            ratingText: "평점: \(ratingText(from: app.rating))",
+            ratings: convert(app.rating),
             numberOfRatingsText: numberOfRatingTextOnSearch(from: app.numberOfRatings)
         )
     }
@@ -37,6 +37,7 @@ public final class AppStoreAppPresenter {
         let separated = formatted.components(separatedBy: ".")
         
         guard separated.count == 2 else { return "\(Int(rating))"}
+        
         return formatted
     }
     

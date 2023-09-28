@@ -10,13 +10,13 @@ import Foundation
 public struct AppStoreSearchResultViewModel {
     public let title: String
     public let seller: String
-    public let ratingText: String
+    public let ratings: (int: Int, decimal: CGFloat)
     public let numberOfRatingsText: String
     
-    public init(title: String, seller: String, ratingText: String, numberOfRatingsText: String) {
+    public init(title: String, seller: String, ratings: (int: Int, decimal: CGFloat), numberOfRatingsText: String) {
         self.title = title
         self.seller = seller
-        self.ratingText = ratingText
+        self.ratings = ratings
         self.numberOfRatingsText = numberOfRatingsText
     }
 }

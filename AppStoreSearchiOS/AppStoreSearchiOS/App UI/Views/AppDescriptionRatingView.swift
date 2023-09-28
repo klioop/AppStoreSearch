@@ -20,8 +20,9 @@ final class AppDescriptionRatingView: UIView {
         set { numberOfRatingLabel.text = newValue }
     }
     
-    var rating: (int: Int, decimal: CGFloat) = (5, 0.0) {
-        didSet { update(rating) }
+    var rating: (int: Int, decimal: CGFloat) {
+        get { getRating() }
+        set { update(newValue) }
     }
     
     private lazy var topContainer: UIStackView = {
@@ -76,6 +77,18 @@ final class AppDescriptionRatingView: UIView {
     
     private func isNotMax(_ rating: Int) -> Bool {
         !(rating == 5)
+    }
+    
+    private func getRating() -> (int: Int, decimal: CGFloat) {
+        let intPart = Int(
+            maskingViews
+                .map(\.progress)
+                .filter { $0 == 1 }
+                .reduce(0, +)
+        )
+        guard isNotMax(intPart) else { return (intPart, 0) }
+        
+        return (intPart, maskingViews[intPart].progress)
     }
     
     private func maskingView() -> AppStoreSearchRatingMaskingView {

@@ -15,8 +15,9 @@ final class AppStoreSearchResultRatingView: UIView {
         set { countLabel.text = newValue }
     }
     
-    var ratings: (int: Int, decimal: CGFloat) = (1, 0.0) {
-        didSet { update(ratings) }
+    var ratings: (int: Int, decimal: CGFloat) {
+        get { getRating() }
+        set { update(newValue) }
     }
     
     private lazy var container: UIStackView = {
@@ -48,14 +49,37 @@ final class AppStoreSearchResultRatingView: UIView {
     
     // MARK: - Helpers
     
-    func update(_ ratings: (int: Int, decimal: CGFloat)) {
-        guard ratings.int < 5 else { return }
+    func reset() {
+        maskingViews.forEach { $0.reset() }
+    }
+    
+    private func update(_ ratings: (int: Int, decimal: CGFloat)) {
+        reset()
         
         (0..<ratings.int).forEach { index in
             maskingViews[index].progress = 1.0
         }
+        
+        guard isNotMax(ratings.int) else { return }
+        
         maskingViews[ratings.int].progress = ratings.decimal
         maskingViews[(ratings.int + 1)...].forEach { $0.isHidden = true }
+    }
+    
+    private func getRating() -> (int: Int, decimal: CGFloat) {
+        let intPart = Int(
+            maskingViews
+                .map(\.progress)
+                .filter { $0 == 1 }
+                .reduce(0, +)
+        )
+        guard isNotMax(intPart) else { return (intPart, 0) }
+        
+        return (intPart, maskingViews[intPart].progress)
+    }
+    
+    private func isNotMax(_ rating: Int) -> Bool {
+        !(rating == 5)
     }
     
     private func maskingView() -> AppStoreSearchRatingMaskingView {

@@ -17,8 +17,8 @@ final class AppStoreAppPresenterTests: XCTestCase {
         
         XCTAssertEqual(viewModel.title, app.title)
         XCTAssertEqual(viewModel.seller, app.seller)
-        XCTAssertEqual(viewModel.ratingText, "평점: " + convert(app.rating))
         XCTAssertEqual(viewModel.numberOfRatingsText, "\(formattedNumberOfRatings)개")
+        assertEqual([viewModel.ratings], [convert(app.rating)])
     }
     
     func test_map_AppStoreSearchResultViewModelWithEmptyNumberOfStringsOnZeroRatingCount() {
@@ -43,11 +43,32 @@ final class AppStoreAppPresenterTests: XCTestCase {
     
     // MARK: - Helpers
     
+    private func convert(_ rating: Double) -> (Int, CGFloat) {
+        let formatted = String(format: "%.2f", rating)
+        let separated = formatted.components(separatedBy: ".")
+        let intPart = Int(rating)
+        
+        guard separated.count == 2 else { return (intPart, 0.0)}
+        
+        let decimal = (Double(separated[1]) ?? 0.0) / 100
+        return (intPart, decimal)
+    }
+    
     private func convert(_ rating: Double) -> String {
         let formatted = String(format: "%.1f", rating)
         let separated = formatted.components(separatedBy: ".")
         
         guard separated.count == 2 else { return "\(Int(rating))"}
+        
         return formatted
+    }
+    
+    private func assertEqual(_ rating1: [(Int, CGFloat)],  _ rating2: [(Int, CGFloat)], file: StaticString = #filePath, line: UInt = #line) {
+        XCTAssertTrue(
+            rating1.elementsEqual(rating2, by: ==),
+            "\(rating1) 는 \(rating2) 와 같지 않다",
+            file: file,
+            line: line
+        )
     }
 }

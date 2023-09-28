@@ -20,13 +20,13 @@ public final class AppStoreSearchResultCell: UITableViewCell {
         set { sellerLabel.text = newValue }
     }
     
-    var ratingText: String {
-        get { ratingLabel.text ?? "" }
-        set { ratingLabel.text = newValue }
+    var ratings: (int: Int, decimal: CGFloat) {
+        get { ratingView.ratings }
+        set { ratingView.ratings = newValue }
     }
     
     var numberOfRatings: String {
-        get { countLabel.text ?? "" }
+        get { ratingView.numberOfRatings }
         set { update(newValue) }
     }
     
@@ -48,7 +48,7 @@ public final class AppStoreSearchResultCell: UITableViewCell {
         let stack = UIStackView()
         stack.axis = .vertical
         stack.spacing = 6
-        [titleLabel, sellerLabel].forEach(stack.addArrangedSubview)
+        [titleLabel, sellerLabel, ratingView].forEach(stack.addArrangedSubview)
         return stack
     }()
     
@@ -61,27 +61,7 @@ public final class AppStoreSearchResultCell: UITableViewCell {
         color: .secondaryLabel
     )
     
-    private lazy var ratingContainer: UIView = {
-        let view = UIView()
-        [ratingLabel, countLabel].forEach(view.addSubview)
-        ratingLabel.snp.makeConstraints {
-            $0.verticalEdges.leading.equalToSuperview()
-        }
-        countLabel.snp.makeConstraints {
-            $0.verticalEdges.trailing.equalToSuperview()
-            $0.leading.equalTo(ratingLabel.snp.trailing).offset(3)
-        }
-        return view
-    }()
-    
-    private lazy var ratingLabel = label(
-        font: .systemFont(ofSize: 12),
-        color: .gray
-    )
-    private lazy var countLabel = label(
-        font: .systemFont(ofSize: 12),
-        color: .tertiaryLabel
-    )
+    private lazy var ratingView = AppStoreSearchResultRatingView()
     
     private lazy var buttonContainer: UIView = {
         let view = UIView()
@@ -126,12 +106,12 @@ public final class AppStoreSearchResultCell: UITableViewCell {
     // MARK: - Helpers
     
     private func update(_ numberOfRatings: String) {
-        ratingContainer.isHidden = numberOfRatings.isEmpty
-        countLabel.text = numberOfRatings
+        ratingView.isHidden = numberOfRatings.isEmpty
+        ratingView.numberOfRatings = numberOfRatings
     }
     
     private func layout() {
-        [logoContainer, container, ratingContainer, buttonContainer, gallery, galleryContainerButton].forEach(contentView.addSubview)
+        [logoContainer, container, buttonContainer, gallery, galleryContainerButton].forEach(contentView.addSubview)
         logoContainer.snp.makeConstraints {
             $0.top.equalToSuperview().offset(20)
             $0.leading.equalToSuperview().offset(20)
@@ -141,10 +121,6 @@ public final class AppStoreSearchResultCell: UITableViewCell {
             $0.top.equalTo(logoImageView.snp.top)
             $0.leading.equalTo(logoContainer.snp.trailing).offset(10)
             $0.trailing.equalTo(buttonContainer.snp.leading).inset(-10)
-        }
-        ratingContainer.snp.makeConstraints {
-            $0.top.equalTo(container.snp.bottom).offset(6)
-            $0.leading.equalTo(logoContainer.snp.trailing).offset(10)
         }
         buttonContainer.snp.makeConstraints {
             $0.centerY.equalTo(logoContainer.snp.centerY)

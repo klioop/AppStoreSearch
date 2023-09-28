@@ -20,10 +20,16 @@ final class AppStoreSearchRatingMaskingView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         addSubview(progressView)
     }
     
     required init?(coder: NSCoder) { nil }
+    
+    func reset() {
+        progressView.frame = .zero
+        isHidden = false
+    }
     
     override func layoutSubviews() {
         super.layoutSubviews()
