@@ -60,7 +60,6 @@ public final class AppStoreSearchResultCell: UITableViewCell {
         font: .systemFont(ofSize: 14, weight: .regular),
         color: .secondaryLabel
     )
-    
     private lazy var ratingView = AppStoreSearchResultRatingView()
     
     private lazy var buttonContainer: UIView = {

@@ -118,7 +118,7 @@ final class AppStoreSearchUISnapshotTests: XCTestCase {
             viewModel: AppStoreSearchResultViewModel(
                 title: "a title0",
                 seller: "a seller0",
-                ratingText: "평점: 3.4",
+                ratings: (3, 0.40),
                 numberOfRatingsText: "1.1만"
             ),
             galleryCellControllers: gallery,
@@ -130,7 +130,7 @@ final class AppStoreSearchUISnapshotTests: XCTestCase {
             viewModel: AppStoreSearchResultViewModel(
                 title: "a title1",
                 seller: "a seller1",
-                ratingText: "평점: 4.4",
+                ratings: (4, 0.44),
                 numberOfRatingsText: "3.7천"
             ),
             galleryCellControllers: gallery,
