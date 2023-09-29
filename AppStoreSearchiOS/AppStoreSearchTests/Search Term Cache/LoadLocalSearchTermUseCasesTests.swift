@@ -38,10 +38,7 @@ class LoadLocalSearchTermUseCasesTests: XCTestCase {
         let (sut, store) = makeSUT()
         let termLiteral0 = "term0"
         let termLiteral1 = "term1"
-        let localTerms = [
-            makeLocalTerm(termLiteral0),
-            makeLocalTerm(termLiteral1)
-        ]
+        let localTerms = [termLiteral0, termLiteral1].map(makeLocalTerm)
         let expectedTerms = [
             makeSearchTerm(termLiteral1),
             makeSearchTerm(termLiteral0)
@@ -58,11 +55,7 @@ class LoadLocalSearchTermUseCasesTests: XCTestCase {
         let termLiteral0 = "term0"
         let termLiteral1 = "term1"
         let termLiteral2 = "any"
-        let localTerms = [
-            makeLocalTerm(termLiteral0),
-            makeLocalTerm(termLiteral1),
-            makeLocalTerm(termLiteral2)
-        ]
+        let localTerms = [termLiteral0, termLiteral1, termLiteral2].map(makeLocalTerm)
         let expectedTerms = [
             makeSearchTerm(termLiteral1),
             makeSearchTerm(termLiteral0)
@@ -79,11 +72,7 @@ class LoadLocalSearchTermUseCasesTests: XCTestCase {
         let termLiteral0 = "term0"
         let termLiteral1 = "term1"
         let termLiteral2 = "any"
-        let localTerms = [
-            makeLocalTerm(termLiteral0),
-            makeLocalTerm(termLiteral1),
-            makeLocalTerm(termLiteral2)
-        ]
+        let localTerms = [termLiteral0, termLiteral1, termLiteral2].map(makeLocalTerm)
         let expectedTerms = [
             makeSearchTerm(termLiteral1),
             makeSearchTerm(termLiteral0)
@@ -122,10 +111,10 @@ class LoadLocalSearchTermUseCasesTests: XCTestCase {
         sut.load { receivedResult in
             switch (receivedResult, expectedResult) {
             case let (.success(receivedTerms), .success(expectedTerms)):
-                XCTAssertEqual(receivedTerms, expectedTerms, "\(expectedTerms)를 기대했지만, \(receivedTerms)가 나옴", file: file, line: line)
+                XCTAssertEqual(expectedTerms, receivedTerms, "\(expectedTerms)를 기대했지만, \(receivedTerms)가 나옴", file: file, line: line)
                 
             case let (.failure(receivedError as NSError), .failure(expectedError as NSError)):
-                XCTAssertEqual(receivedError, expectedError, "\(expectedError)를 기대했지만, \(receivedError)가 나옴",  file: file, line: line)
+                XCTAssertEqual(expectedError, receivedError, "\(expectedError)를 기대했지만, \(receivedError)가 나옴",  file: file, line: line)
                 
             default:
                 XCTFail("\(expectedResult)를 기대 했지만, \(receivedResult)가 나옴", file: file, line: line)
