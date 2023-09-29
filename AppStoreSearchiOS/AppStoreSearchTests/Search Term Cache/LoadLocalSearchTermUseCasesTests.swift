@@ -34,7 +34,7 @@ class LoadLocalSearchTermUseCasesTests: XCTestCase {
         })
     }
     
-    func test_load_deliversSearchTermsOnRetrievalSuccess() {
+    func test_load_deliversSearchTermsOnRetrievalSuccessWithTheLatestOrder() {
         let (sut, store) = makeSUT()
         let termLiteral0 = "term0"
         let termLiteral1 = "term1"
@@ -43,8 +43,8 @@ class LoadLocalSearchTermUseCasesTests: XCTestCase {
             makeLocalTerm(termLiteral1)
         ]
         let expectedTerms = [
-            makeSearchTerm(termLiteral0),
-            makeSearchTerm(termLiteral1)
+            makeSearchTerm(termLiteral1),
+            makeSearchTerm(termLiteral0)
         ]
         
         expect(sut, toCompletedWith: .success(expectedTerms), when: {
@@ -52,7 +52,7 @@ class LoadLocalSearchTermUseCasesTests: XCTestCase {
         })
     }
     
-    func test_loadContainingSearchTerm_deliversSearchTermsWithAGivenTerm() {
+    func test_loadContainingSearchTerm_deliversSearchTermsWithAGivenTermWithTheLatestOrder() {
         let (sut, store) = makeSUT()
         let term = makeSearchTerm("ter")
         let termLiteral0 = "term0"
@@ -64,11 +64,11 @@ class LoadLocalSearchTermUseCasesTests: XCTestCase {
             makeLocalTerm(termLiteral2)
         ]
         let expectedTerms = [
-            makeSearchTerm(termLiteral0),
-            makeSearchTerm(termLiteral1)
+            makeSearchTerm(termLiteral1),
+            makeSearchTerm(termLiteral0)
         ]
         
-        expect(sut, toCompletedWith: .success(expectedTerms), forContainingTerm: term, when: {
+        expect(sut, toCompletedWith: .success(expectedTerms), forContaining: term, when: {
             store.completeRetrieval(with: localTerms)
         })
     }
@@ -116,7 +116,7 @@ class LoadLocalSearchTermUseCasesTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
     }
     
-    private func expect(_ sut: LocalSearchTermLoader, toCompletedWith expectedResult: Result<[SearchTerm], Error>, forContainingTerm term: SearchTerm, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
+    private func expect(_ sut: LocalSearchTermLoader, toCompletedWith expectedResult: Result<[SearchTerm], Error>, forContaining term: SearchTerm, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
         let exp = expectation(description: "a wait for load completion")
         
         sut.load(containing: term) { receivedResult in

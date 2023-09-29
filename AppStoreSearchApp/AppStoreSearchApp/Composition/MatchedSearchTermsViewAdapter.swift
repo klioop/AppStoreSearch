@@ -20,7 +20,7 @@ final class MatchedSearchTermsViewAdapter: ResourceView {
     }
     
     func display(_ viewModel: [SearchTerm]) {
-        let cellControllers = viewModel.reversed().map { term -> (SearchTerm, AppStoreRecentSearchTermCellController) in
+        let cellControllers = viewModel.map { term -> (SearchTerm, AppStoreRecentSearchTermCellController) in
             return (
                 term,
                 AppStoreRecentSearchTermCellController(
@@ -30,8 +30,7 @@ final class MatchedSearchTermsViewAdapter: ResourceView {
                     }
                 )
             )
-        }
-            .map(TableCellController.init)
+        }.map(TableCellController.init)
         
         controller?.display(cellControllers)
     }

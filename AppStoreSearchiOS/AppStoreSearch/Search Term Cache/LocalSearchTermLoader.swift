@@ -42,6 +42,7 @@ public final class LocalSearchTermLoader {
                         return terms
                             .map(\.term)
                             .map(SearchTerm.init)
+                            .reversed()
 
                     case let .failure(error):
                         throw error
@@ -67,6 +68,7 @@ public final class LocalSearchTermLoader {
                                     .contains(searchTerm.term.removeAllWhiteSpaces.lowercased())
                             }
                             .map(SearchTerm.init)
+                            .reversed()
 
                     case let .failure(error):
                         throw error
