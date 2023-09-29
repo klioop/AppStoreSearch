@@ -29,7 +29,7 @@ final class AppStoreSearchAPIEndToEndTests: XCTestCase {
         return try AppMapper.map(data, from: response)
     }
     
-    private func client(file: StaticString = #filePath, line: UInt = #line) -> HTTPClient {
+    private func client() -> HTTPClient {
         URLSessionHTTPClient(session: .shared)
     }
 }
