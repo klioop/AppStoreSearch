@@ -73,6 +73,27 @@ class LoadLocalSearchTermUseCasesTests: XCTestCase {
         })
     }
     
+    func test_loadContainingSearchTerm_deliversSearchTermsWithAGivenTermIgnoringWhiteSpaceAndCase() {
+        let (sut, store) = makeSUT()
+        let term = makeSearchTerm("T er")
+        let termLiteral0 = "term0"
+        let termLiteral1 = "term1"
+        let termLiteral2 = "any"
+        let localTerms = [
+            makeLocalTerm(termLiteral0),
+            makeLocalTerm(termLiteral1),
+            makeLocalTerm(termLiteral2)
+        ]
+        let expectedTerms = [
+            makeSearchTerm(termLiteral1),
+            makeSearchTerm(termLiteral0)
+        ]
+        
+        expect(sut, toCompletedWith: .success(expectedTerms), forContaining: term, when: {
+            store.completeRetrieval(with: localTerms)
+        })
+    }
+    
     func test_load_doesNotDeliverResultAfterSUTInstanceHasBeenDeAllocated() {
         let store = SearchTermStoreSpy()
         var sut: LocalSearchTermLoader? = LocalSearchTermLoader(store: store)
