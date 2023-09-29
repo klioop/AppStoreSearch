@@ -40,7 +40,6 @@ class AppsLoaderSpy {
                 self?.cancelImageURLs.append(url)
             })
             .eraseToAnyPublisher()
-            
     }
     
     func loadCompleteImage(with data: Data, at index: Int = 0) {

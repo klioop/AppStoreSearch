@@ -13,8 +13,8 @@ import AppStoreSearchiOS
 public final class AppStoreSearchUIComposer {
     private init() {}
     
-    private typealias RecentSearchTermLoadPresentationAdapter = LoadResourcePresentationAdapter<Void, [SearchTerm], RecentSearchTermViewAdapter>
-    private typealias MatchedSearchTermLoadPresentationAdapter = LoadResourcePresentationAdapter<SearchTerm, [SearchTerm], MatchedSearchTermsViewAdapter>
+    private typealias RecentSearchTermsLoadPresentationAdapter = LoadResourcePresentationAdapter<Void, [SearchTerm], RecentSearchTermViewAdapter>
+    private typealias MatchedSearchTermsLoadPresentationAdapter = LoadResourcePresentationAdapter<SearchTerm, [SearchTerm], MatchedSearchTermsViewAdapter>
     private typealias AppsLoadPresentationAdapter = LoadResourcePresentationAdapter<SearchTerm, [App], AppsFromSearchViewAdapter>
     
     public static func composedWith(
@@ -25,8 +25,8 @@ public final class AppStoreSearchUIComposer {
         save: @escaping (SearchTerm) -> Void,
         selection: @escaping (App) -> Void
     ) -> AppStoreSearchContainerViewController {
-        let recentTermsPresentationAdapter = RecentSearchTermLoadPresentationAdapter(loader: recentTermsLoader)
-        let matchedTermsPresentationAdapter = MatchedSearchTermLoadPresentationAdapter(loader: matchedTermsLoader)
+        let recentTermsPresentationAdapter = RecentSearchTermsLoadPresentationAdapter(loader: recentTermsLoader)
+        let matchedTermsPresentationAdapter = MatchedSearchTermsLoadPresentationAdapter(loader: matchedTermsLoader)
         let appsPresentationAdapter = AppsLoadPresentationAdapter(loader: appsLoader)
         let searchViewController = AppStoreSearchViewController(
             viewModel: AppStoreSearchPresenter.viewModel(),
@@ -87,8 +87,8 @@ public final class AppStoreSearchUIComposer {
     // MARK: - Helpers
     
     private static func textChangeCallback(
-        recentTermsPresentationAdapter: RecentSearchTermLoadPresentationAdapter,
-        matchedTermsPresentationAdapter: MatchedSearchTermLoadPresentationAdapter,
+        recentTermsPresentationAdapter: RecentSearchTermsLoadPresentationAdapter,
+        matchedTermsPresentationAdapter: MatchedSearchTermsLoadPresentationAdapter,
         upon text: String
     ) {
         if text.isEmpty {
