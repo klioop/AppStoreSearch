@@ -63,9 +63,7 @@ public final class LocalSearchTermLoader {
                         return terms
                             .map(\.term)
                             .filter { term in
-                                term.lowercased()
-                                    .removeAllWhiteSpaces
-                                    .contains(searchTerm.term.removeAllWhiteSpaces.lowercased())
+                                term.normalized.contains(searchTerm.term.normalized)
                             }
                             .map(SearchTerm.init)
                             .reversed()
@@ -81,6 +79,10 @@ public final class LocalSearchTermLoader {
 
 private extension String {
     var removeAllWhiteSpaces: String {
-        self.replacingOccurrences(of: " ", with: "")
+        replacingOccurrences(of: " ", with: "")
+    }
+    
+    var normalized: String {
+        removeAllWhiteSpaces.lowercased()
     }
 }
