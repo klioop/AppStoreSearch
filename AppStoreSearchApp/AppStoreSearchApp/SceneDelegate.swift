@@ -17,6 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private lazy var httpClient: HTTPClient = URLSessionHTTPClient(session: .shared)
     private lazy var store: SearchTermStore = try! UserDefaultsSearchTermStore(suiteName: "klioop.AppStoreSearchTermStore")
     private lazy var localSearchTermsLoader = LocalSearchTermLoader(store: store)
+    
     private lazy var navigationController: UINavigationController = {
         let nav = UINavigationController()
         nav.setNavigationBarHidden(true, animated: false)
