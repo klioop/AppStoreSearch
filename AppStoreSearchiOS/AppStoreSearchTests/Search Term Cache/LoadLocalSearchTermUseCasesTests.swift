@@ -10,7 +10,7 @@ import AppStoreSearch
 
 class LoadLocalSearchTermUseCasesTests: XCTestCase {
     
-    func test_init_DoesNotSendRetrieveMessageToStore() {
+    func test_init_doesNotSendRetrieveMessageToStore() {
         let (_, store) = makeSUT()
         
         XCTAssertTrue(store.receivedMessages.isEmpty)

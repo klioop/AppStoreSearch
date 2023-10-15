@@ -9,7 +9,6 @@ import UIKit
 import AppStoreSearch
 
 public final class AppGalleryCellController: NSObject, UICollectionViewDataSource, UICollectionViewDelegate {
-    
     private var cell: AppGalleryCell?
     
     private let requestImage: () -> Void
