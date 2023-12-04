@@ -5,7 +5,7 @@
 //  Created by Lee Sam on 2023/09/18.
 //
 
-import Foundation
+import UIKit
 import AppStoreSearch
 import AppStoreSearchiOS
 
@@ -36,6 +36,7 @@ final class RecentSearchTermViewAdapter: ResourceView {
                     viewModel: AppStoreRecentSearchTermPresenter.map(term),
                     selection: { [weak self] in
                         self?.selection(SearchTerm(term: $0))
+                        self?.controller?.topView.endEditing(true)
                     }
                 )
             )
@@ -43,5 +44,17 @@ final class RecentSearchTermViewAdapter: ResourceView {
         let termsCellControllers = terms.map(TableCellController.init)
         
         controller.display([titleCellController], termsCellControllers)
+    }
+}
+
+private extension UIViewController {
+    var topView: UIView {
+        view.topView
+    }
+}
+
+private extension UIView {
+    var topView: UIView {
+        superview ?? self
     }
 }

@@ -65,7 +65,7 @@ public final class AppStoreSearchView: UIView {
         profileImageView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(horizontalPadding)
             $0.trailing.equalToSuperview().inset(horizontalPadding)
-            $0.width.height.equalTo(36)
+            $0.size.equalTo(36)
         }
         border.snp.makeConstraints {
             $0.horizontalEdges.bottom.equalToSuperview()
