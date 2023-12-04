@@ -11,17 +11,17 @@ public enum AppStoreSearchEndPoint {
     case get(_ searchTerm: SearchTerm)
     
     private enum DefaultQueries: String, CaseIterable {
-        case country
-        case lang
-        case media
-        case limit
+        case country, lang, media, limit
         
         var value: String {
             switch self {
-            case .country: return "kr"
-            case .lang: return "ko-kr"
-            case .media: return "software"
-            case .limit: return "20"
+            case .country: "kr"
+                
+            case .lang: "ko-kr"
+                
+            case .media: "software"
+                
+            case .limit: "20"
             }
         }
     }
