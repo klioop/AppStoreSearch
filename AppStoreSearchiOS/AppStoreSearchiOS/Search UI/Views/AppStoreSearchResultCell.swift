@@ -146,7 +146,6 @@ public final class AppStoreSearchResultCell: UITableViewCell {
     
     private func label(font: UIFont, color: UIColor) -> UILabel {
         let label = UILabel()
-        label.adjustsFontSizeToFitWidth = true
         label.font = font
         label.textColor = color
         return label

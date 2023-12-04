@@ -28,10 +28,7 @@ public final class AppTitleCell: UITableViewCell {
         return view
     }()
     
-    private(set) lazy var logoImageView: UIImageView = {
-        let imageView = UIImageView()
-        return imageView
-    }()
+    private(set) lazy var logoImageView = UIImageView()
     
     private lazy var container: UIStackView = {
         let stack = UIStackView()
@@ -81,7 +78,7 @@ public final class AppTitleCell: UITableViewCell {
         logoContainer.snp.makeConstraints {
             $0.verticalEdges.equalToSuperview().inset(16).priority(999)
             $0.leading.equalToSuperview().offset(20)
-            $0.width.height.equalTo(120)
+            $0.size.equalTo(120)
         }
         container.snp.makeConstraints {
             $0.top.equalTo(logoContainer.snp.top)
