@@ -47,13 +47,13 @@ final class RecentSearchTermViewAdapter: ResourceView {
     }
 }
 
-private extension UIViewController {
+extension UIViewController {
     var topView: UIView {
         view.topView
     }
 }
 
-private extension UIView {
+extension UIView {
     var topView: UIView {
         superview ?? self
     }

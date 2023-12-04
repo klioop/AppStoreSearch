@@ -27,6 +27,7 @@ final class MatchedSearchTermsViewAdapter: ResourceView {
                     viewModel: AppStoreRecentSearchTermPresenter.mapToMatched(term),
                     selection: { [weak self] in
                         self?.selection(SearchTerm(term: $0))
+                        self?.controller?.topView.endEditing(true)
                     }
                 )
             )
