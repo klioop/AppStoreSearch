@@ -27,7 +27,7 @@ public final class AppGalleryLayout {
                 subitems: [item]
             )
             let section = NSCollectionLayoutSection(group: group)
-            section.orthogonalScrollingBehavior = .paging
+            section.orthogonalScrollingBehavior = .groupPaging
             section.contentInsets = .init(
                 top: 0,
                 leading: 20,
