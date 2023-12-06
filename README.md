@@ -46,6 +46,10 @@ CI - 스냅샷 테스트를 제외한 모든 테스트를 실행할 수 있는 s
 • SnapKit - SPM</br>
 </br>
 
+## 최소지원버전</br>
+• iOS 13.0</br>
+</br>
+
 ## Modular 아키텍처
 Modular 아키텍처를 적용했습니다.</br>
 모듈은 Framework 와 Scheme 으로 구분했습니다.</br>
