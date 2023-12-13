@@ -25,10 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private lazy var appSearchService = AppSearchServiceContainer(httpClient: httpClient)
     private lazy var sharedService = SharedServiceContainer(httpClient: httpClient)
     
-    private lazy var appFlow = AppFlow(
-        navigation: navigationController,
-        makeAppStoreSearchContainerViewController: searchViewController
-    )
+    private lazy var appFlow = FlowFactory(navigationController: navigationController).makeAppFlow()
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
@@ -43,30 +40,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private func configureWindow() {
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
-    }
-    
-    private func showApp(_ app: App) {
-        navigationController.pushViewController(viewController(for: app), animated: true)
-    }
-    
-    private func viewController(for app: App) -> AppContainerViewController {
-        AppUIComposer.composedWith(
-            app: app,
-            imageDataLoader: sharedService.imageDataLoader,
-            callback: { [weak navigationController] in
-                navigationController?.popViewController(animated: true)
-            }
-        )
-    }
-    
-    private func searchViewController() -> AppStoreSearchContainerViewController {
-        AppStoreSearchUIComposer.composedWith(
-            recentTermsLoader: appSearchService.recentSearchTermsLoader,
-            matchedTermsLoader: appSearchService.matchedSearchTermsLoader,
-            appsLoader: appSearchService.appsLoader,
-            imageDataLoader: sharedService.imageDataLoader,
-            save: appSearchService.save,
-            selection: showApp
-        )
     }
 }

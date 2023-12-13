@@ -9,18 +9,13 @@ import UIKit
 import AppStoreSearchiOS
 
 public final class AppFlow {
-    public let navigation: UINavigationController
-    public let makeAppStoreSearchContainerViewController: () -> AppStoreSearchContainerViewController
+    public let appSearchFlow: AppSearchFlow
     
-    public init(
-        navigation: UINavigationController,
-        makeAppStoreSearchContainerViewController: @escaping () -> AppStoreSearchContainerViewController
-    ) {
-        self.navigation = navigation
-        self.makeAppStoreSearchContainerViewController = makeAppStoreSearchContainerViewController
+    public init(appSearchFlow: AppSearchFlow) {
+        self.appSearchFlow = appSearchFlow
     }
     
     public func start() {
-        navigation.setViewControllers([makeAppStoreSearchContainerViewController()], animated: false)
+        appSearchFlow.start()
     }
 }

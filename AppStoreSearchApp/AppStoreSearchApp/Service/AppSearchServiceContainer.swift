@@ -9,7 +9,7 @@ import Foundation
 import Combine
 import AppStoreSearch
 
-final class AppSearchServiceContainer {
+public final class AppSearchServiceContainer {
     private lazy var store: SearchTermStore = try! UserDefaultsSearchTermStore(suiteName: "klioop.AppStoreSearchTermStore")
     private lazy var localSearchTermsLoader = LocalSearchTermLoader(store: store)
     
