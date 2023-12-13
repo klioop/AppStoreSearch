@@ -15,14 +15,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     
     private lazy var httpClient: HTTPClient = URLSessionHTTPClient(session: .shared)
-    private lazy var store: SearchTermStore = try! UserDefaultsSearchTermStore(suiteName: "klioop.AppStoreSearchTermStore")
-    private lazy var localSearchTermsLoader = LocalSearchTermLoader(store: store)
     
     private lazy var navigationController: UINavigationController = {
         let nav = UINavigationController()
         nav.setNavigationBarHidden(true, animated: false)
         return nav
     }()
+    
+    private lazy var appSearchService = AppSearchServiceContainer(httpClient: httpClient)
     
     private lazy var appFlow = AppFlow(
         navigation: navigationController,
@@ -60,30 +60,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private func searchViewController() -> AppStoreSearchContainerViewController {
         AppStoreSearchUIComposer.composedWith(
-            recentTermsLoader: recentSearchTermsLoader,
-            matchedTermsLoader: matchedSearchTermsLoader,
-            appsLoader: appsLoader,
+            recentTermsLoader: appSearchService.recentSearchTermsLoader,
+            matchedTermsLoader: appSearchService.matchedSearchTermsLoader,
+            appsLoader: appSearchService.appsLoader,
             imageDataLoader: imageDataLoader,
-            save: save,
+            save: appSearchService.save,
             selection: showApp
         )
-    }
-    
-    private func recentSearchTermsLoader() -> AnyPublisher<[SearchTerm], Error> {
-        localSearchTermsLoader.loadPublisher()
-    }
-    
-    private func matchedSearchTermsLoader(containing searchTerm: SearchTerm) -> AnyPublisher<[SearchTerm], Error> {
-        localSearchTermsLoader.loadPublisher(containing: searchTerm)
-    }
-    
-    private func appsLoader(for searchTerm: SearchTerm) -> AnyPublisher<[App], Error> {
-        let request = URLRequest(url: AppStoreSearchEndPoint.get(searchTerm).url())
-        return httpClient
-            .performPublisher(request)
-            .logRequestInfo(of: request)
-            .tryMap(AppMapper.map)
-            .eraseToAnyPublisher()
     }
     
     private func imageDataLoader(from url: URL) -> AnyPublisher<Data, Error> {
@@ -92,9 +75,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             .performPublisher(request)
             .tryMap(ImageDataMapper.map)
             .eraseToAnyPublisher()
-    }
-    
-    private func save(_ searchTerm: SearchTerm) {
-        localSearchTermsLoader.saveIgnoringResult(LocalSearchTerm(from: searchTerm))
     }
 }
