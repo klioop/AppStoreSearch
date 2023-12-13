@@ -14,16 +14,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     
-    private lazy var httpClient: HTTPClient = URLSessionHTTPClient(session: .shared)
-    
     private lazy var navigationController: UINavigationController = {
         let nav = UINavigationController()
         nav.setNavigationBarHidden(true, animated: false)
         return nav
     }()
-    
-    private lazy var appSearchService = AppSearchServiceContainer(httpClient: httpClient)
-    private lazy var sharedService = SharedServiceContainer(httpClient: httpClient)
     
     private lazy var appFlow = FlowFactory(navigationController: navigationController).makeAppFlow()
     
