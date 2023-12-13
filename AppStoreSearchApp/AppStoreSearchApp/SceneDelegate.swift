@@ -23,6 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }()
     
     private lazy var appSearchService = AppSearchServiceContainer(httpClient: httpClient)
+    private lazy var sharedService = SharedServiceContainer(httpClient: httpClient)
     
     private lazy var appFlow = AppFlow(
         navigation: navigationController,
@@ -51,7 +52,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private func viewController(for app: App) -> AppContainerViewController {
         AppUIComposer.composedWith(
             app: app,
-            imageDataLoader: imageDataLoader,
+            imageDataLoader: sharedService.imageDataLoader,
             callback: { [weak navigationController] in
                 navigationController?.popViewController(animated: true)
             }
@@ -63,17 +64,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             recentTermsLoader: appSearchService.recentSearchTermsLoader,
             matchedTermsLoader: appSearchService.matchedSearchTermsLoader,
             appsLoader: appSearchService.appsLoader,
-            imageDataLoader: imageDataLoader,
+            imageDataLoader: sharedService.imageDataLoader,
             save: appSearchService.save,
             selection: showApp
         )
-    }
-    
-    private func imageDataLoader(from url: URL) -> AnyPublisher<Data, Error> {
-        let request = URLRequest(url: url)
-        return httpClient
-            .performPublisher(request)
-            .tryMap(ImageDataMapper.map)
-            .eraseToAnyPublisher()
     }
 }
