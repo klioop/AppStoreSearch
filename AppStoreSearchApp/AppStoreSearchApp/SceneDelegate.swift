@@ -24,18 +24,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         return nav
     }()
     
+    private lazy var appFlow = AppFlow(
+        navigation: navigationController,
+        makeAppStoreSearchContainerViewController: searchViewController
+    )
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         window = UIWindow(windowScene: windowScene)
-        
         configureWindow()
+        appFlow.start()
     }
     
     // MARK: - Helpers
     
     private func configureWindow() {
-        navigationController.setViewControllers([searchViewController()], animated: false)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
