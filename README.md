@@ -54,7 +54,7 @@ CI - 스냅샷 테스트를 제외한 모든 테스트를 실행할 수 있는 s
 Modular 아키텍처를 적용했습니다.</br>
 모듈은 Framework 와 Scheme 으로 구분했습니다.</br>
 AppStoreSearchiOS, 와 AppStoreSearch 는 iOS Framework 이고
-AppStoreSearch 프로젝트는 앱입니다.</br>
+AppStoreSearchApp 는 앱 프로젝트입니다.</br>
 드래그 앤 드랍으로 xcworkspace 를 만드는 형태로 단순하게 구성했습니다.</br>
 
 ## Presentation Design 패턴
