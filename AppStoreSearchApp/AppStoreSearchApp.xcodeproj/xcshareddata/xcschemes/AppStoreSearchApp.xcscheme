@@ -29,7 +29,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:../AppStoreSearchApp.xctestplan"
+            reference = "container:../TestPlans/AppStoreSearchApp.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>

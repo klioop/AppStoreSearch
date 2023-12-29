@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,10 +16,6 @@
 		B26AA8632AB84C52002F5761 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B26AA8622AB84C52002F5761 /* Assets.xcassets */; };
 		B26AA8662AB84C52002F5761 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B26AA8642AB84C52002F5761 /* LaunchScreen.storyboard */; };
 		B26AA8712AB84C52002F5761 /* AppStoreSearchUIIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26AA8702AB84C52002F5761 /* AppStoreSearchUIIntegrationTests.swift */; };
-		B26AA88B2AB84DA6002F5761 /* AppStoreSearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B26AA88A2AB84DA6002F5761 /* AppStoreSearch.framework */; };
-		B26AA88C2AB84DA6002F5761 /* AppStoreSearch.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B26AA88A2AB84DA6002F5761 /* AppStoreSearch.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B26AA88F2AB84DAA002F5761 /* AppStoreSearchiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B26AA88E2AB84DAA002F5761 /* AppStoreSearchiOS.framework */; };
-		B26AA8902AB84DAA002F5761 /* AppStoreSearchiOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B26AA88E2AB84DAA002F5761 /* AppStoreSearchiOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B26AA8942AB84FF1002F5761 /* Combine+HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26AA8922AB84FF1002F5761 /* Combine+HTTPClient.swift */; };
 		B26AA8952AB84FF1002F5761 /* Combine+DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26AA8932AB84FF1002F5761 /* Combine+DispatchQueue.swift */; };
 		B26AA89C2AB85AAE002F5761 /* Combine+LocalSearchTermLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26AA89B2AB85AAE002F5761 /* Combine+LocalSearchTermLoader.swift */; };
@@ -33,6 +29,7 @@
 		B2783EA92ABA979700493F4F /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2783EA82ABA979700493F4F /* TestHelpers.swift */; };
 		B2783EAB2ABA982600493F4F /* Apps+ImageDataLoaderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2783EAA2ABA982600493F4F /* Apps+ImageDataLoaderSpy.swift */; };
 		B2783EAD2ABA99F100493F4F /* ListViewController+testHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2783EAC2ABA99F100493F4F /* ListViewController+testHelpers.swift */; };
+		B28399F02B3E888500896B54 /* AppStoreSearchiOS in Frameworks */ = {isa = PBXBuildFile; productRef = B28399EF2B3E888500896B54 /* AppStoreSearchiOS */; };
 		B2B3FEF22ABAC7EB00561B2A /* LocalSearchTerm+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B3FEF12ABAC7EB00561B2A /* LocalSearchTerm+init.swift */; };
 		B2B3FEF42ABAC80A00561B2A /* LocalSearchTermLoader+saveIgnoringResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B3FEF32ABAC80A00561B2A /* LocalSearchTermLoader+saveIgnoringResult.swift */; };
 		B2C62CA52AB963A700944326 /* AppsFromSearchViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C62CA42AB963A700944326 /* AppsFromSearchViewAdapter.swift */; };
@@ -42,6 +39,7 @@
 		B2DFD6A62B29AB5F0065EDEE /* SharedServiceContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DFD6A52B29AB5F0065EDEE /* SharedServiceContainer.swift */; };
 		B2DFD6A82B29AD180065EDEE /* FlowFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DFD6A72B29AD180065EDEE /* FlowFactory.swift */; };
 		B2DFD6AA2B29AD290065EDEE /* AppSearchFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DFD6A92B29AD290065EDEE /* AppSearchFlow.swift */; };
+		B2F484712B3E4D8F00DEF0EE /* AppStoreSearch in Frameworks */ = {isa = PBXBuildFile; productRef = B2F484702B3E4D8F00DEF0EE /* AppStoreSearch */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,21 +51,6 @@
 			remoteInfo = AppStoreSearchApp;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		B26AA88D2AB84DA6002F5761 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				B26AA8902AB84DAA002F5761 /* AppStoreSearchiOS.framework in Embed Frameworks */,
-				B26AA88C2AB84DA6002F5761 /* AppStoreSearch.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		B242D7B72AB98FE7001195BF /* WeakRefVirtualProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakRefVirtualProxy.swift; sourceTree = "<group>"; };
@@ -113,8 +96,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B26AA88F2AB84DAA002F5761 /* AppStoreSearchiOS.framework in Frameworks */,
-				B26AA88B2AB84DA6002F5761 /* AppStoreSearch.framework in Frameworks */,
+				B28399F02B3E888500896B54 /* AppStoreSearchiOS in Frameworks */,
+				B2F484712B3E4D8F00DEF0EE /* AppStoreSearch in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,13 +259,16 @@
 				B26AA8522AB84C50002F5761 /* Sources */,
 				B26AA8532AB84C50002F5761 /* Frameworks */,
 				B26AA8542AB84C50002F5761 /* Resources */,
-				B26AA88D2AB84DA6002F5761 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = AppStoreSearchApp;
+			packageProductDependencies = (
+				B2F484702B3E4D8F00DEF0EE /* AppStoreSearch */,
+				B28399EF2B3E888500896B54 /* AppStoreSearchiOS */,
+			);
 			productName = AppStoreSearchApp;
 			productReference = B26AA8562AB84C50002F5761 /* AppStoreSearchApp.app */;
 			productType = "com.apple.product-type.application";
@@ -301,6 +287,8 @@
 				B26AA86E2AB84C52002F5761 /* PBXTargetDependency */,
 			);
 			name = AppStoreSearchAppTests;
+			packageProductDependencies = (
+			);
 			productName = AppStoreSearchAppTests;
 			productReference = B26AA86C2AB84C52002F5761 /* AppStoreSearchAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -333,6 +321,10 @@
 				Base,
 			);
 			mainGroup = B26AA84D2AB84C50002F5761;
+			packageReferences = (
+				B2F4846F2B3E4D8F00DEF0EE /* XCLocalSwiftPackageReference "../AppStoreSearch" */,
+				B28399EE2B3E888500896B54 /* XCLocalSwiftPackageReference "../AppStoreSearchiOS" */,
+			);
 			productRefGroup = B26AA8572AB84C50002F5761 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -671,6 +663,28 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		B28399EE2B3E888500896B54 /* XCLocalSwiftPackageReference "../AppStoreSearchiOS" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../AppStoreSearchiOS;
+		};
+		B2F4846F2B3E4D8F00DEF0EE /* XCLocalSwiftPackageReference "../AppStoreSearch" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../AppStoreSearch;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B28399EF2B3E888500896B54 /* AppStoreSearchiOS */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = AppStoreSearchiOS;
+		};
+		B2F484702B3E4D8F00DEF0EE /* AppStoreSearch */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = AppStoreSearch;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B26AA84E2AB84C50002F5761 /* Project object */;
 }

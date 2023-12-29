@@ -1,0 +1,36 @@
+{
+  "configurations" : [
+    {
+      "id" : "B14C3EF4-47BA-4DD9-86FA-491DF7878A58",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:..\/AppStoreSearch",
+      "identifier" : "AppStoreSearch",
+      "name" : "AppStoreSearch"
+    },
+    "testExecutionOrdering" : "random"
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "AppStoreSearchAPIEndToEndTests",
+        "name" : "AppStoreSearchAPIEndToEndTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "AppStoreSearchTests",
+        "name" : "AppStoreSearchTests"
+      }
+    }
+  ],
+  "version" : 1
+}
