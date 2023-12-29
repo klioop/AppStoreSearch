@@ -62,6 +62,9 @@ final class AppUISnapshotTests: XCTestCase {
             header: headerViewController.view(),
             listViewController: list
         )
+        list.configure = { tableView in
+            tableView.showsVerticalScrollIndicator = false
+        }
         return (sut, list)
     }
 }

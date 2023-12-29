@@ -36,7 +36,7 @@ struct SnapshotConfiguration {
                     .init(userInterfaceIdiom: .phone),
                     .init(preferredContentSizeCategory: .medium),
                     .init(displayScale: 2),
-                    .init(userInterfaceStyle: style),
+                    .init(userInterfaceStyle: style)
                 ]
             )
         )
@@ -49,16 +49,22 @@ class SnapshotWindow: UIWindow {
     convenience init(configuration: SnapshotConfiguration, root: UIViewController) {
         self.init(frame: .init(origin: .zero, size: configuration.size))
         self.configuration = configuration
-        self.isHidden = false
+        self.layoutMargins = configuration.layoutMargins
         self.rootViewController = root
+        self.isHidden = false
+        root.view.layoutMargins = configuration.layoutMargins
     }
     
     override var traitCollection: UITraitCollection {
         UITraitCollection(traitsFrom: [super.traitCollection, configuration.traitCollection])
     }
     
+    override var safeAreaInsets: UIEdgeInsets {
+        configuration.safeAreaInset
+    }
+    
     func snapshot() -> UIImage {
-        let renderer = UIGraphicsImageRenderer(bounds: bounds)
+        let renderer = UIGraphicsImageRenderer(bounds: bounds, format: .init(for: configuration.traitCollection))
         return renderer.image { action in
             layer.render(in: action.cgContext)
         }

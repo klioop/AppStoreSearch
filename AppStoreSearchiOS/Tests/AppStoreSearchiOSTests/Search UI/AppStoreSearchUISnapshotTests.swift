@@ -66,6 +66,7 @@ final class AppStoreSearchUISnapshotTests: XCTestCase {
         )
         list.configure = { tableView in
             AppStoreSearchResultCellController.register(for: tableView)
+            tableView.showsVerticalScrollIndicator = false
         }
         return (sut, list)
     }
